@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://8yx5e2f6u76"]
+
+[ext_resource type="Script" path="res://Mockie's tuto/Node2d.cs" id="1_myyal"]
+[ext_resource type="Script" path="res://Mockie's tuto/static_body_2d.gd" id="2_gcf3m"]
+[ext_resource type="Script" path="res://Mockie's tuto/CharacterBody2d.cs" id="3_oern1"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_bsnyq"]
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_myyal")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+script = ExtResource("2_gcf3m")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("CircleShape2D_bsnyq")
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2"]
+shape = SubResource("CircleShape2D_bsnyq")
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+script = ExtResource("3_oern1")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="CharacterBody2D"]
+shape = SubResource("CircleShape2D_bsnyq")
