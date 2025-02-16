@@ -9,6 +9,11 @@ size = Vector2(780, 129)
 
 [node name="TestScene" type="Node2D"]
 
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(330, -43)
+scale = Vector2(12.2539, 12.2539)
+texture = ExtResource("1_te26g")
+
 [node name="Sol" type="StaticBody2D" parent="."]
 position = Vector2(392, 65)
 
@@ -22,8 +27,13 @@ texture = ExtResource("1_te26g")
 metadata/_edit_lock_ = true
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="."]
-position = Vector2(38, -70)
+position = Vector2(39, -69)
 script = ExtResource("2_rs8mq")
+Speed = 700.0
+JumpVelocity = -1200.0
+
+[node name="Camera2D" type="Camera2D" parent="CharacterBody2D"]
+metadata/_edit_lock_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
 shape = ExtResource("2_ft6ia")
@@ -32,7 +42,4 @@ metadata/_edit_lock_ = true
 [node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D"]
 scale = Vector2(0.335938, 1)
 texture = ExtResource("1_te26g")
-metadata/_edit_lock_ = true
-
-[node name="Camera2D" type="Camera2D" parent="CharacterBody2D"]
 metadata/_edit_lock_ = true
