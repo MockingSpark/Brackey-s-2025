@@ -10,8 +10,8 @@ config_version=5
 
 [application]
 
-config/name="Nouveau projet de jeu"
-config/features=PackedStringArray("4.3", "Mobile")
+config/name="EscapeTuto"
+config/features=PackedStringArray("4.3", "C#", "Mobile")
 config/icon="res://icon.svg"
 
 [dotnet]
