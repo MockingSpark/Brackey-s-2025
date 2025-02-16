@@ -1,0 +1,38 @@
+[gd_scene load_steps=5 format=3 uid="uid://x42y1dfyasrr"]
+
+[ext_resource type="Texture2D" uid="uid://bj2l30lga1lc7" path="res://icon.svg" id="1_te26g"]
+[ext_resource type="Shape2D" uid="uid://ceste5w5ced75" path="res://Source/CharacterCollision.tres" id="2_ft6ia"]
+[ext_resource type="Script" path="res://Scenes/CharacterMovement.cs" id="2_rs8mq"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6xnch"]
+size = Vector2(780, 129)
+
+[node name="TestScene" type="Node2D"]
+
+[node name="Sol" type="StaticBody2D" parent="."]
+position = Vector2(392, 65)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sol"]
+shape = SubResource("RectangleShape2D_6xnch")
+metadata/_edit_lock_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Sol"]
+scale = Vector2(6.09375, 1)
+texture = ExtResource("1_te26g")
+metadata/_edit_lock_ = true
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+position = Vector2(38, -70)
+script = ExtResource("2_rs8mq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+shape = ExtResource("2_ft6ia")
+metadata/_edit_lock_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D"]
+scale = Vector2(0.335938, 1)
+texture = ExtResource("1_te26g")
+metadata/_edit_lock_ = true
+
+[node name="Camera2D" type="Camera2D" parent="CharacterBody2D"]
+metadata/_edit_lock_ = true
