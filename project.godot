@@ -24,6 +24,11 @@ project/assembly_name="Nouveau projet de jeu"
 version_control/plugin_name="GitPlugin"
 version_control/autoload_on_startup=true
 
+[global_group]
+
+StickyWall=""
+BumpyWall=""
+
 [input]
 
 Jump={
@@ -60,6 +65,7 @@ Action={
 2d_physics/layer_1="Character"
 2d_physics/layer_2="Walls"
 2d_physics/layer_3="Projectile"
+2d_physics/layer_4="Interactable"
 
 [physics]
 

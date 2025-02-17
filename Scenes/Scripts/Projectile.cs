@@ -1,15 +1,22 @@
 using Godot;
 using System;
 using System.Diagnostics;
+using System.Runtime.Intrinsics.Arm;
 
 public partial class Projectile : Area2D
 {
 	[Export]
 	public float projectileSpeed = 900.0f;
+    [Export]
+    public float rotSpeed = 10.0f;
+	[Export]
+	public PackedScene bounceSpear;
 
 	private CollisionShape2D platformBody;
 
-	bool stuck = false;
+	bool travelling = true;
+	bool bouncing = false;
+	bool isLeft = false;
 
     public override void _Ready()
     {
@@ -20,33 +27,63 @@ public partial class Projectile : Area2D
 		}
 	}
 
-    // Called every frame. 'delta' is the elapsed time since the previous frame.
-    public override void _PhysicsProcess(double delta)
-	{
-		if (stuck) return;
+    public override void _Process(double delta)
+    {
+		if(bouncing)
+		{
+			int bounceDir = isLeft ? 1 : -1;
+			Rotate(bounceDir * MathF.PI * rotSpeed * (float)delta);
+		}
 
-		Position += Transform.X * projectileSpeed * (float)delta;
-	}
+        if (travelling)
+        {
+            Position += Transform.X * projectileSpeed * (float)delta;
+        }
+		return;
+    }
+
 
 	public void SetUpProjectile(bool isLeft)
 	{
+		this.isLeft = isLeft;
 		if (isLeft)
 		{
 			if (platformBody != null)
             {
-				Debug.Print("Before rot " + platformBody.Transform.Rotation);
 				platformBody.Rotate(Mathf.Pi);
-                Debug.Print("After rot " + platformBody.Transform.Rotation);
             }
 		}
 	}
 
 	private void OnAreaEntered(Area2D body)
 	{
-        stuck = true;
-        if (platformBody != null)
+		if(body.IsInGroup("StickyWall"))
+		{
+            travelling = false;
+            if (platformBody != null)
+            {
+                platformBody.SetDeferred("disabled", false);
+            }
+        }
+		else if(body.IsInGroup("BumpyWall"))
         {
-            platformBody.SetDeferred("disabled", false);
+            var newProjectile = bounceSpear.Instantiate<BounceSpear>();
+			newProjectile.Transform = Transform;
+			newProjectile.Position -= newProjectile.Transform.X * 20;
+			GetTree().Root.CallDeferred("add_child", newProjectile);
+			if (isLeft)
+			{
+				var rdmX = GD.RandRange(100, 350.0);
+				var rdmY = GD.RandRange(-400, -600);
+				newProjectile.ApplyCentralImpulse(new Vector2((float)rdmX, (float)rdmY));
+			}
+            else
+            {
+                var rdmX = GD.RandRange(-100, -350.0);
+                var rdmY = GD.RandRange(-400, -600);
+                newProjectile.ApplyCentralImpulse(new Vector2((float)rdmX, (float)rdmY));
+            }
+            QueueFree();
         }
 	}
 }

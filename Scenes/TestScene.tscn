@@ -1,9 +1,12 @@
-[gd_scene load_steps=5 format=3 uid="uid://x42y1dfyasrr"]
+[gd_scene load_steps=6 format=3 uid="uid://x42y1dfyasrr"]
 
 [ext_resource type="PackedScene" uid="uid://bh6dfwnf48qxw" path="res://Scenes/WIP_Wall.tscn" id="1_dlomc"]
 [ext_resource type="Texture2D" uid="uid://bj2l30lga1lc7" path="res://icon.svg" id="1_te26g"]
 [ext_resource type="PackedScene" uid="uid://c1d0x30dt6bad" path="res://Scenes/CharacterNode.tscn" id="2_0j0pk"]
 [ext_resource type="Shape2D" uid="uid://b4x0auono8lj4" path="res://Source/SpearPlatformCollider.tres" id="3_c6f7m"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_1dabm"]
+radius = 68.0294
 
 [node name="TestScene" type="Node2D"]
 
@@ -22,6 +25,7 @@ position = Vector2(-380, -1)
 position = Vector2(-332, -59)
 
 [node name="CharacterBody2D" parent="." instance=ExtResource("2_0j0pk")]
+position = Vector2(231, -62)
 collision_mask = 2
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
@@ -37,6 +41,13 @@ one_way_collision = true
 position = Vector2(0.49999, -7.62939e-06)
 scale = Vector2(0.648438, 0.1875)
 texture = ExtResource("1_te26g")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(480, -49)
+shape = SubResource("CircleShape2D_1dabm")
 
 [editable path="Sol2"]
 [editable path="Sol3"]

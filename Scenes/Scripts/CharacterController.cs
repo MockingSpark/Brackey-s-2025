@@ -102,7 +102,7 @@ public partial class CharacterController : CharacterBody2D
     private void ThrowProjectile()
     {
 		var newProjectile = projectile.Instantiate<Projectile>();
-        Owner.AddChild(newProjectile);
+        GetTree().Root.AddChild(newProjectile);
 		if (animatedSprite.FlipH)
 		{
 			((Node2D)newProjectile).Transform = leftThrowPoint.GlobalTransform;
