@@ -9,22 +9,9 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yyr7t"]
 size = Vector2(55, 24)
 
-[node name="AreaProjectile" type="Area2D"]
-collision_layer = 4
-collision_mask = 2
-gravity = 90000.0
-linear_damp = 22.94
+[node name="Projectile" type="Node2D"]
 script = ExtResource("1_7b0tf")
 bounceSpear = ExtResource("2_y68oa")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(3.5, 0)
-shape = SubResource("RectangleShape2D_yyr7t")
-metadata/_edit_lock_ = true
-
-[node name="Sprite2D" type="Sprite2D" parent="CollisionShape2D"]
-scale = Vector2(0.171875, 0.171875)
-texture = ExtResource("1_68dng")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.671875, 0.698413)
@@ -33,11 +20,46 @@ metadata/_edit_lock_ = true
 
 [node name="PlatformBody" type="StaticBody2D" parent="."]
 collision_layer = 2
-collision_mask = 2
+collision_mask = 0
 metadata/_edit_lock_ = true
 
 [node name="PlatformShape" type="CollisionShape2D" parent="PlatformBody"]
 shape = ExtResource("4_ocf2b")
 one_way_collision = true
 
-[connection signal="area_entered" from="." to="." method="OnAreaEntered"]
+[node name="StickyArea" type="Area2D" parent="."]
+position = Vector2(11, 0)
+collision_layer = 4
+collision_mask = 16
+gravity = 90000.0
+linear_damp = 22.94
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StickyArea"]
+position = Vector2(3.5, 0)
+shape = SubResource("RectangleShape2D_yyr7t")
+metadata/_edit_lock_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="StickyArea/CollisionShape2D"]
+scale = Vector2(0.171875, 0.171875)
+texture = ExtResource("1_68dng")
+metadata/_edit_lock_ = true
+
+[node name="BouncyArea" type="Area2D" parent="."]
+position = Vector2(11, 0)
+collision_layer = 4
+collision_mask = 2
+gravity = 90000.0
+linear_damp = 22.94
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BouncyArea"]
+position = Vector2(3.5, 0)
+shape = SubResource("RectangleShape2D_yyr7t")
+metadata/_edit_lock_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="BouncyArea/CollisionShape2D"]
+scale = Vector2(0.171875, 0.171875)
+texture = ExtResource("1_68dng")
+metadata/_edit_lock_ = true
+
+[connection signal="body_entered" from="StickyArea" to="." method="OnStick"]
+[connection signal="body_entered" from="BouncyArea" to="." method="OnBounce"]

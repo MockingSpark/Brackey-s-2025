@@ -3,12 +3,10 @@ using System;
 using System.Diagnostics;
 using System.Runtime.Intrinsics.Arm;
 
-public partial class Projectile : Area2D
+public partial class Projectile : Node2D
 {
 	[Export]
 	public float projectileSpeed = 900.0f;
-    [Export]
-    public float rotSpeed = 10.0f;
 	[Export]
 	public PackedScene bounceSpear;
 
@@ -29,12 +27,6 @@ public partial class Projectile : Area2D
 
     public override void _Process(double delta)
     {
-		if(bouncing)
-		{
-			int bounceDir = isLeft ? 1 : -1;
-			Rotate(bounceDir * MathF.PI * rotSpeed * (float)delta);
-		}
-
         if (travelling)
         {
             Position += Transform.X * projectileSpeed * (float)delta;
@@ -55,35 +47,36 @@ public partial class Projectile : Area2D
 		}
 	}
 
-	private void OnAreaEntered(Area2D body)
+	public void OnBounce(Node2D node)
 	{
-		if(body.IsInGroup("StickyWall"))
-		{
-            travelling = false;
-            if (platformBody != null)
-            {
-                platformBody.SetDeferred("disabled", false);
-            }
-        }
-		else if(body.IsInGroup("BumpyWall"))
+        if (!travelling) return;
+
+        var newProjectile = bounceSpear.Instantiate<BounceSpear>();
+        newProjectile.Transform = Transform;
+        newProjectile.Position -= newProjectile.Transform.X * 20;
+        GetTree().Root.CallDeferred("add_child", newProjectile);
+        if (isLeft)
         {
-            var newProjectile = bounceSpear.Instantiate<BounceSpear>();
-			newProjectile.Transform = Transform;
-			newProjectile.Position -= newProjectile.Transform.X * 20;
-			GetTree().Root.CallDeferred("add_child", newProjectile);
-			if (isLeft)
-			{
-				var rdmX = GD.RandRange(100, 350.0);
-				var rdmY = GD.RandRange(-400, -600);
-				newProjectile.ApplyCentralImpulse(new Vector2((float)rdmX, (float)rdmY));
-			}
-            else
-            {
-                var rdmX = GD.RandRange(-100, -350.0);
-                var rdmY = GD.RandRange(-400, -600);
-                newProjectile.ApplyCentralImpulse(new Vector2((float)rdmX, (float)rdmY));
-            }
-            QueueFree();
+            var rdmX = GD.RandRange(100, 350.0);
+            var rdmY = GD.RandRange(-400, -600);
+            newProjectile.ApplyCentralImpulse(new Vector2((float)rdmX, (float)rdmY));
         }
-	}
+        else
+        {
+            var rdmX = GD.RandRange(-100, -350.0);
+            var rdmY = GD.RandRange(-400, -600);
+            newProjectile.ApplyCentralImpulse(new Vector2((float)rdmX, (float)rdmY));
+        }
+        QueueFree();
+    }
+
+	public void OnStick(Node2D node)
+    {
+        if (!travelling) return;
+        travelling = false;
+        if (platformBody != null)
+        {
+            platformBody.SetDeferred("disabled", false);
+        }
+    }
 }
