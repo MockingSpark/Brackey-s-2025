@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Scenes/Scripts/CharacterController.cs" id="1_7gc5i"]
 [ext_resource type="Shape2D" uid="uid://ceste5w5ced75" path="res://Source/CharacterCollision.tres" id="2_heess"]
-[ext_resource type="SpriteFrames" uid="uid://burrehc0k348h" path="res://Sprites/Character/WIP_ANimator.tres" id="3_pyndy"]
+[ext_resource type="SpriteFrames" uid="uid://burrehc0k348h" path="res://Assets/Sprites/Character/WIP_ANimator.tres" id="3_03140"]
 
 [node name="Player" type="CharacterBody2D"]
 position = Vector2(39, -69)
@@ -20,7 +20,7 @@ metadata/_edit_lock_ = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.304147, 0.304147)
-sprite_frames = ExtResource("3_pyndy")
+sprite_frames = ExtResource("3_03140")
 animation = &"Idle"
 metadata/_edit_lock_ = true
 

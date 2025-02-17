@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://dbdtky7u65k03"]
 
-[ext_resource type="Texture2D" uid="uid://datjj7nljwomm" path="res://Sprites/WIP_Spear.png" id="1_yfmmv"]
+[ext_resource type="Texture2D" uid="uid://datjj7nljwomm" path="res://Assets/Sprites/WIP_Spear.png" id="1_yfmmv"]
 [ext_resource type="PackedScene" uid="uid://bldnsphpydv4j" path="res://Scenes/pickable.tscn" id="2_iqgv3"]
 
 [node name="PickableSpear" type="Sprite2D"]

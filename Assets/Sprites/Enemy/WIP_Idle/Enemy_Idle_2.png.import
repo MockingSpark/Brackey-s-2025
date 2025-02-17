@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://buqpi1hyuydye"
-path="res://.godot/imported/Idle_2.png-a53bf28dbb67134cdab443520678079f.ctex"
+uid="uid://lextok2wi278"
+path="res://.godot/imported/Enemy_Idle_2.png-ddcbcdd83c527a16af60ae75fa62971a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Character/WIP_Idle/Idle_2.png"
-dest_files=["res://.godot/imported/Idle_2.png-a53bf28dbb67134cdab443520678079f.ctex"]
+source_file="res://Assets/Sprites/Enemy/WIP_Idle/Enemy_Idle_2.png"
+dest_files=["res://.godot/imported/Enemy_Idle_2.png-ddcbcdd83c527a16af60ae75fa62971a.ctex"]
 
 [params]
 
@@ -31,4 +31,4 @@ process/normal_map_invert_y=false
 process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
-detect_3d/compress_to=1
+detect_3d/compress_to=0
