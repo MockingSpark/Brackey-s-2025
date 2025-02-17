@@ -20,6 +20,7 @@ public partial class PickableProjectile : Base_Interactable
     {
         character.ProjectileCount++;
         Debug.Print("Character has " + character.ProjectileCount + " spears");
+        GetParent().QueueFree();
         QueueFree();
     }
 }

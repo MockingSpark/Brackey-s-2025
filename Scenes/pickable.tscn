@@ -1,7 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://bldnsphpydv4j"]
+[gd_scene load_steps=3 format=3 uid="uid://bldnsphpydv4j"]
 
 [ext_resource type="Script" path="res://Scenes/Scripts/PickableProjectile.cs" id="1_mhxgh"]
-[ext_resource type="Texture2D" uid="uid://datjj7nljwomm" path="res://Sprites/WIP_Spear.png" id="2_8eo3w"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_1dabm"]
 radius = 68.0294
@@ -14,11 +13,6 @@ script = ExtResource("1_mhxgh")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_1dabm")
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-z_index = -1
-rotation = 0.125426
-texture = ExtResource("2_8eo3w")
 
 [connection signal="body_entered" from="." to="." method="OnPlayerEntered"]
 [connection signal="body_exited" from="." to="." method="OnPlayerExit"]
