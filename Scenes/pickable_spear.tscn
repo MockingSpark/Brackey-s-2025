@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://dbdtky7u65k03"]
+
+[ext_resource type="Texture2D" uid="uid://datjj7nljwomm" path="res://Sprites/WIP_Spear.png" id="1_yfmmv"]
+[ext_resource type="PackedScene" uid="uid://bldnsphpydv4j" path="res://Scenes/pickable.tscn" id="2_iqgv3"]
+
+[node name="PickableSpear" type="Sprite2D"]
+z_index = -1
+position = Vector2(529, -25)
+rotation = 1.0472
+scale = Vector2(0.671875, 0.698413)
+texture = ExtResource("1_yfmmv")
+
+[node name="Pickable" parent="." instance=ExtResource("2_iqgv3")]
+position = Vector2(0, 0)
+rotation = 0.0
+scale = Vector2(1.5, 1.5)
