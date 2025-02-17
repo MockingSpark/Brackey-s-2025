@@ -101,16 +101,16 @@ public partial class CharacterController : CharacterBody2D
 
     private void ThrowProjectile()
     {
-		var instance = projectile.Instantiate();
-        Owner.AddChild(instance);
+		var newProjectile = projectile.Instantiate<Projectile>();
+        Owner.AddChild(newProjectile);
 		if (animatedSprite.FlipH)
 		{
-			((Node2D)instance).Transform = leftThrowPoint.GlobalTransform;
+			((Node2D)newProjectile).Transform = leftThrowPoint.GlobalTransform;
 		}
 		else
 		{
-            ((Node2D)instance).Transform = rightThrowPoint.GlobalTransform;
+            ((Node2D)newProjectile).Transform = rightThrowPoint.GlobalTransform;
         }
-
+		newProjectile.SetUpProjectile(animatedSprite.FlipH);
     }
 }

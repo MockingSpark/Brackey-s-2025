@@ -1,20 +1,42 @@
-[gd_scene load_steps=3 format=3 uid="uid://x42y1dfyasrr"]
+[gd_scene load_steps=5 format=3 uid="uid://x42y1dfyasrr"]
 
 [ext_resource type="PackedScene" uid="uid://bh6dfwnf48qxw" path="res://Scenes/WIP_Wall.tscn" id="1_dlomc"]
+[ext_resource type="Texture2D" uid="uid://bj2l30lga1lc7" path="res://icon.svg" id="1_te26g"]
 [ext_resource type="PackedScene" uid="uid://c1d0x30dt6bad" path="res://Scenes/CharacterNode.tscn" id="2_0j0pk"]
+[ext_resource type="Shape2D" uid="uid://b4x0auono8lj4" path="res://Source/SpearPlatformCollider.tres" id="3_c6f7m"]
 
 [node name="TestScene" type="Node2D"]
 
 [node name="Sol" parent="." instance=ExtResource("1_dlomc")]
 
+[node name="Sol4" parent="." instance=ExtResource("1_dlomc")]
+position = Vector2(395, -319)
+
 [node name="Sol2" parent="." instance=ExtResource("1_dlomc")]
 position = Vector2(1071, -37)
 
+[node name="CollisionShape2D" parent="Sol2/Area2D" index="0"]
+position = Vector2(-380, -1)
+
 [node name="Sol3" parent="." instance=ExtResource("1_dlomc")]
-position = Vector2(111, -236)
+position = Vector2(-332, -59)
 
 [node name="CharacterBody2D" parent="." instance=ExtResource("2_0j0pk")]
 collision_mask = 2
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(-327, -275)
+collision_layer = 2
+collision_mask = 5
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+shape = ExtResource("3_c6f7m")
+one_way_collision = true
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D"]
+position = Vector2(0.49999, -7.62939e-06)
+scale = Vector2(0.648438, 0.1875)
+texture = ExtResource("1_te26g")
 
 [editable path="Sol2"]
 [editable path="Sol3"]
