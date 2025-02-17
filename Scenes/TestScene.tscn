@@ -1,53 +1,20 @@
-[gd_scene load_steps=4 format=3 uid="uid://x42y1dfyasrr"]
+[gd_scene load_steps=3 format=3 uid="uid://x42y1dfyasrr"]
 
-[ext_resource type="Texture2D" uid="uid://bj2l30lga1lc7" path="res://icon.svg" id="1_te26g"]
+[ext_resource type="PackedScene" uid="uid://bh6dfwnf48qxw" path="res://Scenes/WIP_Wall.tscn" id="1_dlomc"]
 [ext_resource type="PackedScene" uid="uid://c1d0x30dt6bad" path="res://Scenes/CharacterNode.tscn" id="2_0j0pk"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_6xnch"]
-size = Vector2(780, 129)
 
 [node name="TestScene" type="Node2D"]
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-visible = false
-position = Vector2(325, -48)
-scale = Vector2(12.2539, 12.2539)
-texture = ExtResource("1_te26g")
+[node name="Sol" parent="." instance=ExtResource("1_dlomc")]
 
-[node name="Sol" type="StaticBody2D" parent="."]
-position = Vector2(392, 65)
+[node name="Sol2" parent="." instance=ExtResource("1_dlomc")]
+position = Vector2(1071, -37)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Sol"]
-shape = SubResource("RectangleShape2D_6xnch")
-metadata/_edit_lock_ = true
-
-[node name="Sprite2D" type="Sprite2D" parent="Sol"]
-scale = Vector2(6.09375, 1)
-texture = ExtResource("1_te26g")
-metadata/_edit_lock_ = true
-
-[node name="Sol2" type="StaticBody2D" parent="."]
-position = Vector2(1156, -44)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Sol2"]
-shape = SubResource("RectangleShape2D_6xnch")
-metadata/_edit_lock_ = true
-
-[node name="Sprite2D" type="Sprite2D" parent="Sol2"]
-scale = Vector2(6.09375, 1)
-texture = ExtResource("1_te26g")
-metadata/_edit_lock_ = true
-
-[node name="Sol3" type="StaticBody2D" parent="."]
-position = Vector2(1456, -136)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Sol3"]
-shape = SubResource("RectangleShape2D_6xnch")
-metadata/_edit_lock_ = true
-
-[node name="Sprite2D" type="Sprite2D" parent="Sol3"]
-scale = Vector2(6.09375, 1)
-texture = ExtResource("1_te26g")
-metadata/_edit_lock_ = true
+[node name="Sol3" parent="." instance=ExtResource("1_dlomc")]
+position = Vector2(111, -236)
 
 [node name="CharacterBody2D" parent="." instance=ExtResource("2_0j0pk")]
+collision_mask = 2
+
+[editable path="Sol2"]
+[editable path="Sol3"]

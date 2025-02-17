@@ -55,6 +55,12 @@ Action={
 ]
 }
 
+[layer_names]
+
+2d_physics/layer_1="Character"
+2d_physics/layer_2="Walls"
+2d_physics/layer_3="Projectile"
+
 [physics]
 
 2d/default_gravity=3500.0

@@ -1,17 +1,21 @@
-[gd_scene load_steps=5 format=3 uid="uid://c2btbqr7srinh"]
+[gd_scene load_steps=6 format=3 uid="uid://c2btbqr7srinh"]
 
-[ext_resource type="Script" path="res://Scenes/Projectile.cs" id="1_7b0tf"]
+[ext_resource type="Script" path="res://Scenes/Scripts/Projectile.cs" id="1_7b0tf"]
 [ext_resource type="Texture2D" uid="uid://bj2l30lga1lc7" path="res://icon.svg" id="1_68dng"]
 [ext_resource type="Texture2D" uid="uid://datjj7nljwomm" path="res://Sprites/WIP_Spear.png" id="2_ee0qk"]
+[ext_resource type="Shape2D" uid="uid://b4x0auono8lj4" path="res://Source/SpearPlatformCollider.tres" id="4_ocf2b"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yyr7t"]
-size = Vector2(24, 24)
+size = Vector2(55, 24)
 
 [node name="AreaProjectile" type="Area2D"]
+collision_layer = 4
+collision_mask = 2
 script = ExtResource("1_7b0tf")
+projectileSpeed = 200.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(30, 0)
+position = Vector2(3.5, 0)
 shape = SubResource("RectangleShape2D_yyr7t")
 metadata/_edit_lock_ = true
 
@@ -23,3 +27,14 @@ texture = ExtResource("1_68dng")
 scale = Vector2(0.671875, 0.698413)
 texture = ExtResource("2_ee0qk")
 metadata/_edit_lock_ = true
+
+[node name="PlatformBody" type="StaticBody2D" parent="."]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlatformBody"]
+rotation = 3.14159
+shape = ExtResource("4_ocf2b")
+one_way_collision = true
+
+[connection signal="area_entered" from="." to="." method="OnAreaEntered"]
