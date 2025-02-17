@@ -1,0 +1,5 @@
+res://Scenes/TestScene.tscn
+res://Source/CharacterCollision.tres
+res://Mockie's tuto/CharacterBody2d.cs
+res://Mockie's tuto/Node2d.cs
+res://Scenes/CharacterMovement.cs

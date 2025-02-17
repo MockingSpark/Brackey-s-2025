@@ -1,5 +1,6 @@
 using Godot;
 using System;
+using System.Diagnostics;
 
 public partial class CharacterMovement : CharacterBody2D
 {
@@ -8,7 +9,33 @@ public partial class CharacterMovement : CharacterBody2D
 	[Export]
 	public float JumpVelocity = -400.0f;
 
-	public override void _PhysicsProcess(double delta)
+    private AnimatedSprite2D animatedSprite;
+	private Vector2 inputDir;
+
+    public override void _Ready()
+    {
+        animatedSprite = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
+    }
+
+    public override void _Process(double delta)
+    {
+		if (inputDir.X < 0)
+		{
+			animatedSprite.FlipH = true;
+			animatedSprite.Play("Run");
+		}
+		else if(inputDir.X > 0)
+        {
+            animatedSprite.FlipH = false;
+            animatedSprite.Play("Run");
+        }
+		else
+        {
+            animatedSprite.Play("Idle");
+		}
+    }
+
+    public override void _PhysicsProcess(double delta)
 	{
 		Vector2 velocity = Velocity;
 
@@ -26,20 +53,20 @@ public partial class CharacterMovement : CharacterBody2D
 
 		// Get the input direction and handle the movement/deceleration.
 		// As good practice, you should replace UI actions with custom gameplay actions.
-		Vector2 direction = Input.GetVector("Left_Move", "Right_Move", "ui_up", "ui_down");
-		if (direction.X != 0)
+		inputDir = Input.GetVector("Left_Move", "Right_Move", "ui_up", "ui_down");
+		if (inputDir.X != 0)
 		{
 			if(IsOnFloor())
 			{
-				velocity.X = Mathf.Lerp(Velocity.X, direction.X * Speed, 0.3f);
+				velocity.X = Mathf.Lerp(Velocity.X, inputDir.X * Speed, 0.3f);
 			}
-			else if(direction.X * velocity.X > 0)
+			else if(inputDir.X * velocity.X > 0)
 			{
-				velocity.X = Mathf.Lerp(Velocity.X, direction.X * Speed, 0.3f);
+				velocity.X = Mathf.Lerp(Velocity.X, inputDir.X * Speed, 0.3f);
 			}
 			else
 			{
-				velocity.X = Mathf.Lerp(Velocity.X, velocity.X + (direction.X * Speed / 5), 0.3f);
+				velocity.X = Mathf.Lerp(Velocity.X, velocity.X + (inputDir.X * Speed / 5), 0.3f);
 			}
 		}
 		else

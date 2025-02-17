@@ -1,0 +1,30 @@
+ea4bc82a6ad023ab7ee23ee620429895
+::res://::1739777852
+icon.svg::CompressedTexture2D::3074577695295024096::1739776858::1739777213::1::::<><>::
+::res://addons/::1739776858
+::res://addons/godot-git-plugin/::1739776858
+git_plugin.gdextension::GDExtension::-1::1739776858::0::1::::<><>::
+plugin.cfg::TextFile::-1::1739776858::0::1::::<><>::
+THIRDPARTY.md::TextFile::-1::1739776858::0::1::::<><>::
+::res://addons/godot-git-plugin/linux/::1739776858
+::res://addons/godot-git-plugin/macos/::1739776858
+::res://addons/godot-git-plugin/win64/::1739777213
+::res://Mockie's tuto/::1739776858
+CharacterBody2d.cs::CSharpScript::-1::1739776858::0::1::::<>CharacterBody2D<>::
+new_circle_shape_2d.tres::CircleShape2D::4952692340178868166::1739776858::0::1::::<><>::
+Node2d.cs::CSharpScript::-1::1739776858::0::1::::<>Node2D<>::
+static_body_2d.gd::GDScript::-1::1739776858::0::1::::prout<>StaticBody2D<>::
+tuto.tscn::PackedScene::69624330084583127::1739776858::0::1::::<><>::res://Mockie's tuto/Node2d.cs<>res://Mockie's tuto/static_body_2d.gd<>res://Mockie's tuto/CharacterBody2d.cs
+::res://Scenes/::1739777964
+CharacterMovement.cs::CSharpScript::-1::1739776858::0::1::::<>CharacterBody2D<>::
+TestScene.tscn::PackedScene::1675893946901677947::1739777964::0::1::::<><>::uid://bj2l30lga1lc7::::res://icon.svg<>uid://ceste5w5ced75::::res://Source/CharacterCollision.tres<>res://Scenes/CharacterMovement.cs<>uid://b0cmd6hwxgleg::::res://Sprites/Character/WIP_Idle/Idle_1.png<>uid://buqpi1hyuydye::::res://Sprites/Character/WIP_Idle/Idle_2.png
+::res://Source/::1739777964
+CharacterCollision.tres::CapsuleShape2D::5091917918601688682::1739777964::0::1::::<><>::
+::res://Sprites/::1739777859
+::res://Sprites/Character/::1739778355
+::res://Sprites/Character/WIP_Idle/::1739777902
+Idle_1.png::CompressedTexture2D::4146006131514991578::1739777886::1739777902::1::::<><>::
+Idle_2.png::CompressedTexture2D::3824154019300300416::1739777895::1739777902::1::::<><>::
+::res://Sprites/Character/WIP_Run/::1739778376
+Run_1.png::CompressedTexture2D::6813434272778956974::1739778367::1739778380::1::::<><>::
+Run_2.png::CompressedTexture2D::2242539853731393635::1739778376::1739778380::1::::<><>::
