@@ -1,20 +1,28 @@
 using Godot;
 using System;
 using System.Diagnostics;
+using static System.Formats.Asn1.AsnWriter;
 
-public partial class CharacterMovement : CharacterBody2D
+public partial class CharacterController : CharacterBody2D
 {
 	[Export]
-	public float Speed = 300.0f;
+	public float speed = 300.0f;
 	[Export]
 	public float JumpVelocity = -400.0f;
 
     private AnimatedSprite2D animatedSprite;
 	private Vector2 inputDir;
 
+	private PackedScene projectile;
+	private Node2D rightThrowPoint;
+	private Node2D leftThrowPoint;
+
     public override void _Ready()
     {
+		projectile = GD.Load<PackedScene>("res://Scenes/Projectile.tscn");
         animatedSprite = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
+        rightThrowPoint = GetNode<Node2D>("RightThrowPoint");
+        leftThrowPoint = GetNode<Node2D>("LeftThrowPoint");
     }
 
     public override void _Process(double delta)
@@ -33,6 +41,12 @@ public partial class CharacterMovement : CharacterBody2D
         {
             animatedSprite.Play("Idle");
 		}
+
+        // Handle Jump.
+        if (Input.IsActionJustPressed("Action"))
+        {
+			ThrowProjectile();
+        }
     }
 
     public override void _PhysicsProcess(double delta)
@@ -58,15 +72,15 @@ public partial class CharacterMovement : CharacterBody2D
 		{
 			if(IsOnFloor())
 			{
-				velocity.X = Mathf.Lerp(Velocity.X, inputDir.X * Speed, 0.3f);
+				velocity.X = Mathf.Lerp(Velocity.X, inputDir.X * speed, 0.3f);
 			}
 			else if(inputDir.X * velocity.X > 0)
 			{
-				velocity.X = Mathf.Lerp(Velocity.X, inputDir.X * Speed, 0.3f);
+				velocity.X = Mathf.Lerp(Velocity.X, inputDir.X * speed, 0.3f);
 			}
 			else
 			{
-				velocity.X = Mathf.Lerp(Velocity.X, velocity.X + (inputDir.X * Speed / 5), 0.3f);
+				velocity.X = Mathf.Lerp(Velocity.X, velocity.X + (inputDir.X * speed / 5), 0.3f);
 			}
 		}
 		else
@@ -84,4 +98,19 @@ public partial class CharacterMovement : CharacterBody2D
 		Velocity = velocity;
 		MoveAndSlide();
 	}
+
+    private void ThrowProjectile()
+    {
+		var instance = projectile.Instantiate();
+        Owner.AddChild(instance);
+		if (animatedSprite.FlipH)
+		{
+			((Node2D)instance).Transform = leftThrowPoint.GlobalTransform;
+		}
+		else
+		{
+            ((Node2D)instance).Transform = rightThrowPoint.GlobalTransform;
+        }
+
+    }
 }
