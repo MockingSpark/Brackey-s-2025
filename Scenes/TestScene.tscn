@@ -26,4 +26,28 @@ scale = Vector2(6.09375, 1)
 texture = ExtResource("1_te26g")
 metadata/_edit_lock_ = true
 
+[node name="Sol2" type="StaticBody2D" parent="."]
+position = Vector2(1156, -44)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sol2"]
+shape = SubResource("RectangleShape2D_6xnch")
+metadata/_edit_lock_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Sol2"]
+scale = Vector2(6.09375, 1)
+texture = ExtResource("1_te26g")
+metadata/_edit_lock_ = true
+
+[node name="Sol3" type="StaticBody2D" parent="."]
+position = Vector2(1456, -136)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sol3"]
+shape = SubResource("RectangleShape2D_6xnch")
+metadata/_edit_lock_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Sol3"]
+scale = Vector2(6.09375, 1)
+texture = ExtResource("1_te26g")
+metadata/_edit_lock_ = true
+
 [node name="CharacterBody2D" parent="." instance=ExtResource("2_0j0pk")]

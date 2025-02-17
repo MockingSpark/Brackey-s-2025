@@ -2,11 +2,13 @@
 
 [ext_resource type="Script" path="res://Scenes/CharacterController.cs" id="1_7gc5i"]
 [ext_resource type="Shape2D" uid="uid://ceste5w5ced75" path="res://Source/CharacterCollision.tres" id="2_heess"]
-[ext_resource type="SpriteFrames" uid="uid://burrehc0k348h" path="res://Sprites/Character/WIP_Animator.tres" id="3_pyndy"]
+[ext_resource type="SpriteFrames" uid="uid://burrehc0k348h" path="res://Sprites/Character/WIP_ANimator.tres" id="3_pyndy"]
 
 [node name="CharacterBody2D" type="CharacterBody2D"]
 position = Vector2(39, -69)
 script = ExtResource("1_7gc5i")
+speed = 700.0
+JumpVelocity = -1200.0
 
 [node name="Camera2D" type="Camera2D" parent="."]
 metadata/_edit_lock_ = true
