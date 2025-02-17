@@ -16,8 +16,8 @@ public partial class Projectile : Node2D
 	bool bouncing = false;
 	bool isLeft = false;
 
-    public override void _Ready()
-    {
+	public override void _Ready()
+	{
 		platformBody = GetNode<CollisionShape2D>("PlatformBody/PlatformShape");
 		if (platformBody != null)
 		{
@@ -25,14 +25,14 @@ public partial class Projectile : Node2D
 		}
 	}
 
-    public override void _Process(double delta)
-    {
-        if (travelling)
-        {
-            Position += Transform.X * projectileSpeed * (float)delta;
-        }
+	public override void _Process(double delta)
+	{
+		if (travelling)
+		{
+			Position += Transform.X * projectileSpeed * (float)delta;
+		}
 		return;
-    }
+	}
 
 
 	public void SetUpProjectile(bool isLeft)
@@ -41,42 +41,42 @@ public partial class Projectile : Node2D
 		if (isLeft)
 		{
 			if (platformBody != null)
-            {
+			{
 				platformBody.Rotate(Mathf.Pi);
-            }
+			}
 		}
 	}
 
 	public void OnBounce(Node2D node)
 	{
-        if (!travelling) return;
+		if (!travelling) return;
 
-        var newProjectile = bounceSpear.Instantiate<BounceSpear>();
-        newProjectile.Transform = Transform;
-        newProjectile.Position -= newProjectile.Transform.X * 20;
-        GetTree().Root.CallDeferred("add_child", newProjectile);
-        if (isLeft)
-        {
-            var rdmX = GD.RandRange(100, 350.0);
-            var rdmY = GD.RandRange(-400, -600);
-            newProjectile.ApplyCentralImpulse(new Vector2((float)rdmX, (float)rdmY));
-        }
-        else
-        {
-            var rdmX = GD.RandRange(-100, -350.0);
-            var rdmY = GD.RandRange(-400, -600);
-            newProjectile.ApplyCentralImpulse(new Vector2((float)rdmX, (float)rdmY));
-        }
-        QueueFree();
-    }
+		var newProjectile = bounceSpear.Instantiate<BounceSpear>();
+		newProjectile.Transform = Transform;
+		newProjectile.Position -= newProjectile.Transform.X * 20;
+		GetTree().Root.CallDeferred("add_child", newProjectile);
+		if (isLeft)
+		{
+			var rdmX = GD.RandRange(100, 350.0);
+			var rdmY = GD.RandRange(-400, -600);
+			newProjectile.ApplyCentralImpulse(new Vector2((float)rdmX, (float)rdmY));
+		}
+		else
+		{
+			var rdmX = GD.RandRange(-100, -350.0);
+			var rdmY = GD.RandRange(-400, -600);
+			newProjectile.ApplyCentralImpulse(new Vector2((float)rdmX, (float)rdmY));
+		}
+		QueueFree();
+	}
 
 	public void OnStick(Node2D node)
-    {
-        if (!travelling) return;
-        travelling = false;
-        if (platformBody != null)
-        {
-            platformBody.SetDeferred("disabled", false);
-        }
-    }
+	{
+		if (!travelling) return;
+		travelling = false;
+		if (platformBody != null)
+		{
+			platformBody.SetDeferred("disabled", false);
+		}
+	}
 }

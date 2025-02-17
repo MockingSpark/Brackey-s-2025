@@ -9,7 +9,7 @@ public partial class CharacterController : CharacterBody2D
 	[Export]
 	public float JumpVelocity = -400.0f;
 
-    private AnimatedSprite2D animatedSprite;
+	private AnimatedSprite2D animatedSprite;
 	private Vector2 inputDir;
 
 	private PackedScene projectile;
@@ -19,31 +19,31 @@ public partial class CharacterController : CharacterBody2D
 	private int projectileCount = 0;
 	private List<Base_Interactable> interactables = new List<Base_Interactable>();
 
-    public int ProjectileCount { get => projectileCount; set => projectileCount = value; }
+	public int ProjectileCount { get => projectileCount; set => projectileCount = value; }
 
-    public override void _Ready()
-    {
+	public override void _Ready()
+	{
 		projectile = GD.Load<PackedScene>("res://Scenes/Projectile.tscn");
-        animatedSprite = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
-        rightThrowPoint = GetNode<Node2D>("RightThrowPoint");
-        leftThrowPoint = GetNode<Node2D>("LeftThrowPoint");
-    }
+		animatedSprite = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
+		rightThrowPoint = GetNode<Node2D>("RightThrowPoint");
+		leftThrowPoint = GetNode<Node2D>("LeftThrowPoint");
+	}
 
-    public override void _Process(double delta)
-    {
+	public override void _Process(double delta)
+	{
 		if (inputDir.X < 0)
 		{
 			animatedSprite.FlipH = true;
 			animatedSprite.Play("Run");
 		}
 		else if(inputDir.X > 0)
-        {
-            animatedSprite.FlipH = false;
-            animatedSprite.Play("Run");
-        }
+		{
+			animatedSprite.FlipH = false;
+			animatedSprite.Play("Run");
+		}
 		else
-        {
-            animatedSprite.Play("Idle");
+		{
+			animatedSprite.Play("Idle");
 		}
 
 		if (Input.IsActionJustPressed("Attack"))
@@ -57,9 +57,9 @@ public partial class CharacterController : CharacterBody2D
 				interactables[0].Interact(this);
 			}
 		}
-    }
+	}
 
-    public override void _PhysicsProcess(double delta)
+	public override void _PhysicsProcess(double delta)
 	{
 		Vector2 velocity = Velocity;
 
@@ -109,32 +109,32 @@ public partial class CharacterController : CharacterBody2D
 		MoveAndSlide();
 	}
 
-    private void ThrowProjectile()
-    {
+	private void ThrowProjectile()
+	{
 		if (projectileCount == 0) return;
 
 		projectileCount--;
 
 		var newProjectile = projectile.Instantiate<Projectile>();
-        GetTree().Root.AddChild(newProjectile);
+		GetTree().Root.AddChild(newProjectile);
 		if (animatedSprite.FlipH)
 		{
 			((Node2D)newProjectile).Transform = leftThrowPoint.GlobalTransform;
 		}
 		else
 		{
-            ((Node2D)newProjectile).Transform = rightThrowPoint.GlobalTransform;
-        }
+			((Node2D)newProjectile).Transform = rightThrowPoint.GlobalTransform;
+		}
 		newProjectile.SetUpProjectile(animatedSprite.FlipH);
-    }
+	}
 
 	public void AddInteractable(Base_Interactable interactable)
 	{
 		interactables.Add(interactable);
 	}
 
-    internal void RemoveInteractable(Base_Interactable base_Interactable)
-    {
+	internal void RemoveInteractable(Base_Interactable base_Interactable)
+	{
 		interactables.Remove(base_Interactable);
-    }
+	}
 }

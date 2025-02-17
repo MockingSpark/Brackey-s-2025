@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="EscapeTuto"
-run/main_scene="res://Scenes/TestScene.tscn"
+run/main_scene="res://AlbanDev/AlbanTestMap.tscn"
 config/features=PackedStringArray("4.3", "C#", "Mobile")
 config/icon="res://icon.svg"
 
