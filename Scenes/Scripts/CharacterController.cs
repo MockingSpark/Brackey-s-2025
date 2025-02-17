@@ -1,7 +1,6 @@
 using Godot;
 using System;
-using System.Diagnostics;
-using static System.Formats.Asn1.AsnWriter;
+using System.Collections.Generic;
 
 public partial class CharacterController : CharacterBody2D
 {
@@ -16,6 +15,11 @@ public partial class CharacterController : CharacterBody2D
 	private PackedScene projectile;
 	private Node2D rightThrowPoint;
 	private Node2D leftThrowPoint;
+
+	private int projectileCount = 0;
+	private List<Base_Interactable> interactables = new List<Base_Interactable>();
+
+    public int ProjectileCount { get => projectileCount; set => projectileCount = value; }
 
     public override void _Ready()
     {
@@ -42,11 +46,17 @@ public partial class CharacterController : CharacterBody2D
             animatedSprite.Play("Idle");
 		}
 
-        // Handle Jump.
-        if (Input.IsActionJustPressed("Action"))
-        {
+		if (Input.IsActionJustPressed("Attack"))
+		{
 			ThrowProjectile();
-        }
+		}
+		else if (Input.IsActionJustPressed("Action"))
+		{
+			if (interactables.Count > 0)
+			{
+				interactables[0].Interact(this);
+			}
+		}
     }
 
     public override void _PhysicsProcess(double delta)
@@ -101,6 +111,10 @@ public partial class CharacterController : CharacterBody2D
 
     private void ThrowProjectile()
     {
+		if (projectileCount == 0) return;
+
+		projectileCount--;
+
 		var newProjectile = projectile.Instantiate<Projectile>();
         GetTree().Root.AddChild(newProjectile);
 		if (animatedSprite.FlipH)
@@ -112,5 +126,15 @@ public partial class CharacterController : CharacterBody2D
             ((Node2D)newProjectile).Transform = rightThrowPoint.GlobalTransform;
         }
 		newProjectile.SetUpProjectile(animatedSprite.FlipH);
+    }
+
+	public void AddInteractable(Base_Interactable interactable)
+	{
+		interactables.Add(interactable);
+	}
+
+    internal void RemoveInteractable(Base_Interactable base_Interactable)
+    {
+		interactables.Remove(base_Interactable);
     }
 }

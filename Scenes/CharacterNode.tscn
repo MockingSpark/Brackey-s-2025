@@ -4,8 +4,9 @@
 [ext_resource type="Shape2D" uid="uid://ceste5w5ced75" path="res://Source/CharacterCollision.tres" id="2_heess"]
 [ext_resource type="SpriteFrames" uid="uid://burrehc0k348h" path="res://Sprites/Character/WIP_ANimator.tres" id="3_pyndy"]
 
-[node name="CharacterBody2D" type="CharacterBody2D"]
+[node name="Player" type="CharacterBody2D"]
 position = Vector2(39, -69)
+collision_mask = 2
 script = ExtResource("1_7gc5i")
 speed = 700.0
 JumpVelocity = -1200.0
