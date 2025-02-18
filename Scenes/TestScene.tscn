@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://x42y1dfyasrr"]
+[gd_scene load_steps=13 format=3 uid="uid://x42y1dfyasrr"]
 
 [ext_resource type="Texture2D" uid="uid://chn7u3jyidw7o" path="res://Assets/Sprites/WIP_Background.png" id="1_u7e8s"]
 [ext_resource type="PackedScene" uid="uid://c1d0x30dt6bad" path="res://Scenes/Character/CharacterNode.tscn" id="2_0j0pk"]
@@ -7,6 +7,8 @@
 [ext_resource type="PackedScene" uid="uid://bq6wiakr1leji" path="res://Scenes/Enemy/enemy.tscn" id="4_rgeek"]
 [ext_resource type="PackedScene" uid="uid://dg3wxmmau0er0" path="res://Scenes/Enemy/enemy_surveil_point.tscn" id="5_lrb4d"]
 [ext_resource type="Texture2D" uid="uid://bs128iolrwcih" path="res://Assets/Sprites/Props/box.png" id="6_tjwis"]
+[ext_resource type="Script" path="res://Scenes/Door.cs" id="8_6mf6c"]
+[ext_resource type="Script" path="res://Scenes/Button.cs" id="9_8iycx"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_yqo46"]
 friction = 0.5
@@ -78,11 +80,17 @@ self_modulate = Color(0.909476, 0.783035, 0.197177, 1)
 scale = Vector2(3, 3)
 texture = ExtResource("6_tjwis")
 
-[node name="Door" type="ColorRect" parent="."]
-offset_left = 1110.0
-offset_top = -393.0
-offset_right = 1139.0
-offset_bottom = -228.0
+[node name="Node2D" type="Node2D" parent="."]
+position = Vector2(1131, -228)
+script = ExtResource("8_6mf6c")
+openPosition = Vector2(1131, -78)
+closePosition = Vector2(1133, -228)
+metadata/_edit_group_ = true
+
+[node name="Door" type="ColorRect" parent="Node2D"]
+offset_left = -14.0
+offset_top = -165.0
+offset_right = 15.0
 color = Color(0.7266, 0.693632, 0.665209, 1)
 
 [node name="Button" type="ColorRect" parent="."]
@@ -91,10 +99,18 @@ offset_top = -110.0
 offset_right = 1088.0
 offset_bottom = -75.0
 color = Color(0.635294, 0.101961, 0.133333, 1)
+script = ExtResource("9_8iycx")
 metadata/_edit_group_ = true
 
 [node name="Area2D" type="Area2D" parent="Button"]
+collision_layer = 0
+collision_mask = 35
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Button/Area2D"]
 position = Vector2(14, 0)
 shape = SubResource("RectangleShape2D_pbwc4")
+
+[connection signal="ButtonPressed" from="Button" to="Node2D" method="OpenDoor"]
+[connection signal="ButtonReleased" from="Button" to="Node2D" method="CloseDoor"]
+[connection signal="body_entered" from="Button/Area2D" to="Button" method="OnButtonPressed"]
+[connection signal="body_exited" from="Button/Area2D" to="Button" method="OnButtonReleased"]
