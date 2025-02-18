@@ -1,6 +1,7 @@
 using Godot;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 
 public partial class Enemy : CharacterBody2D
 {
@@ -8,6 +9,11 @@ public partial class Enemy : CharacterBody2D
     public float Speed = 300.0f;
 
     AnimatedSprite2D sprite;
+    bool dead = false;
+    bool stunned = false;
+    [Export]
+    float stunTime = 10;
+    double stunTimer = 0;
 
 	Vector2 direction = new Vector2();
 
@@ -21,6 +27,16 @@ public partial class Enemy : CharacterBody2D
 
     public override void _Process(double delta)
     {
+        if(stunned)
+        {
+            stunTimer += delta;
+            if(stunTimer > stunTime)
+            {
+                stunned = false;
+                stunTimer = 0;
+            }
+        }
+
         sprite.FlipH = Velocity.X < 0;
         if (Velocity.X > Mathf.Epsilon || Velocity.X < -Mathf.Epsilon)
         {
@@ -34,27 +50,49 @@ public partial class Enemy : CharacterBody2D
 
     public override void _PhysicsProcess(double delta)
 	{
-		Vector2 velocity = Velocity;
-		var test = GlobalPosition - new Vector2();
-
-        if (!IsOnFloor())
+        if (!stunned && !dead)
         {
-            velocity += GetGravity() * (float)delta;
-        }
-        if (target != null)
-        {
-            Vector2 directionToTarget = GlobalPosition.DirectionTo(target.GlobalPosition);
-            velocity.X = directionToTarget.X * Speed;
-        }
-        else
-        {
-            velocity.X = direction.X * Speed;
+            Vector2 velocity = Velocity;
+            var test = GlobalPosition - new Vector2();
+
+            if (!IsOnFloor())
+            {
+                velocity += GetGravity() * (float)delta;
+            }
+            if (target != null)
+            {
+                Vector2 directionToTarget = GlobalPosition.DirectionTo(target.GlobalPosition);
+                velocity.X = directionToTarget.X * Speed;
+            }
+            else
+            {
+                velocity.X = direction.X * Speed;
+            }
+            Velocity = velocity;
         }
 
-
-		Velocity = velocity;
 		MoveAndSlide();
 	}
+
+    public void OnHit(Node2D body)
+    {
+        if(body as CharacterController != null)
+        {
+            Velocity = new Vector2(0, 0);
+            GlobalPosition -= Position.DirectionTo(body.GlobalPosition) * 10;
+            stunned = true;
+        }
+        else if(body.GetParent<Projectile>() != null)
+        {        
+            body.GetParent<Projectile>().Destroy();
+            Die();
+        }
+    }
+
+    private void Die()
+    {
+        QueueFree();
+    }
 
 	public void TurnAround(Vector2 directionToGo)
 	{
