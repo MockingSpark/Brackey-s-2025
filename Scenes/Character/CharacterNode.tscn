@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://c1d0x30dt6bad"]
+[gd_scene load_steps=5 format=3 uid="uid://c1d0x30dt6bad"]
 
 [ext_resource type="Script" path="res://Scenes/Character/CharacterController.cs" id="1_7gc5i"]
+[ext_resource type="PackedScene" uid="uid://c2btbqr7srinh" path="res://Scenes/Projectile/Projectile.tscn" id="2_77sic"]
 [ext_resource type="Shape2D" uid="uid://ceste5w5ced75" path="res://Source/CharacterCollision.tres" id="2_heess"]
 [ext_resource type="SpriteFrames" uid="uid://burrehc0k348h" path="res://Assets/Sprites/Character/WIP_ANimator.tres" id="3_03140"]
 
@@ -8,8 +9,9 @@
 position = Vector2(39, -69)
 collision_mask = 18
 script = ExtResource("1_7gc5i")
-speed = 700.0
-JumpVelocity = -1200.0
+speed = 500.0
+JumpVelocity = -1000.0
+projectile = ExtResource("2_77sic")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 metadata/_edit_lock_ = true
@@ -31,3 +33,6 @@ metadata/_edit_lock_ = true
 [node name="LeftThrowPoint" type="Node2D" parent="."]
 position = Vector2(-27, -21)
 rotation = 3.14159
+
+[node name="AudioListener2D" type="AudioListener2D" parent="."]
+current = true

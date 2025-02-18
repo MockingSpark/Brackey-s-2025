@@ -8,10 +8,14 @@ public partial class CharacterController : CharacterBody2D
 	public float speed = 300.0f;
 	[Export]
 	public float JumpVelocity = -400.0f;
+	[Export]
+	public float pushForce = 200.0f;
+    [Export]
+    public float pushMaxSpeed= 10.0f;
 
-	private AnimatedSprite2D animatedSprite;
+    private AnimatedSprite2D animatedSprite;
 	private Vector2 inputDir;
-
+	[Export]
 	private PackedScene projectile;
 	private Node2D rightThrowPoint;
 	private Node2D leftThrowPoint;
@@ -23,7 +27,6 @@ public partial class CharacterController : CharacterBody2D
 
 	public override void _Ready()
 	{
-		projectile = GD.Load<PackedScene>("res://Scenes/Projectile.tscn");
 		animatedSprite = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
 		rightThrowPoint = GetNode<Node2D>("RightThrowPoint");
 		leftThrowPoint = GetNode<Node2D>("LeftThrowPoint");
@@ -104,8 +107,21 @@ public partial class CharacterController : CharacterBody2D
 				velocity.X = Mathf.Lerp(Velocity.X, 0, 0.05f);
 			}
 		}
-
 		Velocity = velocity;
+
+		for (int i = 0; i < GetSlideCollisionCount(); i++)
+		{
+			var collision = GetSlideCollision(i);
+			var collider = collision.GetCollider() as RigidBody2D;
+			if (collider != null && collider.IsInGroup("Pushable"))
+			{
+				if(MathF.Abs(collider.LinearVelocity.X) < pushMaxSpeed)
+				{
+					collider.ApplyCentralForce(collision.GetNormal() * -pushForce);
+				}
+			}
+		}
+
 		MoveAndSlide();
 	}
 
