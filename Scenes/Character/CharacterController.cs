@@ -89,7 +89,7 @@ public partial class CharacterController : CharacterBody2D
 			}
 			else
 			{
-				velocity.X = Mathf.Lerp(Velocity.X, velocity.X + (inputDir.X * speed / 5), 0.3f);
+				velocity.X = Mathf.Lerp(Velocity.X, velocity.X + (inputDir.X * speed / 7), 0.3f);
 			}
 		}
 		else
