@@ -1,0 +1,18 @@
+[gd_resource type="SpriteFrames" load_steps=3 format=3 uid="uid://b4kugdvmrjvkt"]
+
+[ext_resource type="Texture2D" uid="uid://dfwxuuya064rq" path="res://Assets/Sprites/Fairy/Nouveau dossier/Sprite1.png" id="1_yihou"]
+[ext_resource type="Texture2D" uid="uid://doniqqk7blp6m" path="res://Assets/Sprites/Fairy/Nouveau dossier/Sprite2.png" id="2_fqnhn"]
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_yihou")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_fqnhn")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
