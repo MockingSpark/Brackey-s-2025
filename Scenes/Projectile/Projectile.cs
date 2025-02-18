@@ -67,7 +67,7 @@ public partial class Projectile : Node2D
 			var rdmY = GD.RandRange(-400, -600);
 			newProjectile.ApplyCentralImpulse(new Vector2((float)rdmX, (float)rdmY));
 		}
-		QueueFree();
+        Destroy();
 	}
 
 	public void OnStick(Node2D node)
@@ -78,5 +78,10 @@ public partial class Projectile : Node2D
 		{
 			platformBody.SetDeferred("disabled", false);
 		}
+	}
+
+	public void Destroy()
+	{
+		QueueFree();
 	}
 }

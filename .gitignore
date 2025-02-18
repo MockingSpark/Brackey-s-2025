@@ -3,6 +3,7 @@
 
 # Visual Studio Code
 .vscode/
+.vs/
 
 #godot editor configs and shit
 .godot/

@@ -1,9 +1,9 @@
 [gd_resource type="SpriteFrames" load_steps=5 format=3 uid="uid://burrehc0k348h"]
 
-[ext_resource type="Texture2D" uid="uid://b0cmd6hwxgleg" path="res://Source/Sprites/Character/WIP_Idle/Idle_1.png" id="1_cxsmx"]
-[ext_resource type="Texture2D" uid="uid://buqpi1hyuydye" path="res://Source/Sprites/Character/WIP_Idle/Idle_2.png" id="2_cm72x"]
-[ext_resource type="Texture2D" uid="uid://c4cqjcw4bxuo1" path="res://Source/Sprites/Character/WIP_Run/Run_1.png" id="3_u4vxj"]
-[ext_resource type="Texture2D" uid="uid://67kklewpb1jr" path="res://Source/Sprites/Character/WIP_Run/Run_2.png" id="4_jn0dr"]
+[ext_resource type="Texture2D" uid="uid://b0cmd6hwxgleg" path="res://Assets/Sprites/Character/WIP_Idle/Idle_1.png" id="1_cxsmx"]
+[ext_resource type="Texture2D" uid="uid://buqpi1hyuydye" path="res://Assets/Sprites/Character/WIP_Idle/Idle_2.png" id="2_cm72x"]
+[ext_resource type="Texture2D" uid="uid://c4cqjcw4bxuo1" path="res://Assets/Sprites/Character/WIP_Run/Run_1.png" id="3_u4vxj"]
+[ext_resource type="Texture2D" uid="uid://67kklewpb1jr" path="res://Assets/Sprites/Character/WIP_Run/Run_2.png" id="4_jn0dr"]
 
 [resource]
 animations = [{

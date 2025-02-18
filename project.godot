@@ -28,6 +28,7 @@ version_control/autoload_on_startup=true
 
 StickyWall=""
 BumpyWall=""
+Pushable=""
 
 [importer_defaults]
 
@@ -95,10 +96,12 @@ Action={
 2d_physics/layer_3="Projectile"
 2d_physics/layer_4="Interactable"
 2d_physics/layer_5="StickyWall"
+2d_physics/layer_6="Enemy"
+2d_physics/layer_7="EnemySurveil"
 
 [physics]
 
-2d/default_gravity=3500.0
+2d/default_gravity=2000.0
 
 [rendering]
 

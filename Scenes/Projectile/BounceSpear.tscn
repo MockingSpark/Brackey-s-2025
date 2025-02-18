@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://dgg1mhs5aeqtq"]
 
-[ext_resource type="Script" path="res://Scenes/Scripts/BounceSpear.cs" id="1_134b1"]
+[ext_resource type="Script" path="res://Scenes/Projectile/BounceSpear.cs" id="1_134b1"]
 [ext_resource type="Texture2D" uid="uid://datjj7nljwomm" path="res://Assets/Sprites/WIP_Spear.png" id="2_o3joy"]
 [ext_resource type="PackedScene" uid="uid://bldnsphpydv4j" path="res://Scenes/pickable.tscn" id="3_gkim7"]
 

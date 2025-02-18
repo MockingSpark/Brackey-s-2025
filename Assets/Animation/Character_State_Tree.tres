@@ -1,0 +1,22 @@
+[gd_resource type="AnimationNodeStateMachine" load_steps=5 format=3 uid="uid://dldq1g8hc3hrl"]
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_atadf"]
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_on30a"]
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_cyk8u"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_sdc4k"]
+advance_mode = 2
+
+[resource]
+states/End/position = Vector2(948, 100)
+states/Idle/node = SubResource("AnimationNodeStateMachine_atadf")
+states/Idle/position = Vector2(320, 87)
+states/Jump/node = SubResource("AnimationNodeStateMachine_on30a")
+states/Jump/position = Vector2(546, 87)
+states/Start/position = Vector2(132, 87)
+states/Walk/node = SubResource("AnimationNodeStateMachine_cyk8u")
+states/Walk/position = Vector2(413, 202)
+transitions = ["Idle", "Jump", SubResource("AnimationNodeStateMachineTransition_sdc4k")]
+graph_offset = Vector2(-66, 8)

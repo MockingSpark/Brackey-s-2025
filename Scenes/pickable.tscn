@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://bldnsphpydv4j"]
 
-[ext_resource type="Script" path="res://Scenes/Scripts/PickableProjectile.cs" id="1_mhxgh"]
+[ext_resource type="Script" path="res://Scenes/Projectile/PickableProjectile.cs" id="1_mhxgh"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_1dabm"]
 radius = 68.0294
