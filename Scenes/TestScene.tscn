@@ -1,13 +1,15 @@
-[gd_scene load_steps=4 format=3 uid="uid://x42y1dfyasrr"]
+[gd_scene load_steps=7 format=3 uid="uid://x42y1dfyasrr"]
 
 [ext_resource type="PackedScene" uid="uid://c1d0x30dt6bad" path="res://Scenes/CharacterNode.tscn" id="2_0j0pk"]
 [ext_resource type="PackedScene" uid="uid://cp3ga5u36lr85" path="res://Scenes/terrain/terrain.tscn" id="4_2wuxl"]
 [ext_resource type="PackedScene" uid="uid://dbdtky7u65k03" path="res://Scenes/pickable_spear.tscn" id="4_16h4l"]
+[ext_resource type="PackedScene" uid="uid://bq6wiakr1leji" path="res://Scenes/enemy.tscn" id="4_rgeek"]
+[ext_resource type="Script" path="res://Scenes/EnemySurveilPoint.cs" id="5_ql0gm"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_j2o1l"]
+size = Vector2(17, 107)
 
 [node name="TestScene" type="Node2D"]
-
-[node name="Player" parent="." instance=ExtResource("2_0j0pk")]
-position = Vector2(262, -95)
 
 [node name="TileMap" parent="." instance=ExtResource("4_2wuxl")]
 position = Vector2(0, 0)
@@ -25,3 +27,33 @@ rotation = 1.56603
 [node name="PickableSpear4" parent="." instance=ExtResource("4_16h4l")]
 position = Vector2(469, -26)
 rotation = 1.89398
+
+[node name="Player" parent="." instance=ExtResource("2_0j0pk")]
+
+[node name="Enemy" parent="." instance=ExtResource("4_rgeek")]
+collision_mask = 71
+
+[node name="EnemySurveilPoint" type="Area2D" parent="."]
+position = Vector2(195, -378)
+collision_layer = 64
+collision_mask = 32
+script = ExtResource("5_ql0gm")
+directionToGo = Vector2(1, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemySurveilPoint"]
+shape = SubResource("RectangleShape2D_j2o1l")
+metadata/_edit_lock_ = true
+
+[node name="EnemySurveilPoint2" type="Area2D" parent="."]
+position = Vector2(478, -379)
+collision_layer = 64
+collision_mask = 32
+script = ExtResource("5_ql0gm")
+directionToGo = Vector2(-1, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemySurveilPoint2"]
+shape = SubResource("RectangleShape2D_j2o1l")
+metadata/_edit_lock_ = true
+
+[connection signal="body_entered" from="EnemySurveilPoint" to="EnemySurveilPoint" method="OnEnemyEntered"]
+[connection signal="body_entered" from="EnemySurveilPoint2" to="EnemySurveilPoint2" method="OnEnemyEntered"]

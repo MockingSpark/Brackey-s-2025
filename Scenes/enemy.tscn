@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://bq6wiakr1leji"]
+
+[ext_resource type="Script" path="res://Scenes/Scripts/Enemy.cs" id="1_xjpia"]
+[ext_resource type="SpriteFrames" uid="uid://csak62mxf63sj" path="res://Assets/Sprites/Enemy/Enemy_Animator.tres" id="2_lhsom"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ljia3"]
+radius = 18.0
+height = 60.0
+
+[node name="Enemy" type="CharacterBody2D"]
+position = Vector2(339, -389)
+collision_layer = 32
+collision_mask = 7
+script = ExtResource("1_xjpia")
+Speed = 100.0
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.304147, 0.304147)
+sprite_frames = ExtResource("2_lhsom")
+animation = &"Idle"
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 3)
+rotation = -1.5708
+shape = SubResource("CapsuleShape2D_ljia3")
