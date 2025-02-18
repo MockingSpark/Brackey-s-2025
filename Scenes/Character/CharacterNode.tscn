@@ -316,7 +316,7 @@ projectile = ExtResource("2_77sic")
 [node name="Camera2D" type="Camera2D" parent="."]
 metadata/_edit_lock_ = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CharacterCollision" type="CollisionShape2D" parent="."]
 shape = ExtResource("2_heess")
 metadata/_edit_lock_ = true
 

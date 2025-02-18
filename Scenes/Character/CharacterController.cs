@@ -14,10 +14,18 @@ public partial class CharacterController : CharacterBody2D
     [Export]
     public float pushMaxSpeed= 10.0f;
 
+
+	private bool respawning = false;
+    private float respawnSpeed = 0.05f;
+    private float respawnTolerance = 10;
+	private Vector2 respawnPoint;
+	private CollisionShape2D collisionShape;
+
 	private bool jumping = false;
 	private int playerDir = 1;
 	private Vector2 inputDir;
     private AnimationPlayer animationPLayer;
+
 	[Export]
 	private PackedScene projectile;
 	private Node2D rightThrowPoint;
@@ -33,6 +41,7 @@ public partial class CharacterController : CharacterBody2D
 		animationPLayer = GetNode<AnimationPlayer>("AnimationPlayer");
 		rightThrowPoint = GetNode<Node2D>("RightThrowPoint");
 		leftThrowPoint = GetNode<Node2D>("LeftThrowPoint");
+        collisionShape = GetNode<CollisionShape2D>("CharacterCollision");
 	}
 
 	public override void _Process(double delta)
@@ -53,73 +62,98 @@ public partial class CharacterController : CharacterBody2D
 
 	public override void _PhysicsProcess(double delta)
 	{
-		Vector2 velocity = Velocity;
-
-		// Add the gravity.
-		if (!IsOnFloor())
+		if(!respawning)
 		{
-			velocity += GetGravity() * (float)delta;
+            HandleGeneralMovement((float)delta);
 		}
+        else
+        {
+            HandleRespawn();
+        }
+		
+	}
 
-		// Handle Jump.
-		if (Input.IsActionJustPressed("Jump") && IsOnFloor())
-		{
-			jumping = true;
-			velocity.Y = JumpVelocity;
-		}
+    void HandleRespawn()
+    {
+        if(GlobalPosition.DistanceTo(respawnPoint) < respawnTolerance)
+        {
+            respawning = false;
+            collisionShape.SetDeferred("disabled", false);
+            return;
+        }
 
-		// Get the input direction and handle the movement/deceleration.
-		// As good practice, you should replace UI actions with custom gameplay actions.
-		inputDir = Input.GetVector("Left_Move", "Right_Move", "ui_up", "ui_down");
+        GlobalPosition = GlobalPosition.Lerp(respawnPoint, respawnSpeed);
+    }
 
-		if(inputDir.X != 0)
+	void HandleGeneralMovement(float delta)
+	{
+        Vector2 velocity = Velocity;
+
+        // Add the gravity.
+        if (!IsOnFloor())
+        {
+            velocity += GetGravity() * delta;
+        }
+
+        // Handle Jump.
+        if (Input.IsActionJustPressed("Jump") && IsOnFloor())
+        {
+            jumping = true;
+            velocity.Y = JumpVelocity;
+        }
+
+        // Get the input direction and handle the movement/deceleration.
+        // As good practice, you should replace UI actions with custom gameplay actions.
+        inputDir = Input.GetVector("Left_Move", "Right_Move", "ui_up", "ui_down");
+
+        if (inputDir.X != 0)
         {
             playerDir = inputDir.X > 0 ? 1 : -1;
         }
 
-		if (inputDir.X != 0)
-		{
-			if(IsOnFloor())
-			{
-				velocity.X = Mathf.Lerp(Velocity.X, inputDir.X * speed, 0.3f);
-			}
-			else if(inputDir.X * velocity.X > 0)
-			{
-				velocity.X = Mathf.Lerp(Velocity.X, inputDir.X * speed, 0.3f);
-			}
-			else
-			{
-				velocity.X = Mathf.Lerp(Velocity.X, velocity.X + (inputDir.X * speed / 7), 0.3f);
-			}
-		}
-		else
-		{
-			if(IsOnFloor())
-			{
-				velocity.X = Mathf.Lerp(Velocity.X, 0, 0.5f);
-			}
-			else
-			{
-				velocity.X = Mathf.Lerp(Velocity.X, 0, 0.05f);
-			}
-		}
-		Velocity = velocity;
+        if (inputDir.X != 0)
+        {
+            if (IsOnFloor())
+            {
+                velocity.X = Mathf.Lerp(Velocity.X, inputDir.X * speed, 0.3f);
+            }
+            else if (inputDir.X * velocity.X > 0)
+            {
+                velocity.X = Mathf.Lerp(Velocity.X, inputDir.X * speed, 0.3f);
+            }
+            else
+            {
+                velocity.X = Mathf.Lerp(Velocity.X, velocity.X + (inputDir.X * speed / 7), 0.3f);
+            }
+        }
+        else
+        {
+            if (IsOnFloor())
+            {
+                velocity.X = Mathf.Lerp(Velocity.X, 0, 0.5f);
+            }
+            else
+            {
+                velocity.X = Mathf.Lerp(Velocity.X, 0, 0.05f);
+            }
+        }
+        Velocity = velocity;
 
-		for (int i = 0; i < GetSlideCollisionCount(); i++)
-		{
-			var collision = GetSlideCollision(i);
-			var collider = collision.GetCollider() as RigidBody2D;
-			if (collider != null && collider.IsInGroup("Pushable"))
-			{
-				if(MathF.Abs(collider.LinearVelocity.X) < pushMaxSpeed)
-				{
-					collider.ApplyCentralForce(collision.GetNormal() * -pushForce);
-				}
-			}
-		}
+        for (int i = 0; i < GetSlideCollisionCount(); i++)
+        {
+            var collision = GetSlideCollision(i);
+            var collider = collision.GetCollider() as RigidBody2D;
+            if (collider != null && collider.IsInGroup("Pushable"))
+            {
+                if (MathF.Abs(collider.LinearVelocity.X) < pushMaxSpeed)
+                {
+                    collider.ApplyCentralForce(collision.GetNormal() * -pushForce);
+                }
+            }
+        }
 
-		MoveAndSlide();
-	}
+        MoveAndSlide();
+    }
 
 	void HandleAnimation()
     {
@@ -178,8 +212,16 @@ public partial class CharacterController : CharacterBody2D
 		interactables.Add(interactable);
 	}
 
-	internal void RemoveInteractable(Base_Interactable base_Interactable)
+	public void RemoveInteractable(Base_Interactable base_Interactable)
 	{
 		interactables.Remove(base_Interactable);
+	}
+
+	public void Respawn(Vector2 respawnPoint)
+	{
+		respawning = true;
+        Velocity = new Vector2();
+		collisionShape.SetDeferred("disabled", true);
+		this.respawnPoint = respawnPoint;
 	}
 }
