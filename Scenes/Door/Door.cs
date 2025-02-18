@@ -3,15 +3,19 @@ using System;
 
 public partial class Door : Node2D
 {
-	[Export]
 	public Vector2 openPosition;
-	[Export]
 	public Vector2 closePosition;
 
 	Vector2 destination = new Vector2();
 	bool shouldMove = false;
 
-	public void OpenDoor()
+    public override void _Ready()
+    {
+		closePosition = GlobalPosition;
+		openPosition = GlobalPosition + new Vector2(0, 124);
+    }
+
+    public void OpenDoor()
 	{
 		destination = openPosition;
 		shouldMove = true;
@@ -26,7 +30,7 @@ public partial class Door : Node2D
 	{
 		if (shouldMove)
 		{
-			Position = Position.Lerp(destination, 0.2f);
+			GlobalPosition = GlobalPosition.Lerp(destination, 0.2f);
 			if(Position.DistanceTo(destination) < Mathf.Epsilon) 
 				shouldMove = false;
 		}
