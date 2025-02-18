@@ -1,6 +1,7 @@
 using Godot;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 
 public partial class CharacterController : CharacterBody2D
 {
@@ -13,8 +14,10 @@ public partial class CharacterController : CharacterBody2D
     [Export]
     public float pushMaxSpeed= 10.0f;
 
-    private AnimatedSprite2D animatedSprite;
+	private bool jumping = false;
+	private int playerDir = 1;
 	private Vector2 inputDir;
+    private AnimationPlayer animationPLayer;
 	[Export]
 	private PackedScene projectile;
 	private Node2D rightThrowPoint;
@@ -27,28 +30,14 @@ public partial class CharacterController : CharacterBody2D
 
 	public override void _Ready()
 	{
-		animatedSprite = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
+		animationPLayer = GetNode<AnimationPlayer>("AnimationPlayer");
 		rightThrowPoint = GetNode<Node2D>("RightThrowPoint");
 		leftThrowPoint = GetNode<Node2D>("LeftThrowPoint");
 	}
 
 	public override void _Process(double delta)
 	{
-		if (inputDir.X < 0)
-		{
-			animatedSprite.FlipH = true;
-			animatedSprite.Play("Run");
-		}
-		else if(inputDir.X > 0)
-		{
-			animatedSprite.FlipH = false;
-			animatedSprite.Play("Run");
-		}
-		else
-		{
-			animatedSprite.Play("Idle");
-		}
-
+		HandleAnimation();
 		if (Input.IsActionJustPressed("Attack"))
 		{
 			ThrowProjectile();
@@ -75,12 +64,19 @@ public partial class CharacterController : CharacterBody2D
 		// Handle Jump.
 		if (Input.IsActionJustPressed("Jump") && IsOnFloor())
 		{
+			jumping = true;
 			velocity.Y = JumpVelocity;
 		}
 
 		// Get the input direction and handle the movement/deceleration.
 		// As good practice, you should replace UI actions with custom gameplay actions.
 		inputDir = Input.GetVector("Left_Move", "Right_Move", "ui_up", "ui_down");
+
+		if(inputDir.X != 0)
+        {
+            playerDir = inputDir.X > 0 ? 1 : -1;
+        }
+
 		if (inputDir.X != 0)
 		{
 			if(IsOnFloor())
@@ -125,6 +121,39 @@ public partial class CharacterController : CharacterBody2D
 		MoveAndSlide();
 	}
 
+	void HandleAnimation()
+    {
+		if (!IsOnFloor())
+        {
+			if(jumping)
+            {
+				jumping = false;
+                string animToPlay = "";
+                animToPlay += playerDir == 1 ? "R_" : "L_";
+                animToPlay += "Jump";
+                animToPlay += projectileCount > 0 ? "Spear" : "Empty";
+                animationPLayer.Play(animToPlay);
+            }
+			else
+            {
+                string animToPlay = "";
+                animToPlay += playerDir == 1 ? "R_" : "L_";
+                animToPlay += "JumpIdle";
+                animToPlay += projectileCount > 0 ? "Spear" : "Empty";
+                animationPLayer.Play(animToPlay);
+            }
+
+        }
+		else if(IsOnFloor())
+        {
+            string animToPlay = "";
+            animToPlay += playerDir == 1 ? "R_" : "L_";
+            animToPlay += inputDir.X != 0 ? "Walk" : "Idle";
+            animToPlay += projectileCount > 0 ? "Spear" : "Empty";
+            animationPLayer.Play(animToPlay);
+        }
+    }
+
 	private void ThrowProjectile()
 	{
 		if (projectileCount == 0) return;
@@ -133,7 +162,7 @@ public partial class CharacterController : CharacterBody2D
 
 		var newProjectile = projectile.Instantiate<Projectile>();
 		GetTree().Root.AddChild(newProjectile);
-		if (animatedSprite.FlipH)
+		if (playerDir < 0)
 		{
 			((Node2D)newProjectile).Transform = leftThrowPoint.GlobalTransform;
 		}
@@ -141,7 +170,7 @@ public partial class CharacterController : CharacterBody2D
 		{
 			((Node2D)newProjectile).Transform = rightThrowPoint.GlobalTransform;
 		}
-		newProjectile.SetUpProjectile(animatedSprite.FlipH);
+		newProjectile.SetUpProjectile(playerDir < 0);
 	}
 
 	public void AddInteractable(Base_Interactable interactable)
