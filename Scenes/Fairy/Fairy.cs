@@ -2,6 +2,7 @@ using Godot;
 using Godot.Collections;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using static InterestPoint;
 
@@ -32,9 +33,20 @@ public partial class Fairy : Node2D
 
     }
 
-    private void InterestPoint_OnPointActivated(InterestPoint point)
+    protected void InterestPoint_OnPointActivated(InterestPoint point)
     {
         currentPointFollowed = point;
+        if(currentPointFollowed.DialogueToPlay != null)
+        {
+            ReadDialogue(currentPointFollowed.DialogueToPlay);
+        }
+    }
+    protected void ReadDialogue(Dialogue dialogue)
+    {
+        foreach(var str in dialogue.Text)
+        {
+            Debug.Print(str);
+        }
     }
 
 

@@ -1,10 +1,12 @@
-[gd_scene load_steps=9 format=3 uid="uid://uwe4fh7tvyxd"]
+[gd_scene load_steps=12 format=3 uid="uid://uwe4fh7tvyxd"]
 
-[ext_resource type="PackedScene" uid="uid://c1d0x30dt6bad" path="res://Scenes/CharacterNode.tscn" id="1_k5pya"]
+[ext_resource type="PackedScene" uid="uid://c1d0x30dt6bad" path="res://Scenes/Character/CharacterNode.tscn" id="1_k5pya"]
 [ext_resource type="PackedScene" uid="uid://cp3ga5u36lr85" path="res://Scenes/terrain/terrain.tscn" id="2_0yp7n"]
 [ext_resource type="Texture2D" uid="uid://bntd3j8xkott8" path="res://Assets/Terrain/tileset_Rocks1.png" id="3_nlwm5"]
 [ext_resource type="PackedScene" uid="uid://cw000q3yg2bj8" path="res://Scenes/Fairy/Fairy.tscn" id="4_x8bs7"]
-[ext_resource type="PackedScene" uid="uid://dbdtky7u65k03" path="res://Scenes/pickable_spear.tscn" id="5_m83ms"]
+[ext_resource type="PackedScene" uid="uid://dbdtky7u65k03" path="res://Scenes/Projectile/pickable_spear.tscn" id="5_m83ms"]
+[ext_resource type="PackedScene" uid="uid://bqx487uxlb2pj" path="res://Scenes/InterestPoint/InterestPoint.tscn" id="6_6k8nn"]
+[ext_resource type="Resource" uid="uid://c7ggwq6hgfjsy" path="res://Scenes/Dialogue/WelcomeDialogue.tres" id="6_mvqtm"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_3k4p5"]
 resource_name = "Bouncy"
@@ -304,12 +306,10 @@ physics_layer_1/collision_mask = 0
 sources/1 = SubResource("TileSetAtlasSource_mjank")
 sources/0 = SubResource("TileSetAtlasSource_3k4p5")
 
-[node name="AlbanTestMap" type="Node2D"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rns3f"]
+size = Vector2(68, 61)
 
-[node name="Fairy" parent="." node_paths=PackedStringArray("player") instance=ExtResource("4_x8bs7")]
-position = Vector2(587, -168)
-scale = Vector2(0.3, 0.3)
-player = NodePath("../Player")
+[node name="AlbanTestMap" type="Node2D"]
 
 [node name="Player" parent="." instance=ExtResource("1_k5pya")]
 position = Vector2(262, -95)
@@ -325,3 +325,19 @@ z_index = -2
 position = Vector2(498.563, -35.6537)
 rotation = 1.89398
 scale = Vector2(0.797993, 0.698413)
+
+[node name="InterestPoint" parent="." instance=ExtResource("6_6k8nn")]
+position = Vector2(643, -71)
+DialogueToPlay = ExtResource("6_mvqtm")
+
+[node name="Area2D" type="Area2D" parent="InterestPoint"]
+input_pickable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InterestPoint/Area2D"]
+position = Vector2(4, -3)
+shape = SubResource("RectangleShape2D_rns3f")
+
+[node name="Fairy" parent="." node_paths=PackedStringArray("player") instance=ExtResource("4_x8bs7")]
+position = Vector2(557, -213)
+scale = Vector2(0.3, 0.3)
+player = NodePath("../Player")
