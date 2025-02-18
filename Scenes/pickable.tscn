@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=3 uid="uid://bldnsphpydv4j"]
+[gd_scene load_steps=3 format=3 uid="uid://cm50ldhvfl78w"]
 
 [ext_resource type="Script" path="res://Scenes/Projectile/PickableProjectile.cs" id="1_mhxgh"]
 
