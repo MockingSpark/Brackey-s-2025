@@ -1,10 +1,10 @@
 [gd_scene load_steps=6 format=3 uid="uid://x42y1dfyasrr"]
 
-[ext_resource type="PackedScene" uid="uid://c1d0x30dt6bad" path="res://Scenes/CharacterNode.tscn" id="2_0j0pk"]
+[ext_resource type="PackedScene" uid="uid://c1d0x30dt6bad" path="res://Scenes/Character/CharacterNode.tscn" id="2_0j0pk"]
 [ext_resource type="PackedScene" uid="uid://cp3ga5u36lr85" path="res://Scenes/terrain/terrain.tscn" id="4_2wuxl"]
-[ext_resource type="PackedScene" uid="uid://dbdtky7u65k03" path="res://Scenes/pickable_spear.tscn" id="4_16h4l"]
-[ext_resource type="PackedScene" uid="uid://bq6wiakr1leji" path="res://Scenes/enemy.tscn" id="4_rgeek"]
-[ext_resource type="PackedScene" uid="uid://dg3wxmmau0er0" path="res://Scenes/enemy_surveil_point.tscn" id="5_lrb4d"]
+[ext_resource type="PackedScene" uid="uid://dbdtky7u65k03" path="res://Scenes/Projectile/pickable_spear.tscn" id="4_16h4l"]
+[ext_resource type="PackedScene" uid="uid://bq6wiakr1leji" path="res://Scenes/Enemy/enemy.tscn" id="4_rgeek"]
+[ext_resource type="PackedScene" uid="uid://dg3wxmmau0er0" path="res://Scenes/Enemy/enemy_surveil_point.tscn" id="5_lrb4d"]
 
 [node name="TestScene" type="Node2D"]
 

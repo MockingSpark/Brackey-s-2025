@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://bq6wiakr1leji"]
 
-[ext_resource type="Script" path="res://Scenes/Scripts/Enemy.cs" id="1_xjpia"]
+[ext_resource type="Script" path="res://Scenes/Enemy/Enemy.cs" id="1_xjpia"]
 [ext_resource type="SpriteFrames" uid="uid://csak62mxf63sj" path="res://Assets/Sprites/Enemy/Enemy_Animator.tres" id="2_lhsom"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ljia3"]

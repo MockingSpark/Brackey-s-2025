@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://c1d0x30dt6bad"]
 
-[ext_resource type="Script" path="res://Scenes/Scripts/CharacterController.cs" id="1_7gc5i"]
+[ext_resource type="Script" path="res://Scenes/Character/CharacterController.cs" id="1_7gc5i"]
 [ext_resource type="Shape2D" uid="uid://ceste5w5ced75" path="res://Source/CharacterCollision.tres" id="2_heess"]
 [ext_resource type="SpriteFrames" uid="uid://burrehc0k348h" path="res://Assets/Sprites/Character/WIP_ANimator.tres" id="3_03140"]
 

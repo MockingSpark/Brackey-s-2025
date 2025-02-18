@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://dg3wxmmau0er0"]
 
-[ext_resource type="Script" path="res://Scenes/EnemySurveilPoint.cs" id="1_wt2oh"]
+[ext_resource type="Script" path="res://Scenes/Enemy/EnemySurveilPoint.cs" id="1_wt2oh"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_j2o1l"]
 size = Vector2(17, 107)
