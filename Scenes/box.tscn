@@ -1,0 +1,29 @@
+[gd_scene load_steps=4 format=3 uid="uid://0s6hs2pwdk2f"]
+
+[ext_resource type="Texture2D" uid="uid://bs128iolrwcih" path="res://Assets/Sprites/Props/box.png" id="1_ss8d4"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_yqo46"]
+friction = 0.5
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dfka0"]
+size = Vector2(48, 47)
+
+[node name="Box" type="RigidBody2D" groups=["Pushable"]]
+position = Vector2(473, -136)
+collision_layer = 2
+collision_mask = 55
+mass = 0.1
+physics_material_override = SubResource("PhysicsMaterial_yqo46")
+can_sleep = false
+freeze_mode = 1
+angular_damp = 100.0
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_dfka0")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+self_modulate = Color(0.909476, 0.783035, 0.197177, 1)
+scale = Vector2(3, 3)
+texture = ExtResource("1_ss8d4")

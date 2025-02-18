@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://x42y1dfyasrr"]
+[gd_scene load_steps=12 format=3 uid="uid://x42y1dfyasrr"]
 
 [ext_resource type="Texture2D" uid="uid://chn7u3jyidw7o" path="res://Assets/Sprites/WIP_Background.png" id="1_u7e8s"]
 [ext_resource type="PackedScene" uid="uid://c1d0x30dt6bad" path="res://Scenes/Character/CharacterNode.tscn" id="2_0j0pk"]
@@ -6,18 +6,13 @@
 [ext_resource type="PackedScene" uid="uid://dbdtky7u65k03" path="res://Scenes/Projectile/pickable_spear.tscn" id="4_16h4l"]
 [ext_resource type="PackedScene" uid="uid://bq6wiakr1leji" path="res://Scenes/Enemy/enemy.tscn" id="4_rgeek"]
 [ext_resource type="PackedScene" uid="uid://dg3wxmmau0er0" path="res://Scenes/Enemy/enemy_surveil_point.tscn" id="5_lrb4d"]
-[ext_resource type="Texture2D" uid="uid://bs128iolrwcih" path="res://Assets/Sprites/Props/box.png" id="6_tjwis"]
+[ext_resource type="PackedScene" uid="uid://0s6hs2pwdk2f" path="res://Scenes/box.tscn" id="7_5v8d3"]
 [ext_resource type="Script" path="res://Scenes/Door.cs" id="8_6mf6c"]
 [ext_resource type="Script" path="res://Scenes/Button.cs" id="9_8iycx"]
-
-[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_yqo46"]
-friction = 0.5
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_dfka0"]
-size = Vector2(48, 47)
+[ext_resource type="Texture2D" uid="uid://bin2sr6en7oo8" path="res://Assets/Sprites/Props/Button.png" id="10_2k1s8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pbwc4"]
-size = Vector2(29, 20)
+size = Vector2(7.57, 11.52)
 
 [node name="TestScene" type="Node2D"]
 
@@ -60,25 +55,7 @@ rotation = 2.00082
 position = Vector2(781.552, -359.761)
 rotation = 2.00082
 
-[node name="RigidBody2D" type="RigidBody2D" parent="." groups=["Pushable"]]
-position = Vector2(473, -136)
-collision_layer = 2
-collision_mask = 55
-mass = 0.1
-physics_material_override = SubResource("PhysicsMaterial_yqo46")
-can_sleep = false
-freeze_mode = 1
-angular_damp = 100.0
-metadata/_edit_group_ = true
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
-position = Vector2(0, -0.5)
-shape = SubResource("RectangleShape2D_dfka0")
-
-[node name="Sprite2D" type="Sprite2D" parent="RigidBody2D"]
-self_modulate = Color(0.909476, 0.783035, 0.197177, 1)
-scale = Vector2(3, 3)
-texture = ExtResource("6_tjwis")
+[node name="Box" parent="." instance=ExtResource("7_5v8d3")]
 
 [node name="Node2D" type="Node2D" parent="."]
 position = Vector2(1131, -228)
@@ -93,21 +70,22 @@ offset_top = -165.0
 offset_right = 15.0
 color = Color(0.7266, 0.693632, 0.665209, 1)
 
-[node name="Button" type="ColorRect" parent="."]
-offset_left = 1059.0
-offset_top = -110.0
-offset_right = 1088.0
-offset_bottom = -75.0
-color = Color(0.635294, 0.101961, 0.133333, 1)
+[node name="Button" type="Sprite2D" parent="."]
+z_index = -2
+position = Vector2(1073, -105)
+rotation = 1.5708
+scale = Vector2(3.125, 3.125)
+texture = ExtResource("10_2k1s8")
+hframes = 2
+frame = 1
 script = ExtResource("9_8iycx")
-metadata/_edit_group_ = true
 
 [node name="Area2D" type="Area2D" parent="Button"]
 collision_layer = 0
 collision_mask = 35
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Button/Area2D"]
-position = Vector2(14, 0)
+position = Vector2(-1.92, -3.04361e-05)
 shape = SubResource("RectangleShape2D_pbwc4")
 
 [connection signal="ButtonPressed" from="Button" to="Node2D" method="OpenDoor"]
