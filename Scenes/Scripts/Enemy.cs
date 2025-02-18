@@ -11,6 +11,8 @@ public partial class Enemy : CharacterBody2D
 
 	Vector2 direction = new Vector2();
 
+    Node2D target;
+
     public override void _Ready()
     {
         direction = Vector2.Right;
@@ -39,8 +41,16 @@ public partial class Enemy : CharacterBody2D
         {
             velocity += GetGravity() * (float)delta;
         }
+        if (target != null)
+        {
+            Vector2 directionToTarget = GlobalPosition.DirectionTo(target.GlobalPosition);
+            velocity.X = directionToTarget.X * Speed;
+        }
+        else
+        {
+            velocity.X = direction.X * Speed;
+        }
 
-        velocity.X = direction.X * Speed;
 
 		Velocity = velocity;
 		MoveAndSlide();
@@ -50,4 +60,17 @@ public partial class Enemy : CharacterBody2D
 	{
         direction = directionToGo;
 	}
+
+    public void DetectPlayer(Node2D body)
+    {
+        target = body;
+    }
+
+    public void LosePlayer(Node2D body)
+    {
+        if(target == body)
+        {
+            target = null;
+        }
+    }
 }

@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://bq6wiakr1leji"]
+[gd_scene load_steps=5 format=3 uid="uid://bq6wiakr1leji"]
 
 [ext_resource type="Script" path="res://Scenes/Scripts/Enemy.cs" id="1_xjpia"]
 [ext_resource type="SpriteFrames" uid="uid://csak62mxf63sj" path="res://Assets/Sprites/Enemy/Enemy_Animator.tres" id="2_lhsom"]
@@ -6,6 +6,9 @@
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ljia3"]
 radius = 18.0
 height = 60.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_8tgki"]
+radius = 105.005
 
 [node name="Enemy" type="CharacterBody2D"]
 position = Vector2(339, -389)
@@ -24,3 +27,12 @@ metadata/_edit_lock_ = true
 position = Vector2(0, 3)
 rotation = -1.5708
 shape = SubResource("CapsuleShape2D_ljia3")
+
+[node name="PlayerDetection" type="Area2D" parent="."]
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetection"]
+shape = SubResource("CircleShape2D_8tgki")
+
+[connection signal="body_entered" from="PlayerDetection" to="." method="DetectPlayer"]
+[connection signal="body_exited" from="PlayerDetection" to="." method="LosePlayer"]
