@@ -50,5 +50,6 @@ position = Vector2(3.5, 0)
 shape = SubResource("RectangleShape2D_yyr7t")
 metadata/_edit_lock_ = true
 
+[connection signal="area_entered" from="StickyArea" to="." method="OnStick"]
 [connection signal="body_entered" from="StickyArea" to="." method="OnStick"]
 [connection signal="body_entered" from="BouncyArea" to="." method="OnBounce"]

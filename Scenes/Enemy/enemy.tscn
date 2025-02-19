@@ -3,17 +3,15 @@
 [ext_resource type="Script" path="res://Scenes/Enemy/Enemy.cs" id="1_xjpia"]
 [ext_resource type="SpriteFrames" uid="uid://csak62mxf63sj" path="res://Assets/Sprites/Enemy/Enemy_Animator.tres" id="2_lhsom"]
 [ext_resource type="AudioStream" uid="uid://btry7nof2vboi" path="res://Assets/Audio/wood click.mp3" id="3_45yq8"]
+[ext_resource type="Shape2D" uid="uid://cjljnixdv10a3" path="res://Scenes/Enemy/enemySolidBox.tres" id="3_lpabf"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ljia3"]
-radius = 18.0
-height = 60.0
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_8tgki"]
-radius = 105.005
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4e4co"]
+radius = 23.0
+height = 298.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_jsx23"]
-radius = 20.0
-height = 65.9999
+radius = 27.0
+height = 96.0
 
 [node name="Enemy" type="CharacterBody2D"]
 position = Vector2(339, -389)
@@ -21,39 +19,44 @@ collision_layer = 32
 collision_mask = 7
 script = ExtResource("1_xjpia")
 Speed = 100.0
+metadata/_edit_group_ = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-scale = Vector2(0.304147, 0.304147)
+position = Vector2(-1.00001, -22)
+scale = Vector2(2.96875, 2.96875)
 sprite_frames = ExtResource("2_lhsom")
-animation = &"Idle"
-metadata/_edit_lock_ = true
+animation = &"Move"
+frame_progress = 0.819342
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 3)
+[node name="SolidBox" type="CollisionShape2D" parent="."]
+position = Vector2(1, -1)
 rotation = -1.5708
-shape = SubResource("CapsuleShape2D_ljia3")
+shape = ExtResource("3_lpabf")
 
 [node name="PlayerTargetting" type="Area2D" parent="."]
 collision_layer = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerTargetting"]
-shape = SubResource("CircleShape2D_8tgki")
+rotation = 1.57079
+shape = SubResource("CapsuleShape2D_4e4co")
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("3_45yq8")
 autoplay = true
 parameters/looping = true
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="HurtBox" type="Area2D" parent="."]
 collision_layer = 0
 collision_mask = 5
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(0, 3)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
+position = Vector2(1, -4)
 rotation = -1.5708
 shape = SubResource("CapsuleShape2D_jsx23")
 
+[node name="Sprite2D" type="Sprite2D" parent="."]
+
 [connection signal="body_entered" from="PlayerTargetting" to="." method="DetectPlayer"]
 [connection signal="body_exited" from="PlayerTargetting" to="." method="LosePlayer"]
-[connection signal="area_entered" from="Area2D" to="." method="OnHit"]
-[connection signal="body_entered" from="Area2D" to="." method="OnHit"]
+[connection signal="area_entered" from="HurtBox" to="." method="OnHit"]
+[connection signal="body_entered" from="HurtBox" to="." method="OnHit"]
