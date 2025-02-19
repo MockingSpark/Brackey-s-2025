@@ -1,6 +1,7 @@
-[gd_scene load_steps=9 format=3 uid="uid://25k5f531xsh2"]
+[gd_scene load_steps=10 format=3 uid="uid://25k5f531xsh2"]
 
 [ext_resource type="PackedScene" uid="uid://cp3ga5u36lr85" path="res://Scenes/terrain/terrain.tscn" id="1_qxp7j"]
+[ext_resource type="PackedScene" uid="uid://c1d0x30dt6bad" path="res://Scenes/Character/CharacterNode.tscn" id="2_l2hhf"]
 [ext_resource type="PackedScene" uid="uid://cvnf375ogiyfw" path="res://Scenes/Door/door.tscn" id="3_bfh2t"]
 [ext_resource type="PackedScene" uid="uid://dcftouctjkf3e" path="res://Scenes/Button/button.tscn" id="4_edp12"]
 [ext_resource type="PackedScene" uid="uid://dbdtky7u65k03" path="res://Scenes/Projectile/pickable_spear.tscn" id="5_5i7ym"]
@@ -16,10 +17,13 @@ size = Vector2(4.47998, 15.36)
 [node name="GameScene" type="Node2D"]
 
 [node name="Camera2D" type="Camera2D" parent="."]
+visible = false
 z_index = 100
 position = Vector2(385, -254)
+enabled = false
 
 [node name="Menu" type="Node2D" parent="Camera2D"]
+visible = false
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Camera2D/Menu"]
 anchors_preset = 8
@@ -121,6 +125,10 @@ rotation = 1.57079
 isVertical = false
 movesLeft = true
 
+[node name="Player" parent="." instance=ExtResource("2_l2hhf")]
+position = Vector2(151, -141)
+
+[connection signal="pressed" from="Camera2D/Menu/VBoxContainer/Start Game" to="Camera2D/Menu" method="hide"]
 [connection signal="ButtonPressed" from="Button2" to="Door2" method="OpenDoor"]
 [connection signal="ButtonReleased" from="Button2" to="Door2" method="CloseDoor"]
 [connection signal="area_entered" from="Button2/Area2D" to="Button2" method="OnButtonPressed"]

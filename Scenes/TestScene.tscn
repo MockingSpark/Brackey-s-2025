@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://x42y1dfyasrr"]
+[gd_scene load_steps=12 format=3 uid="uid://x42y1dfyasrr"]
 
 [ext_resource type="Texture2D" uid="uid://chn7u3jyidw7o" path="res://Assets/Sprites/WIP_Background.png" id="1_u7e8s"]
 [ext_resource type="PackedScene" uid="uid://c1d0x30dt6bad" path="res://Scenes/Character/CharacterNode.tscn" id="2_0j0pk"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://cvnf375ogiyfw" path="res://Scenes/Door/door.tscn" id="8_nboij"]
 [ext_resource type="PackedScene" uid="uid://dcftouctjkf3e" path="res://Scenes/Button/button.tscn" id="9_73rj4"]
 [ext_resource type="PackedScene" uid="uid://d0bke5oyhuury" path="res://Scenes/Respawn/respawn_area.tscn" id="10_yw575"]
+[ext_resource type="PackedScene" uid="uid://cw000q3yg2bj8" path="res://Scenes/Fairy/Fairy.tscn" id="11_lu5el"]
 
 [node name="TestScene" type="Node2D"]
 
@@ -57,6 +58,11 @@ rotation = 2.00082
 [node name="Button" parent="." instance=ExtResource("9_73rj4")]
 
 [node name="RespawnArea" parent="." instance=ExtResource("10_yw575")]
+
+[node name="Fairy" parent="." node_paths=PackedStringArray("player") instance=ExtResource("11_lu5el")]
+position = Vector2(287, -147)
+player = NodePath("../Player")
+newPointTimer = 10.0
 
 [connection signal="ButtonPressed" from="Button" to="Door" method="OpenDoor"]
 [connection signal="ButtonReleased" from="Button" to="Door" method="CloseDoor"]

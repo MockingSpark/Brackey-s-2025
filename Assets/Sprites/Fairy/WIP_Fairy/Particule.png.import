@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dfwxuuya064rq"
-path="res://.godot/imported/Sprite1.png-fcf43ca9532123e6541ab68bc22253d5.ctex"
+uid="uid://desg31vlpipwh"
+path="res://.godot/imported/Particule.png-4689ddd5c270e0842b532aeac6c76d5c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Sprites/Fairy/Nouveau dossier/Sprite1.png"
-dest_files=["res://.godot/imported/Sprite1.png-fcf43ca9532123e6541ab68bc22253d5.ctex"]
+source_file="res://Assets/Sprites/Fairy/WIP_Fairy/Particule.png"
+dest_files=["res://.godot/imported/Particule.png-4689ddd5c270e0842b532aeac6c76d5c.ctex"]
 
 [params]
 
