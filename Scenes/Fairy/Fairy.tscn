@@ -61,12 +61,13 @@ texture = ExtResource("3_pnrl1")
 [node name="Bold_buble" parent="." instance=ExtResource("4_u6plu")]
 offset_top = -133.333
 offset_bottom = -133.333
-Text = "idjyhcygkwudycukwdjvciuwvtciuvwdkcyvwdcyitv"
+Text = "djygsdjyvsudyvsudvk<vk<shjgdvkhtvhg<jdhbcwcd
+bbhbchbjhbskuvclj
+vn"
 
 [node name="round_buble" parent="." instance=ExtResource("5_6qkn2")]
 offset_top = -136.667
 offset_bottom = -136.667
-Text = "wudhviuwhdvibxvkuydvku"
 
 [connection signal="body_entered" from="Area2D" to="." method="ImpactedWall"]
 [connection signal="body_exited" from="Area2D" to="." method="ExitedWall"]

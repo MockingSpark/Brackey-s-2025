@@ -13,13 +13,18 @@ texture_margin_bottom = 6.0
 region_rect = Rect2(0, 0, 32, 32)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_byrrw"]
-size = Vector2(76, 40)
+size = Vector2(684, 60)
 
 [node name="Bold_buble" type="Control"]
 z_index = 70
 layout_mode = 3
 anchors_preset = 0
 script = ExtResource("1_yjmlk")
+isBold = true
+Text = "wiuyqgflibwlhkbfliyb
+wsjhbfljhbqd
+jvzdy<tcsdiytcvkybsc
+jvhjwhv"
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
 layout_mode = 1
@@ -41,12 +46,16 @@ unique_name_in_owner = true
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3_fxgqm")
 theme_override_font_sizes/font_size = 16
-text = "STOP"
+text = "wiuyqgflibwlhkbfliyb
+wsjhbfljhbqd
+jvzdy<tcsdiytcvkybsc
+jvhjwhv"
 
-[node name="StaticBody2D" type="StaticBody2D" parent="PanelContainer"]
-position = Vector2(38, 20)
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
 collision_layer = 2
 collision_mask = 0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="PanelContainer/StaticBody2D"]
+[node name="BubbleShape" type="CollisionShape2D" parent="StaticBody2D"]
 shape = SubResource("RectangleShape2D_byrrw")
+
+[connection signal="resized" from="PanelContainer" to="." method="Resize"]
