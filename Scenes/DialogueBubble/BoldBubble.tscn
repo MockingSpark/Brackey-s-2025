@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://bc4jphpp7ndgj"]
 
-[ext_resource type="Script" path="res://Scenes/DialogueBubble/dialogue_bubble.gd" id="1_c0n03"]
+[ext_resource type="Script" path="res://Scenes/DialogueBubble/DialogueBubble.cs" id="1_yjmlk"]
 [ext_resource type="Texture2D" uid="uid://ccexm3xpk3k56" path="res://Assets/DialogueBubbles/bubble_bold.png" id="2_6ws8o"]
 [ext_resource type="FontFile" uid="uid://cegiuwnr54ta4" path="res://Assets/DialogueBubbles/dogicapixelbold.ttf" id="3_fxgqm"]
 
@@ -19,8 +19,7 @@ size = Vector2(76, 40)
 z_index = 70
 layout_mode = 3
 anchors_preset = 0
-script = ExtResource("1_c0n03")
-text = "STOP"
+script = ExtResource("1_yjmlk")
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
 layout_mode = 1

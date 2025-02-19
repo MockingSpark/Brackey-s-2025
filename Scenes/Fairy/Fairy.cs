@@ -6,8 +6,7 @@ public partial class Fairy : Node2D
 {
 	[Export]
 	public float Speed = 1;
-	[Export]
-	public CharacterController player;
+	private CharacterController player;
     [Export]
     public float maxPlayerFollowDistance = 300f;
     [Export]
@@ -20,11 +19,28 @@ public partial class Fairy : Node2D
     private float moveTimer = 0;
     private bool isInWall = false;
 
+    [Export]
+    private DialogueBubble roundBubble;
+    [Export]
+    private DialogueBubble boldBubble;
     protected List<InterestPoint> interestPointList = new List<InterestPoint>();
 
     protected InterestPoint currentPointFollowed;
-	// Called when the node enters the scene tree for the first time.
-	public override void _Ready()
+
+    public CharacterController Player 
+    {
+        get 
+        {
+            if(player == null)
+                player = GetParent().GetNode<CharacterController>("Player");
+
+            return player; 
+        } 
+        set => player = value; 
+    }
+
+    // Called when the node enters the scene tree for the first time.
+    public override void _Ready()
 	{
         GetNewFollowPoint();
         GetNode<AnimatedSprite2D>("AnimatedSprite2D").Play("default");
@@ -37,7 +53,8 @@ public partial class Fairy : Node2D
                 interestPoint.OnPointActivated += InterestPoint_OnPointActivated;
             }
         }
-
+        boldBubble.Visible = false;
+        roundBubble.Visible = false;
     }
 
     protected void InterestPoint_OnPointActivated(InterestPoint point)
@@ -50,9 +67,15 @@ public partial class Fairy : Node2D
     }
     protected void ReadDialogue(Dialogue dialogue)
     {
-        foreach(var str in dialogue.Text)
+        if(dialogue.isBold)
         {
-            Debug.Print(str);
+            boldBubble.Visible = true;
+            boldBubble.Text = dialogue.text[0];
+        }
+        else
+        {
+            roundBubble.Visible = true;
+            roundBubble.Text = dialogue.text[0];
         }
     }
 
@@ -60,7 +83,7 @@ public partial class Fairy : Node2D
     // Called every frame. 'delta' is the elapsed time since the previous frame.
     public override void _Process(double delta)
 	{
-		if (player == null)
+		if (Player == null)
 			return;
 
         if(currentPointFollowed == null)
@@ -76,7 +99,7 @@ public partial class Fairy : Node2D
             }
         }
 
-        Vector2 position = currentPointFollowed == null ? player.GlobalPosition - playerFollowPoint : currentPointFollowed.GlobalPosition;
+        Vector2 position = currentPointFollowed == null ? Player.GlobalPosition - playerFollowPoint : currentPointFollowed.GlobalPosition;
 
 
 
@@ -99,7 +122,7 @@ public partial class Fairy : Node2D
 
     public void GetNewFollowPoint()
     {
-        if(player == null) return;
+        if(Player == null) return;
 
         moveTimer = 0;
 

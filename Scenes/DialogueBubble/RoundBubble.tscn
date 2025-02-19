@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://djhjkivn4mbkn"]
 
-[ext_resource type="Script" path="res://Scenes/DialogueBubble/dialogue_bubble.gd" id="1_fvl7t"]
+[ext_resource type="Script" path="res://Scenes/DialogueBubble/DialogueBubble.cs" id="1_sqlcp"]
 [ext_resource type="Texture2D" uid="uid://cjwqp1l0qarrv" path="res://Assets/DialogueBubbles/bubble_round.png" id="2_go0th"]
 [ext_resource type="FontFile" uid="uid://cts63geiair0p" path="res://Assets/DialogueBubbles/dogicapixel.ttf" id="3_177xm"]
 
@@ -20,7 +20,7 @@ region_rect = Rect2(0, 0, 32, 32)
 z_index = 70
 layout_mode = 3
 anchors_preset = 0
-script = ExtResource("1_fvl7t")
+script = ExtResource("1_sqlcp")
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
 layout_mode = 1

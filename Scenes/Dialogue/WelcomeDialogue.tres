@@ -4,5 +4,8 @@
 
 [resource]
 script = ExtResource("1_yvuj4")
-Tag = "Welcome"
-Text = ["Oh my dear dear sweet child, I shall help you beat", "The", "TUTORIAL", "Just follow along and we'll be fone in no time !"]
+tag = "TEST"
+text = ["TEST TEST"]
+isBold = false
+linkedToFairy = true
+position = Vector2(0, 0)

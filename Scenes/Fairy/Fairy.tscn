@@ -31,10 +31,12 @@ alpha_curve = SubResource("CurveTexture_vkcv6")
 hue_variation_min = -2.23517e-08
 hue_variation_max = -2.23517e-08
 
-[node name="Fairy" type="Node2D"]
+[node name="Fairy" type="Node2D" node_paths=PackedStringArray("roundBubble", "boldBubble")]
 z_index = 70
 scale = Vector2(0.3, 0.3)
 script = ExtResource("1_juba5")
+roundBubble = NodePath("round_buble")
+boldBubble = NodePath("Bold_buble")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 self_modulate = Color(0.215686, 0.709804, 0.960784, 1)
@@ -59,14 +61,12 @@ texture = ExtResource("3_pnrl1")
 [node name="Bold_buble" parent="." instance=ExtResource("4_u6plu")]
 offset_top = -133.333
 offset_bottom = -133.333
-text = "STOPdz
-dutzfduyvidlizdvlizd
-zuyvduvduyvdzi"
+Text = "idjyhcygkwudycukwdjvciuwvtciuvwdkcyvwdcyitv"
 
 [node name="round_buble" parent="." instance=ExtResource("5_6qkn2")]
 offset_top = -136.667
 offset_bottom = -136.667
-text = "kugbkdbksjbdk"
+Text = "wudhviuwhdvibxvkuydvku"
 
 [connection signal="body_entered" from="Area2D" to="." method="ImpactedWall"]
 [connection signal="body_exited" from="Area2D" to="." method="ExitedWall"]
