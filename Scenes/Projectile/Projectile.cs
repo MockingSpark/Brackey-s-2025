@@ -49,7 +49,8 @@ public partial class Projectile : Node2D
 
 	public void OnBounce(Node2D node)
 	{
-		if (!travelling) return;
+		if (!travelling || bouncing) return;
+		bouncing = true;
 
 		var newProjectile = bounceSpear.Instantiate<BounceSpear>();
 		newProjectile.Transform = Transform;

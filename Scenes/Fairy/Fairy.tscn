@@ -1,12 +1,55 @@
-[gd_scene load_steps=3 format=3 uid="uid://cw000q3yg2bj8"]
+[gd_scene load_steps=8 format=3 uid="uid://cw000q3yg2bj8"]
 
 [ext_resource type="SpriteFrames" uid="uid://b4kugdvmrjvkt" path="res://Assets/Sprites/Fairy/fairySpriteFrame.tres" id="1_438el"]
 [ext_resource type="Script" path="res://Scenes/Fairy/Fairy.cs" id="1_juba5"]
+[ext_resource type="Texture2D" uid="uid://desg31vlpipwh" path="res://Assets/Sprites/Fairy/WIP_Fairy/Particule.png" id="3_pnrl1"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_upn5c"]
+radius = 14.0357
+
+[sub_resource type="Curve" id="Curve_rdndu"]
+_data = [Vector2(0.00309598, 1), 0.0, 0.0, 0, 0, Vector2(0.79257, 0.872393), 0.0, 0.0, 0, 0, Vector2(0.916409, 0), 0.0, 0.0, 0, 0, Vector2(0.996904, 0.00306749), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_vkcv6"]
+curve = SubResource("Curve_rdndu")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ptju1"]
+lifetime_randomness = 0.1
+particle_flag_disable_z = true
+emission_shape_scale = Vector3(20, 20, 5)
+emission_shape = 1
+emission_sphere_radius = 1.0
+angle_min = -394.4
+angle_max = 285.6
+gravity = Vector3(0, 98, 0)
+scale_min = 0.5
+scale_max = 0.7
+alpha_curve = SubResource("CurveTexture_vkcv6")
+hue_variation_min = -2.23517e-08
+hue_variation_max = -2.23517e-08
 
 [node name="Fairy" type="Node2D"]
+scale = Vector2(0.3, 0.3)
 script = ExtResource("1_juba5")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+z_index = 1
 sprite_frames = ExtResource("1_438el")
-frame = 1
-frame_progress = 0.140758
+frame_progress = 0.649365
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 128
+collision_mask = 54
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_upn5c")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+amount = 10
+process_material = SubResource("ParticleProcessMaterial_ptju1")
+texture = ExtResource("3_pnrl1")
+lifetime = 2.0
+
+[connection signal="body_entered" from="Area2D" to="." method="ImpactedWall"]
+[connection signal="body_exited" from="Area2D" to="." method="ExitedWall"]

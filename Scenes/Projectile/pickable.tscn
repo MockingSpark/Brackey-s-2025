@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://cm50ldhvfl78w"]
 
-[ext_resource type="Script" path="res://Scenes/Projectile/PickableProjectile.cs" id="1_mhxgh"]
+[ext_resource type="Script" path="res://Scenes/Projectile/PickableProjectile.cs" id="1_x48v4"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_1dabm"]
 radius = 68.0294
@@ -9,7 +9,7 @@ radius = 68.0294
 position = Vector2(513, -50)
 rotation = 1.37074
 collision_layer = 8
-script = ExtResource("1_mhxgh")
+script = ExtResource("1_x48v4")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_1dabm")
