@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://bc4jphpp7ndgj"]
+[gd_scene load_steps=6 format=3 uid="uid://bc4jphpp7ndgj"]
 
 [ext_resource type="Script" path="res://Scenes/DialogueBubble/dialogue_bubble.gd" id="1_c0n03"]
 [ext_resource type="Texture2D" uid="uid://ccexm3xpk3k56" path="res://Assets/DialogueBubbles/bubble_bold.png" id="2_6ws8o"]
@@ -12,16 +12,29 @@ texture_margin_right = 6.0
 texture_margin_bottom = 6.0
 region_rect = Rect2(0, 0, 32, 32)
 
-[node name="round_buble" type="Control"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_byrrw"]
+size = Vector2(76, 40)
+
+[node name="Bold_buble" type="Control"]
+z_index = 70
 layout_mode = 3
 anchors_preset = 0
 script = ExtResource("1_c0n03")
 text = "STOP"
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -38.0
+offset_top = -20.0
+offset_right = 38.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_skykd")
 
 [node name="Label" type="Label" parent="PanelContainer"]
@@ -30,3 +43,11 @@ layout_mode = 2
 theme_override_fonts/font = ExtResource("3_fxgqm")
 theme_override_font_sizes/font_size = 16
 text = "STOP"
+
+[node name="StaticBody2D" type="StaticBody2D" parent="PanelContainer"]
+position = Vector2(38, 20)
+collision_layer = 2
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PanelContainer/StaticBody2D"]
+shape = SubResource("RectangleShape2D_byrrw")
