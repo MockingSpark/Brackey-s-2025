@@ -17,26 +17,30 @@ curve = SubResource("Curve_rdndu")
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ptju1"]
 lifetime_randomness = 0.1
 particle_flag_disable_z = true
-emission_shape_scale = Vector3(20, 20, 5)
+emission_shape_scale = Vector3(20, 20, 0)
 emission_shape = 1
 emission_sphere_radius = 1.0
 angle_min = -394.4
 angle_max = 285.6
 gravity = Vector3(0, 98, 0)
-scale_min = 0.5
-scale_max = 0.7
+scale_min = 0.1
+scale_max = 0.3
 alpha_curve = SubResource("CurveTexture_vkcv6")
 hue_variation_min = -2.23517e-08
 hue_variation_max = -2.23517e-08
 
 [node name="Fairy" type="Node2D"]
+z_index = 70
 scale = Vector2(0.3, 0.3)
 script = ExtResource("1_juba5")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+self_modulate = Color(0.215686, 0.709804, 0.960784, 1)
 z_index = 1
+position = Vector2(-3.33333, 0)
+scale = Vector2(3.75, 3.75)
 sprite_frames = ExtResource("1_438el")
-frame_progress = 0.649365
+frame_progress = 0.375209
 
 [node name="Area2D" type="Area2D" parent="."]
 collision_layer = 128
@@ -46,10 +50,9 @@ collision_mask = 54
 shape = SubResource("CircleShape2D_upn5c")
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="."]
-amount = 10
+amount = 15
 process_material = SubResource("ParticleProcessMaterial_ptju1")
 texture = ExtResource("3_pnrl1")
-lifetime = 2.0
 
 [connection signal="body_entered" from="Area2D" to="." method="ImpactedWall"]
 [connection signal="body_exited" from="Area2D" to="." method="ExitedWall"]

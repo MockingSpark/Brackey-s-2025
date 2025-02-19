@@ -1,5 +1,6 @@
-[gd_scene load_steps=10 format=3 uid="uid://25k5f531xsh2"]
+[gd_scene load_steps=11 format=3 uid="uid://25k5f531xsh2"]
 
+[ext_resource type="PackedScene" uid="uid://cw000q3yg2bj8" path="res://Scenes/Fairy/Fairy.tscn" id="1_j437h"]
 [ext_resource type="PackedScene" uid="uid://cp3ga5u36lr85" path="res://Scenes/terrain/terrain.tscn" id="1_qxp7j"]
 [ext_resource type="PackedScene" uid="uid://c1d0x30dt6bad" path="res://Scenes/Character/CharacterNode.tscn" id="2_l2hhf"]
 [ext_resource type="PackedScene" uid="uid://cvnf375ogiyfw" path="res://Scenes/Door/door.tscn" id="3_bfh2t"]
@@ -65,6 +66,11 @@ layout_mode = 2
 text = "Credits
 "
 
+[node name="Fairy" parent="." node_paths=PackedStringArray("player") instance=ExtResource("1_j437h")]
+position = Vector2(403, -217)
+scale = Vector2(0.4, 0.4)
+player = NodePath("../Player")
+
 [node name="TileMap" parent="." instance=ExtResource("1_qxp7j")]
 z_index = 50
 position = Vector2(0, 0)
@@ -126,7 +132,7 @@ isVertical = false
 movesLeft = true
 
 [node name="Player" parent="." instance=ExtResource("2_l2hhf")]
-position = Vector2(151, -141)
+position = Vector2(119, -96)
 
 [connection signal="pressed" from="Camera2D/Menu/VBoxContainer/Start Game" to="Camera2D/Menu" method="hide"]
 [connection signal="ButtonPressed" from="Button2" to="Door2" method="OpenDoor"]

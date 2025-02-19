@@ -1,16 +1,23 @@
-[gd_resource type="SpriteFrames" load_steps=3 format=3 uid="uid://b4kugdvmrjvkt"]
+[gd_resource type="SpriteFrames" load_steps=4 format=3 uid="uid://b4kugdvmrjvkt"]
 
-[ext_resource type="Texture2D" uid="uid://chqoprcakhws5" path="res://Assets/Sprites/Fairy/WIP_Fairy/Y_Fairy1.png" id="1_xh2ni"]
-[ext_resource type="Texture2D" uid="uid://dqn25s6gbmh0m" path="res://Assets/Sprites/Fairy/WIP_Fairy/Y_Fairy2.png" id="2_pac4g"]
+[ext_resource type="Texture2D" uid="uid://dnupdt7it7bik" path="res://Assets/Sprites/Fairy/fairy.png" id="1_l65xa"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8wqnk"]
+atlas = ExtResource("1_l65xa")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iys0w"]
+atlas = ExtResource("1_l65xa")
+region = Rect2(32, 0, 32, 32)
 
 [resource]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("1_xh2ni")
+"texture": SubResource("AtlasTexture_8wqnk")
 }, {
 "duration": 1.0,
-"texture": ExtResource("2_pac4g")
+"texture": SubResource("AtlasTexture_iys0w")
 }],
 "loop": true,
 "name": &"default",

@@ -52,6 +52,7 @@ position = Vector2(839, -125)
 rotation = 2.00082
 
 [node name="Box" parent="." instance=ExtResource("7_5v8d3")]
+position = Vector2(486, -136)
 
 [node name="Door" parent="." instance=ExtResource("8_nboij")]
 position = Vector2(1121, -249)
@@ -62,6 +63,7 @@ position = Vector2(1121, -249)
 
 [node name="Fairy" parent="." node_paths=PackedStringArray("player") instance=ExtResource("11_lu5el")]
 position = Vector2(287, -147)
+scale = Vector2(0.5, 0.5)
 player = NodePath("../Player")
 newPointTimer = 5.0
 

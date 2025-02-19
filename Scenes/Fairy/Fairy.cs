@@ -78,6 +78,8 @@ public partial class Fairy : Node2D
 
         Vector2 position = currentPointFollowed == null ? player.GlobalPosition - playerFollowPoint : currentPointFollowed.GlobalPosition;
 
+
+
         GlobalPosition = GlobalPosition.Lerp(position, (float)(Speed * delta));
 	}
 

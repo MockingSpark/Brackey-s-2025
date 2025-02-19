@@ -1,29 +1,49 @@
-[gd_scene load_steps=4 format=3 uid="uid://0s6hs2pwdk2f"]
+[gd_scene load_steps=5 format=3 uid="uid://0s6hs2pwdk2f"]
 
 [ext_resource type="Texture2D" uid="uid://bs128iolrwcih" path="res://Assets/Sprites/Props/box.png" id="1_ss8d4"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_yqo46"]
 friction = 0.3
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_dfka0"]
-size = Vector2(48, 47)
+[sub_resource type="CircleShape2D" id="CircleShape2D_ft38b"]
+radius = 22.0057
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_eotq7"]
+size = Vector2(2, 42)
 
 [node name="Box" type="RigidBody2D" groups=["Pushable"]]
-position = Vector2(473, -136)
+position = Vector2(470, -136)
 collision_layer = 2
-collision_mask = 55
+collision_mask = 18
 mass = 0.1
 physics_material_override = SubResource("PhysicsMaterial_yqo46")
 can_sleep = false
+lock_rotation = true
 freeze_mode = 1
 angular_damp = 100.0
 metadata/_edit_group_ = true
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -0.5)
-shape = SubResource("RectangleShape2D_dfka0")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 self_modulate = Color(0.909476, 0.783035, 0.197177, 1)
 scale = Vector2(3, 3)
 texture = ExtResource("1_ss8d4")
+
+[node name="WallCollision" type="CollisionShape2D" parent="."]
+light_mask = 0
+visibility_layer = 32
+position = Vector2(0, 1.5)
+shape = SubResource("CircleShape2D_ft38b")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-25, 0)
+shape = SubResource("RectangleShape2D_eotq7")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="."]
+position = Vector2(25, 0)
+rotation = 3.14159
+shape = SubResource("RectangleShape2D_eotq7")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+position = Vector2(0, -25)
+rotation = 1.57079
+shape = SubResource("RectangleShape2D_eotq7")
