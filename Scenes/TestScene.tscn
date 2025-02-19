@@ -72,7 +72,6 @@ DialogueToPlay = ExtResource("14_85yha")
 [node name="Fairy" parent="." instance=ExtResource("11_lu5el")]
 position = Vector2(287, -147)
 scale = Vector2(0.5, 0.5)
-newPointTimer = 5.0
 
 [node name="NarrativeManager" type="Node2D" parent="."]
 script = ExtResource("12_hyabm")

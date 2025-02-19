@@ -35,8 +35,8 @@ hue_variation_max = -2.23517e-08
 z_index = 70
 scale = Vector2(0.3, 0.3)
 script = ExtResource("1_juba5")
-roundBubble = NodePath("round_buble")
-boldBubble = NodePath("Bold_buble")
+roundBubble = NodePath("Round_bubble")
+boldBubble = NodePath("Bold_bubble")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 self_modulate = Color(0.215686, 0.709804, 0.960784, 1)
@@ -58,14 +58,14 @@ amount = 15
 process_material = SubResource("ParticleProcessMaterial_ptju1")
 texture = ExtResource("3_pnrl1")
 
-[node name="Bold_buble" parent="." instance=ExtResource("4_u6plu")]
+[node name="Bold_bubble" parent="." instance=ExtResource("4_u6plu")]
 offset_top = -133.333
 offset_bottom = -133.333
 Text = "djygsdjyvsudyvsudvk<vk<shjgdvkhtvhg<jdhbcwcd
 bbhbchbjhbskuvclj
 vn"
 
-[node name="round_buble" parent="." instance=ExtResource("5_6qkn2")]
+[node name="Round_bubble" parent="." instance=ExtResource("5_6qkn2")]
 offset_top = -136.667
 offset_bottom = -136.667
 

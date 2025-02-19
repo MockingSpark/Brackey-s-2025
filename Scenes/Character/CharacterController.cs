@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 
+
 public partial class CharacterController : CharacterBody2D
 {
 	[Export]
@@ -31,10 +32,19 @@ public partial class CharacterController : CharacterBody2D
 	private Node2D rightThrowPoint;
 	private Node2D leftThrowPoint;
 
-	private int projectileCount = 0;
+    [Export]
+    private float coyoteJumpTolerance;
+    private float timeLeftFloor = 0f;
+
+    private Buffer buffer;
+
+
+    private int projectileCount = 0;
 	private List<Base_Interactable> interactables = new List<Base_Interactable>();
 
+    
 	public int ProjectileCount { get => projectileCount; set => projectileCount = value; }
+
 
 	public override void _Ready()
 	{
@@ -42,11 +52,13 @@ public partial class CharacterController : CharacterBody2D
 		rightThrowPoint = GetNode<Node2D>("RightThrowPoint");
 		leftThrowPoint = GetNode<Node2D>("LeftThrowPoint");
         collisionShape = GetNode<CollisionShape2D>("CharacterCollision");
+        buffer = GetNode<Buffer>("Buffer");
 	}
 
 	public override void _Process(double delta)
 	{
-		HandleAnimation();
+
+        HandleAnimation();
 		if (Input.IsActionJustPressed("Attack"))
 		{
 			ThrowProjectile();
@@ -62,7 +74,12 @@ public partial class CharacterController : CharacterBody2D
 
 	public override void _PhysicsProcess(double delta)
 	{
-		if(!respawning)
+        if (buffer != null)
+        {
+            buffer.TimeAdvance(delta);
+        }
+        
+        if (!respawning)
 		{
             HandleGeneralMovement((float)delta);
 		}
@@ -85,10 +102,24 @@ public partial class CharacterController : CharacterBody2D
         GlobalPosition = GlobalPosition.Lerp(respawnPoint, respawnSpeed);
     }
 
+    bool CanJump()
+    {
+        return IsOnFloor() || coyoteJumpTolerance >= timeLeftFloor;
+    }
+
 	void HandleGeneralMovement(float delta)
 	{
+
         Vector2 velocity = Velocity;
 
+        if(IsOnFloor())
+        {
+            timeLeftFloor = 0f;
+        }
+        else
+        {
+            timeLeftFloor += delta;
+        }
         // Add the gravity.
         if (!IsOnFloor())
         {
@@ -96,10 +127,11 @@ public partial class CharacterController : CharacterBody2D
         }
 
         // Handle Jump.
-        if (Input.IsActionJustPressed("Jump") && IsOnFloor())
+        if ((Input.IsActionJustPressed("Jump") && CanJump()) || buffer.WasActionSimulated("Jump"))
         {
             jumping = true;
             velocity.Y = JumpVelocity;
+
         }
 
         // Get the input direction and handle the movement/deceleration.
@@ -151,7 +183,6 @@ public partial class CharacterController : CharacterBody2D
                 }
             }
         }
-
         MoveAndSlide();
     }
 

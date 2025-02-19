@@ -1,8 +1,9 @@
-[gd_scene load_steps=23 format=3 uid="uid://c1d0x30dt6bad"]
+[gd_scene load_steps=24 format=3 uid="uid://c1d0x30dt6bad"]
 
 [ext_resource type="Script" path="res://Scenes/Character/CharacterController.cs" id="1_7gc5i"]
 [ext_resource type="PackedScene" uid="uid://c2btbqr7srinh" path="res://Scenes/Projectile/Projectile.tscn" id="2_77sic"]
 [ext_resource type="Shape2D" uid="uid://ceste5w5ced75" path="res://Source/CharacterCollision.tres" id="2_heess"]
+[ext_resource type="Script" path="res://Scenes/Buffer/Buffer.cs" id="5_ms3wm"]
 [ext_resource type="Texture2D" uid="uid://pjg15sftybdy" path="res://Assets/Sprites/Character/character_spreadsheet.png" id="5_wype6"]
 
 [sub_resource type="Animation" id="Animation_7pd5j"]
@@ -314,6 +315,7 @@ JumpVelocity = -700.0
 pushForce = 1000.0
 pushMaxSpeed = 50.0
 projectile = ExtResource("2_77sic")
+coyoteJumpTolerance = 0.1
 
 [node name="Camera2D" type="Camera2D" parent="."]
 metadata/_edit_lock_ = true
@@ -343,3 +345,7 @@ vframes = 12
 libraries = {
 "": SubResource("AnimationLibrary_omonb")
 }
+
+[node name="Buffer" type="Node2D" parent="."]
+script = ExtResource("5_ms3wm")
+bufferTime = 0.4
