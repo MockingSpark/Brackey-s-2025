@@ -13,7 +13,7 @@ texture_margin_bottom = 6.0
 region_rect = Rect2(0, 0, 32, 32)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_byrrw"]
-size = Vector2(684, 60)
+size = Vector2(312, 77)
 
 [node name="Bold_buble" type="Control"]
 z_index = 70
@@ -57,5 +57,6 @@ collision_mask = 0
 
 [node name="BubbleShape" type="CollisionShape2D" parent="StaticBody2D"]
 shape = SubResource("RectangleShape2D_byrrw")
+disabled = true
 
 [connection signal="resized" from="PanelContainer" to="." method="Resize"]

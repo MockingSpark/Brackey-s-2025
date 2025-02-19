@@ -29,6 +29,7 @@ public partial class Enemy : CharacterBody2D
     {
         if(stunned)
         {
+            sprite.SelfModulate = new Color(sprite.SelfModulate.R, sprite.SelfModulate.G, sprite.SelfModulate.B, (float)stunTimer - MathF.Floor((float)stunTimer) + 0.2f);
             stunTimer += delta;
             if(stunTimer > stunTime)
             {

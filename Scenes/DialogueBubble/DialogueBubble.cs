@@ -24,7 +24,6 @@ public partial class DialogueBubble : Control
 
     public override void _Ready()
     {
-        GetNode<Label>("%Label").Text = text;
         if(isBold)
         {
             GetNode<CollisionShape2D>("StaticBody2D/BubbleShape").SetDeferred("disabled", true);

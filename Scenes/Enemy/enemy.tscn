@@ -52,8 +52,7 @@ self_modulate = Color(0.604475, 0.789209, 0.563603, 1)
 position = Vector2(-1, -22)
 scale = Vector2(2.96875, 2.96875)
 sprite_frames = ExtResource("2_lhsom")
-animation = &"Move"
-frame_progress = 0.611959
+animation = &"Idle"
 
 [connection signal="body_entered" from="PlayerTargetting" to="." method="DetectPlayer"]
 [connection signal="body_exited" from="PlayerTargetting" to="." method="LosePlayer"]
