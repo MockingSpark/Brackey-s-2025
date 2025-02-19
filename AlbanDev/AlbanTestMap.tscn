@@ -337,7 +337,5 @@ input_pickable = false
 position = Vector2(4, -3)
 shape = SubResource("RectangleShape2D_rns3f")
 
-[node name="Fairy" parent="." node_paths=PackedStringArray("player") instance=ExtResource("4_x8bs7")]
+[node name="Fairy" parent="." instance=ExtResource("4_x8bs7")]
 position = Vector2(557, -213)
-scale = Vector2(0.3, 0.3)
-player = NodePath("../Player")

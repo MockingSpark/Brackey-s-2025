@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://datjj7nljwomm" path="res://Assets/Sprites/WIP_Spear.png" id="1_yfmmv"]
 [ext_resource type="Script" path="res://Scenes/Projectile/PickableProjectile.cs" id="2_cuhf3"]
-[ext_resource type="PackedScene" uid="uid://bldnsphpydv4j" path="res://Scenes/Projectile/pickable.tscn" id="2_iqgv3"]
+[ext_resource type="PackedScene" uid="uid://cm50ldhvfl78w" path="res://Scenes/Projectile/pickable.tscn" id="2_iqgv3"]
 
 [node name="PickableSpear" type="Sprite2D"]
 z_index = -1

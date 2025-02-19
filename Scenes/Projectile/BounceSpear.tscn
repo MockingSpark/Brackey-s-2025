@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Scenes/Projectile/BounceSpear.cs" id="1_134b1"]
 [ext_resource type="Texture2D" uid="uid://datjj7nljwomm" path="res://Assets/Sprites/WIP_Spear.png" id="2_o3joy"]
-[ext_resource type="PackedScene" uid="uid://bldnsphpydv4j" path="res://Scenes/Projectile/pickable.tscn" id="3_gkim7"]
+[ext_resource type="PackedScene" uid="uid://cm50ldhvfl78w" path="res://Scenes/Projectile/pickable.tscn" id="3_gkim7"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3kxik"]
 height = 82.0
