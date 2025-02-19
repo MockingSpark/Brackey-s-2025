@@ -82,7 +82,7 @@ public partial class Buffer : Node2D
     {
         if(action == "Jump")
         {
-            return player.IsOnFloor();
+            return player.CanJump();
         }
         return false;
     }

@@ -102,7 +102,7 @@ public partial class CharacterController : CharacterBody2D
         GlobalPosition = GlobalPosition.Lerp(respawnPoint, respawnSpeed);
     }
 
-    bool CanJump()
+    public bool CanJump()
     {
         return IsOnFloor() || coyoteJumpTolerance >= timeLeftFloor;
     }
