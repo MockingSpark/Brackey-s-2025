@@ -66,10 +66,9 @@ layout_mode = 2
 text = "Credits
 "
 
-[node name="Fairy" parent="." node_paths=PackedStringArray("player") instance=ExtResource("1_j437h")]
+[node name="Fairy" parent="." instance=ExtResource("1_j437h")]
 position = Vector2(403, -217)
 scale = Vector2(0.4, 0.4)
-player = NodePath("../Player")
 
 [node name="TileMap" parent="." instance=ExtResource("1_qxp7j")]
 z_index = 50
