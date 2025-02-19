@@ -26,6 +26,7 @@ layer_0/tile_data = PackedInt32Array(-131049, 327680, 1, -131048, 65536, 1, -131
 [node name="Player" parent="." instance=ExtResource("2_0j0pk")]
 
 [node name="Enemy" parent="." instance=ExtResource("4_rgeek")]
+position = Vector2(424, -356)
 collision_mask = 71
 
 [node name="EnemySurveilPoint" parent="." instance=ExtResource("5_lrb4d")]
