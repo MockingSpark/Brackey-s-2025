@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="Dialogue" load_steps=2 format=3 uid="uid://c7ggwq6hgfjsy"]
+
+[ext_resource type="Script" path="res://Scenes/Dialogue/Dialogue.cs" id="1_yvuj4"]
+
+[resource]
+script = ExtResource("1_yvuj4")
+Tag = "Welcome"
+Text = ["Oh my dear dear sweet child, I shall help you beat", "The", "TUTORIAL", "Just follow along and we'll be fone in no time !"]

@@ -1,7 +1,10 @@
 using Godot;
 using Godot.Collections;
-
+using System;
+using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
+using static InterestPoint;
 
 public partial class Fairy : Node2D
 {
@@ -10,23 +13,53 @@ public partial class Fairy : Node2D
 	[Export]
 	public CharacterBody2D player;
 
-    protected Array<Node> interestPoints;
+    protected List<InterestPoint> interestPointList = new List<InterestPoint>();
+
+    protected InterestPoint currentPointFollowed;
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
 
 		GetNode<AnimatedSprite2D>("AnimatedSprite2D").Play("default");
-        interestPoints = GetTree().GetNodesInGroup("InterestPoint");
+        var interestPointsAsNodes = GetTree().GetNodesInGroup("InterestPoint");
+        foreach (Node node in interestPointsAsNodes)
+        {
+            if (node is InterestPoint interestPoint)
+            {
+                interestPointList.Add(interestPoint);
+                interestPoint.OnPointActivated += InterestPoint_OnPointActivated;
+            }
+        }
+
     }
 
-	// Called every frame. 'delta' is the elapsed time since the previous frame.
-	public override void _Process(double delta)
+    protected void InterestPoint_OnPointActivated(InterestPoint point)
+    {
+        currentPointFollowed = point;
+        if(currentPointFollowed.DialogueToPlay != null)
+        {
+            ReadDialogue(currentPointFollowed.DialogueToPlay);
+        }
+    }
+    protected void ReadDialogue(Dialogue dialogue)
+    {
+        foreach(var str in dialogue.Text)
+        {
+            Debug.Print(str);
+        }
+    }
+
+
+    // Called every frame. 'delta' is the elapsed time since the previous frame.
+    public override void _Process(double delta)
 	{
 
 		if (player == null)
 			return;
 
-		Position = Position.MoveToward(player.Position, (float)(Speed * delta));
+        Vector2 position = currentPointFollowed == null ? player.Position : currentPointFollowed.Position;
+
+        Position = Position.MoveToward(position, (float)(Speed * delta));
 
 	}
 }

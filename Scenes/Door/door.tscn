@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://cvnf375ogiyfw"]
+
+[ext_resource type="Script" path="res://Scenes/Door/Door.cs" id="1_k25jx"]
+[ext_resource type="Texture2D" uid="uid://dem7dlrpb58ju" path="res://Assets/Sprites/Props/metal_door.png" id="2_hev7s"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rhfgm"]
+size = Vector2(28, 136)
+
+[node name="Door" type="Node2D"]
+position = Vector2(1121, -298)
+script = ExtResource("1_k25jx")
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(2.8125, 2.8125)
+texture = ExtResource("2_hev7s")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_layer = 2
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("RectangleShape2D_rhfgm")

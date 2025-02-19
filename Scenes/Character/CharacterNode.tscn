@@ -5,73 +5,8 @@
 [ext_resource type="Shape2D" uid="uid://ceste5w5ced75" path="res://Source/CharacterCollision.tres" id="2_heess"]
 [ext_resource type="Texture2D" uid="uid://pjg15sftybdy" path="res://Assets/Sprites/Character/character_spreadsheet.png" id="5_wype6"]
 
-[sub_resource type="Animation" id="Animation_grg3b"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
-}
-
-[sub_resource type="Animation" id="Animation_c0lqo"]
-resource_name = "Idle"
-length = 0.5
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.25),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [0, 1]
-}
-
-[sub_resource type="Animation" id="Animation_rf130"]
-resource_name = "R_WalkSpear"
-length = 0.5
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.125, 0.25, 0.375),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 1,
-"values": [9, 8, 9, 6]
-}
-
-[sub_resource type="Animation" id="Animation_vnvvy"]
-resource_name = "R_JumpSpear"
-length = 0.5
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [12, 13]
-}
-
-[sub_resource type="Animation" id="Animation_tj6rr"]
-resource_name = "R_IdleEmpty"
+[sub_resource type="Animation" id="Animation_7pd5j"]
+resource_name = "L_IdleEmpty"
 length = 0.5
 loop_mode = 1
 tracks/0/type = "value"
@@ -84,40 +19,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.233333),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [18, 19]
-}
-
-[sub_resource type="Animation" id="Animation_jxp5o"]
-resource_name = "R_WalkEmpty"
-length = 0.5
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.125, 0.25, 0.375),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 1,
-"values": [25, 26, 27, 24]
-}
-
-[sub_resource type="Animation" id="Animation_bqec0"]
-resource_name = "R_JumpEmpty"
-length = 0.5
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [30, 31]
+"values": [54, 55]
 }
 
 [sub_resource type="Animation" id="Animation_ckyvk"]
@@ -137,10 +39,9 @@ tracks/0/keys = {
 "values": [36, 37]
 }
 
-[sub_resource type="Animation" id="Animation_vepbt"]
-resource_name = "L_WalkSpear"
+[sub_resource type="Animation" id="Animation_ldhxc"]
+resource_name = "L_JumpEmpty"
 length = 0.5
-loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -148,10 +49,42 @@ tracks/0/path = NodePath("Sprite2D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.125, 0.25, 0.375),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [43, 44, 45, 42]
+"values": [66, 67]
+}
+
+[sub_resource type="Animation" id="Animation_ph8wp"]
+resource_name = "L_JumpIdleEmpty"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [67]
+}
+
+[sub_resource type="Animation" id="Animation_88p18"]
+resource_name = "L_JumpIdleSpear"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [49]
 }
 
 [sub_resource type="Animation" id="Animation_dosai"]
@@ -168,23 +101,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [48, 49]
-}
-
-[sub_resource type="Animation" id="Animation_7pd5j"]
-resource_name = "L_IdleEmpty"
-length = 0.5
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.233333),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [54, 55]
 }
 
 [sub_resource type="Animation" id="Animation_8cohg"]
@@ -204,8 +120,74 @@ tracks/0/keys = {
 "values": [61, 62, 63, 60]
 }
 
-[sub_resource type="Animation" id="Animation_ldhxc"]
-resource_name = "L_JumpEmpty"
+[sub_resource type="Animation" id="Animation_vepbt"]
+resource_name = "L_WalkSpear"
+length = 0.5
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.125, 0.25, 0.375),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [43, 44, 45, 42]
+}
+
+[sub_resource type="Animation" id="Animation_grg3b"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_tj6rr"]
+resource_name = "R_IdleEmpty"
+length = 0.5
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.233333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [18, 19]
+}
+
+[sub_resource type="Animation" id="Animation_c0lqo"]
+resource_name = "Idle"
+length = 0.5
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 1]
+}
+
+[sub_resource type="Animation" id="Animation_bqec0"]
+resource_name = "R_JumpEmpty"
 length = 0.5
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -217,7 +199,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [66, 67]
+"values": [30, 31]
 }
 
 [sub_resource type="Animation" id="Animation_k8ibs"]
@@ -252,9 +234,9 @@ tracks/0/keys = {
 "values": [13]
 }
 
-[sub_resource type="Animation" id="Animation_88p18"]
-resource_name = "L_JumpIdleSpear"
-length = 0.1
+[sub_resource type="Animation" id="Animation_vnvvy"]
+resource_name = "R_JumpSpear"
+length = 0.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -262,15 +244,16 @@ tracks/0/path = NodePath("Sprite2D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [49]
+"values": [12, 13]
 }
 
-[sub_resource type="Animation" id="Animation_ph8wp"]
-resource_name = "L_JumpIdleEmpty"
-length = 0.1
+[sub_resource type="Animation" id="Animation_jxp5o"]
+resource_name = "R_WalkEmpty"
+length = 0.5
+loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -278,10 +261,27 @@ tracks/0/path = NodePath("Sprite2D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 0.125, 0.25, 0.375),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
-"values": [67]
+"values": [25, 26, 27, 24]
+}
+
+[sub_resource type="Animation" id="Animation_rf130"]
+resource_name = "R_WalkSpear"
+length = 0.5
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.125, 0.25, 0.375),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [9, 8, 9, 6]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_omonb"]
@@ -310,7 +310,9 @@ position = Vector2(39, -69)
 collision_mask = 18
 script = ExtResource("1_7gc5i")
 speed = 500.0
-JumpVelocity = -1000.0
+JumpVelocity = -700.0
+pushForce = 1000.0
+pushMaxSpeed = 50.0
 projectile = ExtResource("2_77sic")
 
 [node name="Camera2D" type="Camera2D" parent="."]
