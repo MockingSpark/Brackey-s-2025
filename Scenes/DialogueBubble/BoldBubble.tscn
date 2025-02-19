@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=3 uid="uid://bc4jphpp7ndgj"]
+
+[ext_resource type="Script" path="res://Scenes/DialogueBubble/dialogue_bubble.gd" id="1_c0n03"]
+[ext_resource type="Texture2D" uid="uid://ccexm3xpk3k56" path="res://Assets/DialogueBubbles/bubble_bold.png" id="2_6ws8o"]
+[ext_resource type="FontFile" uid="uid://cegiuwnr54ta4" path="res://Assets/DialogueBubbles/dogicapixelbold.ttf" id="3_fxgqm"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_skykd"]
+texture = ExtResource("2_6ws8o")
+texture_margin_left = 6.0
+texture_margin_top = 6.0
+texture_margin_right = 6.0
+texture_margin_bottom = 6.0
+region_rect = Rect2(0, 0, 32, 32)
+
+[node name="round_buble" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_c0n03")
+text = "STOP"
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_skykd")
+
+[node name="Label" type="Label" parent="PanelContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_fxgqm")
+theme_override_font_sizes/font_size = 16
+text = "STOP"
