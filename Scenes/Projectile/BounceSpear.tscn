@@ -23,4 +23,3 @@ rotation = 1.5708
 shape = SubResource("CapsuleShape2D_3kxik")
 
 [node name="Pickable" parent="." instance=ExtResource("3_gkim7")]
-position = Vector2(0, 0)

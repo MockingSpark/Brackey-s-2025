@@ -128,6 +128,41 @@ position = Vector2(847, -106)
 
 [node name="HiddenArea" parent="tableau0" instance=ExtResource("8_htwt2")]
 
+[node name="PickableSpear" parent="tableau0" instance=ExtResource("5_5i7ym")]
+position = Vector2(-315, -71)
+
+[node name="PickableSpear2" parent="tableau0" instance=ExtResource("5_5i7ym")]
+position = Vector2(-337, -73)
+rotation = 1.57222
+
+[node name="PickableSpear3" parent="tableau0" instance=ExtResource("5_5i7ym")]
+position = Vector2(-317, -71)
+rotation = 1.82235
+
+[node name="PickableSpear4" parent="tableau0" instance=ExtResource("5_5i7ym")]
+position = Vector2(-396, -69)
+
+[node name="PickableSpear5" parent="tableau0" instance=ExtResource("5_5i7ym")]
+position = Vector2(-266, -71)
+
+[node name="PickableSpear6" parent="tableau0" instance=ExtResource("5_5i7ym")]
+position = Vector2(-281, -75)
+rotation = 1.56309
+
+[node name="PickableSpear7" parent="tableau0" instance=ExtResource("5_5i7ym")]
+position = Vector2(-419, -120)
+rotation = 4.2654
+
+[node name="PickableSpear8" parent="tableau0" instance=ExtResource("5_5i7ym")]
+position = Vector2(-283, -71)
+
+[node name="PickableSpear9" parent="tableau0" instance=ExtResource("5_5i7ym")]
+position = Vector2(-398, -69)
+rotation = 1.95323
+
+[node name="PickableSpear10" parent="tableau0" instance=ExtResource("5_5i7ym")]
+position = Vector2(-363, -71)
+
 [node name="tableau1" type="Node2D" parent="."]
 
 [node name="tableau2" type="Node2D" parent="."]
@@ -137,11 +172,11 @@ texture_repeat = 0
 position = Vector2(2443, -219)
 
 [node name="EnemySurveilPoint" parent="tableau2" instance=ExtResource("7_ivn2t")]
-position = Vector2(2768, -238)
+position = Vector2(2860, -241)
 directionToGo = Vector2(-1, 0)
 
 [node name="EnemySurveilPoint2" parent="tableau2" instance=ExtResource("7_ivn2t")]
-position = Vector2(2243, -241)
+position = Vector2(2119, -244)
 
 [node name="tableau3" type="Node2D" parent="."]
 

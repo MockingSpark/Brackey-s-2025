@@ -19,6 +19,10 @@ config/icon="res://icon.svg"
 
 NarrativeManager="*res://Scenes/NarrativeManager/NarrativeManager.cs"
 
+[display]
+
+window/stretch/mode="viewport"
+
 [dotnet]
 
 project/assembly_name="Nouveau projet de jeu"
@@ -112,7 +116,7 @@ FairyCall={
 
 [physics]
 
-2d/default_gravity=2000.0
+2d/default_gravity=1500.0
 
 [rendering]
 
