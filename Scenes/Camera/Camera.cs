@@ -73,7 +73,7 @@ public partial class Camera : Camera2D
 				break;
 		}
 
-		GlobalPosition = TargetPosition;
+		GlobalPosition = Utils.LerpStepped(GlobalPosition, TargetPosition, 0.5f, 1200.0f * (float)delta);
 	}
 
 	public void UseStaticMode(Nullable<Vector2> position = null)
