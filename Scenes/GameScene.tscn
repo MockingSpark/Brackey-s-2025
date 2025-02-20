@@ -89,7 +89,7 @@ layer_0/tile_data = PackedInt32Array(-720894, 393216, 2, -458736, 327680, 2, -52
 metadata/_edit_lock_ = true
 
 [node name="Player" parent="." instance=ExtResource("2_l2hhf")]
-position = Vector2(5347, 582)
+position = Vector2(6391, 458)
 
 [node name="tableau0" type="Node2D" parent="."]
 
@@ -258,13 +258,12 @@ shape = SubResource("RectangleShape2D_djs5h")
 position = Vector2(6453, -324)
 
 [node name="Mansion" type="Sprite2D" parent="ParallaxBackground"]
-position = Vector2(-16669.6, 305.884)
+position = Vector2(-16665.8, 273.973)
 scale = Vector2(1.08851, 1.08851)
 texture = ExtResource("11_ai78j")
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground"]
-position = Vector2(-1638.36, 3569.86)
-scale = Vector2(1, 1)
+position = Vector2(-2065.75, 3583.56)
 texture = SubResource("GradientTexture2D_4scww")
 
 [connection signal="pressed" from="Camera2D/Menu/VBoxContainer/Start Game" to="Camera2D/Menu" method="hide"]

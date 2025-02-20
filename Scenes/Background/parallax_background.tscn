@@ -22,7 +22,6 @@ repeat_times = 7
 texture = ExtResource("1_v2etv")
 
 [node name="Parallax2D6" type="Parallax2D" parent="."]
-scale = Vector2(1, 1)
 scroll_scale = Vector2(0.3, 1)
 repeat_size = Vector2(5414, 0)
 repeat_times = 7
