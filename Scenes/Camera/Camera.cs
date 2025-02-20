@@ -13,14 +13,19 @@ public partial class Camera : Camera2D
 	public static Camera Instance { get; private set; }
 
 	[Export]
+	/** node to attach when trigger _Ready() */
 	public Node2D DefaultTargetNode;
 
 	[ExportCategory("Debug")]
 	[Export]
 	protected ECameraMode currentMode = ECameraMode.Attached;
-	
-	/** In ECameraMode.Attached, which node to follow. */
-	protected Node2D TargetNode = null;
+
+    [ExportCategory("Debug")]
+    [Export]
+    protected float DefaultZoom;
+
+    /** In ECameraMode.Attached, which node to follow. */
+    protected Node2D TargetNode = null;
 
 	public override void _Ready()
 	{
@@ -32,6 +37,8 @@ public partial class Camera : Camera2D
 
 		// Set as active Camera
 		this.MakeCurrent();
+
+		DefaultZoom = Zoom.X;
 
 		if (DefaultTargetNode != null)
 		{
@@ -68,11 +75,31 @@ public partial class Camera : Camera2D
 		currentMode = ECameraMode.Static;
 	}
 
-
 	public void SetAttachMode(Node2D attachTarget)
 	{
 		TargetNode = attachTarget;
 
 		currentMode = ECameraMode.Attached;
-	}
+    }
+
+    public void ResetZoom()
+    {
+        TransitionToZoom(DefaultZoom);
+    }
+
+    /** Transition to zoom relative to the default zoom.*/
+    public void TransitionToZoomRelative(float ratioToDefault)
+    {
+        // Todo: Lerp to between zoom
+
+        TransitionToZoom(ratioToDefault * DefaultZoom);
+    }
+
+    public void TransitionToZoom(float newZoom)
+	{
+		// Todo: Lerp to between zoom
+
+		Zoom = new Vector2(newZoom, newZoom);
+    }
+
 }
