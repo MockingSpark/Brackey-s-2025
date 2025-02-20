@@ -1,13 +1,11 @@
-[gd_scene load_steps=10 format=3 uid="uid://cw000q3yg2bj8"]
+[gd_scene load_steps=11 format=3 uid="uid://cw000q3yg2bj8"]
 
 [ext_resource type="SpriteFrames" uid="uid://b4kugdvmrjvkt" path="res://Assets/Sprites/Fairy/fairySpriteFrame.tres" id="1_438el"]
 [ext_resource type="Script" path="res://Scenes/Fairy/Fairy.cs" id="1_juba5"]
-[ext_resource type="Texture2D" uid="uid://desg31vlpipwh" path="res://Assets/Sprites/Fairy/WIP_Fairy/Particule.png" id="3_pnrl1"]
+[ext_resource type="PackedScene" uid="uid://cqnj5u8vw0g8x" path="res://Scenes/VFX/fairyGlow.tscn" id="2_e2dki"]
+[ext_resource type="Texture2D" uid="uid://c1v2uldarfd8s" path="res://Assets/Sprites/VFX/star_01.png" id="4_4e7a0"]
 [ext_resource type="PackedScene" uid="uid://bc4jphpp7ndgj" path="res://Scenes/DialogueBubble/BoldBubble.tscn" id="4_u6plu"]
 [ext_resource type="PackedScene" uid="uid://djhjkivn4mbkn" path="res://Scenes/DialogueBubble/RoundBubble.tscn" id="5_6qkn2"]
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_upn5c"]
-radius = 14.0357
 
 [sub_resource type="Curve" id="Curve_rdndu"]
 _data = [Vector2(0.00309598, 1), 0.0, 0.0, 0, 0, Vector2(0.79257, 0.872393), 0.0, 0.0, 0, 0, Vector2(0.916409, 0), 0.0, 0.0, 0, 0, Vector2(0.996904, 0.00306749), 0.0, 0.0, 0, 0]
@@ -25,49 +23,66 @@ emission_sphere_radius = 1.0
 angle_min = -394.4
 angle_max = 285.6
 gravity = Vector3(0, 98, 0)
-scale_min = 0.1
-scale_max = 0.3
+scale_min = 0.01
+scale_max = 0.03
 alpha_curve = SubResource("CurveTexture_vkcv6")
 hue_variation_min = -2.23517e-08
 hue_variation_max = -2.23517e-08
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_upn5c"]
+radius = 33.3333
 
 [node name="Fairy" type="Node2D" node_paths=PackedStringArray("roundBubble", "boldBubble")]
 z_index = 70
 scale = Vector2(0.3, 0.3)
 script = ExtResource("1_juba5")
-roundBubble = NodePath("round_buble")
-boldBubble = NodePath("Bold_buble")
+FairyColor = Color(0.215686, 0.709804, 0.960784, 1)
+roundBubble = NodePath("Round_bubble")
+boldBubble = NodePath("Bold_bubble")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-self_modulate = Color(0.215686, 0.709804, 0.960784, 1)
 z_index = 1
-position = Vector2(-3.33333, 0)
 scale = Vector2(3.75, 3.75)
 sprite_frames = ExtResource("1_438el")
 frame_progress = 0.375209
 
-[node name="Area2D" type="Area2D" parent="."]
-collision_layer = 128
-collision_mask = 54
+[node name="Glow" parent="AnimatedSprite2D" instance=ExtResource("2_e2dki")]
+position = Vector2(0.888888, 0)
+scale = Vector2(0.266667, 0.266667)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-shape = SubResource("CircleShape2D_upn5c")
-
-[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+[node name="GPUParticles2D" type="GPUParticles2D" parent="AnimatedSprite2D"]
+position = Vector2(0.888888, 0)
+scale = Vector2(0.266667, 0.266667)
 amount = 15
 process_material = SubResource("ParticleProcessMaterial_ptju1")
-texture = ExtResource("3_pnrl1")
+texture = ExtResource("4_4e7a0")
 
-[node name="Bold_buble" parent="." instance=ExtResource("4_u6plu")]
+[node name="DetectInteractionBox" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 54
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectInteractionBox"]
+shape = SubResource("CircleShape2D_upn5c")
+
+[node name="InteractiveBox" type="Area2D" parent="."]
+collision_layer = 128
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractiveBox"]
+shape = SubResource("CircleShape2D_upn5c")
+
+[node name="Bold_bubble" parent="." instance=ExtResource("4_u6plu")]
 offset_top = -133.333
 offset_bottom = -133.333
 Text = "djygsdjyvsudyvsudvk<vk<shjgdvkhtvhg<jdhbcwcd
 bbhbchbjhbskuvclj
 vn"
 
-[node name="round_buble" parent="." instance=ExtResource("5_6qkn2")]
+[node name="Round_bubble" parent="." instance=ExtResource("5_6qkn2")]
 offset_top = -136.667
 offset_bottom = -136.667
 
-[connection signal="body_entered" from="Area2D" to="." method="ImpactedWall"]
-[connection signal="body_exited" from="Area2D" to="." method="ExitedWall"]
+[connection signal="body_entered" from="DetectInteractionBox" to="." method="ImpactedWall"]
+[connection signal="body_exited" from="DetectInteractionBox" to="." method="ExitedWall"]
+[connection signal="body_entered" from="InteractiveBox" to="." method="ImpactedWall"]
+[connection signal="body_exited" from="InteractiveBox" to="." method="ExitedWall"]

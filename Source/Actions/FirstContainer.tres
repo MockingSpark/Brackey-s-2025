@@ -1,0 +1,109 @@
+[gd_resource type="Resource" script_class="FairyActionContainer" load_steps=21 format=3 uid="uid://brak264gjbkg3"]
+
+[ext_resource type="Script" path="res://Scenes/FairyActions/FairyActionLock.cs" id="1_iu1qk"]
+[ext_resource type="Script" path="res://Scenes/Dialogue/Dialogue.cs" id="1_jd7yl"]
+[ext_resource type="Script" path="res://Scenes/FairyActions/FairyActionContainer.cs" id="1_n6jeq"]
+[ext_resource type="Script" path="res://Scenes/FairyActions/FairyActionDialogue.cs" id="2_e25xq"]
+[ext_resource type="Script" path="res://Scenes/FairyActions/FairyActionFocus.cs" id="3_nfwoq"]
+[ext_resource type="Script" path="res://Scenes/FairyActions/FairyActionNoText.cs" id="4_s6mru"]
+
+[sub_resource type="Resource" id="Resource_x6kjn"]
+script = ExtResource("1_iu1qk")
+ShouldLock = true
+ActionType = 9
+ActionTime = 0.0
+
+[sub_resource type="Resource" id="Resource_3uycb"]
+script = ExtResource("1_jd7yl")
+tag = ""
+text = "Good morning little one!"
+isBold = false
+linkedToFairy = true
+position = Vector2(0, 0)
+
+[sub_resource type="Resource" id="Resource_ys7uv"]
+script = ExtResource("2_e25xq")
+Dialogue = SubResource("Resource_3uycb")
+ActionType = 3
+ActionTime = 2.0
+
+[sub_resource type="Resource" id="Resource_0nx2a"]
+script = ExtResource("1_jd7yl")
+tag = ""
+text = "Today you start your big adventure!"
+isBold = true
+linkedToFairy = true
+position = Vector2(0, 0)
+
+[sub_resource type="Resource" id="Resource_urll5"]
+script = ExtResource("2_e25xq")
+Dialogue = SubResource("Resource_0nx2a")
+ActionType = 3
+ActionTime = 4.0
+
+[sub_resource type="Resource" id="Resource_g2c4c"]
+script = ExtResource("1_jd7yl")
+tag = ""
+text = "BUT!
+Before I let you go, I need to make sure you won't die out there!"
+isBold = false
+linkedToFairy = true
+position = Vector2(0, 0)
+
+[sub_resource type="Resource" id="Resource_qs1mx"]
+script = ExtResource("2_e25xq")
+Dialogue = SubResource("Resource_g2c4c")
+ActionType = 3
+ActionTime = 5.0
+
+[sub_resource type="Resource" id="Resource_icdfq"]
+script = ExtResource("1_jd7yl")
+tag = ""
+text = "So let's train a little."
+isBold = true
+linkedToFairy = true
+position = Vector2(0, 0)
+
+[sub_resource type="Resource" id="Resource_uumm5"]
+script = ExtResource("2_e25xq")
+Dialogue = SubResource("Resource_icdfq")
+ActionType = 3
+ActionTime = 2.0
+
+[sub_resource type="Resource" id="Resource_5t56t"]
+script = ExtResource("1_jd7yl")
+tag = ""
+text = "You can move around with Q/D or the arrows"
+isBold = false
+linkedToFairy = true
+position = Vector2(0, 0)
+
+[sub_resource type="Resource" id="Resource_hdh14"]
+script = ExtResource("2_e25xq")
+Dialogue = SubResource("Resource_5t56t")
+ActionType = 3
+ActionTime = 2.0
+
+[sub_resource type="Resource" id="Resource_oxa5b"]
+script = ExtResource("1_iu1qk")
+ShouldLock = false
+ActionType = 9
+ActionTime = 0.0
+
+[sub_resource type="Resource" id="Resource_y7jsp"]
+script = ExtResource("3_nfwoq")
+FocusOffset = Vector2(0, 0)
+ActionType = 2
+ActionTime = 3.0
+
+[sub_resource type="Resource" id="Resource_c8sij"]
+script = ExtResource("4_s6mru")
+ActionType = 5
+ActionTime = 1.0
+
+[resource]
+script = ExtResource("1_n6jeq")
+Actions = Array[Object]([SubResource("Resource_x6kjn"), SubResource("Resource_ys7uv"), SubResource("Resource_urll5"), SubResource("Resource_qs1mx"), SubResource("Resource_uumm5"), SubResource("Resource_hdh14"), SubResource("Resource_oxa5b"), SubResource("Resource_y7jsp"), SubResource("Resource_c8sij")])
+Priority = 0
+ActionType = 10
+ActionTime = 0.0

@@ -13,9 +13,10 @@ texture_margin_bottom = 6.0
 region_rect = Rect2(0, 0, 32, 32)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_byrrw"]
-size = Vector2(312, 77)
+size = Vector2(575, 129)
 
 [node name="Bold_buble" type="Control"]
+visible = false
 z_index = 70
 layout_mode = 3
 anchors_preset = 0
@@ -45,7 +46,7 @@ theme_override_styles/panel = SubResource("StyleBoxTexture_skykd")
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3_fxgqm")
-theme_override_font_sizes/font_size = 16
+theme_override_font_sizes/font_size = 30
 text = "wiuyqgflibwlhkbfliyb
 wsjhbfljhbqd
 jvzdy<tcsdiytcvkybsc

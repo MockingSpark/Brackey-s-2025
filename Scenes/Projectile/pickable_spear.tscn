@@ -1,18 +1,14 @@
-[gd_scene load_steps=4 format=3 uid="uid://dbdtky7u65k03"]
+[gd_scene load_steps=3 format=3 uid="uid://dbdtky7u65k03"]
 
 [ext_resource type="Texture2D" uid="uid://cek83bw3ab4u6" path="res://Assets/Sprites/Props/spear.png" id="1_it1ue"]
-[ext_resource type="Script" path="res://Scenes/Projectile/PickableProjectile.cs" id="2_cuhf3"]
 [ext_resource type="PackedScene" uid="uid://cm50ldhvfl78w" path="res://Scenes/Projectile/pickable.tscn" id="2_iqgv3"]
 
 [node name="PickableSpear" type="Sprite2D"]
 z_index = -1
-position = Vector2(529, -25)
 rotation = 1.0472
 scale = Vector2(3, 3)
 texture = ExtResource("1_it1ue")
-script = ExtResource("2_cuhf3")
 
 [node name="Pickable" parent="." instance=ExtResource("2_iqgv3")]
-position = Vector2(0, 0)
 rotation = 0.0
 scale = Vector2(0.5, 0.5)

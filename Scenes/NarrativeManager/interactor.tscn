@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://yc7ocknrfysc"]
+
+[ext_resource type="Script" path="res://Scenes/NarrativeManager/NarrativeReactor.cs" id="1_63swj"]
+
+[node name="Interactor" type="Node" node_paths=PackedStringArray("Targets")]
+script = ExtResource("1_63swj")
+Targets = []

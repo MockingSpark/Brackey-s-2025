@@ -15,6 +15,14 @@ run/main_scene="res://AlbanDev/AlbanTestMap.tscn"
 config/features=PackedStringArray("4.3", "C#", "Mobile")
 config/icon="res://icon.svg"
 
+[autoload]
+
+NarrativeManager="*res://Scenes/NarrativeManager/NarrativeManager.cs"
+
+[display]
+
+window/stretch/mode="viewport"
+
 [dotnet]
 
 project/assembly_name="Nouveau projet de jeu"
@@ -108,7 +116,7 @@ FairyCall={
 
 [physics]
 
-2d/default_gravity=2000.0
+2d/default_gravity=1500.0
 
 [rendering]
 
@@ -116,3 +124,5 @@ textures/canvas_textures/default_texture_filter=0
 renderer/rendering_method="mobile"
 textures/decals/filter=0
 textures/light_projectors/filter=0
+2d/snap/snap_2d_transforms_to_pixel=true
+2d/snap/snap_2d_vertices_to_pixel=true

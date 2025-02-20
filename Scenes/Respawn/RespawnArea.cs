@@ -6,6 +6,9 @@ public partial class RespawnArea : Area2D
     [Export]
     Vector2 dropPoint = new Vector2();
 
+    [Export]
+    FairyAction actionOnFall;
+
     public void OnPlayerEntered(Node2D body)
     {
         var character = body as CharacterController;

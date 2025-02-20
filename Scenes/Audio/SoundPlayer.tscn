@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://c83xf7qolonrg"]
+
+[ext_resource type="Script" path="res://Scenes/Audio/SoundPlayer.cs" id="1_ey7ew"]
+[ext_resource type="PackedScene" uid="uid://8krv8reyhflk" path="res://Scenes/Audio/SfxPlayer.tscn" id="2_m0xhw"]
+
+[node name="SoundPlayer" type="Node2D"]
+script = ExtResource("1_ey7ew")
+audioPlayer = ExtResource("2_m0xhw")
