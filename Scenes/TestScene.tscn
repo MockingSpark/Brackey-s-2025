@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://x42y1dfyasrr"]
+[gd_scene load_steps=15 format=3 uid="uid://x42y1dfyasrr"]
 
 [ext_resource type="Texture2D" uid="uid://chn7u3jyidw7o" path="res://Assets/Sprites/WIP_Background.png" id="1_u7e8s"]
 [ext_resource type="PackedScene" uid="uid://c1d0x30dt6bad" path="res://Scenes/Character/CharacterNode.tscn" id="2_0j0pk"]
@@ -10,9 +10,8 @@
 [ext_resource type="PackedScene" uid="uid://cvnf375ogiyfw" path="res://Scenes/Door/door.tscn" id="8_nboij"]
 [ext_resource type="PackedScene" uid="uid://dcftouctjkf3e" path="res://Scenes/Button/button.tscn" id="9_73rj4"]
 [ext_resource type="PackedScene" uid="uid://d0bke5oyhuury" path="res://Scenes/Respawn/respawn_area.tscn" id="10_yw575"]
-[ext_resource type="Script" path="res://Scenes/NarrativeManager/NarrativeReactor.cs" id="11_f58pt"]
+[ext_resource type="PackedScene" uid="uid://yc7ocknrfysc" path="res://Scenes/NarrativeManager/interactor.tscn" id="11_78807"]
 [ext_resource type="PackedScene" uid="uid://cw000q3yg2bj8" path="res://Scenes/Fairy/Fairy.tscn" id="11_lu5el"]
-[ext_resource type="Resource" uid="uid://b37rdulvdwx57" path="res://Source/TestContainer.tres" id="12_tf5i0"]
 [ext_resource type="PackedScene" uid="uid://bqx487uxlb2pj" path="res://Scenes/InterestPoint/InterestPoint.tscn" id="13_1h3pk"]
 [ext_resource type="Resource" uid="uid://c7ggwq6hgfjsy" path="res://Scenes/Dialogue/WelcomeDialogue.tres" id="14_85yha"]
 
@@ -67,9 +66,7 @@ position = Vector2(1121, -249)
 
 [node name="RespawnArea" parent="." instance=ExtResource("10_yw575")]
 
-[node name="Node" type="Node" parent="RespawnArea"]
-script = ExtResource("11_f58pt")
-Container = ExtResource("12_tf5i0")
+[node name="Interactor" parent="RespawnArea" instance=ExtResource("11_78807")]
 
 [node name="InterestPoint" parent="." instance=ExtResource("13_1h3pk")]
 position = Vector2(1002, -179)
@@ -81,4 +78,3 @@ scale = Vector2(0.5, 0.5)
 
 [connection signal="ButtonPressed" from="Button" to="Door" method="OpenDoor"]
 [connection signal="ButtonReleased" from="Button" to="Door" method="CloseDoor"]
-[connection signal="body_entered" from="RespawnArea" to="RespawnArea/Node" method="SendActions"]

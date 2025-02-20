@@ -6,6 +6,7 @@ using static Godot.GodotThread;
 public partial class FairyActionFocus : FairyAction
 {
     public Node2D Target { get; set; }
+    [Export]
     public Vector2 FocusOffset { get; set; }
 
     public FairyActionFocus() : this(E_FairyAction.Container, 0, null, new Vector2()) { }

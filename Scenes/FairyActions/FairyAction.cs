@@ -2,7 +2,7 @@ using Godot;
 using Microsoft.VisualBasic;
 using System;
 
-public enum E_FairyAction { None, FocusOnPlayer, FocusOnObject, SaySpecific, SayRandom, HideText, CatchPlayer, ProtectPlayer, Score, LockPlayer, UnlockPlayer, Container }
+public enum E_FairyAction { None, FocusOnPlayer, FocusOnObject, SaySpecific, SayRandom, HideText, CatchPlayer, ProtectPlayer, Score, LockPlayer, Container }
 public enum E_FairyTalkType { Rdm, Save, Protect, Retrieve }
 
 [GlobalClass]

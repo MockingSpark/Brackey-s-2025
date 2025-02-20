@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://yc7ocknrfysc"]
+
+[ext_resource type="Script" path="res://Scenes/NarrativeManager/NarrativeReactor.cs" id="1_63swj"]
+[ext_resource type="Resource" uid="uid://b37rdulvdwx57" path="res://Source/TestContainer.tres" id="2_qiy08"]
+
+[node name="Interactor" type="Node" node_paths=PackedStringArray("Targets")]
+script = ExtResource("1_63swj")
+Container = ExtResource("2_qiy08")
+Targets = []

@@ -103,6 +103,7 @@ public partial class CharacterController : CharacterBody2D
         {
             velocity += GetGravity() * delta;
         }
+        Velocity = velocity;
 
         MoveAndSlide();
     }
@@ -236,13 +237,9 @@ public partial class CharacterController : CharacterBody2D
         }
     }
 
-    public void LockPlayer()
+    public void LockPlayer(bool shouldLock)
     {
-        locked = true;
-    }
-    public void UnlockPlayer()
-    {
-        locked = false;
+        locked = shouldLock;
     }
 
 	private void ThrowProjectile()

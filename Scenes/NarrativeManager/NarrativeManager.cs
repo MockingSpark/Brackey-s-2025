@@ -104,11 +104,8 @@ public partial class NarrativeManager : Node
                 fairy.GivePlayerScore(100000, action.ActionTime);
                 break;
             case E_FairyAction.LockPlayer:
-                fairy.Player.LockPlayer();
-                SendNewAction();
-                break;
-            case E_FairyAction.UnlockPlayer:
-                fairy.Player.UnlockPlayer();
+                var lockAction = action as FairyActionLock;
+                fairy.Player.LockPlayer(lockAction.ShouldLock);
                 SendNewAction();
                 break;
             case E_FairyAction.Container:

@@ -55,6 +55,7 @@ public partial class Fairy : Node2D
 
     protected void ReadDialogue(Dialogue dialogue)
     {
+        HideBubbles();
         if(dialogue.isBold)
         {
             boldBubble.ShowBubble();

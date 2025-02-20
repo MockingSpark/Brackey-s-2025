@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://djhjkivn4mbkn" path="res://Scenes/DialogueBubble/RoundBubble.tscn" id="5_6qkn2"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_upn5c"]
-radius = 14.0357
+radius = 33.3333
 
 [sub_resource type="Curve" id="Curve_rdndu"]
 _data = [Vector2(0.00309598, 1), 0.0, 0.0, 0, 0, Vector2(0.79257, 0.872393), 0.0, 0.0, 0, 0, Vector2(0.916409, 0), 0.0, 0.0, 0, 0, Vector2(0.996904, 0.00306749), 0.0, 0.0, 0, 0]
@@ -46,11 +46,18 @@ scale = Vector2(3.75, 3.75)
 sprite_frames = ExtResource("1_438el")
 frame_progress = 0.375209
 
-[node name="Area2D" type="Area2D" parent="."]
-collision_layer = 128
+[node name="DetectInteractionBox" type="Area2D" parent="."]
+collision_layer = 0
 collision_mask = 54
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectInteractionBox"]
+shape = SubResource("CircleShape2D_upn5c")
+
+[node name="InteractiveBox" type="Area2D" parent="."]
+collision_layer = 128
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractiveBox"]
 shape = SubResource("CircleShape2D_upn5c")
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="."]
@@ -59,6 +66,7 @@ process_material = SubResource("ParticleProcessMaterial_ptju1")
 texture = ExtResource("3_pnrl1")
 
 [node name="Bold_bubble" parent="." instance=ExtResource("4_u6plu")]
+visible = false
 offset_top = -133.333
 offset_bottom = -133.333
 Text = "djygsdjyvsudyvsudvk<vk<shjgdvkhtvhg<jdhbcwcd
@@ -69,5 +77,7 @@ vn"
 offset_top = -136.667
 offset_bottom = -136.667
 
-[connection signal="body_entered" from="Area2D" to="." method="ImpactedWall"]
-[connection signal="body_exited" from="Area2D" to="." method="ExitedWall"]
+[connection signal="body_entered" from="DetectInteractionBox" to="." method="ImpactedWall"]
+[connection signal="body_exited" from="DetectInteractionBox" to="." method="ExitedWall"]
+[connection signal="body_entered" from="InteractiveBox" to="." method="ImpactedWall"]
+[connection signal="body_exited" from="InteractiveBox" to="." method="ExitedWall"]
