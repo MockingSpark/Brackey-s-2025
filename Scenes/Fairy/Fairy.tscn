@@ -7,9 +7,6 @@
 [ext_resource type="PackedScene" uid="uid://bc4jphpp7ndgj" path="res://Scenes/DialogueBubble/BoldBubble.tscn" id="4_u6plu"]
 [ext_resource type="PackedScene" uid="uid://djhjkivn4mbkn" path="res://Scenes/DialogueBubble/RoundBubble.tscn" id="5_6qkn2"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_upn5c"]
-radius = 33.3333
-
 [sub_resource type="Curve" id="Curve_rdndu"]
 _data = [Vector2(0.00309598, 1), 0.0, 0.0, 0, 0, Vector2(0.79257, 0.872393), 0.0, 0.0, 0, 0, Vector2(0.916409, 0), 0.0, 0.0, 0, 0, Vector2(0.996904, 0.00306749), 0.0, 0.0, 0, 0]
 point_count = 4
@@ -32,15 +29,16 @@ alpha_curve = SubResource("CurveTexture_vkcv6")
 hue_variation_min = -2.23517e-08
 hue_variation_max = -2.23517e-08
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_upn5c"]
+radius = 33.3333
+
 [node name="Fairy" type="Node2D" node_paths=PackedStringArray("roundBubble", "boldBubble")]
-modulate = Color(0.215686, 0.709804, 0.960784, 1)
 z_index = 70
 scale = Vector2(0.3, 0.3)
 script = ExtResource("1_juba5")
+FairyColor = Color(0.215686, 0.709804, 0.960784, 1)
 roundBubble = NodePath("Round_bubble")
 boldBubble = NodePath("Bold_bubble")
-
-[node name="Node2D" parent="." instance=ExtResource("2_e2dki")]
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 z_index = 1
@@ -48,6 +46,17 @@ position = Vector2(-3.33333, 0)
 scale = Vector2(3.75, 3.75)
 sprite_frames = ExtResource("1_438el")
 frame_progress = 0.375209
+
+[node name="Glow" parent="AnimatedSprite2D" instance=ExtResource("2_e2dki")]
+position = Vector2(0.888888, 0)
+scale = Vector2(0.266667, 0.266667)
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="AnimatedSprite2D"]
+position = Vector2(0.888888, 0)
+scale = Vector2(0.266667, 0.266667)
+amount = 15
+process_material = SubResource("ParticleProcessMaterial_ptju1")
+texture = ExtResource("4_4e7a0")
 
 [node name="DetectInteractionBox" type="Area2D" parent="."]
 collision_layer = 0
@@ -62,11 +71,6 @@ collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractiveBox"]
 shape = SubResource("CircleShape2D_upn5c")
-
-[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
-amount = 15
-process_material = SubResource("ParticleProcessMaterial_ptju1")
-texture = ExtResource("4_4e7a0")
 
 [node name="Bold_bubble" parent="." instance=ExtResource("4_u6plu")]
 visible = false
