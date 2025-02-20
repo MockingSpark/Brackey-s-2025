@@ -30,7 +30,8 @@ public partial class Fairy : Node2D
 		set
 		{
 			fairyColor = value;
-			GetNode<AnimatedSprite2D>("AnimatedSprite2D").SetModulate(fairyColor);
+			if(IsNodeReady())
+				GetNode<AnimatedSprite2D>("AnimatedSprite2D").SetModulate(fairyColor);
 		}
 	}
 

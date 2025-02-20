@@ -73,7 +73,6 @@ collision_mask = 0
 shape = SubResource("CircleShape2D_upn5c")
 
 [node name="Bold_bubble" parent="." instance=ExtResource("4_u6plu")]
-visible = false
 offset_top = -133.333
 offset_bottom = -133.333
 Text = "djygsdjyvsudyvsudvk<vk<shjgdvkhtvhg<jdhbcwcd
