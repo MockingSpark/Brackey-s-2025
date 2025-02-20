@@ -6,7 +6,7 @@ class Utils
     /** Lerp but with a max step to take */
     public static float LerpStepped(float from, float to, float weight, float max)
     {
-        return from + Mathf.Min((to - from) * weight, max);
+        return from + Mathf.Clamp((to - from) * weight, -max, max);
     }
     public static Vector2 LerpStepped(Vector2 from, Vector2 to, float weight, float max)
     {
