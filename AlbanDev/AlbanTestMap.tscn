@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://uwe4fh7tvyxd"]
+[gd_scene load_steps=11 format=3 uid="uid://uwe4fh7tvyxd"]
 
 [ext_resource type="PackedScene" uid="uid://c1d0x30dt6bad" path="res://Scenes/Character/CharacterNode.tscn" id="1_k5pya"]
 [ext_resource type="PackedScene" uid="uid://cp3ga5u36lr85" path="res://Scenes/terrain/terrain.tscn" id="2_0yp7n"]
@@ -306,9 +306,6 @@ physics_layer_1/collision_mask = 0
 sources/1 = SubResource("TileSetAtlasSource_mjank")
 sources/0 = SubResource("TileSetAtlasSource_3k4p5")
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_rns3f"]
-size = Vector2(68, 61)
-
 [node name="AlbanTestMap" type="Node2D"]
 
 [node name="Player" parent="." instance=ExtResource("1_k5pya")]
@@ -329,13 +326,6 @@ scale = Vector2(0.797993, 0.698413)
 [node name="InterestPoint" parent="." instance=ExtResource("6_6k8nn")]
 position = Vector2(643, -71)
 DialogueToPlay = ExtResource("6_mvqtm")
-
-[node name="Area2D" type="Area2D" parent="InterestPoint"]
-input_pickable = false
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="InterestPoint/Area2D"]
-position = Vector2(4, -3)
-shape = SubResource("RectangleShape2D_rns3f")
 
 [node name="Fairy" parent="." instance=ExtResource("4_x8bs7")]
 position = Vector2(557, -213)

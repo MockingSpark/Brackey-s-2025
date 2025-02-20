@@ -10,8 +10,8 @@
 [ext_resource type="PackedScene" uid="uid://cvnf375ogiyfw" path="res://Scenes/Door/door.tscn" id="8_nboij"]
 [ext_resource type="PackedScene" uid="uid://dcftouctjkf3e" path="res://Scenes/Button/button.tscn" id="9_73rj4"]
 [ext_resource type="PackedScene" uid="uid://d0bke5oyhuury" path="res://Scenes/Respawn/respawn_area.tscn" id="10_yw575"]
+[ext_resource type="PackedScene" uid="uid://yc7ocknrfysc" path="res://Scenes/NarrativeManager/interactor.tscn" id="11_78807"]
 [ext_resource type="PackedScene" uid="uid://cw000q3yg2bj8" path="res://Scenes/Fairy/Fairy.tscn" id="11_lu5el"]
-[ext_resource type="Script" path="res://Scenes/NarrativeManager/NarrativeManager.cs" id="12_hyabm"]
 [ext_resource type="PackedScene" uid="uid://bqx487uxlb2pj" path="res://Scenes/InterestPoint/InterestPoint.tscn" id="13_1h3pk"]
 [ext_resource type="Resource" uid="uid://c7ggwq6hgfjsy" path="res://Scenes/Dialogue/WelcomeDialogue.tres" id="14_85yha"]
 
@@ -29,6 +29,7 @@ layer_0/tile_data = PackedInt32Array(-131049, 327680, 1, -131048, 65536, 1, -131
 
 [node name="Player" parent="." instance=ExtResource("2_0j0pk")]
 unique_name_in_owner = true
+coyoteJumpTolerance = 0.0
 
 [node name="Enemy" parent="." instance=ExtResource("4_rgeek")]
 position = Vector2(424, -356)
@@ -65,6 +66,8 @@ position = Vector2(1121, -249)
 
 [node name="RespawnArea" parent="." instance=ExtResource("10_yw575")]
 
+[node name="Interactor" parent="RespawnArea" instance=ExtResource("11_78807")]
+
 [node name="InterestPoint" parent="." instance=ExtResource("13_1h3pk")]
 position = Vector2(1002, -179)
 DialogueToPlay = ExtResource("14_85yha")
@@ -72,10 +75,6 @@ DialogueToPlay = ExtResource("14_85yha")
 [node name="Fairy" parent="." instance=ExtResource("11_lu5el")]
 position = Vector2(287, -147)
 scale = Vector2(0.5, 0.5)
-newPointTimer = 5.0
-
-[node name="NarrativeManager" type="Node2D" parent="."]
-script = ExtResource("12_hyabm")
 
 [connection signal="ButtonPressed" from="Button" to="Door" method="OpenDoor"]
 [connection signal="ButtonReleased" from="Button" to="Door" method="CloseDoor"]

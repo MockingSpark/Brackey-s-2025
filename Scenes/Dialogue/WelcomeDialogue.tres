@@ -5,7 +5,7 @@
 [resource]
 script = ExtResource("1_yvuj4")
 tag = "TEST"
-text = ["TEST TEST"]
+text = ""
 isBold = true
 linkedToFairy = true
 position = Vector2(0, 0)
