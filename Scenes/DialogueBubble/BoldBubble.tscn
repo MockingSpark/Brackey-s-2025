@@ -16,6 +16,7 @@ region_rect = Rect2(0, 0, 32, 32)
 size = Vector2(575, 129)
 
 [node name="Bold_buble" type="Control"]
+visible = false
 z_index = 70
 layout_mode = 3
 anchors_preset = 0

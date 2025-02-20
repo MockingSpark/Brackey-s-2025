@@ -1,0 +1,42 @@
+[gd_scene load_steps=7 format=3 uid="uid://c4d4nqowjppgv"]
+
+[ext_resource type="Texture2D" uid="uid://70xarc5yo586" path="res://Assets/Sprites/Props/glass_door.png" id="1_ux5og"]
+[ext_resource type="Script" path="res://Scenes/GlassDoor/GlassDoor.cs" id="1_vfbmh"]
+[ext_resource type="AudioStream" uid="uid://droo20i2bwgn4" path="res://Assets/Audio/glass-door-shatters-and-breaks.mp3" id="2_i1wos"]
+[ext_resource type="PackedScene" uid="uid://c83xf7qolonrg" path="res://Scenes/Audio/SoundPlayer.tscn" id="3_7c8kq"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_v7rmt"]
+size = Vector2(18, 108)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_oyv13"]
+size = Vector2(26, 108)
+
+[node name="GlassDoor" type="Node2D"]
+script = ExtResource("1_vfbmh")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(0.64369, 0.975658, 1, 0.858824)
+light_mask = 0
+scale = Vector2(2.25, 2.25)
+texture = ExtResource("1_ux5og")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_layer = 2
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("RectangleShape2D_v7rmt")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_oyv13")
+
+[node name="SoundPlayer" parent="." instance=ExtResource("3_7c8kq")]
+playOneShot = true
+stream = ExtResource("2_i1wos")
+
+[connection signal="DoorShatter" from="." to="SoundPlayer" method="PlaySound"]
+[connection signal="area_entered" from="Area2D" to="." method="ShatterDoor"]
