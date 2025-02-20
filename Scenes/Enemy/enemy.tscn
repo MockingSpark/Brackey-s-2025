@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://bq6wiakr1leji"]
+[gd_scene load_steps=8 format=3 uid="uid://bq6wiakr1leji"]
 
 [ext_resource type="Script" path="res://Scenes/Enemy/Enemy.cs" id="1_xjpia"]
 [ext_resource type="SpriteFrames" uid="uid://csak62mxf63sj" path="res://Assets/Sprites/Enemy/Enemy_Animator.tres" id="2_lhsom"]
 [ext_resource type="AudioStream" uid="uid://btry7nof2vboi" path="res://Assets/Audio/wood click.mp3" id="3_45yq8"]
 [ext_resource type="Shape2D" uid="uid://cjljnixdv10a3" path="res://Scenes/Enemy/enemySolidBox.tres" id="3_lpabf"]
+[ext_resource type="PackedScene" uid="uid://yc7ocknrfysc" path="res://Scenes/NarrativeManager/interactor.tscn" id="5_tcpmy"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4e4co"]
 radius = 23.0
@@ -57,6 +58,9 @@ scale = Vector2(2.96875, 2.96875)
 sprite_frames = ExtResource("2_lhsom")
 animation = &"Idle"
 
+[node name="Interactor" parent="." instance=ExtResource("5_tcpmy")]
+
+[connection signal="PlayerHit" from="." to="Interactor" method="SendActions"]
 [connection signal="body_entered" from="PlayerTargetting" to="." method="DetectPlayer"]
 [connection signal="body_exited" from="PlayerTargetting" to="." method="LosePlayer"]
 [connection signal="area_entered" from="HurtBox" to="." method="OnHit"]

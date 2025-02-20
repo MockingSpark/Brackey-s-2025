@@ -15,12 +15,17 @@ public partial class NarrativeReactor : Node
 
     public void SendActions(Node2D body)
     {
+        SendActions();
+    }
+
+    public void SendActions()
+    {
         if (Targets.Length > 0)
         {
             int count = 0;
             foreach (var action in Container.Actions)
             {
-                if(action.ActionType == E_FairyAction.FocusOnObject)
+                if (action.ActionType == E_FairyAction.FocusOnObject)
                 {
                     ((FairyActionFocus)action).Target = Targets[count];
                     count++;

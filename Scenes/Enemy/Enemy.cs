@@ -5,6 +5,9 @@ using System.Diagnostics;
 
 public partial class Enemy : CharacterBody2D
 {
+    [Signal]
+    public delegate void PlayerHitEventHandler();
+
     [Export]
     public float Speed = 300.0f;
 
@@ -82,6 +85,7 @@ public partial class Enemy : CharacterBody2D
             Velocity = new Vector2(0, 0);
             GlobalPosition -= Position.DirectionTo(body.GlobalPosition) * 10;
             stunned = true;
+            EmitSignal(SignalName.PlayerHit);
         }
         else if(body.GetParent<Projectile>() != null)
         {        

@@ -69,6 +69,7 @@ public partial class NarrativeManager : Node
             else
             {
                 fairy.NoAction();
+                savedQueue.Clear();
             }
         }
     }
