@@ -105,5 +105,5 @@ ActionTime = 1.0
 script = ExtResource("1_n6jeq")
 Actions = Array[Object]([SubResource("Resource_x6kjn"), SubResource("Resource_ys7uv"), SubResource("Resource_urll5"), SubResource("Resource_qs1mx"), SubResource("Resource_uumm5"), SubResource("Resource_hdh14"), SubResource("Resource_oxa5b"), SubResource("Resource_y7jsp"), SubResource("Resource_c8sij")])
 Priority = 0
-ActionType = 11
+ActionType = 10
 ActionTime = 0.0

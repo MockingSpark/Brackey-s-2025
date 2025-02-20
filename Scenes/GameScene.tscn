@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://yc7ocknrfysc" path="res://Scenes/NarrativeManager/interactor.tscn" id="4_aieif"]
 [ext_resource type="PackedScene" uid="uid://dcftouctjkf3e" path="res://Scenes/Button/button.tscn" id="4_edp12"]
 [ext_resource type="PackedScene" uid="uid://dbdtky7u65k03" path="res://Scenes/Projectile/pickable_spear.tscn" id="5_5i7ym"]
-[ext_resource type="Resource" uid="uid://brak264gjbkg3" path="res://Source/FirstContainer.tres" id="5_6qpar"]
+[ext_resource type="Resource" uid="uid://brak264gjbkg3" path="res://Source/Actions/FirstContainer.tres" id="5_6qpar"]
 [ext_resource type="PackedScene" uid="uid://bq6wiakr1leji" path="res://Scenes/Enemy/enemy.tscn" id="6_4ew2e"]
 [ext_resource type="PackedScene" uid="uid://dg3wxmmau0er0" path="res://Scenes/Enemy/enemy_surveil_point.tscn" id="7_ivn2t"]
 [ext_resource type="PackedScene" uid="uid://0s6hs2pwdk2f" path="res://Scenes/Box/box.tscn" id="9_tsj2q"]
