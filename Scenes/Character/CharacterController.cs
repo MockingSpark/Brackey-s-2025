@@ -16,6 +16,8 @@ public partial class CharacterController : CharacterBody2D
     public float pushMaxSpeed= 10.0f;
 
 
+	private bool locked = false;
+
 	private bool respawning = false;
     private float respawnSpeed = 0.05f;
     private float respawnTolerance = 10;
@@ -78,17 +80,32 @@ public partial class CharacterController : CharacterBody2D
         {
             buffer.TimeAdvance(delta);
         }
-        
-        if (!respawning)
+
+        if(locked)
+        {
+            HandleLocked((float)delta);
+        }
+        else if (!respawning)
 		{
             HandleGeneralMovement((float)delta);
 		}
         else
         {
             HandleRespawn();
-        }
-		
+        }		
 	}
+
+    void HandleLocked(float delta)
+    {
+        var velocity = Velocity;
+        // Add the gravity.
+        if (!IsOnFloor())
+        {
+            velocity += GetGravity() * delta;
+        }
+
+        MoveAndSlide();
+    }
 
     void HandleRespawn()
     {
@@ -217,6 +234,15 @@ public partial class CharacterController : CharacterBody2D
             animToPlay += projectileCount > 0 ? "Spear" : "Empty";
             animationPLayer.Play(animToPlay);
         }
+    }
+
+    public void LockPlayer()
+    {
+        locked = true;
+    }
+    public void UnlockPlayer()
+    {
+        locked = false;
     }
 
 	private void ThrowProjectile()

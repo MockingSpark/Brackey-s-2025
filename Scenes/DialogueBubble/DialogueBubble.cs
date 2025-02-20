@@ -24,18 +24,32 @@ public partial class DialogueBubble : Control
 
     public override void _Ready()
     {
-        if(isBold)
-        {
-            GetNode<CollisionShape2D>("StaticBody2D/BubbleShape").SetDeferred("disabled", true);
-        }
+        HideBubble();
     }
 
     public void Resize()
     {
         if (isBold)
         {
-            GetNode<CollisionShape2D>("StaticBody2D/BubbleShape").SetDeferred("disabled", false);
             ((RectangleShape2D)GetNode<CollisionShape2D>("StaticBody2D/BubbleShape").Shape).Size = GetNode<PanelContainer>("PanelContainer").Size;
+        }
+    }
+
+    public void ShowBubble()
+    {
+        Visible = true;
+        if(isBold)
+        {
+            GetNode<CollisionShape2D>("StaticBody2D/BubbleShape").SetDeferred("disabled", false);
+        }
+    }
+
+    public void HideBubble()
+    {
+        Visible = false;
+        if (isBold)
+        {
+            GetNode<CollisionShape2D>("StaticBody2D/BubbleShape").SetDeferred("disabled", true);
         }
     }
 }

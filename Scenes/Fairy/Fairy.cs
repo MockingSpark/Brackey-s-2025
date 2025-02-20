@@ -23,9 +23,13 @@ public partial class Fairy : Node2D
     private DialogueBubble roundBubble;
     [Export]
     private DialogueBubble boldBubble;
-    protected List<InterestPoint> interestPointList = new List<InterestPoint>();
 
-    protected InterestPoint currentPointFollowed;
+    private Node2D focusPoint;
+    private Vector2 focusOffset;
+    private bool emergency = false;
+
+    [Signal]
+    public delegate void FairyActionDoneEventHandler();
 
     public CharacterController Player 
     {
@@ -44,39 +48,35 @@ public partial class Fairy : Node2D
 	{
         GetNewFollowPoint();
         GetNode<AnimatedSprite2D>("AnimatedSprite2D").Play("default");
-        var interestPointsAsNodes = GetTree().GetNodesInGroup("InterestPoint");
-        foreach (Node node in interestPointsAsNodes)
-        {
-            if (node is InterestPoint interestPoint)
-            {
-                interestPointList.Add(interestPoint);
-                interestPoint.OnPointActivated += InterestPoint_OnPointActivated;
-            }
-        }
         boldBubble.Visible = false;
         roundBubble.Visible = false;
+        NarrativeManager.Instance.RegisterFairy(this);
     }
 
-    protected void InterestPoint_OnPointActivated(InterestPoint point)
-    {
-        currentPointFollowed = point;
-        if(currentPointFollowed.DialogueToPlay != null)
-        {
-            ReadDialogue(currentPointFollowed.DialogueToPlay);
-        }
-    }
     protected void ReadDialogue(Dialogue dialogue)
     {
         if(dialogue.isBold)
         {
-            boldBubble.Visible = true;
-            boldBubble.Text = dialogue.text[0];
+            boldBubble.ShowBubble();
+            boldBubble.Text = dialogue.text;
         }
         else
         {
-            roundBubble.Visible = true;
-            roundBubble.Text = dialogue.text[0];
+            roundBubble.ShowBubble();
+            roundBubble.Text = dialogue.text;
         }
+    }
+
+    private void GiveScore(float score)
+    {
+        boldBubble.Visible = true;
+        boldBubble.Text = score.ToString("0.0");
+    }
+
+    private void HideBubbles()
+    {
+        boldBubble.HideBubble();
+        roundBubble.HideBubble();
     }
 
 
@@ -86,7 +86,7 @@ public partial class Fairy : Node2D
 		if (Player == null)
 			return;
 
-        if(currentPointFollowed == null)
+        if(focusPoint == null)
         {
             moveTimer += (float)delta;
             if (isInWall && moveTimer > inWallTimer)
@@ -99,23 +99,23 @@ public partial class Fairy : Node2D
             }
         }
 
-        Vector2 position = currentPointFollowed == null ? Player.GlobalPosition - playerFollowPoint : currentPointFollowed.GlobalPosition;
+        Vector2 position = focusPoint == null ? Player.GlobalPosition - playerFollowPoint : focusPoint.GlobalPosition + focusOffset;
 
+        float speed = emergency ? 0.9f : (float)(Speed * delta);
 
-
-        GlobalPosition = GlobalPosition.Lerp(position, (float)(Speed * delta));
+        GlobalPosition = GlobalPosition.Lerp(position, speed);
 	}
 
     public void ImpactedWall(Node2D wall)
     {
-        if (currentPointFollowed != null) return;
+        if (focusPoint != null) return;
 
         isInWall = true;
         GetNewFollowPoint();
     }
     public void ExitedWall(Node2D wall)
     {
-        if (currentPointFollowed != null) return;
+        if (focusPoint != null) return;
 
         isInWall = false;
     }
@@ -138,4 +138,92 @@ public partial class Fairy : Node2D
 
         playerFollowPoint = new Vector2(x, y);
     }
+
+
+    #region Fairy Actions
+    public void NoAction()
+    {
+        emergency = false;
+        focusPoint = null;
+        GetNewFollowPoint();
+    }
+
+    public void FocusOnPlayer(float actionTimer)
+    {
+        emergency = false ;
+        focusPoint = null;
+        GetNewFollowPoint();
+        SendEndNotif(actionTimer);
+    }
+
+    public void FocusOnNode(Node2D node, Vector2 offset, float actionTimer)
+    {
+        focusPoint = node;
+        focusOffset = offset;
+        SendEndNotif(actionTimer);
+    }
+
+    public void ReadDialogueAction(Dialogue dialogue, float actionTimer)
+    {
+        if (dialogue == null)
+        {
+            SendEndNotif(0);
+            return;
+        }
+        ReadDialogue(dialogue);
+        SendEndNotif(actionTimer);
+    }
+
+    public void HideText()
+    {
+        HideBubbles();
+        SendEndNotif(0);
+    }
+
+    public void GivePlayerScore(float score, float actionTimer)
+    {
+        GiveScore(score);
+        SendEndNotif(actionTimer);
+    }
+
+    public void ProtectPlayer(float actionTimer)
+    {
+        if (Player == null)
+        {
+            SendEndNotif(0);
+            return;
+        }
+
+        emergency = true;
+        focusPoint = player;
+        SendEndNotif(actionTimer);
+    }
+    public void SavePlayer(float actionTimer)
+    {
+        if (Player == null)
+        {
+            SendEndNotif(0);
+            return;
+        }
+
+        emergency = true;
+        focusPoint = player;
+        SendEndNotif(actionTimer);
+    }
+
+    public void RemoveEmergency()
+    {
+        emergency = false;
+        SendEndNotif(0);
+    }
+
+    private async void SendEndNotif(float actionTimer)
+    {
+        if(actionTimer != 0)
+        {
+            await ToSignal(CreateTween().TweenInterval(actionTimer), Tween.SignalName.Finished);
+        }
+        EmitSignal(SignalName.FairyActionDone);
+    }
+    #endregion
 }

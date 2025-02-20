@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://x42y1dfyasrr"]
+[gd_scene load_steps=16 format=3 uid="uid://x42y1dfyasrr"]
 
 [ext_resource type="Texture2D" uid="uid://chn7u3jyidw7o" path="res://Assets/Sprites/WIP_Background.png" id="1_u7e8s"]
 [ext_resource type="PackedScene" uid="uid://c1d0x30dt6bad" path="res://Scenes/Character/CharacterNode.tscn" id="2_0j0pk"]
@@ -10,8 +10,9 @@
 [ext_resource type="PackedScene" uid="uid://cvnf375ogiyfw" path="res://Scenes/Door/door.tscn" id="8_nboij"]
 [ext_resource type="PackedScene" uid="uid://dcftouctjkf3e" path="res://Scenes/Button/button.tscn" id="9_73rj4"]
 [ext_resource type="PackedScene" uid="uid://d0bke5oyhuury" path="res://Scenes/Respawn/respawn_area.tscn" id="10_yw575"]
+[ext_resource type="Script" path="res://Scenes/NarrativeManager/NarrativeReactor.cs" id="11_f58pt"]
 [ext_resource type="PackedScene" uid="uid://cw000q3yg2bj8" path="res://Scenes/Fairy/Fairy.tscn" id="11_lu5el"]
-[ext_resource type="Script" path="res://Scenes/NarrativeManager/NarrativeManager.cs" id="12_hyabm"]
+[ext_resource type="Resource" uid="uid://b37rdulvdwx57" path="res://Source/TestContainer.tres" id="12_tf5i0"]
 [ext_resource type="PackedScene" uid="uid://bqx487uxlb2pj" path="res://Scenes/InterestPoint/InterestPoint.tscn" id="13_1h3pk"]
 [ext_resource type="Resource" uid="uid://c7ggwq6hgfjsy" path="res://Scenes/Dialogue/WelcomeDialogue.tres" id="14_85yha"]
 
@@ -29,6 +30,7 @@ layer_0/tile_data = PackedInt32Array(-131049, 327680, 1, -131048, 65536, 1, -131
 
 [node name="Player" parent="." instance=ExtResource("2_0j0pk")]
 unique_name_in_owner = true
+coyoteJumpTolerance = 0.0
 
 [node name="Enemy" parent="." instance=ExtResource("4_rgeek")]
 position = Vector2(424, -356)
@@ -65,6 +67,10 @@ position = Vector2(1121, -249)
 
 [node name="RespawnArea" parent="." instance=ExtResource("10_yw575")]
 
+[node name="Node" type="Node" parent="RespawnArea"]
+script = ExtResource("11_f58pt")
+Container = ExtResource("12_tf5i0")
+
 [node name="InterestPoint" parent="." instance=ExtResource("13_1h3pk")]
 position = Vector2(1002, -179)
 DialogueToPlay = ExtResource("14_85yha")
@@ -73,8 +79,6 @@ DialogueToPlay = ExtResource("14_85yha")
 position = Vector2(287, -147)
 scale = Vector2(0.5, 0.5)
 
-[node name="NarrativeManager" type="Node2D" parent="."]
-script = ExtResource("12_hyabm")
-
 [connection signal="ButtonPressed" from="Button" to="Door" method="OpenDoor"]
 [connection signal="ButtonReleased" from="Button" to="Door" method="CloseDoor"]
+[connection signal="body_entered" from="RespawnArea" to="RespawnArea/Node" method="SendActions"]
