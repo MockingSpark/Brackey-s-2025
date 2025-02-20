@@ -16,6 +16,22 @@ public partial class Camera : Camera2D
 	/** node to attach when trigger _Ready() */
 	public Node2D DefaultTargetNode;
 
+	[Export]
+	public float MaxCameraSpeed = 1200.0f;
+
+    [Export]
+    public float SpeedLerpStrenght = 0.5f;
+
+    [Export]
+    public float MaxZoomSpeed = 0.7f;
+
+    [Export]
+    public float ZoomLerpStrength = 0.8f;
+
+    [ExportCategory("Debug")]
+	[Export]
+	protected Vector2 TargetZoom;
+
 	[ExportCategory("Debug")]
 	[Export]
 	protected ECameraMode currentMode = ECameraMode.Attached;
@@ -44,6 +60,8 @@ public partial class Camera : Camera2D
 		this.MakeCurrent();
 
 		DefaultZoom = Zoom.X;
+		TargetZoom = Zoom;
+
 
 		if (DefaultTargetNode != null)
 		{
@@ -73,7 +91,9 @@ public partial class Camera : Camera2D
 				break;
 		}
 
-		GlobalPosition = Utils.LerpStepped(GlobalPosition, TargetPosition, 0.5f, 1200.0f * (float)delta);
+		GlobalPosition = Utils.LerpStepped(GlobalPosition, TargetPosition, SpeedLerpStrenght, MaxCameraSpeed * (float)delta);
+
+		Zoom = Utils.LerpStepped(Zoom, TargetZoom, ZoomLerpStrength, MaxZoomSpeed * (float)delta);
 	}
 
 	public void UseStaticMode(Nullable<Vector2> position = null)
@@ -107,7 +127,7 @@ public partial class Camera : Camera2D
 	{
 		// Todo: Lerp to between zoom
 
-		Zoom = new Vector2(newZoom, newZoom);
+		TargetZoom = new Vector2(newZoom, newZoom);
     }
 
 }
