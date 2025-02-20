@@ -24,6 +24,11 @@ public partial class Camera : Camera2D
     [Export]
     protected float DefaultZoom;
 
+    [ExportCategory("Debug")]
+    [Export]
+    /** node to attach when trigger _Ready() */
+    protected Vector2 TargetPosition;
+
     /** In ECameraMode.Attached, which node to follow. */
     protected Node2D TargetNode = null;
 
@@ -61,21 +66,24 @@ public partial class Camera : Camera2D
 			case ECameraMode.Attached:
 				if(IsInstanceValid(TargetNode))
 				{
-					GlobalPosition = TargetNode.Position;
+                    TargetPosition = TargetNode.Position;
 				}
 				break;
-
 			case ECameraMode.Static:
 				break;
 		}
+
+		GlobalPosition = TargetPosition;
 	}
 
-	public void SetStaticMode(Nullable<Vector2> position = null)
+	public void UseStaticMode(Nullable<Vector2> position = null)
 	{
 		currentMode = ECameraMode.Static;
-	}
 
-	public void SetAttachMode(Node2D attachTarget)
+		TargetPosition = position != null ? position.GetValueOrDefault() : GlobalPosition;
+    }
+
+	public void UseAttachMode(Node2D attachTarget)
 	{
 		TargetNode = attachTarget;
 
