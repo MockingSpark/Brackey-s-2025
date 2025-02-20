@@ -27,21 +27,9 @@ position = Vector2(2, 0)
 shape = ExtResource("4_trrsm")
 one_way_collision = true
 
-[node name="StickyArea" type="Area2D" parent="."]
-position = Vector2(18, 0)
-collision_layer = 4
-collision_mask = 16
-gravity = 90000.0
-linear_damp = 22.94
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StickyArea"]
-position = Vector2(3.5, 0)
-shape = SubResource("RectangleShape2D_yyr7t")
-metadata/_edit_lock_ = true
-
 [node name="BouncyArea" type="Area2D" parent="."]
 position = Vector2(18, 0)
-collision_layer = 4
+collision_layer = 0
 collision_mask = 2
 gravity = 90000.0
 linear_damp = 22.94
@@ -51,6 +39,32 @@ position = Vector2(3.5, 0)
 shape = SubResource("RectangleShape2D_yyr7t")
 metadata/_edit_lock_ = true
 
+[node name="StickyArea" type="Area2D" parent="."]
+position = Vector2(18, 0)
+collision_layer = 0
+collision_mask = 16
+gravity = 90000.0
+linear_damp = 22.94
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StickyArea"]
+position = Vector2(3.5, 0)
+shape = SubResource("RectangleShape2D_yyr7t")
+metadata/_edit_lock_ = true
+
+[node name="DetectionBox" type="Area2D" parent="."]
+position = Vector2(18, 0)
+collision_layer = 4
+collision_mask = 0
+gravity = 90000.0
+linear_damp = 22.94
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionBox"]
+position = Vector2(3.5, 0)
+shape = SubResource("RectangleShape2D_yyr7t")
+metadata/_edit_lock_ = true
+
+[connection signal="body_entered" from="BouncyArea" to="." method="OnBounce"]
 [connection signal="area_entered" from="StickyArea" to="." method="OnStick"]
 [connection signal="body_entered" from="StickyArea" to="." method="OnStick"]
-[connection signal="body_entered" from="BouncyArea" to="." method="OnBounce"]
+[connection signal="area_entered" from="DetectionBox" to="." method="OnStick"]
+[connection signal="body_entered" from="DetectionBox" to="." method="OnStick"]

@@ -1,19 +1,18 @@
-[gd_scene load_steps=15 format=3 uid="uid://x42y1dfyasrr"]
+[gd_scene load_steps=14 format=3 uid="uid://x42y1dfyasrr"]
 
 [ext_resource type="Texture2D" uid="uid://chn7u3jyidw7o" path="res://Assets/Sprites/WIP_Background.png" id="1_u7e8s"]
 [ext_resource type="PackedScene" uid="uid://c1d0x30dt6bad" path="res://Scenes/Character/CharacterNode.tscn" id="2_0j0pk"]
 [ext_resource type="PackedScene" uid="uid://cp3ga5u36lr85" path="res://Scenes/terrain/terrain.tscn" id="4_2wuxl"]
 [ext_resource type="PackedScene" uid="uid://dbdtky7u65k03" path="res://Scenes/Projectile/pickable_spear.tscn" id="4_16h4l"]
-[ext_resource type="PackedScene" uid="uid://bq6wiakr1leji" path="res://Scenes/Enemy/enemy.tscn" id="4_rgeek"]
 [ext_resource type="PackedScene" uid="uid://dg3wxmmau0er0" path="res://Scenes/Enemy/enemy_surveil_point.tscn" id="5_lrb4d"]
 [ext_resource type="PackedScene" uid="uid://0s6hs2pwdk2f" path="res://Scenes/Box/box.tscn" id="7_5v8d3"]
 [ext_resource type="PackedScene" uid="uid://cvnf375ogiyfw" path="res://Scenes/Door/door.tscn" id="8_nboij"]
 [ext_resource type="PackedScene" uid="uid://dcftouctjkf3e" path="res://Scenes/Button/button.tscn" id="9_73rj4"]
 [ext_resource type="PackedScene" uid="uid://d0bke5oyhuury" path="res://Scenes/Respawn/respawn_area.tscn" id="10_yw575"]
-[ext_resource type="PackedScene" uid="uid://yc7ocknrfysc" path="res://Scenes/NarrativeManager/interactor.tscn" id="11_78807"]
 [ext_resource type="PackedScene" uid="uid://cw000q3yg2bj8" path="res://Scenes/Fairy/Fairy.tscn" id="11_lu5el"]
 [ext_resource type="PackedScene" uid="uid://bqx487uxlb2pj" path="res://Scenes/InterestPoint/InterestPoint.tscn" id="13_1h3pk"]
 [ext_resource type="Resource" uid="uid://c7ggwq6hgfjsy" path="res://Scenes/Dialogue/WelcomeDialogue.tres" id="14_85yha"]
+[ext_resource type="PackedScene" uid="uid://c4d4nqowjppgv" path="res://Scenes/GlassDoor/GlassDoor.tscn" id="15_xaggh"]
 
 [node name="TestScene" type="Node2D"]
 
@@ -30,11 +29,6 @@ layer_0/tile_data = PackedInt32Array(-131049, 327680, 1, -131048, 65536, 1, -131
 [node name="Player" parent="." instance=ExtResource("2_0j0pk")]
 unique_name_in_owner = true
 coyoteJumpTolerance = 0.0
-
-[node name="Enemy" parent="." instance=ExtResource("4_rgeek")]
-texture_repeat = 0
-position = Vector2(424, -356)
-collision_mask = 71
 
 [node name="EnemySurveilPoint" parent="." instance=ExtResource("5_lrb4d")]
 
@@ -58,7 +52,7 @@ position = Vector2(839, -125)
 rotation = 2.00082
 
 [node name="Box" parent="." instance=ExtResource("7_5v8d3")]
-position = Vector2(486, -136)
+position = Vector2(504, -117)
 
 [node name="Door" parent="." instance=ExtResource("8_nboij")]
 position = Vector2(1121, -249)
@@ -67,8 +61,6 @@ position = Vector2(1121, -249)
 
 [node name="RespawnArea" parent="." instance=ExtResource("10_yw575")]
 
-[node name="Interactor" parent="RespawnArea" instance=ExtResource("11_78807")]
-
 [node name="InterestPoint" parent="." instance=ExtResource("13_1h3pk")]
 position = Vector2(1002, -179)
 DialogueToPlay = ExtResource("14_85yha")
@@ -76,6 +68,13 @@ DialogueToPlay = ExtResource("14_85yha")
 [node name="Fairy" parent="." instance=ExtResource("11_lu5el")]
 position = Vector2(287, -147)
 scale = Vector2(0.5, 0.5)
+
+[node name="SoundManager" type="Node2D" parent="."]
+
+[node name="BGM" type="AudioStreamPlayer" parent="SoundManager"]
+
+[node name="GlassDoor" parent="." instance=ExtResource("15_xaggh")]
+position = Vector2(-220, -377)
 
 [connection signal="ButtonPressed" from="Button" to="Door" method="OpenDoor"]
 [connection signal="ButtonReleased" from="Button" to="Door" method="CloseDoor"]
