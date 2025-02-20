@@ -52,7 +52,7 @@ public partial class Camera : Camera2D
 		switch (currentMode)
 		{
 			case ECameraMode.Attached:
-				if(TargetNode != null)
+				if(IsInstanceValid(TargetNode))
 				{
 					GlobalPosition = TargetNode.Position;
 				}
