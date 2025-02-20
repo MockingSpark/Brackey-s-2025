@@ -124,7 +124,7 @@ public partial class Fairy : Node2D
 		GetNode<AnimatedSprite2D>("AnimatedSprite2D").FlipH = !ShouldLookLeft();
 
 
-        GlobalPosition = GlobalPosition.Lerp(position, speed);
+		GlobalPosition = GlobalPosition.Lerp(position, speed);
 	}
 
 	public bool ShouldLookLeft()
