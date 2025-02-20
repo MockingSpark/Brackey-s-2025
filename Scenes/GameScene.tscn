@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://25k5f531xsh2"]
+[gd_scene load_steps=21 format=3 uid="uid://25k5f531xsh2"]
 
 [ext_resource type="PackedScene" uid="uid://cw000q3yg2bj8" path="res://Scenes/Fairy/Fairy.tscn" id="1_j437h"]
 [ext_resource type="PackedScene" uid="uid://cp3ga5u36lr85" path="res://Scenes/terrain/terrain.tscn" id="1_qxp7j"]
@@ -10,7 +10,7 @@
 [ext_resource type="Resource" uid="uid://brak264gjbkg3" path="res://Source/Actions/FirstContainer.tres" id="5_6qpar"]
 [ext_resource type="PackedScene" uid="uid://bq6wiakr1leji" path="res://Scenes/Enemy/enemy.tscn" id="6_4ew2e"]
 [ext_resource type="PackedScene" uid="uid://dg3wxmmau0er0" path="res://Scenes/Enemy/enemy_surveil_point.tscn" id="7_ivn2t"]
-[ext_resource type="Script" path="res://Scenes/HiddenArea.cs" id="8_6jygc"]
+[ext_resource type="PackedScene" uid="uid://bex8lq1o2homd" path="res://Scenes/HiddenArea/hidden_area.tscn" id="8_htwt2"]
 [ext_resource type="PackedScene" uid="uid://0s6hs2pwdk2f" path="res://Scenes/Box/box.tscn" id="9_tsj2q"]
 [ext_resource type="PackedScene" uid="uid://cs4go5ve5h3cg" path="res://Scenes/Background/parallax_background.tscn" id="9_u1uqc"]
 [ext_resource type="Texture2D" uid="uid://utbh7m0awxrl" path="res://Assets/Background/mansion.png" id="11_ai78j"]
@@ -21,9 +21,6 @@ font_size = 25
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_e0myi"]
 size = Vector2(175.699, 364)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_kqoer"]
-size = Vector2(309, 100)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_djs5h"]
 size = Vector2(4.47998, 15.36)
@@ -129,21 +126,7 @@ collision_mask = 128
 [node name="Home Door" parent="tableau0" instance=ExtResource("3_bfh2t")]
 position = Vector2(847, -106)
 
-[node name="HiddenArea" type="ColorRect" parent="tableau0"]
-modulate = Color(0.141176, 0.0901961, 0.0588235, 1)
-z_index = 3
-offset_left = -432.0
-offset_top = -144.0
-offset_right = -121.0
-offset_bottom = -48.0
-script = ExtResource("8_6jygc")
-
-[node name="Area2D" type="Area2D" parent="tableau0/HiddenArea"]
-collision_layer = 0
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="tableau0/HiddenArea/Area2D"]
-position = Vector2(151.5, 48)
-shape = SubResource("RectangleShape2D_kqoer")
+[node name="HiddenArea" parent="tableau0" instance=ExtResource("8_htwt2")]
 
 [node name="tableau1" type="Node2D" parent="."]
 
@@ -351,8 +334,6 @@ position = Vector2(-112, -90)
 [connection signal="body_entered" from="tableau0/Start Dialogue" to="tableau0/Start Dialogue/Interactor" method="SendActions"]
 [connection signal="ButtonPressed" from="tableau0/Home Door Button" to="tableau0/Home Door" method="OpenDoor"]
 [connection signal="area_entered" from="tableau0/Home Door Button/Area2D" to="tableau0/Home Door Button" method="OnButtonPressed"]
-[connection signal="body_entered" from="tableau0/HiddenArea/Area2D" to="tableau0/HiddenArea" method="RevealArea"]
-[connection signal="body_exited" from="tableau0/HiddenArea/Area2D" to="tableau0/HiddenArea" method="HideArea"]
 [connection signal="ButtonPressed" from="tableau4/Button2" to="tableau4/Door2" method="OpenDoor"]
 [connection signal="ButtonReleased" from="tableau4/Button2" to="tableau4/Door2" method="CloseDoor"]
 [connection signal="area_entered" from="tableau4/Button2/Area2D" to="tableau4/Button2" method="OnButtonPressed"]

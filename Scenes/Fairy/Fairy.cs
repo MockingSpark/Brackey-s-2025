@@ -121,7 +121,22 @@ public partial class Fairy : Node2D
 
 		float speed = emergency ? 0.9f : (float)(Speed * delta);
 
-		GlobalPosition = GlobalPosition.Lerp(position, speed);
+		GetNode<AnimatedSprite2D>("AnimatedSprite2D").FlipH = !ShouldLookLeft();
+
+
+        GlobalPosition = GlobalPosition.Lerp(position, speed);
+	}
+
+	public bool ShouldLookLeft()
+	{
+		if (focusPoint != null)
+		{
+			return Position.X - focusPoint.Position.X > 0;
+		}
+		else
+		{
+			return Position.X - Player.Position.X > 0;
+		}
 	}
 
 	public void ImpactedWall(Node2D wall)

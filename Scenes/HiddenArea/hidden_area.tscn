@@ -1,0 +1,25 @@
+[gd_scene load_steps=3 format=3 uid="uid://bex8lq1o2homd"]
+
+[ext_resource type="Script" path="res://Scenes/HiddenArea/HiddenArea.cs" id="1_xygff"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kqoer"]
+size = Vector2(309, 100)
+
+[node name="HiddenArea" type="ColorRect"]
+modulate = Color(0.141176, 0.0901961, 0.0588235, 1)
+z_index = 3
+offset_left = -432.0
+offset_top = -144.0
+offset_right = -121.0
+offset_bottom = -48.0
+script = ExtResource("1_xygff")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(151.5, 48)
+shape = SubResource("RectangleShape2D_kqoer")
+
+[connection signal="body_entered" from="Area2D" to="." method="RevealArea"]
+[connection signal="body_exited" from="Area2D" to="." method="HideArea"]

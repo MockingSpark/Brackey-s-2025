@@ -5,12 +5,10 @@
 
 [node name="PickableSpear" type="Sprite2D"]
 z_index = -1
-position = Vector2(529, -25)
 rotation = 1.0472
 scale = Vector2(3, 3)
 texture = ExtResource("1_it1ue")
 
 [node name="Pickable" parent="." instance=ExtResource("2_iqgv3")]
-position = Vector2(0, 0)
 rotation = 0.0
 scale = Vector2(0.5, 0.5)

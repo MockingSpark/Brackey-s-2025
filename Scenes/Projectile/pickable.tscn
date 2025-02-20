@@ -6,7 +6,6 @@
 radius = 68.0294
 
 [node name="Pickable" type="Area2D"]
-position = Vector2(513, -50)
 rotation = 1.37074
 collision_layer = 8
 script = ExtResource("1_8x1cw")

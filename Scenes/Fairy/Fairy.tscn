@@ -42,7 +42,6 @@ boldBubble = NodePath("Bold_bubble")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 z_index = 1
-position = Vector2(-3.33333, 0)
 scale = Vector2(3.75, 3.75)
 sprite_frames = ExtResource("1_438el")
 frame_progress = 0.375209
