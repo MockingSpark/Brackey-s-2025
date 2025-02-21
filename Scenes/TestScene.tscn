@@ -73,6 +73,7 @@ position = Vector2(-220, -377)
 
 [node name="Enemy" parent="." instance=ExtResource("12_c6huv")]
 position = Vector2(465, -361)
+deathAnimation = null
 
 [connection signal="ButtonPressed" from="Button" to="Door" method="OpenDoor"]
 [connection signal="ButtonReleased" from="Button" to="Door" method="CloseDoor"]

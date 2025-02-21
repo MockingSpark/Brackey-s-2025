@@ -97,42 +97,54 @@ layer_0/tile_data = PackedInt32Array(-262112, 0, 3, -262111, 65536, 3, -262110, 
 metadata/_edit_lock_ = true
 
 [node name="Player" parent="." instance=ExtResource("2_l2hhf")]
-position = Vector2(8860, 106)
+position = Vector2(9556, -68)
 
 [node name="tableau0" parent="." instance=ExtResource("4_ccrff")]
 
 [node name="tableau1" parent="." instance=ExtResource("5_tvuca")]
 metadata/_edit_lock_ = true
+metadata/_edit_group_ = true
 
 [node name="tableau2" parent="." instance=ExtResource("6_xgppp")]
 metadata/_edit_lock_ = true
+metadata/_edit_group_ = true
 
 [node name="tableau3" parent="." instance=ExtResource("7_3u1j5")]
+metadata/_edit_group_ = true
+metadata/_edit_lock_ = true
 
 [node name="tableau4" parent="." instance=ExtResource("8_4flgn")]
+metadata/_edit_group_ = true
+metadata/_edit_lock_ = true
 
 [node name="tableau5" parent="." instance=ExtResource("17_acdbx")]
+position = Vector2(0, 1)
+metadata/_edit_group_ = true
+metadata/_edit_lock_ = true
 
 [node name="tableau6" parent="." instance=ExtResource("10_iuc0p")]
+position = Vector2(0, 0)
+metadata/_edit_group_ = true
+metadata/_edit_lock_ = true
 
 [node name="tableau7" type="Node2D" parent="."]
-position = Vector2(1009, 145)
+metadata/_edit_group_ = true
 
 [node name="Box" parent="tableau7" instance=ExtResource("9_tsj2q")]
-position = Vector2(9169, -169)
+position = Vector2(10177, -25)
 
 [node name="Door" parent="tableau7" instance=ExtResource("3_bfh2t")]
-position = Vector2(10488, -369)
+position = Vector2(11496, -225)
 invert = true
 
 [node name="Button" parent="tableau7" instance=ExtResource("4_edp12")]
-position = Vector2(9335, -106)
+position = Vector2(10343, 38)
 
 [node name="PickableSpear" parent="tableau7" instance=ExtResource("5_5i7ym")]
-position = Vector2(9273, -692)
+position = Vector2(10281, -548)
 
 [node name="Button2" parent="tableau7" instance=ExtResource("4_edp12")]
-position = Vector2(8986, -696)
+position = Vector2(9994, -552)
 rotation = -3.14159
 scale = Vector2(3.18751, 3.125)
 metadata/_edit_group_ = true
@@ -147,26 +159,27 @@ position = Vector2(2.23999, -0.319992)
 shape = SubResource("RectangleShape2D_djs5h")
 
 [node name="tableau8" type="Node2D" parent="."]
-position = Vector2(1009, 145)
+metadata/_edit_group_ = true
 
 [node name="Door" parent="tableau8" instance=ExtResource("3_bfh2t")]
-position = Vector2(11599, -209)
+position = Vector2(12606, -63)
 
 [node name="Enemy" parent="tableau8" instance=ExtResource("6_4ew2e")]
-position = Vector2(10955, -74)
+position = Vector2(11962, 72)
+deathAnimation = null
 
 [node name="EnemySurveilPoint" parent="tableau8" instance=ExtResource("7_ivn2t")]
-position = Vector2(10714, -101)
+position = Vector2(11721, 45)
 
 [node name="EnemySurveilPoint2" parent="tableau8" instance=ExtResource("7_ivn2t")]
-position = Vector2(11116, -103)
+position = Vector2(12123, 43)
 directionToGo = Vector2(-1, 0)
 
 [node name="Button" parent="tableau8" instance=ExtResource("4_edp12")]
-position = Vector2(11283, -10)
+position = Vector2(12290, 136)
 
 [node name="Box" parent="tableau8" instance=ExtResource("9_tsj2q")]
-position = Vector2(11198, -314)
+position = Vector2(12205, -168)
 
 [node name="ParallaxBackground" parent="." instance=ExtResource("9_u1uqc")]
 position = Vector2(6756, -317)
@@ -181,6 +194,16 @@ texture = ExtResource("11_ai78j")
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground"]
 position = Vector2(-2076.71, 3769.86)
 texture = SubResource("GradientTexture2D_4scww")
+
+[node name="ColorRect" type="ColorRect" parent="ParallaxBackground"]
+offset_left = -18942.0
+offset_top = -3107.0
+offset_right = 24433.0
+offset_bottom = -1534.0
+color = Color(0.894118, 0.980392, 0.972549, 1)
+
+[node name="PickableSpear" parent="." instance=ExtResource("5_5i7ym")]
+position = Vector2(8474, 697)
 
 [connection signal="pressed" from="Camera2D/Menu/VBoxContainer/Start Game" to="Camera2D/Menu" method="hide"]
 [connection signal="ButtonPressed" from="tableau7/Button" to="tableau7/Door" method="CloseDoor"]

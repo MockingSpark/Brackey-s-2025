@@ -1,12 +1,12 @@
 [gd_scene load_steps=11 format=3 uid="uid://bq6wiakr1leji"]
 
 [ext_resource type="Script" path="res://Scenes/Enemy/Enemy.cs" id="1_xjpia"]
+[ext_resource type="PackedScene" uid="uid://km33f3y54wt3" path="res://Scenes/VFX/enemy_die.tscn" id="2_4ygq7"]
 [ext_resource type="SpriteFrames" uid="uid://csak62mxf63sj" path="res://Assets/Sprites/Enemy/Enemy_Animator.tres" id="2_lhsom"]
 [ext_resource type="AudioStream" uid="uid://c00xxdaik5rb1" path="res://Assets/Audio/Enemy_click.mp3" id="3_hcuq2"]
 [ext_resource type="Shape2D" uid="uid://cjljnixdv10a3" path="res://Scenes/Enemy/enemySolidBox.tres" id="3_lpabf"]
 [ext_resource type="PackedScene" uid="uid://yc7ocknrfysc" path="res://Scenes/NarrativeManager/interactor.tscn" id="5_tcpmy"]
 [ext_resource type="Resource" uid="uid://dd0wlndknp0jf" path="res://Source/Actions/EnemyHitContainer.tres" id="6_csun8"]
-[ext_resource type="PackedScene" uid="uid://csrdaulkf0rfg" path="res://Scenes/VFX/enemy_die.tscn" id="7_5rtc7"]
 [ext_resource type="PackedScene" uid="uid://in0ry8412lvu" path="res://Scenes/VFX/fairy_puff.tscn" id="8_f3tvt"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4e4co"]
@@ -24,7 +24,7 @@ collision_layer = 32
 collision_mask = 2
 script = ExtResource("1_xjpia")
 Speed = 100.0
-deathAnimation = ExtResource("7_5rtc7")
+deathAnimation = ExtResource("2_4ygq7")
 metadata/_edit_group_ = true
 
 [node name="SolidBox" type="CollisionShape2D" parent="."]

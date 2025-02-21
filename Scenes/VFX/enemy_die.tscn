@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://csrdaulkf0rfg"]
+[gd_scene load_steps=10 format=3 uid="uid://km33f3y54wt3"]
 
 [ext_resource type="SpriteFrames" uid="uid://ch5lld53ygnlu" path="res://Assets/Sprites/VFX/enemyDeath.tres" id="1_k80jg"]
 [ext_resource type="Script" path="res://Scenes/VFX/EnemyDie.cs" id="1_qjlni"]
