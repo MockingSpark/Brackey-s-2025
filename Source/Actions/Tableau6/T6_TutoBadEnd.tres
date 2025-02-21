@@ -1,0 +1,46 @@
+[gd_resource type="Resource" script_class="FairyActionContainer" load_steps=10 format=3 uid="uid://bfk15yuslv3ts"]
+
+[ext_resource type="Script" path="res://Scenes/Dialogue/Dialogue.cs" id="1_sudx5"]
+[ext_resource type="Script" path="res://Scenes/FairyActions/FairyActionDialogue.cs" id="2_18cj2"]
+[ext_resource type="Script" path="res://Scenes/FairyActions/FairyActionContainer.cs" id="3_gr8n3"]
+[ext_resource type="Script" path="res://Scenes/FairyActions/FairyActionNoText.cs" id="3_qk1en"]
+
+[sub_resource type="Resource" id="Resource_bfvuu"]
+script = ExtResource("1_sudx5")
+tag = ""
+text = "NO NO NO NO!"
+isBold = false
+linkedToFairy = true
+position = Vector2(0, 0)
+
+[sub_resource type="Resource" id="Resource_vn2sa"]
+script = ExtResource("2_18cj2")
+Dialogue = SubResource("Resource_bfvuu")
+ActionType = 3
+ActionTime = 1.0
+
+[sub_resource type="Resource" id="Resource_xqbu5"]
+script = ExtResource("1_sudx5")
+tag = ""
+text = "If I tell you to destroy the glass door, you do it!"
+isBold = false
+linkedToFairy = true
+position = Vector2(0, 0)
+
+[sub_resource type="Resource" id="Resource_0qvr0"]
+script = ExtResource("2_18cj2")
+Dialogue = SubResource("Resource_xqbu5")
+ActionType = 3
+ActionTime = 2.0
+
+[sub_resource type="Resource" id="Resource_sftby"]
+script = ExtResource("3_qk1en")
+ActionType = 5
+ActionTime = 0.0
+
+[resource]
+script = ExtResource("3_gr8n3")
+Actions = Array[Object]([SubResource("Resource_vn2sa"), SubResource("Resource_0qvr0"), SubResource("Resource_sftby")])
+Priority = 0
+ActionType = 0
+ActionTime = 0.0

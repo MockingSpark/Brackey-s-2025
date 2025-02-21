@@ -27,7 +27,7 @@ shape = SubResource("RectangleShape2D_e0myi")
 
 [node name="Interactor" parent="Start Dialogue" node_paths=PackedStringArray("Targets") instance=ExtResource("1_osgr4")]
 Container = ExtResource("2_y0gyn")
-Targets = [NodePath("")]
+Targets = [null]
 singleUse = true
 
 [node name="Home Door Button" parent="." instance=ExtResource("3_f7y5l")]
@@ -70,12 +70,10 @@ position = Vector2(-266, -71)
 [node name="PickableSpear6" parent="Node2D" instance=ExtResource("7_x88xs")]
 position = Vector2(-281, -75)
 rotation = 1.56309
-scale = Vector2(3, 3)
 
 [node name="PickableSpear7" parent="Node2D" instance=ExtResource("7_x88xs")]
 position = Vector2(-419, -120)
 rotation = -2.01779
-scale = Vector2(3, 3)
 
 [node name="PickableSpear8" parent="Node2D" instance=ExtResource("7_x88xs")]
 position = Vector2(-283, -71)

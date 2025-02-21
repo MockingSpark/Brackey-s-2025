@@ -1,0 +1,121 @@
+[gd_scene load_steps=14 format=3 uid="uid://bavwdj247vrk4"]
+
+[ext_resource type="PackedScene" uid="uid://dbdtky7u65k03" path="res://Scenes/Projectile/pickable_spear.tscn" id="1_0nsfx"]
+[ext_resource type="PackedScene" uid="uid://dcftouctjkf3e" path="res://Scenes/Button/button.tscn" id="2_d6n8k"]
+[ext_resource type="PackedScene" uid="uid://yc7ocknrfysc" path="res://Scenes/NarrativeManager/interactor.tscn" id="3_13cbi"]
+[ext_resource type="Resource" uid="uid://dwyd513bingi6" path="res://Source/Actions/Tableau4/T4_TutoEnd.tres" id="4_jt43o"]
+[ext_resource type="Resource" uid="uid://bmr0ls4isnekm" path="res://Source/Actions/Tableau4/T4_TutoBadEnd.tres" id="5_dlbrw"]
+[ext_resource type="PackedScene" uid="uid://cvnf375ogiyfw" path="res://Scenes/Door/door.tscn" id="6_0rman"]
+[ext_resource type="PackedScene" uid="uid://0s6hs2pwdk2f" path="res://Scenes/Box/box.tscn" id="7_wiikp"]
+[ext_resource type="PackedScene" uid="uid://d0bke5oyhuury" path="res://Scenes/Respawn/respawn_area.tscn" id="8_3ttn6"]
+[ext_resource type="Resource" uid="uid://b8e5wxf1xmsg8" path="res://Source/Actions/PitRescueContainer.tres" id="9_k31al"]
+[ext_resource type="Resource" uid="uid://kp2e23sniusb" path="res://Source/Actions/Tableau4/T4_Tuto.tres" id="10_mwdb2"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_djs5h"]
+size = Vector2(4.47998, 15.36)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3ftor"]
+size = Vector2(416, 395)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kmqn6"]
+size = Vector2(63, 223)
+
+[node name="tableau4" type="Node2D"]
+
+[node name="PickableSpear2" parent="." instance=ExtResource("1_0nsfx")]
+position = Vector2(5397, 361)
+
+[node name="GoodButton" parent="." instance=ExtResource("2_d6n8k")]
+position = Vector2(5894.25, 317)
+rotation = 0.0
+scale = Vector2(3.18751, 3.125)
+metadata/_edit_group_ = true
+
+[node name="Area2D" parent="GoodButton" index="0"]
+position = Vector2(-1.6, -0.32)
+collision_layer = 16
+collision_mask = 39
+
+[node name="CollisionShape2D" parent="GoodButton/Area2D" index="0"]
+position = Vector2(2.23999, -0.319992)
+shape = SubResource("RectangleShape2D_djs5h")
+
+[node name="Interactor" parent="GoodButton" instance=ExtResource("3_13cbi")]
+Container = ExtResource("4_jt43o")
+flush = true
+singleUse = true
+
+[node name="BadButton" parent="." instance=ExtResource("2_d6n8k")]
+position = Vector2(5208, 230)
+metadata/_edit_group_ = true
+
+[node name="Area2D" parent="BadButton" index="0"]
+position = Vector2(-1.6, 0)
+collision_mask = 39
+
+[node name="CollisionShape2D" parent="BadButton/Area2D" index="0"]
+position = Vector2(2.23999, -0.319992)
+shape = SubResource("RectangleShape2D_djs5h")
+
+[node name="Interactor" parent="BadButton" instance=ExtResource("3_13cbi")]
+Container = ExtResource("5_dlbrw")
+flush = true
+singleUse = true
+
+[node name="Door2" parent="." instance=ExtResource("6_0rman")]
+position = Vector2(6061, 583)
+rotation = 1.57079
+isVertical = false
+movesLeft = true
+
+[node name="Door3" parent="." instance=ExtResource("6_0rman")]
+position = Vector2(5294, -174)
+rotation = 1.57079
+isVertical = false
+
+[node name="Box" parent="." instance=ExtResource("7_wiikp")]
+position = Vector2(5256, -227)
+
+[node name="RespawnArea" parent="." instance=ExtResource("8_3ttn6")]
+position = Vector2(5844, 901)
+dropPoint = Vector2(5612, 456)
+
+[node name="CollisionShape2D" parent="RespawnArea" index="0"]
+position = Vector2(4, 48.5)
+shape = SubResource("RectangleShape2D_3ftor")
+
+[node name="Interactor" parent="RespawnArea" instance=ExtResource("3_13cbi")]
+Container = ExtResource("9_k31al")
+
+[node name="T4_TutorialStart" type="Area2D" parent="."]
+position = Vector2(5009, 605)
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="T4_TutorialStart"]
+position = Vector2(241, -43)
+shape = SubResource("RectangleShape2D_kmqn6")
+
+[node name="Interactor" parent="T4_TutorialStart" node_paths=PackedStringArray("Targets") instance=ExtResource("3_13cbi")]
+Container = ExtResource("10_mwdb2")
+Targets = [null]
+flush = true
+singleUse = true
+
+[connection signal="ButtonPressed" from="GoodButton" to="GoodButton/Interactor" method="SendActions"]
+[connection signal="ButtonPressed" from="GoodButton" to="Door2" method="OpenDoor"]
+[connection signal="ButtonReleased" from="GoodButton" to="Door2" method="CloseDoor"]
+[connection signal="area_entered" from="GoodButton/Area2D" to="GoodButton" method="OnButtonPressed"]
+[connection signal="area_exited" from="GoodButton/Area2D" to="GoodButton" method="OnButtonReleased"]
+[connection signal="ButtonPressed" from="BadButton" to="BadButton/Interactor" method="SendActions"]
+[connection signal="ButtonPressed" from="BadButton" to="Door2" method="OpenDoor"]
+[connection signal="ButtonPressed" from="BadButton" to="Door3" method="OpenDoor"]
+[connection signal="ButtonReleased" from="BadButton" to="Door2" method="CloseDoor"]
+[connection signal="ButtonReleased" from="BadButton" to="Door3" method="CloseDoor"]
+[connection signal="area_entered" from="BadButton/Area2D" to="BadButton" method="OnButtonPressed"]
+[connection signal="area_exited" from="BadButton/Area2D" to="BadButton" method="OnButtonReleased"]
+[connection signal="body_entered" from="RespawnArea" to="RespawnArea/Interactor" method="SendActions"]
+[connection signal="body_entered" from="T4_TutorialStart" to="T4_TutorialStart/Interactor" method="SendActions"]
+
+[editable path="GoodButton"]
+[editable path="BadButton"]
+[editable path="RespawnArea"]

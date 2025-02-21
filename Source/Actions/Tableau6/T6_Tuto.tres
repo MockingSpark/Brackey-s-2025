@@ -1,0 +1,60 @@
+[gd_resource type="Resource" script_class="FairyActionContainer" load_steps=12 format=3 uid="uid://dom7om665uvfu"]
+
+[ext_resource type="Script" path="res://Scenes/FairyActions/FairyActionContainer.cs" id="1_dwti0"]
+[ext_resource type="Script" path="res://Scenes/Dialogue/Dialogue.cs" id="1_l23cm"]
+[ext_resource type="Script" path="res://Scenes/FairyActions/FairyActionDialogue.cs" id="2_oy5ht"]
+[ext_resource type="Script" path="res://Scenes/FairyActions/FairyActionNoText.cs" id="3_mqq0j"]
+
+[sub_resource type="Resource" id="Resource_bfvuu"]
+script = ExtResource("1_l23cm")
+tag = ""
+text = "Spears! Again! They do so much."
+isBold = false
+linkedToFairy = true
+position = Vector2(0, 0)
+
+[sub_resource type="Resource" id="Resource_vn2sa"]
+script = ExtResource("2_oy5ht")
+Dialogue = SubResource("Resource_bfvuu")
+ActionType = 3
+ActionTime = 1.5
+
+[sub_resource type="Resource" id="Resource_yrdjx"]
+script = ExtResource("1_l23cm")
+tag = ""
+text = "You can stick them in the wooden planks on certain walls."
+isBold = false
+linkedToFairy = true
+position = Vector2(0, 0)
+
+[sub_resource type="Resource" id="Resource_uc1w0"]
+script = ExtResource("2_oy5ht")
+Dialogue = SubResource("Resource_yrdjx")
+ActionType = 3
+ActionTime = 3.0
+
+[sub_resource type="Resource" id="Resource_21e1e"]
+script = ExtResource("1_l23cm")
+tag = ""
+text = "So go ahead and climb up to the surface!"
+isBold = false
+linkedToFairy = true
+position = Vector2(0, 0)
+
+[sub_resource type="Resource" id="Resource_xwwyw"]
+script = ExtResource("2_oy5ht")
+Dialogue = SubResource("Resource_21e1e")
+ActionType = 3
+ActionTime = 2.0
+
+[sub_resource type="Resource" id="Resource_2whxm"]
+script = ExtResource("3_mqq0j")
+ActionType = 5
+ActionTime = 0.0
+
+[resource]
+script = ExtResource("1_dwti0")
+Actions = Array[Object]([SubResource("Resource_vn2sa"), SubResource("Resource_uc1w0"), SubResource("Resource_xwwyw"), SubResource("Resource_2whxm")])
+Priority = 0
+ActionType = 0
+ActionTime = 0.0

@@ -62,5 +62,6 @@ flush = true
 singleUse = true
 
 [connection signal="OnDie" from="Enemy2" to="Enemy2/DeathInteractor" method="SendActions"]
+[connection signal="OnDie" from="Enemy2" to="T3_TutorialBadEnd/Interactor" method="Deactivate"]
 [connection signal="body_entered" from="T3_TutorialStart" to="T3_TutorialStart/Interactor" method="SendActions"]
 [connection signal="body_entered" from="T3_TutorialBadEnd" to="T3_TutorialBadEnd/Interactor" method="SendActions"]

@@ -1,0 +1,144 @@
+[gd_scene load_steps=13 format=3 uid="uid://bf3mmer8sadm8"]
+
+[ext_resource type="PackedScene" uid="uid://dbdtky7u65k03" path="res://Scenes/Projectile/pickable_spear.tscn" id="1_ivkhl"]
+[ext_resource type="PackedScene" uid="uid://c4d4nqowjppgv" path="res://Scenes/GlassDoor/GlassDoor.tscn" id="2_wjml3"]
+[ext_resource type="PackedScene" uid="uid://yc7ocknrfysc" path="res://Scenes/NarrativeManager/interactor.tscn" id="3_wmv77"]
+[ext_resource type="Resource" uid="uid://dom7om665uvfu" path="res://Source/Actions/Tableau6/T6_Tuto.tres" id="4_08akw"]
+[ext_resource type="Resource" uid="uid://bfk15yuslv3ts" path="res://Source/Actions/Tableau6/T6_TutoBadEnd.tres" id="5_qhhj7"]
+[ext_resource type="Resource" uid="uid://bucpyawcxayse" path="res://Source/Actions/Tableau6/T6_TutoEnd.tres" id="6_u1wns"]
+[ext_resource type="PackedScene" uid="uid://d0bke5oyhuury" path="res://Scenes/Respawn/respawn_area.tscn" id="7_f0me2"]
+[ext_resource type="Resource" uid="uid://b8e5wxf1xmsg8" path="res://Source/Actions/PitRescueContainer.tres" id="8_b3ihg"]
+[ext_resource type="Resource" uid="uid://did3uxdgowtlu" path="res://Source/Actions/Tableau6/T6_GlassTuto.tres" id="9_qyd0l"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dpfex"]
+size = Vector2(720, 654.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tvohj"]
+size = Vector2(45, 195)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sjb3r"]
+size = Vector2(295, 178.5)
+
+[node name="tableau6" type="Node2D"]
+position = Vector2(1009, 145)
+
+[node name="Spears" type="Node" parent="."]
+
+[node name="PickableSpear" parent="Spears" instance=ExtResource("1_ivkhl")]
+position = Vector2(8474, 697)
+
+[node name="PickableSpear2" parent="Spears" instance=ExtResource("1_ivkhl")]
+position = Vector2(8516, 697)
+rotation = 1.35436
+scale = Vector2(3, 3)
+
+[node name="PickableSpear3" parent="Spears" instance=ExtResource("1_ivkhl")]
+position = Vector2(8553, 691)
+rotation = 1.79919
+scale = Vector2(3, 3)
+
+[node name="PickableSpear4" parent="Spears" instance=ExtResource("1_ivkhl")]
+position = Vector2(8829, 636)
+rotation = 0.916499
+
+[node name="PickableSpear5" parent="Spears" instance=ExtResource("1_ivkhl")]
+position = Vector2(8815, 691)
+rotation = 0.911104
+
+[node name="PickableSpear6" parent="Spears" instance=ExtResource("1_ivkhl")]
+position = Vector2(8023, 695)
+rotation = 1.65992
+
+[node name="PickableSpear7" parent="Spears" instance=ExtResource("1_ivkhl")]
+position = Vector2(8828, 315)
+rotation = 1.36193
+scale = Vector2(3, 3)
+
+[node name="PickableSpear8" parent="Spears" instance=ExtResource("1_ivkhl")]
+position = Vector2(8828, 419)
+rotation = 1.0381
+scale = Vector2(3, 3)
+
+[node name="PickableSpear9" parent="Spears" instance=ExtResource("1_ivkhl")]
+position = Vector2(8825, 514)
+rotation = 1.11599
+
+[node name="PickableSpear10" parent="Spears" instance=ExtResource("1_ivkhl")]
+position = Vector2(8697, 450)
+rotation = 2.31056
+scale = Vector2(3, 3)
+
+[node name="PickableSpear11" parent="Spears" instance=ExtResource("1_ivkhl")]
+position = Vector2(8698, 356)
+rotation = 2.00375
+scale = Vector2(3, 3)
+
+[node name="PickableSpear12" parent="Spears" instance=ExtResource("1_ivkhl")]
+position = Vector2(8699, 252)
+rotation = 2.23025
+
+[node name="PickableSpear13" parent="Spears" instance=ExtResource("1_ivkhl")]
+position = Vector2(8960, 124)
+
+[node name="GlassDoor" parent="." instance=ExtResource("2_wjml3")]
+position = Vector2(7983, -96)
+
+[node name="T6_TutorialStart" type="Area2D" parent="."]
+position = Vector2(2086, -403)
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="T6_TutorialStart"]
+position = Vector2(5385, 888.25)
+shape = SubResource("RectangleShape2D_dpfex")
+
+[node name="Interactor" parent="T6_TutorialStart" node_paths=PackedStringArray("Targets") instance=ExtResource("3_wmv77")]
+Container = ExtResource("4_08akw")
+Targets = [null]
+flush = true
+singleUse = true
+
+[node name="T6_TutorialBadEnd" type="Area2D" parent="."]
+position = Vector2(2950, -1071)
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="T6_TutorialBadEnd"]
+position = Vector2(5069.5, 959.5)
+shape = SubResource("RectangleShape2D_tvohj")
+
+[node name="BadEnd" parent="T6_TutorialBadEnd" node_paths=PackedStringArray("Targets") instance=ExtResource("3_wmv77")]
+Container = ExtResource("5_qhhj7")
+Targets = [null]
+flush = true
+singleUse = true
+
+[node name="GoodEnd" parent="T6_TutorialBadEnd" node_paths=PackedStringArray("Targets") instance=ExtResource("3_wmv77")]
+Container = ExtResource("6_u1wns")
+Targets = [null]
+flush = true
+singleUse = true
+
+[node name="RespawnArea" parent="." instance=ExtResource("7_f0me2")]
+position = Vector2(7753, 1069)
+dropPoint = Vector2(8559, 820)
+
+[node name="Interactor" parent="RespawnArea" instance=ExtResource("3_wmv77")]
+Container = ExtResource("8_b3ihg")
+
+[node name="SpearGlassTuto" type="Area2D" parent="."]
+position = Vector2(7858, -117)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SpearGlassTuto"]
+position = Vector2(-45.5, 24.75)
+shape = SubResource("RectangleShape2D_sjb3r")
+
+[node name="Interactor" parent="SpearGlassTuto" instance=ExtResource("3_wmv77")]
+Container = ExtResource("9_qyd0l")
+flush = true
+singleUse = true
+
+[connection signal="DoorShatter" from="GlassDoor" to="T6_TutorialBadEnd/BadEnd" method="Deactivate"]
+[connection signal="DoorShatter" from="GlassDoor" to="T6_TutorialBadEnd/GoodEnd" method="SendActions"]
+[connection signal="body_entered" from="T6_TutorialStart" to="T6_TutorialStart/Interactor" method="SendActions"]
+[connection signal="body_entered" from="T6_TutorialBadEnd" to="T6_TutorialBadEnd/BadEnd" method="SendActions"]
+[connection signal="body_entered" from="RespawnArea" to="RespawnArea/Interactor" method="SendActions"]
+[connection signal="body_entered" from="SpearGlassTuto" to="SpearGlassTuto/Interactor" method="SendActions"]

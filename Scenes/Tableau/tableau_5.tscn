@@ -1,0 +1,118 @@
+[gd_scene load_steps=16 format=3 uid="uid://c72ttyet07u6h"]
+
+[ext_resource type="PackedScene" uid="uid://dg3wxmmau0er0" path="res://Scenes/Enemy/enemy_surveil_point.tscn" id="1_ylmay"]
+[ext_resource type="PackedScene" uid="uid://bq6wiakr1leji" path="res://Scenes/Enemy/enemy.tscn" id="2_4cu8x"]
+[ext_resource type="PackedScene" uid="uid://0s6hs2pwdk2f" path="res://Scenes/Box/box.tscn" id="3_rertu"]
+[ext_resource type="PackedScene" uid="uid://cvnf375ogiyfw" path="res://Scenes/Door/door.tscn" id="4_xryfp"]
+[ext_resource type="PackedScene" uid="uid://dbdtky7u65k03" path="res://Scenes/Projectile/pickable_spear.tscn" id="5_3phgy"]
+[ext_resource type="PackedScene" uid="uid://dcftouctjkf3e" path="res://Scenes/Button/button.tscn" id="6_tvuh2"]
+[ext_resource type="PackedScene" uid="uid://c4d4nqowjppgv" path="res://Scenes/GlassDoor/GlassDoor.tscn" id="7_mu0f1"]
+[ext_resource type="PackedScene" uid="uid://yc7ocknrfysc" path="res://Scenes/NarrativeManager/interactor.tscn" id="8_f1o3a"]
+[ext_resource type="Resource" uid="uid://b614jvie6aiut" path="res://Source/Actions/Tableau5/T5_Tuto.tres" id="9_mt6h2"]
+[ext_resource type="Resource" uid="uid://xxud64uv8030" path="res://Source/Actions/Tableau5/T5_TutoBadEnd.tres" id="10_aannp"]
+[ext_resource type="Resource" uid="uid://4vr7yrdll38a" path="res://Source/Actions/Tableau5/T5_TutoEnd.tres" id="10_cpulr"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_djs5h"]
+size = Vector2(4.47998, 15.36)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8rxdy"]
+size = Vector2(30, 211)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_l54av"]
+size = Vector2(19, 146)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_la8w3"]
+size = Vector2(171, 30)
+
+[node name="tableau5" type="Node2D"]
+
+[node name="EnemySurveilPoint" parent="." instance=ExtResource("1_ylmay")]
+position = Vector2(7126, 718)
+
+[node name="EnemySurveilPoint2" parent="." instance=ExtResource("1_ylmay")]
+position = Vector2(7511, 718)
+directionToGo = Vector2(-1, 0)
+
+[node name="Enemy2" parent="." instance=ExtResource("2_4cu8x")]
+texture_repeat = 0
+position = Vector2(7335, 746)
+
+[node name="Box" parent="." instance=ExtResource("3_rertu")]
+position = Vector2(6306, 789)
+
+[node name="Box2" parent="." instance=ExtResource("3_rertu")]
+position = Vector2(6692, 551)
+
+[node name="Door" parent="." instance=ExtResource("4_xryfp")]
+position = Vector2(7082, 709)
+
+[node name="PickableSpear" parent="." instance=ExtResource("5_3phgy")]
+position = Vector2(6824, 458)
+
+[node name="Button2" parent="." instance=ExtResource("6_tvuh2")]
+position = Vector2(7045, 446)
+rotation = 0.0
+scale = Vector2(3.18751, 3.125)
+metadata/_edit_group_ = true
+
+[node name="Area2D" parent="Button2" index="0"]
+position = Vector2(-1.6, 0)
+collision_layer = 16
+collision_mask = 39
+
+[node name="CollisionShape2D" parent="Button2/Area2D" index="0"]
+position = Vector2(2.23999, -0.319992)
+shape = SubResource("RectangleShape2D_djs5h")
+
+[node name="GlassDoor" parent="." instance=ExtResource("7_mu0f1")]
+position = Vector2(7082, 528)
+
+[node name="T5_Start" type="Area2D" parent="."]
+position = Vector2(6196, 551)
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="T5_Start"]
+position = Vector2(-6, -148)
+shape = SubResource("RectangleShape2D_8rxdy")
+
+[node name="Interactor" parent="T5_Start" node_paths=PackedStringArray("Targets") instance=ExtResource("8_f1o3a")]
+Container = ExtResource("9_mt6h2")
+Targets = [null]
+flush = true
+singleUse = true
+
+[node name="T5_End" type="Area2D" parent="."]
+position = Vector2(7127, 829)
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="T5_End"]
+position = Vector2(-18.5, -110)
+shape = SubResource("RectangleShape2D_l54av")
+
+[node name="Interactor" parent="T5_End" node_paths=PackedStringArray("Targets") instance=ExtResource("8_f1o3a")]
+Container = ExtResource("10_cpulr")
+Targets = [null]
+flush = true
+singleUse = true
+
+[node name="ConfirmBadEnd" type="Area2D" parent="."]
+position = Vector2(7111, 608)
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ConfirmBadEnd"]
+position = Vector2(75.5, -5)
+shape = SubResource("RectangleShape2D_la8w3")
+
+[node name="BadEndInteractor" parent="ConfirmBadEnd" instance=ExtResource("8_f1o3a")]
+Container = ExtResource("10_aannp")
+
+[connection signal="ButtonPressed" from="Button2" to="Door" method="OpenDoor"]
+[connection signal="ButtonReleased" from="Button2" to="Door" method="CloseDoor"]
+[connection signal="area_entered" from="Button2/Area2D" to="Button2" method="OnButtonPressed"]
+[connection signal="area_exited" from="Button2/Area2D" to="Button2" method="OnButtonReleased"]
+[connection signal="DoorShatter" from="GlassDoor" to="ConfirmBadEnd/BadEndInteractor" method="SendActions"]
+[connection signal="body_entered" from="T5_Start" to="T5_Start/Interactor" method="SendActions"]
+[connection signal="body_entered" from="T5_End" to="T5_End/Interactor" method="SendActions"]
+[connection signal="body_entered" from="ConfirmBadEnd" to="T5_End/Interactor" method="Deactivate"]
+
+[editable path="Button2"]

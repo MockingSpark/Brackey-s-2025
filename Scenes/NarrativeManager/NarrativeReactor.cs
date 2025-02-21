@@ -38,7 +38,16 @@ public partial class NarrativeReactor : Node
         NarrativeManager.Instance.ReceiveActions(Container, flush);
         if (singleUse)
         {
-            QueueFree();
+            Deactivate();
         }
+    }
+
+    public void Deactivate(Node2D body)
+    {
+        Deactivate();
+    }
+    public void Deactivate()
+    {
+        QueueFree();
     }
 }

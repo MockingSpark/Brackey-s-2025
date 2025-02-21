@@ -324,11 +324,11 @@ shape = ExtResource("2_heess")
 metadata/_edit_lock_ = true
 
 [node name="RightThrowPoint" type="Node2D" parent="."]
-position = Vector2(-27, 0)
+position = Vector2(-15, 0)
 metadata/_edit_lock_ = true
 
 [node name="LeftThrowPoint" type="Node2D" parent="."]
-position = Vector2(27, 0)
+position = Vector2(15, 0)
 rotation = 3.14159
 
 [node name="AudioListener2D" type="AudioListener2D" parent="."]

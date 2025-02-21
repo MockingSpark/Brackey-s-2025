@@ -1,0 +1,40 @@
+[gd_resource type="Resource" script_class="FairyActionContainer" load_steps=8 format=3 uid="uid://did3uxdgowtlu"]
+
+[ext_resource type="Script" path="res://Scenes/FairyActions/FairyActionContainer.cs" id="1_t2vrb"]
+[ext_resource type="Script" path="res://Scenes/Dialogue/Dialogue.cs" id="1_yab0l"]
+[ext_resource type="Script" path="res://Scenes/FairyActions/FairyActionDialogue.cs" id="2_8ng0y"]
+
+[sub_resource type="Resource" id="Resource_asyif"]
+script = ExtResource("1_yab0l")
+tag = ""
+text = "You can also break glass panels with your spears!"
+isBold = false
+linkedToFairy = true
+position = Vector2(0, 0)
+
+[sub_resource type="Resource" id="Resource_hef6c"]
+script = ExtResource("2_8ng0y")
+Dialogue = SubResource("Resource_asyif")
+ActionType = 3
+ActionTime = 2.0
+
+[sub_resource type="Resource" id="Resource_8iwpp"]
+script = ExtResource("1_yab0l")
+tag = ""
+text = "Go ahead, break it!"
+isBold = false
+linkedToFairy = true
+position = Vector2(0, 0)
+
+[sub_resource type="Resource" id="Resource_ei1id"]
+script = ExtResource("2_8ng0y")
+Dialogue = SubResource("Resource_8iwpp")
+ActionType = 3
+ActionTime = -1.0
+
+[resource]
+script = ExtResource("1_t2vrb")
+Actions = Array[Object]([SubResource("Resource_hef6c"), SubResource("Resource_ei1id")])
+Priority = 0
+ActionType = 10
+ActionTime = 0.0

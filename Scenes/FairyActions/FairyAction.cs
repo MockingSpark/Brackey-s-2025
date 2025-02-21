@@ -12,12 +12,4 @@ public partial class FairyAction : Resource
     public E_FairyAction ActionType { get; set; }
     [Export]
     public float ActionTime { get; set; }
-
-    public FairyAction() : this(E_FairyAction.None, 0) { }
-
-    public FairyAction(E_FairyAction actionType, float actionTime)
-    {
-        ActionType = actionType;
-        ActionTime = actionTime;
-    }
 }
