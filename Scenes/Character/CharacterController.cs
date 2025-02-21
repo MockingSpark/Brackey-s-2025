@@ -98,6 +98,7 @@ public partial class CharacterController : CharacterBody2D
     void HandleLocked(float delta)
     {
         var velocity = Velocity;
+        velocity.X = 0;
         // Add the gravity.
         if (!IsOnFloor())
         {

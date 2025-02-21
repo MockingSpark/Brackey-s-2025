@@ -1,0 +1,41 @@
+[gd_scene load_steps=6 format=3 uid="uid://bgmdgho5vpcww"]
+
+[ext_resource type="PackedScene" uid="uid://yc7ocknrfysc" path="res://Scenes/NarrativeManager/interactor.tscn" id="1_1aej3"]
+[ext_resource type="Resource" uid="uid://b08o06hkghf8v" path="res://Source/Actions/Tableau1/T1_Tuto.tres" id="2_k17ap"]
+[ext_resource type="Resource" uid="uid://etsh7kh0jnpa" path="res://Source/Actions/Tableau1/T1_TutoEnd.tres" id="3_pl2yr"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4h0iu"]
+size = Vector2(727, 465)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hcu8t"]
+size = Vector2(30.5, 420)
+
+[node name="tableau1" type="Node2D"]
+
+[node name="T1_TutorialStart" type="Area2D" parent="."]
+position = Vector2(1198, -251)
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="T1_TutorialStart"]
+position = Vector2(283.5, -9.5)
+shape = SubResource("RectangleShape2D_4h0iu")
+
+[node name="Interactor" parent="T1_TutorialStart" instance=ExtResource("1_1aej3")]
+Container = ExtResource("2_k17ap")
+flush = true
+singleUse = true
+
+[node name="T1_TutorialEnd" type="Area2D" parent="."]
+position = Vector2(1865, -340)
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="T1_TutorialEnd"]
+shape = SubResource("RectangleShape2D_hcu8t")
+
+[node name="Interactor" parent="T1_TutorialEnd" instance=ExtResource("1_1aej3")]
+Container = ExtResource("3_pl2yr")
+flush = true
+singleUse = true
+
+[connection signal="body_entered" from="T1_TutorialStart" to="T1_TutorialStart/Interactor" method="SendActions"]
+[connection signal="body_entered" from="T1_TutorialEnd" to="T1_TutorialEnd/Interactor" method="SendActions"]

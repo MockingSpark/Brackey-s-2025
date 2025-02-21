@@ -1,0 +1,32 @@
+[gd_resource type="Resource" script_class="FairyActionContainer" load_steps=8 format=3 uid="uid://etsh7kh0jnpa"]
+
+[ext_resource type="Script" path="res://Scenes/Dialogue/Dialogue.cs" id="1_k0rof"]
+[ext_resource type="Script" path="res://Scenes/FairyActions/FairyActionContainer.cs" id="1_ouofr"]
+[ext_resource type="Script" path="res://Scenes/FairyActions/FairyActionDialogue.cs" id="2_8js4f"]
+[ext_resource type="Script" path="res://Scenes/FairyActions/FairyActionNoText.cs" id="3_bcfbb"]
+
+[sub_resource type="Resource" id="Resource_3bpfk"]
+script = ExtResource("1_k0rof")
+tag = ""
+text = "You're a natural!"
+isBold = false
+linkedToFairy = true
+position = Vector2(0, 0)
+
+[sub_resource type="Resource" id="Resource_vjonh"]
+script = ExtResource("2_8js4f")
+Dialogue = SubResource("Resource_3bpfk")
+ActionType = 3
+ActionTime = 1.5
+
+[sub_resource type="Resource" id="Resource_12gpo"]
+script = ExtResource("3_bcfbb")
+ActionType = 5
+ActionTime = 0.0
+
+[resource]
+script = ExtResource("1_ouofr")
+Actions = Array[Object]([SubResource("Resource_vjonh"), SubResource("Resource_12gpo")])
+Priority = 0
+ActionType = 10
+ActionTime = 0.0

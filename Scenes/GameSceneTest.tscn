@@ -9,7 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://dg3wxmmau0er0" path="res://Scenes/Enemy/enemy_surveil_point.tscn" id="7_g445y"]
 [ext_resource type="PackedScene" uid="uid://c1d0x30dt6bad" path="res://Scenes/Character/CharacterNode.tscn" id="8_id53r"]
 [ext_resource type="PackedScene" uid="uid://yc7ocknrfysc" path="res://Scenes/NarrativeManager/interactor.tscn" id="9_tr1kl"]
-[ext_resource type="Resource" uid="uid://brak264gjbkg3" path="res://Source/Actions/FirstContainer.tres" id="10_tt2kc"]
+[ext_resource type="Resource" uid="uid://brak264gjbkg3" path="res://Source/Actions/Tableau0/Tableau0Discution.tres" id="10_tt2kc"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_3hflb"]
 font_size = 25

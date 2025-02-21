@@ -1,0 +1,62 @@
+[gd_resource type="Resource" script_class="FairyActionContainer" load_steps=12 format=3 uid="uid://b4vlk3i08n758"]
+
+[ext_resource type="Script" path="res://Scenes/FairyActions/FairyActionFocus.cs" id="1_fvx1a"]
+[ext_resource type="Script" path="res://Scenes/Dialogue/Dialogue.cs" id="2_5aguv"]
+[ext_resource type="Script" path="res://Scenes/FairyActions/FairyActionDialogue.cs" id="3_gkynw"]
+[ext_resource type="Script" path="res://Scenes/FairyActions/FairyActionContainer.cs" id="4_jx3x0"]
+
+[sub_resource type="Resource" id="Resource_d0tuo"]
+script = ExtResource("1_fvx1a")
+FocusOffset = Vector2(0, -50)
+ActionType = 2
+ActionTime = 0.0
+
+[sub_resource type="Resource" id="Resource_i8tdo"]
+script = ExtResource("2_5aguv")
+tag = ""
+text = "This is a monster! "
+isBold = false
+linkedToFairy = true
+position = Vector2(0, 0)
+
+[sub_resource type="Resource" id="Resource_fq2lb"]
+script = ExtResource("3_gkynw")
+Dialogue = SubResource("Resource_i8tdo")
+ActionType = 3
+ActionTime = 1.0
+
+[sub_resource type="Resource" id="Resource_t8ka6"]
+script = ExtResource("2_5aguv")
+tag = ""
+text = "They are VERY VERY dangerous!
+Their movements are hard to read."
+isBold = false
+linkedToFairy = true
+position = Vector2(0, 0)
+
+[sub_resource type="Resource" id="Resource_x8abu"]
+script = ExtResource("3_gkynw")
+Dialogue = SubResource("Resource_t8ka6")
+ActionType = 3
+ActionTime = 2.5
+
+[sub_resource type="Resource" id="Resource_piy1o"]
+script = ExtResource("2_5aguv")
+tag = ""
+text = "Try to jump over him. But be careful!"
+isBold = false
+linkedToFairy = true
+position = Vector2(0, 0)
+
+[sub_resource type="Resource" id="Resource_k12an"]
+script = ExtResource("3_gkynw")
+Dialogue = SubResource("Resource_piy1o")
+ActionType = 3
+ActionTime = -1.0
+
+[resource]
+script = ExtResource("4_jx3x0")
+Actions = Array[Object]([SubResource("Resource_d0tuo"), SubResource("Resource_fq2lb"), SubResource("Resource_x8abu"), SubResource("Resource_k12an")])
+Priority = 0
+ActionType = 10
+ActionTime = 0.0

@@ -27,8 +27,6 @@ layer_0/tile_data = PackedInt32Array(-131049, 327680, 1, -131048, 65536, 1, -131
 
 [node name="Player" parent="." instance=ExtResource("2_0j0pk")]
 unique_name_in_owner = true
-speed = 300.0
-JumpVelocity = -600.0
 coyoteJumpTolerance = 0.0
 
 [node name="EnemySurveilPoint" parent="." instance=ExtResource("5_lrb4d")]

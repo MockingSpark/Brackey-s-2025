@@ -1,0 +1,66 @@
+[gd_scene load_steps=10 format=3 uid="uid://cris2l20o1yog"]
+
+[ext_resource type="PackedScene" uid="uid://bq6wiakr1leji" path="res://Scenes/Enemy/enemy.tscn" id="1_y7nep"]
+[ext_resource type="PackedScene" uid="uid://dg3wxmmau0er0" path="res://Scenes/Enemy/enemy_surveil_point.tscn" id="2_mhxei"]
+[ext_resource type="PackedScene" uid="uid://d0bke5oyhuury" path="res://Scenes/Respawn/respawn_area.tscn" id="3_4881c"]
+[ext_resource type="PackedScene" uid="uid://yc7ocknrfysc" path="res://Scenes/NarrativeManager/interactor.tscn" id="4_ocua5"]
+[ext_resource type="Resource" uid="uid://b8e5wxf1xmsg8" path="res://Source/Actions/PitRescueContainer.tres" id="5_t1gj5"]
+[ext_resource type="Resource" uid="uid://b4vlk3i08n758" path="res://Source/Actions/Tableau2/T2_Tuto.tres" id="6_6dfke"]
+[ext_resource type="Resource" uid="uid://6vo8kdv3s2nt" path="res://Source/Actions/Tableau2/T2_TutoEnd.tres" id="7_mtp2s"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8xlj1"]
+size = Vector2(813, 453)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hcu8t"]
+size = Vector2(30.5, 420)
+
+[node name="tableau2" type="Node2D"]
+
+[node name="Enemy" parent="." instance=ExtResource("1_y7nep")]
+texture_repeat = 0
+position = Vector2(2441, -219)
+Speed = 70.0
+
+[node name="EnemySurveilPoint" parent="." instance=ExtResource("2_mhxei")]
+position = Vector2(2836, -237)
+directionToGo = Vector2(-1, 0)
+
+[node name="EnemySurveilPoint2" parent="." instance=ExtResource("2_mhxei")]
+position = Vector2(2119, -244)
+
+[node name="RespawnArea" parent="." instance=ExtResource("3_4881c")]
+position = Vector2(3147, 311)
+dropPoint = Vector2(3015, -159)
+
+[node name="Interactor" parent="RespawnArea" instance=ExtResource("4_ocua5")]
+Container = ExtResource("5_t1gj5")
+
+[node name="T2_TutorialStart" type="Area2D" parent="."]
+position = Vector2(2086, -403)
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="T2_TutorialStart"]
+position = Vector2(356.5, 0)
+shape = SubResource("RectangleShape2D_8xlj1")
+
+[node name="Interactor" parent="T2_TutorialStart" node_paths=PackedStringArray("Targets") instance=ExtResource("4_ocua5")]
+Container = ExtResource("6_6dfke")
+Targets = [NodePath("")]
+flush = true
+singleUse = true
+
+[node name="T2_TutorialEnd" type="Area2D" parent="T2_TutorialStart"]
+position = Vector2(781, 11)
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="T2_TutorialStart/T2_TutorialEnd"]
+shape = SubResource("RectangleShape2D_hcu8t")
+
+[node name="Interactor" parent="T2_TutorialStart/T2_TutorialEnd" instance=ExtResource("4_ocua5")]
+Container = ExtResource("7_mtp2s")
+flush = true
+singleUse = true
+
+[connection signal="body_entered" from="RespawnArea" to="RespawnArea/Interactor" method="SendActions"]
+[connection signal="body_entered" from="T2_TutorialStart" to="T2_TutorialStart/Interactor" method="SendActions"]
+[connection signal="body_entered" from="T2_TutorialStart/T2_TutorialEnd" to="T2_TutorialStart/T2_TutorialEnd/Interactor" method="SendActions"]

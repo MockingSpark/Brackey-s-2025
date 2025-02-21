@@ -1,0 +1,94 @@
+[gd_scene load_steps=9 format=3 uid="uid://b1g2efm4j8owa"]
+
+[ext_resource type="PackedScene" uid="uid://yc7ocknrfysc" path="res://Scenes/NarrativeManager/interactor.tscn" id="1_osgr4"]
+[ext_resource type="Resource" uid="uid://brak264gjbkg3" path="res://Source/Actions/Tableau0/Tableau0Discution.tres" id="2_y0gyn"]
+[ext_resource type="PackedScene" uid="uid://dcftouctjkf3e" path="res://Scenes/Button/button.tscn" id="3_f7y5l"]
+[ext_resource type="PackedScene" uid="uid://cvnf375ogiyfw" path="res://Scenes/Door/door.tscn" id="4_oxyxh"]
+[ext_resource type="PackedScene" uid="uid://bex8lq1o2homd" path="res://Scenes/HiddenArea/hidden_area.tscn" id="5_870ci"]
+[ext_resource type="PackedScene" uid="uid://c4d4nqowjppgv" path="res://Scenes/GlassDoor/GlassDoor.tscn" id="6_g1ys1"]
+[ext_resource type="PackedScene" uid="uid://dbdtky7u65k03" path="res://Scenes/Projectile/pickable_spear.tscn" id="7_x88xs"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_e0myi"]
+size = Vector2(175.699, 364)
+
+[node name="tableau0" type="Node2D"]
+metadata/_edit_group_ = true
+metadata/_edit_lock_ = true
+
+[node name="Start Dialogue" type="Area2D" parent="."]
+position = Vector2(34, -135)
+rotation = -1.57081
+scale = Vector2(3.125, 3.125)
+collision_layer = 0
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Start Dialogue"]
+shape = SubResource("RectangleShape2D_e0myi")
+
+[node name="Interactor" parent="Start Dialogue" node_paths=PackedStringArray("Targets") instance=ExtResource("1_osgr4")]
+Container = ExtResource("2_y0gyn")
+Targets = [NodePath("")]
+singleUse = true
+
+[node name="Home Door Button" parent="." instance=ExtResource("3_f7y5l")]
+position = Vector2(291, -377)
+rotation = -1.57081
+
+[node name="Area2D" parent="Home Door Button" index="0"]
+collision_mask = 128
+
+[node name="Home Door" parent="." instance=ExtResource("4_oxyxh")]
+position = Vector2(597, -106)
+
+[node name="HiddenArea" parent="." instance=ExtResource("5_870ci")]
+offset_left = -672.0
+offset_right = -361.0
+
+[node name="GlassDoor" parent="." instance=ExtResource("6_g1ys1")]
+position = Vector2(-352, -90)
+
+[node name="Node2D" type="Node2D" parent="."]
+position = Vector2(-201, 0)
+
+[node name="PickableSpear" parent="Node2D" instance=ExtResource("7_x88xs")]
+position = Vector2(-315, -71)
+
+[node name="PickableSpear2" parent="Node2D" instance=ExtResource("7_x88xs")]
+position = Vector2(-337, -73)
+rotation = 1.57222
+
+[node name="PickableSpear3" parent="Node2D" instance=ExtResource("7_x88xs")]
+position = Vector2(-317, -71)
+rotation = 1.82235
+
+[node name="PickableSpear4" parent="Node2D" instance=ExtResource("7_x88xs")]
+position = Vector2(-396, -69)
+
+[node name="PickableSpear5" parent="Node2D" instance=ExtResource("7_x88xs")]
+position = Vector2(-266, -71)
+
+[node name="PickableSpear6" parent="Node2D" instance=ExtResource("7_x88xs")]
+position = Vector2(-281, -75)
+rotation = 1.56309
+scale = Vector2(3, 3)
+
+[node name="PickableSpear7" parent="Node2D" instance=ExtResource("7_x88xs")]
+position = Vector2(-419, -120)
+rotation = -2.01779
+scale = Vector2(3, 3)
+
+[node name="PickableSpear8" parent="Node2D" instance=ExtResource("7_x88xs")]
+position = Vector2(-283, -71)
+
+[node name="PickableSpear9" parent="Node2D" instance=ExtResource("7_x88xs")]
+position = Vector2(-398, -69)
+rotation = 1.95323
+
+[node name="PickableSpear10" parent="Node2D" instance=ExtResource("7_x88xs")]
+position = Vector2(-363, -71)
+
+[connection signal="body_entered" from="Start Dialogue" to="Start Dialogue/Interactor" method="SendActions"]
+[connection signal="ButtonPressed" from="Home Door Button" to="Home Door" method="OpenDoor"]
+[connection signal="area_entered" from="Home Door Button/Area2D" to="Home Door Button" method="OnButtonPressed"]
+
+[editable path="Home Door Button"]

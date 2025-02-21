@@ -183,15 +183,16 @@ public partial class Fairy : Node2D
 
 	public void FocusOnPlayer(float actionTimer)
 	{
-		emergency = false ;
+		emergency = false;
 		focusPoint = null;
 		GetNewFollowPoint();
 		SendEndNotif(actionTimer);
 	}
 
 	public void FocusOnNode(Node2D node, Vector2 offset, float actionTimer)
-	{
-		focusPoint = node;
+    {
+        emergency = false;
+        focusPoint = node;
 		focusOffset = offset;
 		SendEndNotif(actionTimer);
 	}
@@ -252,7 +253,10 @@ public partial class Fairy : Node2D
 
 	private async void SendEndNotif(float actionTimer)
 	{
-		if(actionTimer != 0)
+		if (actionTimer < 0)
+			return;
+
+		if(actionTimer > 0)
 		{
 			await ToSignal(CreateTween().TweenInterval(actionTimer), Tween.SignalName.Finished);
 		}

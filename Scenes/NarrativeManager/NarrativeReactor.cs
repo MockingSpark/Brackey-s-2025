@@ -11,6 +11,9 @@ public partial class NarrativeReactor : Node
     public Node2D[] Targets { get; set; }
 
     [Export]
+    public bool flush = false;
+
+    [Export]
     public bool singleUse = false;
 
     public void SendActions(Node2D body)
@@ -32,7 +35,7 @@ public partial class NarrativeReactor : Node
                 }
             }
         }
-        NarrativeManager.Instance.ReceiveActions(Container);
+        NarrativeManager.Instance.ReceiveActions(Container, flush);
         if (singleUse)
         {
             QueueFree();
