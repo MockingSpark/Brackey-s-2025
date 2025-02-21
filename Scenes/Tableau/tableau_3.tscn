@@ -1,0 +1,66 @@
+[gd_scene load_steps=10 format=3 uid="uid://dx7b0v1ktan0b"]
+
+[ext_resource type="PackedScene" uid="uid://dbdtky7u65k03" path="res://Scenes/Projectile/pickable_spear.tscn" id="1_mj6ox"]
+[ext_resource type="PackedScene" uid="uid://bq6wiakr1leji" path="res://Scenes/Enemy/enemy.tscn" id="2_4g7vv"]
+[ext_resource type="PackedScene" uid="uid://yc7ocknrfysc" path="res://Scenes/NarrativeManager/interactor.tscn" id="3_v74ic"]
+[ext_resource type="Resource" uid="uid://nbj3t82mamgr" path="res://Source/Actions/Tableau3/T3_TutoEnd.tres" id="4_3iv3b"]
+[ext_resource type="PackedScene" uid="uid://dg3wxmmau0er0" path="res://Scenes/Enemy/enemy_surveil_point.tscn" id="5_8yqgl"]
+[ext_resource type="Resource" uid="uid://dgq5uc6q4wghv" path="res://Source/Actions/Tableau3/T3_Tuto.tres" id="6_7yhdq"]
+[ext_resource type="Resource" uid="uid://djd7kdrxujs7q" path="res://Source/Actions/Tableau3/T3_TutoBadEnd.tres" id="7_i4q4q"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ffs0g"]
+size = Vector2(1188, 634.75)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4mk5v"]
+size = Vector2(156, 99)
+
+[node name="tableau3" type="Node2D"]
+
+[node name="PickableSpear" parent="." instance=ExtResource("1_mj6ox")]
+position = Vector2(3666, -361)
+
+[node name="Enemy2" parent="." instance=ExtResource("2_4g7vv")]
+texture_repeat = 0
+position = Vector2(4237, -360)
+
+[node name="DeathInteractor" parent="Enemy2" instance=ExtResource("3_v74ic")]
+Container = ExtResource("4_3iv3b")
+flush = true
+singleUse = true
+
+[node name="EnemySurveilPoint3" parent="." instance=ExtResource("5_8yqgl")]
+position = Vector2(3871, -380)
+
+[node name="EnemySurveilPoint4" parent="." instance=ExtResource("5_8yqgl")]
+position = Vector2(4660, -381)
+directionToGo = Vector2(-1, 0)
+
+[node name="T3_TutorialStart" type="Area2D" parent="."]
+position = Vector2(3664, -554)
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="T3_TutorialStart"]
+position = Vector2(394, 47.625)
+shape = SubResource("RectangleShape2D_ffs0g")
+
+[node name="Interactor" parent="T3_TutorialStart" instance=ExtResource("3_v74ic")]
+Container = ExtResource("6_7yhdq")
+flush = true
+singleUse = true
+
+[node name="T3_TutorialBadEnd" type="Area2D" parent="."]
+position = Vector2(4983, -489)
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="T3_TutorialBadEnd"]
+position = Vector2(34, 202.5)
+shape = SubResource("RectangleShape2D_4mk5v")
+
+[node name="Interactor" parent="T3_TutorialBadEnd" instance=ExtResource("3_v74ic")]
+Container = ExtResource("7_i4q4q")
+flush = true
+singleUse = true
+
+[connection signal="OnDie" from="Enemy2" to="Enemy2/DeathInteractor" method="SendActions"]
+[connection signal="body_entered" from="T3_TutorialStart" to="T3_TutorialStart/Interactor" method="SendActions"]
+[connection signal="body_entered" from="T3_TutorialBadEnd" to="T3_TutorialBadEnd/Interactor" method="SendActions"]

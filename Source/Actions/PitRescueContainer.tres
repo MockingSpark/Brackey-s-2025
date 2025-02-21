@@ -1,10 +1,11 @@
-[gd_resource type="Resource" script_class="FairyActionContainer" load_steps=10 format=3 uid="uid://b8e5wxf1xmsg8"]
+[gd_resource type="Resource" script_class="FairyActionContainer" load_steps=12 format=3 uid="uid://b8e5wxf1xmsg8"]
 
 [ext_resource type="Script" path="res://Scenes/FairyActions/FairyActionSave.cs" id="1_5fwp2"]
 [ext_resource type="Script" path="res://Scenes/FairyActions/FairyActionContainer.cs" id="1_ijo01"]
 [ext_resource type="Script" path="res://Scenes/Dialogue/Dialogue.cs" id="2_i0rpc"]
 [ext_resource type="Script" path="res://Scenes/FairyActions/FairyActionDialogue.cs" id="3_oo3xx"]
 [ext_resource type="Script" path="res://Scenes/FairyActions/FairyActionNoText.cs" id="4_66nry"]
+[ext_resource type="Script" path="res://Scenes/FairyActions/FairyActionPlayerFocus.cs" id="5_0dnyg"]
 
 [sub_resource type="Resource" id="Resource_dcpos"]
 script = ExtResource("1_5fwp2")
@@ -30,9 +31,14 @@ script = ExtResource("4_66nry")
 ActionType = 5
 ActionTime = 0.0
 
+[sub_resource type="Resource" id="Resource_6d1vr"]
+script = ExtResource("5_0dnyg")
+ActionType = 1
+ActionTime = 0.0
+
 [resource]
 script = ExtResource("1_ijo01")
-Actions = Array[Object]([SubResource("Resource_dcpos"), SubResource("Resource_ycqib"), SubResource("Resource_ge423")])
+Actions = Array[Object]([SubResource("Resource_dcpos"), SubResource("Resource_ycqib"), SubResource("Resource_ge423"), SubResource("Resource_6d1vr")])
 Priority = 1
 ActionType = 10
 ActionTime = 0.0

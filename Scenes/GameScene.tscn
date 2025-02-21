@@ -1,9 +1,10 @@
-[gd_scene load_steps=20 format=3 uid="uid://25k5f531xsh2"]
+[gd_scene load_steps=26 format=3 uid="uid://25k5f531xsh2"]
 
 [ext_resource type="PackedScene" uid="uid://cw000q3yg2bj8" path="res://Scenes/Fairy/Fairy.tscn" id="1_j437h"]
 [ext_resource type="PackedScene" uid="uid://cp3ga5u36lr85" path="res://Scenes/terrain/terrain.tscn" id="1_qxp7j"]
 [ext_resource type="PackedScene" uid="uid://c1d0x30dt6bad" path="res://Scenes/Character/CharacterNode.tscn" id="2_l2hhf"]
 [ext_resource type="PackedScene" uid="uid://cvnf375ogiyfw" path="res://Scenes/Door/door.tscn" id="3_bfh2t"]
+[ext_resource type="PackedScene" uid="uid://yc7ocknrfysc" path="res://Scenes/NarrativeManager/interactor.tscn" id="4_aieif"]
 [ext_resource type="PackedScene" uid="uid://b1g2efm4j8owa" path="res://Scenes/Tableau/tableau_0.tscn" id="4_ccrff"]
 [ext_resource type="PackedScene" uid="uid://dcftouctjkf3e" path="res://Scenes/Button/button.tscn" id="4_edp12"]
 [ext_resource type="PackedScene" uid="uid://dbdtky7u65k03" path="res://Scenes/Projectile/pickable_spear.tscn" id="5_5i7ym"]
@@ -13,11 +14,20 @@
 [ext_resource type="PackedScene" uid="uid://dg3wxmmau0er0" path="res://Scenes/Enemy/enemy_surveil_point.tscn" id="7_ivn2t"]
 [ext_resource type="PackedScene" uid="uid://0s6hs2pwdk2f" path="res://Scenes/Box/box.tscn" id="9_tsj2q"]
 [ext_resource type="PackedScene" uid="uid://cs4go5ve5h3cg" path="res://Scenes/Background/parallax_background.tscn" id="9_u1uqc"]
+[ext_resource type="Resource" uid="uid://nbj3t82mamgr" path="res://Source/Actions/Tableau3/T3_TutoEnd.tres" id="10_68hy3"]
 [ext_resource type="Texture2D" uid="uid://utbh7m0awxrl" path="res://Assets/Background/mansion.png" id="11_ai78j"]
+[ext_resource type="Resource" uid="uid://dgq5uc6q4wghv" path="res://Source/Actions/Tableau3/T3_Tuto.tres" id="11_o407f"]
+[ext_resource type="Resource" uid="uid://djd7kdrxujs7q" path="res://Source/Actions/Tableau3/T3_TutoBadEnd.tres" id="12_rw7sa"]
 [ext_resource type="PackedScene" uid="uid://c4d4nqowjppgv" path="res://Scenes/GlassDoor/GlassDoor.tscn" id="15_nhdu8"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_3hflb"]
 font_size = 25
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ffs0g"]
+size = Vector2(1188, 634.75)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4mk5v"]
+size = Vector2(156, 99)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_djs5h"]
 size = Vector2(4.47998, 15.36)
@@ -93,22 +103,29 @@ layer_0/tile_data = PackedInt32Array(-262112, 0, 3, -262111, 65536, 3, -262110, 
 metadata/_edit_lock_ = true
 
 [node name="Player" parent="." instance=ExtResource("2_l2hhf")]
-position = Vector2(1033, -218)
+position = Vector2(3323, -250)
 
 [node name="tableau0" parent="." instance=ExtResource("4_ccrff")]
 
 [node name="tableau1" parent="." instance=ExtResource("5_tvuca")]
+metadata/_edit_lock_ = true
 
 [node name="tableau2" parent="." instance=ExtResource("6_xgppp")]
+metadata/_edit_lock_ = true
 
 [node name="tableau3" type="Node2D" parent="."]
 
 [node name="PickableSpear" parent="tableau3" instance=ExtResource("5_5i7ym")]
-position = Vector2(3734, -362)
+position = Vector2(3666, -361)
 
 [node name="Enemy2" parent="tableau3" instance=ExtResource("6_4ew2e")]
 texture_repeat = 0
-position = Vector2(4217, -360)
+position = Vector2(4237, -360)
+
+[node name="DeathInteractor" parent="tableau3/Enemy2" instance=ExtResource("4_aieif")]
+Container = ExtResource("10_68hy3")
+flush = true
+singleUse = true
 
 [node name="EnemySurveilPoint3" parent="tableau3" instance=ExtResource("7_ivn2t")]
 position = Vector2(3871, -380)
@@ -116,6 +133,32 @@ position = Vector2(3871, -380)
 [node name="EnemySurveilPoint4" parent="tableau3" instance=ExtResource("7_ivn2t")]
 position = Vector2(4660, -381)
 directionToGo = Vector2(-1, 0)
+
+[node name="T3_TutorialStart" type="Area2D" parent="tableau3"]
+position = Vector2(3664, -554)
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="tableau3/T3_TutorialStart"]
+position = Vector2(394, 47.625)
+shape = SubResource("RectangleShape2D_ffs0g")
+
+[node name="Interactor" parent="tableau3/T3_TutorialStart" instance=ExtResource("4_aieif")]
+Container = ExtResource("11_o407f")
+flush = true
+singleUse = true
+
+[node name="T3_TutorialBadEnd" type="Area2D" parent="tableau3"]
+position = Vector2(4983, -489)
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="tableau3/T3_TutorialBadEnd"]
+position = Vector2(34, 202.5)
+shape = SubResource("RectangleShape2D_4mk5v")
+
+[node name="Interactor" parent="tableau3/T3_TutorialBadEnd" instance=ExtResource("4_aieif")]
+Container = ExtResource("12_rw7sa")
+flush = true
+singleUse = true
 
 [node name="tableau4" type="Node2D" parent="."]
 
@@ -346,6 +389,9 @@ position = Vector2(-2076.71, 3769.86)
 texture = SubResource("GradientTexture2D_4scww")
 
 [connection signal="pressed" from="Camera2D/Menu/VBoxContainer/Start Game" to="Camera2D/Menu" method="hide"]
+[connection signal="OnDie" from="tableau3/Enemy2" to="tableau3/Enemy2/DeathInteractor" method="SendActions"]
+[connection signal="body_entered" from="tableau3/T3_TutorialStart" to="tableau3/T3_TutorialStart/Interactor" method="SendActions"]
+[connection signal="body_entered" from="tableau3/T3_TutorialBadEnd" to="tableau3/T3_TutorialBadEnd/Interactor" method="SendActions"]
 [connection signal="ButtonPressed" from="tableau4/Button2" to="tableau4/Door2" method="OpenDoor"]
 [connection signal="ButtonReleased" from="tableau4/Button2" to="tableau4/Door2" method="CloseDoor"]
 [connection signal="area_entered" from="tableau4/Button2/Area2D" to="tableau4/Button2" method="OnButtonPressed"]

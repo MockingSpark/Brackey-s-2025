@@ -5,7 +5,7 @@
 [ext_resource type="Resource" uid="uid://etsh7kh0jnpa" path="res://Source/Actions/Tableau1/T1_TutoEnd.tres" id="3_pl2yr"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4h0iu"]
-size = Vector2(727, 465)
+size = Vector2(782, 465)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hcu8t"]
 size = Vector2(30.5, 420)
@@ -17,7 +17,7 @@ position = Vector2(1198, -251)
 collision_layer = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="T1_TutorialStart"]
-position = Vector2(283.5, -9.5)
+position = Vector2(256, -9.5)
 shape = SubResource("RectangleShape2D_4h0iu")
 
 [node name="Interactor" parent="T1_TutorialStart" instance=ExtResource("1_1aej3")]

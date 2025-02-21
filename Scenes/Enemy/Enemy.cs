@@ -7,6 +7,8 @@ public partial class Enemy : CharacterBody2D
 {
     [Signal]
     public delegate void PlayerHitEventHandler();
+    [Signal]
+    public delegate void OnDieEventHandler();
 
     [Export]
     public float Speed = 300.0f;
@@ -96,6 +98,7 @@ public partial class Enemy : CharacterBody2D
 
     private void Die()
     {
+        EmitSignal(SignalName.OnDie);
         QueueFree();
     }
 

@@ -18,6 +18,7 @@ public partial class Fairy : Node2D
 	private float inWallTimer = 1f;
 	private float moveTimer = 0;
 	private bool isInWall = false;
+	private int awaited = 0;
 	
 	private Color fairyColor;
 	[Export]
@@ -255,12 +256,18 @@ public partial class Fairy : Node2D
 	{
 		if (actionTimer < 0)
 			return;
-
-		if(actionTimer > 0)
+		if(actionTimer == 0)
 		{
-			await ToSignal(CreateTween().TweenInterval(actionTimer), Tween.SignalName.Finished);
-		}
-		EmitSignal(SignalName.FairyActionDone);
+            EmitSignal(SignalName.FairyActionDone);
+			return;
+        }
+		awaited++;
+		await ToSignal(CreateTween().TweenInterval(actionTimer), Tween.SignalName.Finished);
+		if(awaited == 1)
+        {
+            EmitSignal(SignalName.FairyActionDone);
+        }
+		awaited--;
 	}
 	#endregion
 }
