@@ -191,9 +191,9 @@ public partial class Fairy : Node2D
 	}
 
 	public void FocusOnNode(Node2D node, Vector2 offset, float actionTimer)
-    {
-        emergency = false;
-        focusPoint = node;
+	{
+		emergency = false;
+		focusPoint = node;
 		focusOffset = offset;
 		SendEndNotif(actionTimer);
 	}

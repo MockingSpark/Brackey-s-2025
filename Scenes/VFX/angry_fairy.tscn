@@ -1,10 +1,17 @@
-[gd_scene load_steps=8 format=3 uid="uid://cwr0kcag16kd1"]
+[gd_scene load_steps=10 format=3 uid="uid://cwr0kcag16kd1"]
 
 [ext_resource type="Texture2D" uid="uid://c1v2uldarfd8s" path="res://Assets/Sprites/VFX/star_01.png" id="1_k2bjr"]
 
+[sub_resource type="Curve" id="Curve_es7uf"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.662021, 1), 0.0, 0.0, 0, 0, Vector2(0.916376, 0.549505), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_ya4vy"]
+curve = SubResource("Curve_es7uf")
+
 [sub_resource type="Gradient" id="Gradient_04r6d"]
 offsets = PackedFloat32Array(0, 0.722008, 1)
-colors = PackedColorArray(1, 0, 0, 1, 0.419614, 0.355068, 0.326844, 1, 0, 0, 0, 1)
+colors = PackedColorArray(1, 0, 0, 1, 0.419614, 0.355068, 0.326844, 1, 0.129558, 0.129558, 0.129558, 1)
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_xlkec"]
 gradient = SubResource("Gradient_04r6d")
@@ -16,10 +23,17 @@ emission_sphere_radius = 31.98
 spread = 180.0
 initial_velocity_min = 21.58
 initial_velocity_max = 35.97
+angular_velocity_min = -1.60933e-05
+angular_velocity_max = 150.0
+radial_velocity_min = -2.23517e-05
+radial_velocity_max = -2.23517e-05
 gravity = Vector3(0, -50, 0)
+radial_accel_min = -2.23517e-06
+radial_accel_max = -2.23517e-06
 scale_min = 0.02
 scale_max = 0.04
 color_ramp = SubResource("GradientTexture1D_xlkec")
+alpha_curve = SubResource("CurveTexture_ya4vy")
 
 [sub_resource type="Animation" id="Animation_mavp3"]
 length = 0.001
@@ -63,7 +77,6 @@ _data = {
 amount = 20
 process_material = SubResource("ParticleProcessMaterial_jwomf")
 texture = ExtResource("1_k2bjr")
-one_shot = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
