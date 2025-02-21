@@ -1,39 +1,20 @@
-[gd_scene load_steps=31 format=3 uid="uid://25k5f531xsh2"]
+[gd_scene load_steps=18 format=3 uid="uid://25k5f531xsh2"]
 
 [ext_resource type="PackedScene" uid="uid://cw000q3yg2bj8" path="res://Scenes/Fairy/Fairy.tscn" id="1_j437h"]
 [ext_resource type="PackedScene" uid="uid://cp3ga5u36lr85" path="res://Scenes/terrain/terrain.tscn" id="1_qxp7j"]
 [ext_resource type="PackedScene" uid="uid://c1d0x30dt6bad" path="res://Scenes/Character/CharacterNode.tscn" id="2_l2hhf"]
-[ext_resource type="PackedScene" uid="uid://cvnf375ogiyfw" path="res://Scenes/Door/door.tscn" id="3_bfh2t"]
-[ext_resource type="PackedScene" uid="uid://yc7ocknrfysc" path="res://Scenes/NarrativeManager/interactor.tscn" id="4_aieif"]
 [ext_resource type="PackedScene" uid="uid://b1g2efm4j8owa" path="res://Scenes/Tableau/tableau_0.tscn" id="4_ccrff"]
-[ext_resource type="PackedScene" uid="uid://dcftouctjkf3e" path="res://Scenes/Button/button.tscn" id="4_edp12"]
 [ext_resource type="PackedScene" uid="uid://dbdtky7u65k03" path="res://Scenes/Projectile/pickable_spear.tscn" id="5_5i7ym"]
 [ext_resource type="PackedScene" uid="uid://bgmdgho5vpcww" path="res://Scenes/Tableau/tableau_1.tscn" id="5_tvuca"]
-[ext_resource type="PackedScene" uid="uid://bq6wiakr1leji" path="res://Scenes/Enemy/enemy.tscn" id="6_4ew2e"]
 [ext_resource type="PackedScene" uid="uid://cris2l20o1yog" path="res://Scenes/Tableau/tableau_2.tscn" id="6_xgppp"]
 [ext_resource type="PackedScene" uid="uid://dx7b0v1ktan0b" path="res://Scenes/Tableau/tableau_3.tscn" id="7_3u1j5"]
-[ext_resource type="PackedScene" uid="uid://dg3wxmmau0er0" path="res://Scenes/Enemy/enemy_surveil_point.tscn" id="7_ivn2t"]
 [ext_resource type="PackedScene" uid="uid://bavwdj247vrk4" path="res://Scenes/Tableau/tableau_4.tscn" id="8_4flgn"]
-[ext_resource type="PackedScene" uid="uid://0s6hs2pwdk2f" path="res://Scenes/Box/box.tscn" id="9_tsj2q"]
 [ext_resource type="PackedScene" uid="uid://cs4go5ve5h3cg" path="res://Scenes/Background/parallax_background.tscn" id="9_u1uqc"]
 [ext_resource type="PackedScene" uid="uid://bf3mmer8sadm8" path="res://Scenes/Tableau/tableau_6.tscn" id="10_iuc0p"]
 [ext_resource type="Texture2D" uid="uid://utbh7m0awxrl" path="res://Assets/Background/mansion.png" id="11_ai78j"]
-[ext_resource type="Resource" uid="uid://dewpr1tuit3o1" path="res://Source/Actions/Tableau7/T7_ButtonPush.tres" id="15_4x1ja"]
-[ext_resource type="Resource" uid="uid://bcmnjixqk2eaf" path="res://Source/Actions/Tableau7/T7_WrongButtonInput.tres" id="15_tuv58"]
+[ext_resource type="PackedScene" uid="uid://dum2ptc6dd2v0" path="res://Scenes/Tableau/tableau_7.tscn" id="11_krvvm"]
+[ext_resource type="PackedScene" uid="uid://br03pqig8mmjm" path="res://Scenes/Tableau/tableau_8.tscn" id="12_2vvgp"]
 [ext_resource type="PackedScene" uid="uid://c72ttyet07u6h" path="res://Scenes/Tableau/tableau_5.tscn" id="17_acdbx"]
-[ext_resource type="Resource" uid="uid://b6f1upysmstwp" path="res://Source/Actions/Tableau7/T7_Tuto1.tres" id="17_bl2xw"]
-[ext_resource type="Resource" uid="uid://bs7x00ueon3tt" path="res://Source/Actions/Tableau7/T7_EarlySoflock.tres" id="17_dhi1b"]
-[ext_resource type="Resource" uid="uid://bjh77sl16t46r" path="res://Source/Actions/Tableau7/T7_Softlock.tres" id="18_44shu"]
-[ext_resource type="Resource" uid="uid://du5ycbim0mwbf" path="res://Source/Actions/Tableau7/T7_TutoEnd.tres" id="18_yx7dp"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_rgbfr"]
-size = Vector2(423, 375.25)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_djs5h"]
-size = Vector2(4.47998, 15.36)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_pbwc4"]
-size = Vector2(7.57, 11.52)
 
 [sub_resource type="Gradient" id="Gradient_hufjd"]
 colors = PackedColorArray(0.465872, 0.232816, 0.138271, 1, 0.268938, 0.193029, 0.155757, 1)
@@ -59,7 +40,7 @@ layer_0/tile_data = PackedInt32Array(-262112, 0, 3, -262111, 65536, 3, -262110, 
 metadata/_edit_lock_ = true
 
 [node name="Player" parent="." instance=ExtResource("2_l2hhf")]
-position = Vector2(9556, -68)
+position = Vector2(11501, -568)
 
 [node name="tableau0" parent="." instance=ExtResource("4_ccrff")]
 
@@ -89,125 +70,13 @@ position = Vector2(0, 0)
 metadata/_edit_group_ = true
 metadata/_edit_lock_ = true
 
-[node name="tableau7" type="Node2D" parent="."]
-metadata/_edit_group_ = true
+[node name="tableau7" parent="." instance=ExtResource("11_krvvm")]
+metadata/_edit_lock_ = true
 
-[node name="Box" parent="tableau7" instance=ExtResource("9_tsj2q")]
-position = Vector2(10177, -25)
+[node name="tableau8" parent="." instance=ExtResource("12_2vvgp")]
+metadata/_edit_lock_ = true
 
-[node name="Door" parent="tableau7" instance=ExtResource("3_bfh2t")]
-position = Vector2(11496, -225)
-invert = true
-moveDelay = 1.0
-
-[node name="T7_TutorialStart" type="Area2D" parent="tableau7"]
-position = Vector2(9841, -63)
-collision_layer = 0
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="tableau7/T7_TutorialStart"]
-position = Vector2(184.5, -99)
-shape = SubResource("RectangleShape2D_rgbfr")
-
-[node name="Interactor" parent="tableau7/T7_TutorialStart" node_paths=PackedStringArray("Targets", "ReactorsToActivate") instance=ExtResource("4_aieif")]
-Container = ExtResource("17_bl2xw")
-Targets = [null]
-ReactorsToActivate = []
-flush = true
-singleUse = true
-
-[node name="TopButton" parent="tableau7" instance=ExtResource("4_edp12")]
-position = Vector2(9994, -552)
-rotation = -3.14159
-scale = Vector2(3.18751, 3.125)
-metadata/_edit_group_ = true
-
-[node name="Area2D" parent="tableau7/TopButton" index="0"]
-position = Vector2(-1.6, 0)
-collision_layer = 16
-collision_mask = 39
-
-[node name="CollisionShape2D" parent="tableau7/TopButton/Area2D" index="0"]
-position = Vector2(2.23999, -0.319992)
-shape = SubResource("RectangleShape2D_djs5h")
-
-[node name="GoodInteractor" parent="tableau7/TopButton" node_paths=PackedStringArray("ReactorsToActivate") instance=ExtResource("4_aieif")]
-Container = ExtResource("18_yx7dp")
-ReactorsToActivate = []
-flush = true
-singleUse = true
-ready = false
-
-[node name="EarlyInteractor" parent="tableau7/TopButton" node_paths=PackedStringArray("ReactorsToActivate") instance=ExtResource("4_aieif")]
-Container = ExtResource("17_dhi1b")
-ReactorsToActivate = [NodePath("../../BottomButton/Area2D/SoftlockInteractor")]
-flush = true
-singleUse = true
-
-[node name="BottomButton" parent="tableau7" instance=ExtResource("4_edp12")]
-position = Vector2(10343, 38)
-
-[node name="Area2D" parent="tableau7/BottomButton" index="0"]
-collision_mask = 2
-
-[node name="GoodInputInteractor" parent="tableau7/BottomButton/Area2D" index="1" node_paths=PackedStringArray("Targets", "ReactorsToActivate") instance=ExtResource("4_aieif")]
-Container = ExtResource("15_4x1ja")
-Targets = [NodePath("../../../DoorLookMarker")]
-ReactorsToActivate = [NodePath("../../../TopButton/GoodInteractor")]
-flush = true
-singleUse = true
-
-[node name="SoftlockInteractor" parent="tableau7/BottomButton/Area2D" index="2" node_paths=PackedStringArray("Targets", "ReactorsToActivate") instance=ExtResource("4_aieif")]
-Container = ExtResource("18_44shu")
-Targets = [NodePath("../../../SoftLockSave")]
-ReactorsToActivate = []
-flush = true
-singleUse = true
-ready = false
-
-[node name="Area2D2" type="Area2D" parent="tableau7/BottomButton"]
-collision_layer = 0
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="tableau7/BottomButton/Area2D2"]
-position = Vector2(-1.92, -3.04361e-05)
-shape = SubResource("RectangleShape2D_pbwc4")
-
-[node name="BadInputInteractor" parent="tableau7/BottomButton/Area2D2" node_paths=PackedStringArray("ReactorsToActivate") instance=ExtResource("4_aieif")]
-Container = ExtResource("15_tuv58")
-ReactorsToActivate = []
-flush = true
-singleUse = true
-
-[node name="PickableSpear" parent="tableau7" instance=ExtResource("5_5i7ym")]
-position = Vector2(10281, -548)
-
-[node name="DoorLookMarker" type="Marker2D" parent="tableau7"]
-position = Vector2(11496, -332)
-
-[node name="SoftLockSave" type="Marker2D" parent="tableau7"]
-position = Vector2(11219, -343)
-
-[node name="tableau8" type="Node2D" parent="."]
-metadata/_edit_group_ = true
-
-[node name="Door" parent="tableau8" instance=ExtResource("3_bfh2t")]
-position = Vector2(12606, -63)
-
-[node name="Enemy" parent="tableau8" instance=ExtResource("6_4ew2e")]
-position = Vector2(11962, 72)
-deathAnimation = null
-
-[node name="EnemySurveilPoint" parent="tableau8" instance=ExtResource("7_ivn2t")]
-position = Vector2(11721, 45)
-
-[node name="EnemySurveilPoint2" parent="tableau8" instance=ExtResource("7_ivn2t")]
-position = Vector2(12123, 43)
-directionToGo = Vector2(-1, 0)
-
-[node name="Button" parent="tableau8" instance=ExtResource("4_edp12")]
-position = Vector2(12290, 136)
-
-[node name="Box" parent="tableau8" instance=ExtResource("9_tsj2q")]
-position = Vector2(12205, -168)
+[node name="Ending" type="Node2D" parent="."]
 
 [node name="ParallaxBackground" parent="." instance=ExtResource("9_u1uqc")]
 position = Vector2(6756, -317)
@@ -232,23 +101,3 @@ color = Color(0.894118, 0.980392, 0.972549, 1)
 
 [node name="PickableSpear" parent="." instance=ExtResource("5_5i7ym")]
 position = Vector2(8474, 697)
-
-[connection signal="body_entered" from="tableau7/T7_TutorialStart" to="tableau7/T7_TutorialStart/Interactor" method="SendActions"]
-[connection signal="ButtonPressed" from="tableau7/TopButton" to="tableau7/Door" method="OpenDoor"]
-[connection signal="ButtonPressed" from="tableau7/TopButton" to="tableau7/TopButton/GoodInteractor" method="SendActions"]
-[connection signal="ButtonPressed" from="tableau7/TopButton" to="tableau7/TopButton/EarlyInteractor" method="SendActions"]
-[connection signal="ButtonPressed" from="tableau7/TopButton" to="tableau7/BottomButton/Area2D/GoodInputInteractor" method="Deactivate"]
-[connection signal="ButtonReleased" from="tableau7/TopButton" to="tableau7/Door" method="CloseDoor"]
-[connection signal="area_entered" from="tableau7/TopButton/Area2D" to="tableau7/TopButton" method="OnButtonPressed"]
-[connection signal="area_exited" from="tableau7/TopButton/Area2D" to="tableau7/TopButton" method="OnButtonReleased"]
-[connection signal="ButtonPressed" from="tableau7/BottomButton" to="tableau7/Door" method="CloseDoor"]
-[connection signal="ButtonReleased" from="tableau7/BottomButton" to="tableau7/Door" method="OpenDoor"]
-[connection signal="body_entered" from="tableau7/BottomButton/Area2D" to="tableau7/TopButton/EarlyInteractor" method="Deactivate"]
-[connection signal="body_entered" from="tableau7/BottomButton/Area2D" to="tableau7/BottomButton/Area2D/GoodInputInteractor" method="SendActions"]
-[connection signal="body_entered" from="tableau7/BottomButton/Area2D" to="tableau7/BottomButton/Area2D/SoftlockInteractor" method="SendActions"]
-[connection signal="body_entered" from="tableau7/BottomButton/Area2D2" to="tableau7/BottomButton/Area2D2/BadInputInteractor" method="SendActions"]
-[connection signal="ButtonPressed" from="tableau8/Button" to="tableau8/Door" method="OpenDoor"]
-[connection signal="ButtonReleased" from="tableau8/Button" to="tableau8/Door" method="CloseDoor"]
-
-[editable path="tableau7/TopButton"]
-[editable path="tableau7/BottomButton"]

@@ -1,0 +1,47 @@
+[gd_resource type="Resource" script_class="FairyActionContainer" load_steps=10 format=3 uid="uid://c8b8ftf1yxepp"]
+
+[ext_resource type="Script" path="res://Scenes/Dialogue/Dialogue.cs" id="1_iic6d"]
+[ext_resource type="Script" path="res://Scenes/FairyActions/FairyActionContainer.cs" id="1_pmabl"]
+[ext_resource type="Script" path="res://Scenes/FairyActions/FairyActionPlayerFocus.cs" id="1_yosum"]
+[ext_resource type="Script" path="res://Scenes/FairyActions/FairyActionDialogue.cs" id="2_m2okq"]
+
+[sub_resource type="Resource" id="Resource_cf4sn"]
+script = ExtResource("1_yosum")
+ActionType = 1
+ActionTime = 0.0
+
+[sub_resource type="Resource" id="Resource_ywcqv"]
+script = ExtResource("1_iic6d")
+tag = ""
+text = "Last one! You know what to do!"
+isBold = false
+linkedToFairy = true
+position = Vector2(0, 0)
+
+[sub_resource type="Resource" id="Resource_mxbcw"]
+script = ExtResource("2_m2okq")
+Dialogue = SubResource("Resource_ywcqv")
+ActionType = 3
+ActionTime = 2.0
+
+[sub_resource type="Resource" id="Resource_isu6v"]
+script = ExtResource("1_iic6d")
+tag = ""
+text = "Box -> Button
+You know the drill."
+isBold = false
+linkedToFairy = true
+position = Vector2(0, 0)
+
+[sub_resource type="Resource" id="Resource_ru6rn"]
+script = ExtResource("2_m2okq")
+Dialogue = SubResource("Resource_isu6v")
+ActionType = 3
+ActionTime = -1.0
+
+[resource]
+script = ExtResource("1_pmabl")
+Actions = Array[Object]([SubResource("Resource_cf4sn"), SubResource("Resource_mxbcw"), SubResource("Resource_ru6rn")])
+Priority = 0
+ActionType = 10
+ActionTime = 0.0

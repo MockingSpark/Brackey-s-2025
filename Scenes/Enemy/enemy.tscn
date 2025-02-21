@@ -62,8 +62,9 @@ scale = Vector2(2.96875, 2.96875)
 sprite_frames = ExtResource("2_lhsom")
 animation = &"Idle"
 
-[node name="HitInteractor" parent="." instance=ExtResource("5_tcpmy")]
+[node name="HitInteractor" parent="." node_paths=PackedStringArray("ReactorsToActivate") instance=ExtResource("5_tcpmy")]
 Container = ExtResource("6_csun8")
+ReactorsToActivate = []
 
 [node name="fairyPuff" parent="." instance=ExtResource("8_f3tvt")]
 

@@ -1,0 +1,107 @@
+[gd_scene load_steps=13 format=3 uid="uid://br03pqig8mmjm"]
+
+[ext_resource type="PackedScene" uid="uid://cvnf375ogiyfw" path="res://Scenes/Door/door.tscn" id="1_5qcbk"]
+[ext_resource type="PackedScene" uid="uid://bq6wiakr1leji" path="res://Scenes/Enemy/enemy.tscn" id="2_cp8tk"]
+[ext_resource type="PackedScene" uid="uid://dg3wxmmau0er0" path="res://Scenes/Enemy/enemy_surveil_point.tscn" id="3_6qbkh"]
+[ext_resource type="PackedScene" uid="uid://dcftouctjkf3e" path="res://Scenes/Button/button.tscn" id="4_hyuci"]
+[ext_resource type="PackedScene" uid="uid://yc7ocknrfysc" path="res://Scenes/NarrativeManager/interactor.tscn" id="5_6yu5h"]
+[ext_resource type="Resource" uid="uid://dfricyetjoq2j" path="res://Source/Actions/Tableau8/T8_End.tres" id="6_pijsb"]
+[ext_resource type="Resource" uid="uid://dljshudeekg70" path="res://Source/Actions/Tableau8/T8_BadEnd.tres" id="7_71hne"]
+[ext_resource type="Resource" uid="uid://unft8ln4pd8d" path="res://Source/Actions/Tableau8/T8_PlayerInput.tres" id="8_eshd6"]
+[ext_resource type="PackedScene" uid="uid://0s6hs2pwdk2f" path="res://Scenes/Box/box.tscn" id="9_toudp"]
+[ext_resource type="Resource" uid="uid://c8b8ftf1yxepp" path="res://Source/Actions/Tableau8/T8_Tuto.tres" id="10_j1eia"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pbwc4"]
+size = Vector2(7.57, 11.52)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qubcl"]
+size = Vector2(73, 503.813)
+
+[node name="tableau8" type="Node2D"]
+metadata/_edit_group_ = true
+
+[node name="Door" parent="." instance=ExtResource("1_5qcbk")]
+position = Vector2(12606, -63)
+
+[node name="Enemy" parent="." instance=ExtResource("2_cp8tk")]
+position = Vector2(11962, 72)
+deathAnimation = null
+
+[node name="EnemySurveilPoint" parent="." instance=ExtResource("3_6qbkh")]
+position = Vector2(11721, 45)
+
+[node name="EnemySurveilPoint2" parent="." instance=ExtResource("3_6qbkh")]
+position = Vector2(12123, 43)
+directionToGo = Vector2(-1, 0)
+
+[node name="Button" parent="." instance=ExtResource("4_hyuci")]
+position = Vector2(12290, 136)
+
+[node name="Area2D" parent="Button" index="0"]
+collision_mask = 2
+
+[node name="BoxInput" parent="Button/Area2D" index="1" node_paths=PackedStringArray("Targets", "ReactorsToActivate") instance=ExtResource("5_6yu5h")]
+Container = ExtResource("6_pijsb")
+Targets = [NodePath("../../../EndingPosition")]
+ReactorsToActivate = []
+flush = true
+singleUse = true
+
+[node name="EnemyDetection" type="Area2D" parent="Button"]
+collision_layer = 0
+collision_mask = 32
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Button/EnemyDetection"]
+position = Vector2(-1.92, -3.04361e-05)
+shape = SubResource("RectangleShape2D_pbwc4")
+
+[node name="EnemyInput" parent="Button/EnemyDetection" node_paths=PackedStringArray("Targets", "ReactorsToActivate") instance=ExtResource("5_6yu5h")]
+Container = ExtResource("7_71hne")
+Targets = [NodePath("../../../EndingPosition")]
+ReactorsToActivate = []
+flush = true
+singleUse = true
+
+[node name="PlayerDetection" type="Area2D" parent="Button"]
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Button/PlayerDetection"]
+position = Vector2(-1.92, -3.04361e-05)
+shape = SubResource("RectangleShape2D_pbwc4")
+
+[node name="PlayerInput" parent="Button/PlayerDetection" node_paths=PackedStringArray("ReactorsToActivate") instance=ExtResource("5_6yu5h")]
+Container = ExtResource("8_eshd6")
+ReactorsToActivate = []
+flush = true
+singleUse = true
+
+[node name="Box" parent="." instance=ExtResource("9_toudp")]
+position = Vector2(12205, -168)
+
+[node name="T8_TutorialStart" type="Area2D" parent="."]
+position = Vector2(11807, -360)
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="T8_TutorialStart"]
+position = Vector2(-232, -174.094)
+shape = SubResource("RectangleShape2D_qubcl")
+
+[node name="Interactor" parent="T8_TutorialStart" node_paths=PackedStringArray("Targets", "ReactorsToActivate") instance=ExtResource("5_6yu5h")]
+Container = ExtResource("10_j1eia")
+Targets = [null]
+ReactorsToActivate = []
+flush = true
+singleUse = true
+
+[node name="EndingPosition" type="Marker2D" parent="."]
+position = Vector2(13629, -119)
+
+[connection signal="ButtonPressed" from="Button" to="Door" method="OpenDoor"]
+[connection signal="ButtonReleased" from="Button" to="Door" method="CloseDoor"]
+[connection signal="body_entered" from="Button/Area2D" to="Button/Area2D/BoxInput" method="SendActions"]
+[connection signal="body_entered" from="Button/EnemyDetection" to="Button" method="OnButtonPressed"]
+[connection signal="body_entered" from="Button/EnemyDetection" to="Button/EnemyDetection/EnemyInput" method="SendActions"]
+[connection signal="body_entered" from="Button/PlayerDetection" to="Button/PlayerDetection/PlayerInput" method="SendActions"]
+[connection signal="body_entered" from="T8_TutorialStart" to="T8_TutorialStart/Interactor" method="SendActions"]
+
+[editable path="Button"]
