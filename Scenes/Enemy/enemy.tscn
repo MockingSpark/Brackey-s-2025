@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://bq6wiakr1leji"]
+[gd_scene load_steps=10 format=3 uid="uid://bq6wiakr1leji"]
 
 [ext_resource type="Script" path="res://Scenes/Enemy/Enemy.cs" id="1_xjpia"]
 [ext_resource type="SpriteFrames" uid="uid://csak62mxf63sj" path="res://Assets/Sprites/Enemy/Enemy_Animator.tres" id="2_lhsom"]
@@ -6,6 +6,7 @@
 [ext_resource type="Shape2D" uid="uid://cjljnixdv10a3" path="res://Scenes/Enemy/enemySolidBox.tres" id="3_lpabf"]
 [ext_resource type="PackedScene" uid="uid://yc7ocknrfysc" path="res://Scenes/NarrativeManager/interactor.tscn" id="5_tcpmy"]
 [ext_resource type="Resource" uid="uid://dd0wlndknp0jf" path="res://Source/Actions/EnemyHitContainer.tres" id="6_csun8"]
+[ext_resource type="PackedScene" uid="uid://csrdaulkf0rfg" path="res://Scenes/VFX/enemy_die.tscn" id="7_5rtc7"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4e4co"]
 radius = 23.0
@@ -61,6 +62,8 @@ animation = &"Idle"
 
 [node name="HitInteractor" parent="." instance=ExtResource("5_tcpmy")]
 Container = ExtResource("6_csun8")
+
+[node name="enemyDie" parent="." instance=ExtResource("7_5rtc7")]
 
 [connection signal="PlayerHit" from="." to="HitInteractor" method="SendActions"]
 [connection signal="body_entered" from="PlayerTargetting" to="." method="DetectPlayer"]
