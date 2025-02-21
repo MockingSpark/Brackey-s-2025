@@ -13,10 +13,6 @@ public partial class Camera : Camera2D
 	public static Camera Instance { get; private set; }
 
 	[Export]
-	/** node to attach when trigger _Ready() */
-	public Node2D DefaultTargetNode;
-
-	[Export]
 	public float MaxCameraSpeed = 1200.0f;
 
     [Export]
@@ -63,19 +59,8 @@ public partial class Camera : Camera2D
 		TargetZoom = Zoom;
 
 
-		if (DefaultTargetNode != null)
-		{
-			TargetNode = DefaultTargetNode;
-			currentMode = ECameraMode.Attached;
-		}
-		else
-		{
-			currentMode = ECameraMode.Static;
-		}
-
-		//Not working during _Ready, trying to attach it directly to the level (ToDetach it from it's current parent if any)
-		//Reparent(GetTree().Root.GetChildren(false)[0]);
-	}
+        currentMode = ECameraMode.Static;
+    }
 
 	public override void _Process(double delta)
 	{
@@ -129,5 +114,11 @@ public partial class Camera : Camera2D
 
 		TargetZoom = new Vector2(newZoom, newZoom);
     }
+
+	public void TeleportToTarget(Node2D attachTarget)
+	{
+		UseAttachMode(attachTarget);
+		GlobalPosition = attachTarget.GlobalPosition;
+	}
 
 }

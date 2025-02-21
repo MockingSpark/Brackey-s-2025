@@ -18,7 +18,6 @@ public partial class Fairy : Node2D
 	private float inWallTimer = 1f;
 	private float moveTimer = 0;
 	private bool isInWall = false;
-	private int awaited = 0;
 	
 	private Color fairyColor;
 	[Export]
@@ -46,7 +45,7 @@ public partial class Fairy : Node2D
 	private bool emergency = false;
 
 	[Signal]
-	public delegate void FairyActionDoneEventHandler();
+	public delegate void FairyActionErrorEventHandler();
 
 	public CharacterController Player 
 	{
@@ -187,7 +186,6 @@ public partial class Fairy : Node2D
 		emergency = false;
 		focusPoint = null;
 		GetNewFollowPoint();
-		SendEndNotif(actionTimer);
 	}
 
 	public void FocusOnNode(Node2D node, Vector2 offset, float actionTimer)
@@ -195,79 +193,59 @@ public partial class Fairy : Node2D
 		emergency = false;
 		focusPoint = node;
 		focusOffset = offset;
-		SendEndNotif(actionTimer);
 	}
 
 	public void ReadDialogueAction(Dialogue dialogue, float actionTimer)
 	{
 		if (dialogue == null)
-		{
-			SendEndNotif(0);
-			return;
+        {
+            SendErrorNotif();
+            return;
 		}
 		ReadDialogue(dialogue);
-		SendEndNotif(actionTimer);
 	}
 
 	public void HideText()
 	{
 		HideBubbles();
-		SendEndNotif(0);
 	}
 
 	public void GivePlayerScore(float score, float actionTimer)
 	{
 		GiveScore(score);
-		SendEndNotif(actionTimer);
 	}
 
 	public void ProtectPlayer(float actionTimer)
 	{
 		if (Player == null)
-		{
-			SendEndNotif(0);
-			return;
+        {
+            SendErrorNotif();
+            return;
 		}
 
 		emergency = true;
 		focusPoint = player;
-		SendEndNotif(actionTimer);
 	}
 	public void SavePlayer(float actionTimer)
 	{
 		if (Player == null)
 		{
-			SendEndNotif(0);
+			SendErrorNotif();
 			return;
 		}
 
 		emergency = true;
 		focusPoint = player;
-		SendEndNotif(actionTimer);
 	}
 
 	public void RemoveEmergency()
 	{
 		emergency = false;
-		SendEndNotif(0);
 	}
 
-	private async void SendEndNotif(float actionTimer)
-	{
-		if (actionTimer < 0)
-			return;
-		if(actionTimer == 0)
-		{
-			EmitSignal(SignalName.FairyActionDone);
-			return;
-		}
-		awaited++;
-		await ToSignal(CreateTween().TweenInterval(actionTimer), Tween.SignalName.Finished);
-		if(awaited == 1)
-		{
-			EmitSignal(SignalName.FairyActionDone);
-		}
-		awaited--;
-	}
+	private void SendErrorNotif()
+    {
+        EmitSignal(SignalName.FairyActionError);
+    }
 	#endregion
 }

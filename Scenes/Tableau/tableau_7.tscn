@@ -1,0 +1,137 @@
+[gd_scene load_steps=15 format=3 uid="uid://dum2ptc6dd2v0"]
+
+[ext_resource type="PackedScene" uid="uid://0s6hs2pwdk2f" path="res://Scenes/Box/box.tscn" id="1_mpkm1"]
+[ext_resource type="PackedScene" uid="uid://cvnf375ogiyfw" path="res://Scenes/Door/door.tscn" id="2_6julv"]
+[ext_resource type="PackedScene" uid="uid://yc7ocknrfysc" path="res://Scenes/NarrativeManager/interactor.tscn" id="3_ayagj"]
+[ext_resource type="Resource" uid="uid://b6f1upysmstwp" path="res://Source/Actions/Tableau7/T7_Tuto1.tres" id="4_lxb4g"]
+[ext_resource type="PackedScene" uid="uid://dcftouctjkf3e" path="res://Scenes/Button/button.tscn" id="5_mgasm"]
+[ext_resource type="Resource" uid="uid://du5ycbim0mwbf" path="res://Source/Actions/Tableau7/T7_TutoEnd.tres" id="6_b2cgj"]
+[ext_resource type="Resource" uid="uid://bs7x00ueon3tt" path="res://Source/Actions/Tableau7/T7_EarlySoflock.tres" id="7_kmrkc"]
+[ext_resource type="Resource" uid="uid://dewpr1tuit3o1" path="res://Source/Actions/Tableau7/T7_ButtonPush.tres" id="8_olmn5"]
+[ext_resource type="Resource" uid="uid://bjh77sl16t46r" path="res://Source/Actions/Tableau7/T7_Softlock.tres" id="9_3wn2t"]
+[ext_resource type="Resource" uid="uid://bcmnjixqk2eaf" path="res://Source/Actions/Tableau7/T7_WrongButtonInput.tres" id="10_hoedf"]
+[ext_resource type="PackedScene" uid="uid://dbdtky7u65k03" path="res://Scenes/Projectile/pickable_spear.tscn" id="11_ulrfh"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rgbfr"]
+size = Vector2(423, 375.25)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_djs5h"]
+size = Vector2(4.47998, 15.36)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pbwc4"]
+size = Vector2(7.57, 11.52)
+
+[node name="tableau7" type="Node2D"]
+metadata/_edit_group_ = true
+
+[node name="Box" parent="." instance=ExtResource("1_mpkm1")]
+position = Vector2(10177, -25)
+
+[node name="Door" parent="." instance=ExtResource("2_6julv")]
+position = Vector2(11496, -225)
+invert = true
+moveDelay = 1.0
+
+[node name="T7_TutorialStart" type="Area2D" parent="."]
+position = Vector2(9841, -63)
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="T7_TutorialStart"]
+position = Vector2(184.5, -99)
+shape = SubResource("RectangleShape2D_rgbfr")
+
+[node name="Interactor" parent="T7_TutorialStart" node_paths=PackedStringArray("Targets", "ReactorsToActivate") instance=ExtResource("3_ayagj")]
+Container = ExtResource("4_lxb4g")
+Targets = [null]
+ReactorsToActivate = []
+flush = true
+singleUse = true
+
+[node name="TopButton" parent="." instance=ExtResource("5_mgasm")]
+position = Vector2(9994, -552)
+rotation = -3.14159
+scale = Vector2(3.18751, 3.125)
+metadata/_edit_group_ = true
+
+[node name="Area2D" parent="TopButton" index="0"]
+position = Vector2(-1.6, 0)
+collision_layer = 16
+collision_mask = 39
+
+[node name="CollisionShape2D" parent="TopButton/Area2D" index="0"]
+position = Vector2(2.23999, -0.319992)
+shape = SubResource("RectangleShape2D_djs5h")
+
+[node name="GoodInteractor" parent="TopButton" node_paths=PackedStringArray("ReactorsToActivate") instance=ExtResource("3_ayagj")]
+Container = ExtResource("6_b2cgj")
+ReactorsToActivate = []
+flush = true
+singleUse = true
+ready = false
+
+[node name="EarlyInteractor" parent="TopButton" node_paths=PackedStringArray("ReactorsToActivate") instance=ExtResource("3_ayagj")]
+Container = ExtResource("7_kmrkc")
+ReactorsToActivate = [NodePath("")]
+flush = true
+singleUse = true
+
+[node name="BottomButton" parent="." instance=ExtResource("5_mgasm")]
+position = Vector2(10343, 38)
+
+[node name="Area2D" parent="BottomButton" index="0"]
+collision_mask = 2
+
+[node name="GoodInputInteractor" parent="BottomButton/Area2D" index="1" node_paths=PackedStringArray("Targets", "ReactorsToActivate") instance=ExtResource("3_ayagj")]
+Container = ExtResource("8_olmn5")
+Targets = [NodePath("")]
+ReactorsToActivate = [NodePath("")]
+flush = true
+singleUse = true
+
+[node name="SoftlockInteractor" parent="BottomButton/Area2D" index="2" node_paths=PackedStringArray("Targets", "ReactorsToActivate") instance=ExtResource("3_ayagj")]
+Container = ExtResource("9_3wn2t")
+Targets = [NodePath("")]
+ReactorsToActivate = []
+flush = true
+singleUse = true
+ready = false
+
+[node name="Area2D2" type="Area2D" parent="BottomButton"]
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BottomButton/Area2D2"]
+position = Vector2(-1.92, -3.04361e-05)
+shape = SubResource("RectangleShape2D_pbwc4")
+
+[node name="BadInputInteractor" parent="BottomButton/Area2D2" node_paths=PackedStringArray("ReactorsToActivate") instance=ExtResource("3_ayagj")]
+Container = ExtResource("10_hoedf")
+ReactorsToActivate = []
+flush = true
+singleUse = true
+
+[node name="PickableSpear" parent="." instance=ExtResource("11_ulrfh")]
+position = Vector2(10281, -548)
+
+[node name="DoorLookMarker" type="Marker2D" parent="."]
+position = Vector2(11496, -332)
+
+[node name="SoftLockSave" type="Marker2D" parent="."]
+position = Vector2(11219, -343)
+
+[connection signal="body_entered" from="T7_TutorialStart" to="T7_TutorialStart/Interactor" method="SendActions"]
+[connection signal="ButtonPressed" from="TopButton" to="Door" method="OpenDoor"]
+[connection signal="ButtonPressed" from="TopButton" to="TopButton/GoodInteractor" method="SendActions"]
+[connection signal="ButtonPressed" from="TopButton" to="TopButton/EarlyInteractor" method="SendActions"]
+[connection signal="ButtonPressed" from="TopButton" to="BottomButton/Area2D/GoodInputInteractor" method="Deactivate"]
+[connection signal="ButtonReleased" from="TopButton" to="Door" method="CloseDoor"]
+[connection signal="area_entered" from="TopButton/Area2D" to="TopButton" method="OnButtonPressed"]
+[connection signal="area_exited" from="TopButton/Area2D" to="TopButton" method="OnButtonReleased"]
+[connection signal="ButtonPressed" from="BottomButton" to="Door" method="CloseDoor"]
+[connection signal="ButtonReleased" from="BottomButton" to="Door" method="OpenDoor"]
+[connection signal="body_entered" from="BottomButton/Area2D" to="TopButton/EarlyInteractor" method="Deactivate"]
+[connection signal="body_entered" from="BottomButton/Area2D" to="BottomButton/Area2D/GoodInputInteractor" method="SendActions"]
+[connection signal="body_entered" from="BottomButton/Area2D" to="BottomButton/Area2D/SoftlockInteractor" method="SendActions"]
+[connection signal="body_entered" from="BottomButton/Area2D2" to="BottomButton/Area2D2/BadInputInteractor" method="SendActions"]
+
+[editable path="TopButton"]
+[editable path="BottomButton"]

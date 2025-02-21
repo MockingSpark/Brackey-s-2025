@@ -1,0 +1,82 @@
+[gd_resource type="Resource" script_class="FairyActionContainer" load_steps=14 format=3 uid="uid://bs7x00ueon3tt"]
+
+[ext_resource type="Script" path="res://Scenes/Dialogue/Dialogue.cs" id="1_e7kui"]
+[ext_resource type="Script" path="res://Scenes/FairyActions/FairyActionDialogue.cs" id="2_4lsyl"]
+[ext_resource type="Script" path="res://Scenes/FairyActions/FairyActionContainer.cs" id="4_v8p1h"]
+
+[sub_resource type="Resource" id="Resource_o62cy"]
+script = ExtResource("1_e7kui")
+tag = ""
+text = "."
+isBold = true
+linkedToFairy = true
+position = Vector2(0, 0)
+
+[sub_resource type="Resource" id="Resource_p60nc"]
+script = ExtResource("2_4lsyl")
+Dialogue = SubResource("Resource_o62cy")
+ActionType = 3
+ActionTime = 0.5
+
+[sub_resource type="Resource" id="Resource_w85k5"]
+script = ExtResource("1_e7kui")
+tag = ""
+text = ".."
+isBold = false
+linkedToFairy = true
+position = Vector2(0, 0)
+
+[sub_resource type="Resource" id="Resource_iihnf"]
+script = ExtResource("2_4lsyl")
+Dialogue = SubResource("Resource_w85k5")
+ActionType = 3
+ActionTime = 0.5
+
+[sub_resource type="Resource" id="Resource_epn4d"]
+script = ExtResource("1_e7kui")
+tag = ""
+text = "..."
+isBold = false
+linkedToFairy = true
+position = Vector2(0, 0)
+
+[sub_resource type="Resource" id="Resource_omffc"]
+script = ExtResource("2_4lsyl")
+Dialogue = SubResource("Resource_epn4d")
+ActionType = 3
+ActionTime = 0.5
+
+[sub_resource type="Resource" id="Resource_rwc2j"]
+script = ExtResource("1_e7kui")
+tag = ""
+text = "...."
+isBold = true
+linkedToFairy = true
+position = Vector2(0, 0)
+
+[sub_resource type="Resource" id="Resource_owvse"]
+script = ExtResource("2_4lsyl")
+Dialogue = SubResource("Resource_rwc2j")
+ActionType = 3
+ActionTime = 0.5
+
+[sub_resource type="Resource" id="Resource_8ikga"]
+script = ExtResource("1_e7kui")
+tag = ""
+text = "....."
+isBold = true
+linkedToFairy = true
+position = Vector2(0, 0)
+
+[sub_resource type="Resource" id="Resource_3f18i"]
+script = ExtResource("2_4lsyl")
+Dialogue = SubResource("Resource_8ikga")
+ActionType = 3
+ActionTime = 0.5
+
+[resource]
+script = ExtResource("4_v8p1h")
+Actions = Array[Object]([SubResource("Resource_p60nc"), SubResource("Resource_iihnf"), SubResource("Resource_omffc"), SubResource("Resource_owvse"), SubResource("Resource_3f18i")])
+Priority = 0
+ActionType = 10
+ActionTime = 0.0
