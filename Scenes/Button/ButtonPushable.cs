@@ -2,7 +2,7 @@ using Godot;
 using System;
 using System.Diagnostics;
 
-public partial class Button : Sprite2D
+public partial class ButtonPushable : Sprite2D
 {
 	[Signal]
 	public delegate void ButtonPressedEventHandler();
