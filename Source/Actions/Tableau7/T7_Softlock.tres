@@ -1,0 +1,103 @@
+[gd_resource type="Resource" script_class="FairyActionContainer" load_steps=18 format=3 uid="uid://bjh77sl16t46r"]
+
+[ext_resource type="Script" path="res://Scenes/Dialogue/Dialogue.cs" id="1_2rj7r"]
+[ext_resource type="Script" path="res://Scenes/FairyActions/FairyActionDialogue.cs" id="2_t316d"]
+[ext_resource type="Script" path="res://Scenes/FairyActions/FairyActionContainer.cs" id="3_cystt"]
+[ext_resource type="Script" path="res://Scenes/FairyActions/FairyActionFocus.cs" id="3_hf0gp"]
+
+[sub_resource type="Resource" id="Resource_65lcw"]
+script = ExtResource("1_2rj7r")
+tag = ""
+text = "Wait..."
+isBold = false
+linkedToFairy = true
+position = Vector2(0, 0)
+
+[sub_resource type="Resource" id="Resource_5lep5"]
+script = ExtResource("2_t316d")
+Dialogue = SubResource("Resource_65lcw")
+ActionType = 3
+ActionTime = 4.0
+
+[sub_resource type="Resource" id="Resource_qg6jy"]
+script = ExtResource("1_2rj7r")
+tag = ""
+text = "You broke it ?!"
+isBold = false
+linkedToFairy = true
+position = Vector2(0, 0)
+
+[sub_resource type="Resource" id="Resource_0tc6r"]
+script = ExtResource("2_t316d")
+Dialogue = SubResource("Resource_qg6jy")
+ActionType = 3
+ActionTime = 3.0
+
+[sub_resource type="Resource" id="Resource_l6j23"]
+script = ExtResource("1_2rj7r")
+tag = ""
+text = "I don't even..."
+isBold = false
+linkedToFairy = true
+position = Vector2(0, 0)
+
+[sub_resource type="Resource" id="Resource_kkvtc"]
+script = ExtResource("2_t316d")
+Dialogue = SubResource("Resource_l6j23")
+ActionType = 3
+ActionTime = 1.0
+
+[sub_resource type="Resource" id="Resource_xjvus"]
+script = ExtResource("1_2rj7r")
+tag = ""
+text = "FINE !"
+isBold = true
+linkedToFairy = true
+position = Vector2(0, 0)
+
+[sub_resource type="Resource" id="Resource_t6uu2"]
+script = ExtResource("2_t316d")
+Dialogue = SubResource("Resource_xjvus")
+ActionType = 3
+ActionTime = 1.0
+
+[sub_resource type="Resource" id="Resource_r6es4"]
+script = ExtResource("1_2rj7r")
+tag = ""
+text = "Come here, i'll get you through...."
+isBold = false
+linkedToFairy = true
+position = Vector2(0, 0)
+
+[sub_resource type="Resource" id="Resource_8lbx3"]
+script = ExtResource("2_t316d")
+Dialogue = SubResource("Resource_r6es4")
+ActionType = 3
+ActionTime = 2.0
+
+[sub_resource type="Resource" id="Resource_gbjdn"]
+script = ExtResource("3_hf0gp")
+FocusOffset = Vector2(0, 0)
+ActionType = 2
+ActionTime = 1.0
+
+[sub_resource type="Resource" id="Resource_1udmt"]
+script = ExtResource("1_2rj7r")
+tag = ""
+text = "Come through you tutorial breaking twat!"
+isBold = true
+linkedToFairy = true
+position = Vector2(0, 0)
+
+[sub_resource type="Resource" id="Resource_q3xnr"]
+script = ExtResource("2_t316d")
+Dialogue = SubResource("Resource_1udmt")
+ActionType = 3
+ActionTime = -1.0
+
+[resource]
+script = ExtResource("3_cystt")
+Actions = Array[Object]([SubResource("Resource_5lep5"), SubResource("Resource_0tc6r"), SubResource("Resource_kkvtc"), SubResource("Resource_t6uu2"), SubResource("Resource_8lbx3"), SubResource("Resource_gbjdn"), SubResource("Resource_q3xnr")])
+Priority = 0
+ActionType = 10
+ActionTime = 0.0

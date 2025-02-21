@@ -55,6 +55,7 @@ public partial class CharacterController : CharacterBody2D
 		leftThrowPoint = GetNode<Node2D>("LeftThrowPoint");
         collisionShape = GetNode<CollisionShape2D>("CharacterCollision");
         buffer = GetNode<Buffer>("Buffer");
+        Camera.Instance.TeleportToTarget(this);
 	}
 
 	public override void _Process(double delta)

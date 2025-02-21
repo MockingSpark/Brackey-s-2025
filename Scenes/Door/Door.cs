@@ -12,6 +12,8 @@ public partial class Door : Node2D
 	public bool movesLeft = false;
 	[Export]
 	public bool invert = false;
+	[Export]
+	public float moveDelay = 0;
 
 	Vector2 destination = new Vector2();
 	bool shouldMove = false;
@@ -61,14 +63,34 @@ public partial class Door : Node2D
 
 	public void OpenDoor()
 	{
-		destination = openPosition;
-		shouldMove = true;
+		DelayOpen();
 	}
+
+	async void DelayOpen()
+    {
+		if(moveDelay > 0)
+        {
+            await ToSignal(CreateTween().TweenInterval(moveDelay), Tween.SignalName.Finished);
+        }
+        destination = openPosition;
+        shouldMove = true;
+    }
+
+
 	public void CloseDoor()
 	{
-		destination = closePosition;
-		shouldMove = true;
+		DelayClose();
 	}
+
+	async void DelayClose()
+    {
+        if (moveDelay > 0)
+        {
+            await ToSignal(CreateTween().TweenInterval(moveDelay), Tween.SignalName.Finished);
+        }
+        destination = closePosition;
+        shouldMove = true;
+    }
 
 	public override void _PhysicsProcess(double delta)
 	{

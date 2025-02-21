@@ -18,10 +18,12 @@ public partial class NarrativeManager : Node
 	private List<FairyAction> savedQueue = new List<FairyAction>();
 	private int currentPriority = 0;
 
-	public void RegisterFairy(Fairy fairy)
+    private int awaitedSignals = 0;
+
+    public void RegisterFairy(Fairy fairy)
 	{
 		this.fairy = fairy;
-		fairy.FairyActionDone += SendNewAction;
+		fairy.FairyActionError += SendNewAction;
 	}
 
 	public void ReceiveActions(FairyActionContainer actionContainer, bool flush = false)
@@ -107,15 +109,64 @@ public partial class NarrativeManager : Node
 			case E_FairyAction.LockPlayer:
 				var lockAction = action as FairyActionLock;
 				fairy.Player.LockPlayer(lockAction.ShouldLock);
-				SendNewAction();
+				break;
+            case E_FairyAction.CameraMoveTarget:
+                var cameraTargetAction = action as MoveCameraTargetAction;
+                Camera.Instance.UseAttachMode(cameraTargetAction.TargetNode);
+                if (cameraTargetAction.ZoomValue >= 0)
+                {
+                    if (cameraTargetAction.ZoomInRatio)
+                    {
+                        Camera.Instance.TransitionToZoomRelative(cameraTargetAction.ZoomValue);
+                    }
+                    else
+                    {
+                        Camera.Instance.TransitionToZoom(cameraTargetAction.ZoomValue);
+                    }
+                }
+                break;
+            case E_FairyAction.CameraMovePlayer:
+				var cameraPlayerAction = action as MoveCameraPlayerAction;
+				Camera.Instance.UseAttachMode(fairy.Player);
+				if(cameraPlayerAction.ZoomValue >= 0)
+                {
+					if(cameraPlayerAction.ZoomInRatio)
+                    {
+						Camera.Instance.TransitionToZoomRelative(cameraPlayerAction.ZoomValue);
+                    }
+					else
+                    {
+                        Camera.Instance.TransitionToZoom(cameraPlayerAction.ZoomValue);
+                    }
+                }
 				break;
 			case E_FairyAction.Container:
 				Debug.Fail("Should not process container");
 				break;
 			default:
 				break;
-		}
-	}
+        }
+        WaitForNext(action.ActionTime);
+    }
+
+
+	async void WaitForNext(float actionTimer)
+    {
+        if (actionTimer < 0)
+            return;
+        if (actionTimer == 0)
+        {
+			SendNewAction();
+            return;
+        }
+        awaitedSignals++;
+        await ToSignal(CreateTween().TweenInterval(actionTimer), Tween.SignalName.Finished);
+		if(awaitedSignals == 1)
+        {
+            SendNewAction();
+        }
+        awaitedSignals--;
+    }
 
 	//Aller qq part
 	//Dire qqch

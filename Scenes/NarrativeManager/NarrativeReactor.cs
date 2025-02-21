@@ -11,10 +11,18 @@ public partial class NarrativeReactor : Node
     public Node2D[] Targets { get; set; }
 
     [Export]
+    public NarrativeReactor[] ReactorsToActivate { get; set; }
+
+    [Export]
     public bool flush = false;
 
     [Export]
     public bool singleUse = false;
+
+    [Export]
+    public bool ready = true;
+
+
 
     public void SendActions(Node2D body)
     {
@@ -23,6 +31,8 @@ public partial class NarrativeReactor : Node
 
     public void SendActions()
     {
+        if (!ready) return;
+
         if (Targets.Length > 0)
         {
             int count = 0;
@@ -33,9 +43,24 @@ public partial class NarrativeReactor : Node
                     ((FairyActionFocus)action).Target = Targets[count];
                     count++;
                 }
+                else if (action.ActionType == E_FairyAction.CameraMoveTarget)
+                {
+                    ((MoveCameraTargetAction)action).TargetNode = Targets[count];
+                    count++;
+                }
             }
         }
-        NarrativeManager.Instance.ReceiveActions(Container, flush);
+        if (ReactorsToActivate.Length > 0)
+        {
+            foreach (var reactor in ReactorsToActivate)
+            {
+                reactor.Activate();
+            }
+        }
+        if(Container != null)
+        {
+            NarrativeManager.Instance.ReceiveActions(Container, flush);
+        }
         if (singleUse)
         {
             Deactivate();
@@ -49,5 +74,13 @@ public partial class NarrativeReactor : Node
     public void Deactivate()
     {
         QueueFree();
+    }
+    public void Activate(Node2D body)
+    {
+        Activate();
+    }
+    public void Activate()
+    {
+        ready = true;
     }
 }

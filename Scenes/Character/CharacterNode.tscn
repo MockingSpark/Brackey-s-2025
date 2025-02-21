@@ -316,9 +316,6 @@ pushMaxSpeed = 50.0
 projectile = ExtResource("2_77sic")
 coyoteJumpTolerance = 0.1
 
-[node name="Camera2D" type="Camera2D" parent="."]
-metadata/_edit_lock_ = true
-
 [node name="CharacterCollision" type="CollisionShape2D" parent="."]
 shape = ExtResource("2_heess")
 metadata/_edit_lock_ = true
