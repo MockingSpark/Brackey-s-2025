@@ -28,13 +28,6 @@ directionToGo = Vector2(-1, 0)
 [node name="EnemySurveilPoint2" parent="." instance=ExtResource("2_mhxei")]
 position = Vector2(2119, -244)
 
-[node name="RespawnArea" parent="." instance=ExtResource("3_4881c")]
-position = Vector2(3147, 311)
-dropPoint = Vector2(3015, -159)
-
-[node name="Interactor" parent="RespawnArea" instance=ExtResource("4_ocua5")]
-Container = ExtResource("5_t1gj5")
-
 [node name="T2_TutorialStart" type="Area2D" parent="."]
 position = Vector2(2086, -403)
 collision_layer = 0
@@ -45,22 +38,29 @@ shape = SubResource("RectangleShape2D_8xlj1")
 
 [node name="Interactor" parent="T2_TutorialStart" node_paths=PackedStringArray("Targets") instance=ExtResource("4_ocua5")]
 Container = ExtResource("6_6dfke")
-Targets = [NodePath("")]
+Targets = [null]
 flush = true
 singleUse = true
 
-[node name="T2_TutorialEnd" type="Area2D" parent="T2_TutorialStart"]
-position = Vector2(781, 11)
+[node name="T2_TutorialEnd" type="Area2D" parent="."]
+position = Vector2(2867, -392)
 collision_layer = 0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="T2_TutorialStart/T2_TutorialEnd"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="T2_TutorialEnd"]
 shape = SubResource("RectangleShape2D_hcu8t")
 
-[node name="Interactor" parent="T2_TutorialStart/T2_TutorialEnd" instance=ExtResource("4_ocua5")]
+[node name="Interactor" parent="T2_TutorialEnd" instance=ExtResource("4_ocua5")]
 Container = ExtResource("7_mtp2s")
 flush = true
 singleUse = true
 
-[connection signal="body_entered" from="RespawnArea" to="RespawnArea/Interactor" method="SendActions"]
+[node name="RespawnArea" parent="." instance=ExtResource("3_4881c")]
+position = Vector2(3147, 311)
+dropPoint = Vector2(3015, -159)
+
+[node name="Interactor" parent="RespawnArea" instance=ExtResource("4_ocua5")]
+Container = ExtResource("5_t1gj5")
+
 [connection signal="body_entered" from="T2_TutorialStart" to="T2_TutorialStart/Interactor" method="SendActions"]
-[connection signal="body_entered" from="T2_TutorialStart/T2_TutorialEnd" to="T2_TutorialStart/T2_TutorialEnd/Interactor" method="SendActions"]
+[connection signal="body_entered" from="T2_TutorialEnd" to="T2_TutorialEnd/Interactor" method="SendActions"]
+[connection signal="body_entered" from="RespawnArea" to="RespawnArea/Interactor" method="SendActions"]

@@ -59,10 +59,10 @@ scale = Vector2(2.96875, 2.96875)
 sprite_frames = ExtResource("2_lhsom")
 animation = &"Idle"
 
-[node name="Interactor" parent="." instance=ExtResource("5_tcpmy")]
+[node name="HitInteractor" parent="." instance=ExtResource("5_tcpmy")]
 Container = ExtResource("6_csun8")
 
-[connection signal="PlayerHit" from="." to="Interactor" method="SendActions"]
+[connection signal="PlayerHit" from="." to="HitInteractor" method="SendActions"]
 [connection signal="body_entered" from="PlayerTargetting" to="." method="DetectPlayer"]
 [connection signal="body_exited" from="PlayerTargetting" to="." method="LosePlayer"]
 [connection signal="area_entered" from="HurtBox" to="." method="OnHit"]

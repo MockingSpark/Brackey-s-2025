@@ -1,0 +1,42 @@
+[gd_resource type="Resource" script_class="FairyActionContainer" load_steps=8 format=3 uid="uid://dgq5uc6q4wghv"]
+
+[ext_resource type="Script" path="res://Scenes/FairyActions/FairyActionContainer.cs" id="1_6opxc"]
+[ext_resource type="Script" path="res://Scenes/Dialogue/Dialogue.cs" id="1_nbrka"]
+[ext_resource type="Script" path="res://Scenes/FairyActions/FairyActionDialogue.cs" id="2_12cst"]
+
+[sub_resource type="Resource" id="Resource_0pj8v"]
+script = ExtResource("1_nbrka")
+tag = ""
+text = "This is a spear! You can shoot enemies with it to kill them."
+isBold = false
+linkedToFairy = true
+position = Vector2(0, 0)
+
+[sub_resource type="Resource" id="Resource_slxw1"]
+script = ExtResource("2_12cst")
+Dialogue = SubResource("Resource_0pj8v")
+ActionType = 3
+ActionTime = 1.0
+
+[sub_resource type="Resource" id="Resource_g1rfw"]
+script = ExtResource("1_nbrka")
+tag = ""
+text = "Grab it with F
+Shoot it with E
+Go on! Kill the slime!"
+isBold = false
+linkedToFairy = true
+position = Vector2(0, 0)
+
+[sub_resource type="Resource" id="Resource_gqbqw"]
+script = ExtResource("2_12cst")
+Dialogue = SubResource("Resource_g1rfw")
+ActionType = 3
+ActionTime = -1.0
+
+[resource]
+script = ExtResource("1_6opxc")
+Actions = Array[Object]([SubResource("Resource_slxw1"), SubResource("Resource_gqbqw")])
+Priority = 0
+ActionType = 10
+ActionTime = 0.0
