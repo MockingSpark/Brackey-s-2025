@@ -27,7 +27,7 @@ shape = SubResource("RectangleShape2D_e0myi")
 
 [node name="Interactor" parent="Start Dialogue" node_paths=PackedStringArray("Targets") instance=ExtResource("1_osgr4")]
 Container = ExtResource("2_y0gyn")
-Targets = [null]
+Targets = [NodePath("../../Home Door Button")]
 singleUse = true
 
 [node name="Home Door Button" parent="." instance=ExtResource("3_f7y5l")]
