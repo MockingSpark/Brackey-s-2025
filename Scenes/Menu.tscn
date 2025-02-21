@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://Scenes/Menu.cs" id="1_iaajv"]
 
 [node name="Menu" type="Node2D"]
-position = Vector2(483, 243)
+position = Vector2(-44, -24)
 script = ExtResource("1_iaajv")
 
 [node name="StartButton" type="Button" parent="."]

@@ -21,6 +21,6 @@ public partial class Menu : Node2D
     private void StartButton_ButtonPressed()
     {
         Debug.Print("TNJUHRURH3");
-       
+        GetTree().ChangeSceneToFile("res://Scenes/GameScene.tscn"); 
     }
 }
