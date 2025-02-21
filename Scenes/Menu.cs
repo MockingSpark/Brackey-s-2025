@@ -9,18 +9,18 @@ public partial class Menu : Node2D
     {
         startButton = GetNode<Button>("StartButton");
         creditsButton = GetNode<Button>("CreditsButton");
-        startButton.Pressed += StartButton_ButtonPressed;
-        creditsButton.Pressed += CreditsButton_ButtonPressed;
+        startButton.Pressed += StartButtonButtonPressed;
+        creditsButton.Pressed += CreditsButtonButtonPressed;
      }
 
-    private void CreditsButton_ButtonPressed()
+    private void CreditsButtonButtonPressed()
     {
-// throw new NotImplementedException();
+        GetTree().ChangeSceneToFile("res://Scenes/Credits.tscn");
     }
 
-    private void StartButton_ButtonPressed()
+    private void StartButtonButtonPressed()
     {
-        Debug.Print("TNJUHRURH3");
+
         GetTree().ChangeSceneToFile("res://Scenes/GameScene.tscn"); 
     }
 }
