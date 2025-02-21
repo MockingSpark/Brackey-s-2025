@@ -1,8 +1,9 @@
-[gd_scene load_steps=11 format=3 uid="uid://cw000q3yg2bj8"]
+[gd_scene load_steps=12 format=3 uid="uid://cw000q3yg2bj8"]
 
 [ext_resource type="SpriteFrames" uid="uid://b4kugdvmrjvkt" path="res://Assets/Sprites/Fairy/fairySpriteFrame.tres" id="1_438el"]
 [ext_resource type="Script" path="res://Scenes/Fairy/Fairy.cs" id="1_juba5"]
 [ext_resource type="PackedScene" uid="uid://cqnj5u8vw0g8x" path="res://Scenes/VFX/fairyGlow.tscn" id="2_e2dki"]
+[ext_resource type="PackedScene" uid="uid://cwr0kcag16kd1" path="res://Scenes/VFX/angry_fairy.tscn" id="2_qw5rb"]
 [ext_resource type="Texture2D" uid="uid://c1v2uldarfd8s" path="res://Assets/Sprites/VFX/star_01.png" id="4_4e7a0"]
 [ext_resource type="PackedScene" uid="uid://bc4jphpp7ndgj" path="res://Scenes/DialogueBubble/BoldBubble.tscn" id="4_u6plu"]
 [ext_resource type="PackedScene" uid="uid://djhjkivn4mbkn" path="res://Scenes/DialogueBubble/RoundBubble.tscn" id="5_6qkn2"]
@@ -39,6 +40,8 @@ script = ExtResource("1_juba5")
 FairyColor = Color(0.215686, 0.709804, 0.960784, 1)
 roundBubble = NodePath("Round_bubble")
 boldBubble = NodePath("Bold_bubble")
+
+[node name="angryFairyVFX" parent="." instance=ExtResource("2_qw5rb")]
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 z_index = 1
