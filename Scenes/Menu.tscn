@@ -1,16 +1,21 @@
-[gd_scene format=3 uid="uid://dlceklgx28ski"]
+[gd_scene load_steps=2 format=3 uid="uid://dlceklgx28ski"]
+
+[ext_resource type="Script" path="res://Scenes/Menu.cs" id="1_iaajv"]
 
 [node name="Menu" type="Node2D"]
-position = Vector2(144, -156)
+position = Vector2(-44, -24)
+script = ExtResource("1_iaajv")
 
-[node name="Button" type="Button" parent="."]
+[node name="StartButton" type="Button" parent="."]
 offset_right = 8.0
 offset_bottom = 8.0
 text = "Start Game"
+metadata/_edit_use_anchors_ = true
 
-[node name="Button2" type="Button" parent="."]
+[node name="CreditsButton" type="Button" parent="."]
 offset_left = 17.0
 offset_top = 37.0
 offset_right = 80.0
 offset_bottom = 68.0
 text = "Credits"
+metadata/_edit_use_anchors_ = true
