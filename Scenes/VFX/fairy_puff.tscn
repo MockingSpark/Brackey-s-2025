@@ -1,6 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://in0ry8412lvu"]
+[gd_scene load_steps=9 format=3 uid="uid://in0ry8412lvu"]
 
 [ext_resource type="Texture2D" uid="uid://c1v2uldarfd8s" path="res://Assets/Sprites/VFX/star_01.png" id="1_605s4"]
+[ext_resource type="Script" path="res://Scenes/VFX/FairyPuff.cs" id="1_vp4me"]
 
 [sub_resource type="Curve" id="Curve_8c31x"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.655052, 1), 0.0, 0.0, 0, 0, Vector2(0.84669, 0.944837), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
@@ -56,6 +57,7 @@ _data = {
 }
 
 [node name="fairyPuff" type="Node2D"]
+script = ExtResource("1_vp4me")
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="."]
 self_modulate = Color(0.215686, 0.709804, 0.960784, 1)

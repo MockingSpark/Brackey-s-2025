@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://bq6wiakr1leji"]
+[gd_scene load_steps=11 format=3 uid="uid://bq6wiakr1leji"]
 
 [ext_resource type="Script" path="res://Scenes/Enemy/Enemy.cs" id="1_xjpia"]
 [ext_resource type="SpriteFrames" uid="uid://csak62mxf63sj" path="res://Assets/Sprites/Enemy/Enemy_Animator.tres" id="2_lhsom"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://yc7ocknrfysc" path="res://Scenes/NarrativeManager/interactor.tscn" id="5_tcpmy"]
 [ext_resource type="Resource" uid="uid://dd0wlndknp0jf" path="res://Source/Actions/EnemyHitContainer.tres" id="6_csun8"]
 [ext_resource type="PackedScene" uid="uid://csrdaulkf0rfg" path="res://Scenes/VFX/enemy_die.tscn" id="7_5rtc7"]
+[ext_resource type="PackedScene" uid="uid://in0ry8412lvu" path="res://Scenes/VFX/fairy_puff.tscn" id="8_f3tvt"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4e4co"]
 radius = 23.0
@@ -23,6 +24,7 @@ collision_layer = 32
 collision_mask = 2
 script = ExtResource("1_xjpia")
 Speed = 100.0
+deathAnimation = ExtResource("7_5rtc7")
 metadata/_edit_group_ = true
 
 [node name="SolidBox" type="CollisionShape2D" parent="."]
@@ -63,9 +65,10 @@ animation = &"Idle"
 [node name="HitInteractor" parent="." instance=ExtResource("5_tcpmy")]
 Container = ExtResource("6_csun8")
 
-[node name="enemyDie" parent="." instance=ExtResource("7_5rtc7")]
+[node name="fairyPuff" parent="." instance=ExtResource("8_f3tvt")]
 
 [connection signal="PlayerHit" from="." to="HitInteractor" method="SendActions"]
+[connection signal="PlayerHit" from="." to="fairyPuff" method="run"]
 [connection signal="body_entered" from="PlayerTargetting" to="." method="DetectPlayer"]
 [connection signal="body_exited" from="PlayerTargetting" to="." method="LosePlayer"]
 [connection signal="area_entered" from="HurtBox" to="." method="OnHit"]

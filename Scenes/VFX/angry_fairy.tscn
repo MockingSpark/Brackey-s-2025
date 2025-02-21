@@ -1,5 +1,6 @@
-[gd_scene load_steps=10 format=3 uid="uid://cwr0kcag16kd1"]
+[gd_scene load_steps=11 format=3 uid="uid://cwr0kcag16kd1"]
 
+[ext_resource type="Script" path="res://Scenes/VFX/AngryFairy.cs" id="1_ho1q6"]
 [ext_resource type="Texture2D" uid="uid://c1v2uldarfd8s" path="res://Assets/Sprites/VFX/star_01.png" id="1_k2bjr"]
 
 [sub_resource type="Curve" id="Curve_es7uf"]
@@ -72,11 +73,14 @@ _data = {
 }
 
 [node name="angryFairy" type="Node2D"]
+visible = false
+script = ExtResource("1_ho1q6")
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="."]
 amount = 20
 process_material = SubResource("ParticleProcessMaterial_jwomf")
 texture = ExtResource("1_k2bjr")
+one_shot = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

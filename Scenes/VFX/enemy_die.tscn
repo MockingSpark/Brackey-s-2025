@@ -1,6 +1,7 @@
-[gd_scene load_steps=9 format=3 uid="uid://csrdaulkf0rfg"]
+[gd_scene load_steps=10 format=3 uid="uid://csrdaulkf0rfg"]
 
 [ext_resource type="SpriteFrames" uid="uid://ch5lld53ygnlu" path="res://Assets/Sprites/VFX/enemyDeath.tres" id="1_k80jg"]
+[ext_resource type="Script" path="res://Scenes/VFX/EnemyDie.cs" id="1_qjlni"]
 [ext_resource type="Shader" uid="uid://b28gvsnuolnk6" path="res://Assets/Shaders/enemy_die.tres" id="1_ugbdg"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_2hb3n"]
@@ -12,6 +13,33 @@ noise = SubResource("FastNoiseLite_2hb3n")
 shader = ExtResource("1_ugbdg")
 shader_parameter/FloatParameter = 0.0
 shader_parameter/noise = SubResource("NoiseTexture2D_nqnke")
+
+[sub_resource type="Animation" id="Animation_1mu8e"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:material:shader_parameter/FloatParameter")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
 
 [sub_resource type="Animation" id="Animation_8bw2u"]
 resource_name = "deathAnimation"
@@ -49,37 +77,24 @@ tracks/2/path = NodePath("AnimatedSprite2D:material:shader_parameter/FloatParame
 tracks/2/interp = 2
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0.433333, 3),
+"times": PackedFloat32Array(0.333333, 2.86667),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [0.0, 4.0]
 }
-
-[sub_resource type="Animation" id="Animation_1mu8e"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:visible")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(3),
 "transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("AnimatedSprite2D:material:shader_parameter/FloatParameter")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_pv10p"]
@@ -89,6 +104,7 @@ _data = {
 }
 
 [node name="enemyDie" type="Node2D"]
+script = ExtResource("1_qjlni")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 self_modulate = Color(0.604475, 0.789209, 0.563603, 1)
@@ -96,6 +112,8 @@ material = SubResource("ShaderMaterial_mbdek")
 position = Vector2(-1, -22)
 scale = Vector2(3, 3)
 sprite_frames = ExtResource("1_k80jg")
+frame = 2
+frame_progress = 1.0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

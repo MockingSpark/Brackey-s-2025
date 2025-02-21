@@ -5,13 +5,15 @@ using System.Diagnostics;
 
 public partial class Enemy : CharacterBody2D
 {
-    [Signal]
-    public delegate void PlayerHitEventHandler();
-    [Signal]
-    public delegate void OnDieEventHandler();
+	[Signal]
+	public delegate void PlayerHitEventHandler();
+	[Signal]
+	public delegate void OnDieEventHandler();
 
 	[Export]
 	public float Speed = 300.0f;
+	[Export]
+	public PackedScene deathAnimation;
 
 	AnimatedSprite2D sprite;
 	bool dead = false;
@@ -96,11 +98,15 @@ public partial class Enemy : CharacterBody2D
 		}
 	}
 
-    private void Die()
-    {
-        EmitSignal(SignalName.OnDie);
-        QueueFree();
-    }
+	private void Die()
+	{
+		EmitSignal(SignalName.OnDie);
+		var deathAnimationNode = deathAnimation.Instantiate<EnemyDie>();
+		deathAnimationNode.Transform = Transform;
+		GetParent().AddChild(deathAnimationNode);
+		deathAnimationNode.run();
+		QueueFree();
+	}
 
 	public void TurnAround(Vector2 directionToGo)
 	{

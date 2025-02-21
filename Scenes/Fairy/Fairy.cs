@@ -258,15 +258,15 @@ public partial class Fairy : Node2D
 			return;
 		if(actionTimer == 0)
 		{
-            EmitSignal(SignalName.FairyActionDone);
+			EmitSignal(SignalName.FairyActionDone);
 			return;
-        }
+		}
 		awaited++;
 		await ToSignal(CreateTween().TweenInterval(actionTimer), Tween.SignalName.Finished);
 		if(awaited == 1)
-        {
-            EmitSignal(SignalName.FairyActionDone);
-        }
+		{
+			EmitSignal(SignalName.FairyActionDone);
+		}
 		awaited--;
 	}
 	#endregion
