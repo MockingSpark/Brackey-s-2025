@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" path="res://Scenes/NarrativeManager/NarrativeReactor.cs" id="1_63swj"]
 
-[node name="Interactor" type="Node" node_paths=PackedStringArray("Targets")]
+[node name="Interactor" type="Node" node_paths=PackedStringArray("Targets", "ReactorsToActivate")]
 script = ExtResource("1_63swj")
 Targets = []
+ReactorsToActivate = []

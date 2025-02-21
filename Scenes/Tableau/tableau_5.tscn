@@ -75,9 +75,8 @@ collision_layer = 0
 position = Vector2(-6, -148)
 shape = SubResource("RectangleShape2D_8rxdy")
 
-[node name="Interactor" parent="T5_Start" node_paths=PackedStringArray("Targets") instance=ExtResource("8_f1o3a")]
+[node name="Interactor" parent="T5_Start" instance=ExtResource("8_f1o3a")]
 Container = ExtResource("9_mt6h2")
-Targets = [null]
 flush = true
 singleUse = true
 
@@ -89,9 +88,8 @@ collision_layer = 0
 position = Vector2(-18.5, -110)
 shape = SubResource("RectangleShape2D_l54av")
 
-[node name="Interactor" parent="T5_End" node_paths=PackedStringArray("Targets") instance=ExtResource("8_f1o3a")]
+[node name="Interactor" parent="T5_End" instance=ExtResource("8_f1o3a")]
 Container = ExtResource("10_cpulr")
-Targets = [null]
 flush = true
 singleUse = true
 

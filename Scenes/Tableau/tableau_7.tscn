@@ -71,7 +71,7 @@ ready = false
 
 [node name="EarlyInteractor" parent="TopButton" node_paths=PackedStringArray("ReactorsToActivate") instance=ExtResource("3_ayagj")]
 Container = ExtResource("7_kmrkc")
-ReactorsToActivate = [NodePath("")]
+ReactorsToActivate = [NodePath("../../BottomButton/Area2D/SoftlockInteractor")]
 flush = true
 singleUse = true
 
@@ -83,14 +83,14 @@ collision_mask = 2
 
 [node name="GoodInputInteractor" parent="BottomButton/Area2D" index="1" node_paths=PackedStringArray("Targets", "ReactorsToActivate") instance=ExtResource("3_ayagj")]
 Container = ExtResource("8_olmn5")
-Targets = [NodePath("")]
-ReactorsToActivate = [NodePath("")]
+Targets = [NodePath("../../../DoorLookMarker")]
+ReactorsToActivate = [NodePath("../../../TopButton/GoodInteractor")]
 flush = true
 singleUse = true
 
 [node name="SoftlockInteractor" parent="BottomButton/Area2D" index="2" node_paths=PackedStringArray("Targets", "ReactorsToActivate") instance=ExtResource("3_ayagj")]
 Container = ExtResource("9_3wn2t")
-Targets = [NodePath("")]
+Targets = [NodePath("../../../SoftLockSave")]
 ReactorsToActivate = []
 flush = true
 singleUse = true

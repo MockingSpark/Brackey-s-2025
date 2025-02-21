@@ -31,12 +31,10 @@ position = Vector2(8471, 697)
 [node name="PickableSpear2" parent="Spears" instance=ExtResource("1_ivkhl")]
 position = Vector2(8513, 696)
 rotation = 1.35436
-scale = Vector2(3, 3)
 
 [node name="PickableSpear3" parent="Spears" instance=ExtResource("1_ivkhl")]
 position = Vector2(8550, 691)
 rotation = 1.79919
-scale = Vector2(3, 3)
 
 [node name="PickableSpear4" parent="Spears" instance=ExtResource("1_ivkhl")]
 position = Vector2(8826, 636)
@@ -49,17 +47,14 @@ rotation = 0.911104
 [node name="PickableSpear6" parent="Spears" instance=ExtResource("1_ivkhl")]
 position = Vector2(8020, 695)
 rotation = 1.65992
-scale = Vector2(3, 3)
 
 [node name="PickableSpear7" parent="Spears" instance=ExtResource("1_ivkhl")]
 position = Vector2(8825, 315)
 rotation = 1.36193
-scale = Vector2(3, 3)
 
 [node name="PickableSpear8" parent="Spears" instance=ExtResource("1_ivkhl")]
 position = Vector2(8825, 419)
 rotation = 1.0381
-scale = Vector2(3, 3)
 
 [node name="PickableSpear9" parent="Spears" instance=ExtResource("1_ivkhl")]
 position = Vector2(8822, 514)
@@ -68,12 +63,10 @@ rotation = 1.11599
 [node name="PickableSpear10" parent="Spears" instance=ExtResource("1_ivkhl")]
 position = Vector2(8694, 450)
 rotation = 2.31056
-scale = Vector2(3, 3)
 
 [node name="PickableSpear11" parent="Spears" instance=ExtResource("1_ivkhl")]
 position = Vector2(8695, 356)
 rotation = 2.00375
-scale = Vector2(3, 3)
 
 [node name="PickableSpear12" parent="Spears" instance=ExtResource("1_ivkhl")]
 position = Vector2(8696, 252)
@@ -93,9 +86,8 @@ collision_layer = 0
 position = Vector2(5385, 888.25)
 shape = SubResource("RectangleShape2D_dpfex")
 
-[node name="Interactor" parent="T6_TutorialStart" node_paths=PackedStringArray("Targets") instance=ExtResource("3_wmv77")]
+[node name="Interactor" parent="T6_TutorialStart" instance=ExtResource("3_wmv77")]
 Container = ExtResource("4_08akw")
-Targets = [null]
 flush = true
 singleUse = true
 
@@ -107,15 +99,13 @@ collision_layer = 0
 position = Vector2(5069.5, 959.5)
 shape = SubResource("RectangleShape2D_tvohj")
 
-[node name="BadEnd" parent="T6_TutorialBadEnd" node_paths=PackedStringArray("Targets") instance=ExtResource("3_wmv77")]
+[node name="BadEnd" parent="T6_TutorialBadEnd" instance=ExtResource("3_wmv77")]
 Container = ExtResource("5_qhhj7")
-Targets = [null]
 flush = true
 singleUse = true
 
-[node name="GoodEnd" parent="T6_TutorialBadEnd" node_paths=PackedStringArray("Targets") instance=ExtResource("3_wmv77")]
+[node name="GoodEnd" parent="T6_TutorialBadEnd" instance=ExtResource("3_wmv77")]
 Container = ExtResource("6_u1wns")
-Targets = [null]
 flush = true
 singleUse = true
 
