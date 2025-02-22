@@ -60,7 +60,8 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_ph8wp"]
 resource_name = "L_JumpIdleEmpty"
-length = 0.1
+length = 0.4
+loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -68,15 +69,16 @@ tracks/0/path = NodePath("Sprite2D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [67]
+"values": [67, 68]
 }
 
 [sub_resource type="Animation" id="Animation_88p18"]
 resource_name = "L_JumpIdleSpear"
-length = 0.1
+length = 0.4
+loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -84,10 +86,10 @@ tracks/0/path = NodePath("Sprite2D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [49]
+"values": [49, 50]
 }
 
 [sub_resource type="Animation" id="Animation_dosai"]
@@ -207,7 +209,8 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_k8ibs"]
 resource_name = "R_JumpIdleEmpty"
-length = 0.1
+length = 0.4
+loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -215,15 +218,16 @@ tracks/0/path = NodePath("Sprite2D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [31]
+"values": [31, 32]
 }
 
 [sub_resource type="Animation" id="Animation_onjm2"]
 resource_name = "R_JumpIdleSpear"
-length = 0.1
+length = 0.4
+loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -231,10 +235,10 @@ tracks/0/path = NodePath("Sprite2D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [13]
+"values": [13, 14]
 }
 
 [sub_resource type="Animation" id="Animation_vnvvy"]
