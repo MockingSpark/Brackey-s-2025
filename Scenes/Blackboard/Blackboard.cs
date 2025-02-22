@@ -1,0 +1,75 @@
+using Godot;
+using Godot.Collections;
+using System;
+
+public enum EBlackboardType
+{
+    Permanent,
+    Level
+}
+
+public enum EBlackboardKey
+{
+    InteractionCount,
+    ProjectileThrowCount
+}
+
+public partial class Blackboard : Node
+{
+    public static Blackboard Instance { get; private set; }
+
+    Dictionary<EBlackboardType, Dictionary<EBlackboardKey, int>> Blackboards = new Dictionary<EBlackboardType, Dictionary<EBlackboardKey, int>>();
+
+    public override void _Ready()
+    {
+        base._Ready();
+
+        Instance = this;
+
+        foreach(EBlackboardType type in Enum.GetValues(typeof(EBlackboardType)))
+        {
+            Blackboards.Add(type, new Dictionary<EBlackboardKey, int>());
+        }
+    }
+
+    public int GetValue(EBlackboardType blackboard, EBlackboardKey key, int defaultValue = int.MinValue)
+    {
+        if (Blackboards[blackboard].ContainsKey(key))
+        {
+            return Blackboards[blackboard][key];
+        }
+        return defaultValue;
+    }
+
+    public void SetValue(EBlackboardType blackboard, EBlackboardKey key, int value)
+    {
+        Blackboards[blackboard][key] = value;
+    }
+
+    public int OffeSetValue(EBlackboardType blackboard, EBlackboardKey key, int value)
+    {
+        if (Blackboards[blackboard].ContainsKey(key))
+        {
+            Blackboards[blackboard][key] += value;
+        }
+        else
+        {
+            Blackboards[blackboard][key] = value;
+        }
+
+        return Blackboards[blackboard][key];
+    }
+
+    public void ClearBlackBoard(EBlackboardType blackboard)
+    {
+        Blackboards[blackboard].Clear();
+    }
+
+    public void ClearAllBlackboards() 
+    { 
+        foreach(Dictionary<EBlackboardKey, int> blackboard in Blackboards.Values)
+        {
+            blackboard.Clear();
+        }
+    }
+}
