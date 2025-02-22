@@ -99,7 +99,7 @@ public partial class CharacterController : CharacterBody2D
 
         if(respawning)
         {
-            HandleRespawn();
+            HandleRespawn((float)delta);
         }
         else if(locked)
         {
@@ -125,7 +125,7 @@ public partial class CharacterController : CharacterBody2D
         MoveAndSlide();
     }
 
-    void HandleRespawn()
+    void HandleRespawn(float deltaTime)
     {
         if(GlobalPosition.DistanceTo(respawnPoint) < respawnTolerance)
         {
@@ -134,7 +134,7 @@ public partial class CharacterController : CharacterBody2D
             return;
         }
 
-        GlobalPosition = GlobalPosition.Lerp(respawnPoint, respawnSpeed);
+        GlobalPosition = Utils.LerpStepped(GlobalPosition, respawnPoint, respawnSpeed, Camera.Instance.MaxCameraSpeed * deltaTime);//  GlobalPosition.Lerp(respawnPoint, respawnSpeed);
     }
 
     public bool CanJump()
