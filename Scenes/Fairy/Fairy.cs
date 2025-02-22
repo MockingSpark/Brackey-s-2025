@@ -19,7 +19,12 @@ public partial class Fairy : Node2D
 	private float inWallTimer = 1f;
 	private float moveTimer = 0;
 	private bool isInWall = false;
-	
+
+	private AngryFairy angerVfx;
+	private int angerValue = 0;
+	private float maxAnger = 5;
+	[Export]
+	Gradient angerGradient;
 	private Color fairyColor;
 	[Export]
 	public Color FairyColor
@@ -75,23 +80,56 @@ public partial class Fairy : Node2D
 		boldBubble.Visible = false;
 		roundBubble.Visible = false;
 		NarrativeManager.Instance.RegisterFairy(this);
+		angerVfx = GetNode<AngryFairy>("angryFairyVFX");
 		GetNode<AnimatedSprite2D>("AnimatedSprite2D").SetModulate(fairyColor);
 	}
 
 	protected void ReadDialogue(Dialogue dialogue)
 	{
-		HideBubbles();
-		if(dialogue.isBold)
+		if (dialogue.linkedToFairy)
 		{
-			boldBubble.ShowBubble();
-			boldBubble.Text = dialogue.text;
-		}
-		else
+			ReadBubbleAttached(dialogue);
+        }
+		else 
 		{
-			roundBubble.ShowBubble();
-			roundBubble.Text = dialogue.text;
+			CreateBubble(dialogue);
 		}
 	}
+
+    private void CreateBubble(Dialogue dialogue)
+    {
+        DialogueBubble newBubble;
+		if(dialogue.isBold)
+		{
+			newBubble = boldBubble.Duplicate(15) as DialogueBubble;
+		}
+		else
+        {
+            newBubble = roundBubble.Duplicate(15) as DialogueBubble;
+        }
+
+        NarrativeManager.Instance.CallDeferred("add_child", newBubble);
+		newBubble.SetDeferred("Text", dialogue.text);
+		newBubble.GlobalPosition = dialogue.position;
+
+		newBubble.ShowBubble();
+    }
+
+    protected void ReadBubbleAttached(Dialogue dialogue)
+    {
+        HideBubbles();
+        if (dialogue.isBold)
+        {
+            boldBubble.ShowBubble();
+            boldBubble.Text = dialogue.text;
+        }
+        else
+        {
+            roundBubble.ShowBubble();
+            roundBubble.Text = dialogue.text;
+        }
+    }
+
 
 	private void GiveScore(float score)
 	{
@@ -204,6 +242,16 @@ public partial class Fairy : Node2D
 		emergency = false;
 		focusPoint = null;
 		GetNewFollowPoint();
+	}
+
+	public void UpdateAnger(int newValue, int modification)
+	{
+		angerValue = newValue;
+		if (modification > 0)
+		{
+			angerVfx.run();
+		}
+		FairyColor = angerGradient.Sample(angerValue/maxAnger);
 	}
 
 	public void FocusOnPlayer(float actionTimer)
