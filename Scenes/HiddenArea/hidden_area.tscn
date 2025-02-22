@@ -1,6 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://bex8lq1o2homd"]
+[gd_scene load_steps=5 format=3 uid="uid://bex8lq1o2homd"]
 
 [ext_resource type="Script" path="res://Scenes/HiddenArea/HiddenArea.cs" id="1_xygff"]
+[ext_resource type="PackedScene" uid="uid://yc7ocknrfysc" path="res://Scenes/NarrativeManager/interactor.tscn" id="2_xc6wt"]
+[ext_resource type="Resource" uid="uid://dv1eph56m0xb4" path="res://Source/Actions/Tableau0/T0_SpearStash.tres" id="3_1x7wb"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kqoer"]
 size = Vector2(309, 100)
@@ -21,5 +23,11 @@ collision_layer = 0
 position = Vector2(151.5, 48)
 shape = SubResource("RectangleShape2D_kqoer")
 
+[node name="Interactor" parent="Area2D" instance=ExtResource("2_xc6wt")]
+Container = ExtResource("3_1x7wb")
+flush = true
+singleUse = true
+
 [connection signal="body_entered" from="Area2D" to="." method="RevealArea"]
+[connection signal="body_entered" from="Area2D" to="Area2D/Interactor" method="SendActions"]
 [connection signal="body_exited" from="Area2D" to="." method="HideArea"]
