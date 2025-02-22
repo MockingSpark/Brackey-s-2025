@@ -46,6 +46,8 @@ public partial class Fairy : Node2D
 	[Export]
 	private DialogueBubble boldBubble;
 
+	protected List<DialogueBubble>  inWorldDialogueBubbles = new List<DialogueBubble>();
+
 	private Node2D focusPoint;
 	private Vector2 focusOffset;
 	private bool emergency = false;
@@ -113,6 +115,8 @@ public partial class Fairy : Node2D
 		newBubble.GlobalPosition = dialogue.position;
 
 		newBubble.ShowBubble();
+
+		inWorldDialogueBubbles.Add(newBubble);
     }
 
     protected void ReadBubbleAttached(Dialogue dialogue)
@@ -278,9 +282,22 @@ public partial class Fairy : Node2D
 		ReadDialogue(dialogue);
 	}
 
-	public void HideText()
+	public void HideText(bool HideFairys, bool HideGlobal)
 	{
-		HideBubbles();
+		if(HideFairys)
+		{
+			HideBubbles();
+		}
+
+		if(HideGlobal)
+		{
+			foreach(DialogueBubble bubble in inWorldDialogueBubbles)
+			{
+				bubble.QueueFree();
+			}
+
+			inWorldDialogueBubbles.Clear();
+		}
 	}
 
 	public void GivePlayerScore(float score, float actionTimer)

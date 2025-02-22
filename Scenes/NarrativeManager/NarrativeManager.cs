@@ -114,7 +114,8 @@ public partial class NarrativeManager : Node
 				fairy.ReadDialogueAction(dialogueToPLay, genericAction.ActionTime);
 				break;
 			case E_FairyAction.HideText:
-				fairy.HideText();
+                FairyActionNoText noTextAction = action as FairyActionNoText;
+                fairy.HideText(noTextAction.HideFairysBubble, noTextAction.HideInWorldBubbles);
 				break;
 			case E_FairyAction.CatchPlayer:
 				fairy.SavePlayer(action.ActionTime);
