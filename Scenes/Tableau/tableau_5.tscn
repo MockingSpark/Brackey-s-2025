@@ -45,6 +45,8 @@ ActionTime = 1.0
 
 [sub_resource type="Resource" id="Resource_wipdy"]
 script = ExtResource("15_0euym")
+HideFairysBubble = true
+HideInWorldBubbles = true
 ActionType = 5
 ActionTime = 0.0
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://br03pqig8mmjm"]
+[gd_scene load_steps=28 format=3 uid="uid://br03pqig8mmjm"]
 
 [ext_resource type="PackedScene" uid="uid://cvnf375ogiyfw" path="res://Scenes/Door/door.tscn" id="1_5qcbk"]
 [ext_resource type="PackedScene" uid="uid://bq6wiakr1leji" path="res://Scenes/Enemy/enemy.tscn" id="2_cp8tk"]
@@ -10,12 +10,83 @@
 [ext_resource type="Resource" uid="uid://unft8ln4pd8d" path="res://Source/Actions/Tableau8/T8_PlayerInput.tres" id="8_eshd6"]
 [ext_resource type="PackedScene" uid="uid://0s6hs2pwdk2f" path="res://Scenes/Box/box.tscn" id="9_toudp"]
 [ext_resource type="Resource" uid="uid://c8b8ftf1yxepp" path="res://Source/Actions/Tableau8/T8_Tuto.tres" id="10_j1eia"]
+[ext_resource type="PackedScene" uid="uid://dh4ey1nlfq7h1" path="res://Scenes/Box/AreaDestroyBox.tscn" id="11_xas32"]
+[ext_resource type="Script" path="res://Scenes/Dialogue/Dialogue.cs" id="12_rcm0b"]
+[ext_resource type="Script" path="res://Scenes/FairyActions/FairyActionDialogue.cs" id="13_64ib0"]
+[ext_resource type="Script" path="res://Scenes/FairyActions/FairyActionContainer.cs" id="14_s6gly"]
+[ext_resource type="Script" path="res://Scenes/FairyActions/FairyActionNoText.cs" id="15_jvl2j"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pbwc4"]
 size = Vector2(7.57, 11.52)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qubcl"]
 size = Vector2(73, 503.813)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_d6q51"]
+size = Vector2(24, 146)
+
+[sub_resource type="Resource" id="Resource_as3k2"]
+script = ExtResource("12_rcm0b")
+tag = ""
+text = "I really thought that you understood how it worked by now..."
+isBold = false
+linkedToFairy = true
+position = Vector2(0, 0)
+
+[sub_resource type="Resource" id="Resource_28hki"]
+script = ExtResource("13_64ib0")
+Dialogue = SubResource("Resource_as3k2")
+ActionType = 3
+ActionTime = 5.0
+
+[sub_resource type="Resource" id="Resource_kyqxx"]
+script = ExtResource("12_rcm0b")
+tag = ""
+text = "But it's okay you'll succeed ! Eventually..."
+isBold = false
+linkedToFairy = true
+position = Vector2(0, 0)
+
+[sub_resource type="Resource" id="Resource_cq8cm"]
+script = ExtResource("13_64ib0")
+Dialogue = SubResource("Resource_kyqxx")
+ActionType = 3
+ActionTime = 5.0
+
+[sub_resource type="Resource" id="Resource_41cn0"]
+script = ExtResource("14_s6gly")
+Actions = Array[Object]([SubResource("Resource_28hki"), SubResource("Resource_cq8cm")])
+Priority = 1
+ActionType = 10
+ActionTime = 1.0
+
+[sub_resource type="Resource" id="Resource_qtutk"]
+script = ExtResource("12_rcm0b")
+tag = ""
+text = "It's okay. I can do this aaaaaaaaaall day."
+isBold = false
+linkedToFairy = true
+position = Vector2(0, 0)
+
+[sub_resource type="Resource" id="Resource_jyigi"]
+script = ExtResource("13_64ib0")
+Dialogue = SubResource("Resource_qtutk")
+ActionType = 3
+ActionTime = 4.0
+
+[sub_resource type="Resource" id="Resource_v5x7o"]
+script = ExtResource("15_jvl2j")
+HideFairysBubble = true
+HideInWorldBubbles = true
+ActionType = 0
+ActionTime = 0.0
+
+[sub_resource type="Resource" id="Resource_innw2"]
+script = ExtResource("14_s6gly")
+Actions = Array[Object]([SubResource("Resource_jyigi"), SubResource("Resource_v5x7o")])
+Priority = 1
+ActionType = 10
+ActionTime = 1.0
 
 [node name="tableau8" type="Node2D"]
 metadata/_edit_group_ = true
@@ -40,10 +111,9 @@ position = Vector2(12290, 136)
 [node name="Area2D" parent="Button" index="0"]
 collision_mask = 2
 
-[node name="BoxInput" parent="Button/Area2D" index="1" node_paths=PackedStringArray("Targets", "ReactorsToActivate") instance=ExtResource("5_6yu5h")]
+[node name="BoxInput" parent="Button/Area2D" index="1" node_paths=PackedStringArray("Targets") instance=ExtResource("5_6yu5h")]
 Container = ExtResource("6_pijsb")
 Targets = [NodePath("../../../EndingPosition")]
-ReactorsToActivate = []
 flush = true
 singleUse = true
 
@@ -55,10 +125,9 @@ collision_mask = 32
 position = Vector2(-1.92, -3.04361e-05)
 shape = SubResource("RectangleShape2D_pbwc4")
 
-[node name="EnemyInput" parent="Button/EnemyDetection" node_paths=PackedStringArray("Targets", "ReactorsToActivate") instance=ExtResource("5_6yu5h")]
+[node name="EnemyInput" parent="Button/EnemyDetection" node_paths=PackedStringArray("Targets") instance=ExtResource("5_6yu5h")]
 Container = ExtResource("7_71hne")
 Targets = [NodePath("../../../EndingPosition")]
-ReactorsToActivate = []
 flush = true
 singleUse = true
 
@@ -69,9 +138,8 @@ collision_layer = 0
 position = Vector2(-1.92, -3.04361e-05)
 shape = SubResource("RectangleShape2D_pbwc4")
 
-[node name="PlayerInput" parent="Button/PlayerDetection" node_paths=PackedStringArray("ReactorsToActivate") instance=ExtResource("5_6yu5h")]
+[node name="PlayerInput" parent="Button/PlayerDetection" instance=ExtResource("5_6yu5h")]
 Container = ExtResource("8_eshd6")
-ReactorsToActivate = []
 flush = true
 singleUse = true
 
@@ -86,15 +154,34 @@ collision_layer = 0
 position = Vector2(-232, -174.094)
 shape = SubResource("RectangleShape2D_qubcl")
 
-[node name="Interactor" parent="T8_TutorialStart" node_paths=PackedStringArray("Targets", "ReactorsToActivate") instance=ExtResource("5_6yu5h")]
+[node name="Interactor" parent="T8_TutorialStart" node_paths=PackedStringArray("Targets") instance=ExtResource("5_6yu5h")]
 Container = ExtResource("10_j1eia")
 Targets = [null]
-ReactorsToActivate = []
 flush = true
 singleUse = true
 
 [node name="EndingPosition" type="Marker2D" parent="."]
 position = Vector2(13629, -119)
+
+[node name="AreaDestroyBox3" parent="." instance=ExtResource("11_xas32")]
+position = Vector2(12576, 76)
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AreaDestroyBox3"]
+shape = SubResource("RectangleShape2D_d6q51")
+
+[node name="Interactor" parent="AreaDestroyBox3" instance=ExtResource("5_6yu5h")]
+Container = SubResource("Resource_41cn0")
+
+[node name="AreaDestroyBox4" parent="." instance=ExtResource("11_xas32")]
+position = Vector2(11710, 123)
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AreaDestroyBox4"]
+shape = SubResource("RectangleShape2D_d6q51")
+
+[node name="Interactor" parent="AreaDestroyBox4" instance=ExtResource("5_6yu5h")]
+Container = SubResource("Resource_innw2")
 
 [connection signal="ButtonPressed" from="Button" to="Door" method="OpenDoor"]
 [connection signal="ButtonReleased" from="Button" to="Door" method="CloseDoor"]
@@ -103,5 +190,7 @@ position = Vector2(13629, -119)
 [connection signal="body_entered" from="Button/EnemyDetection" to="Button/EnemyDetection/EnemyInput" method="SendActions"]
 [connection signal="body_entered" from="Button/PlayerDetection" to="Button/PlayerDetection/PlayerInput" method="SendActions"]
 [connection signal="body_entered" from="T8_TutorialStart" to="T8_TutorialStart/Interactor" method="SendActions"]
+[connection signal="CrateDestroyed" from="AreaDestroyBox3" to="AreaDestroyBox3/Interactor" method="SendActions"]
+[connection signal="CrateDestroyed" from="AreaDestroyBox4" to="AreaDestroyBox4/Interactor" method="SendActions"]
 
 [editable path="Button"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://dum2ptc6dd2v0"]
+[gd_scene load_steps=30 format=3 uid="uid://dum2ptc6dd2v0"]
 
 [ext_resource type="PackedScene" uid="uid://0s6hs2pwdk2f" path="res://Scenes/Box/box.tscn" id="1_mpkm1"]
 [ext_resource type="PackedScene" uid="uid://cvnf375ogiyfw" path="res://Scenes/Door/door.tscn" id="2_6julv"]
@@ -10,7 +10,12 @@
 [ext_resource type="Resource" uid="uid://dewpr1tuit3o1" path="res://Source/Actions/Tableau7/T7_ButtonPush.tres" id="8_olmn5"]
 [ext_resource type="Resource" uid="uid://bjh77sl16t46r" path="res://Source/Actions/Tableau7/T7_Softlock.tres" id="9_3wn2t"]
 [ext_resource type="Resource" uid="uid://bcmnjixqk2eaf" path="res://Source/Actions/Tableau7/T7_WrongButtonInput.tres" id="10_hoedf"]
+[ext_resource type="PackedScene" uid="uid://dh4ey1nlfq7h1" path="res://Scenes/Box/AreaDestroyBox.tscn" id="11_s3t0t"]
 [ext_resource type="PackedScene" uid="uid://dbdtky7u65k03" path="res://Scenes/Projectile/pickable_spear.tscn" id="11_ulrfh"]
+[ext_resource type="Script" path="res://Scenes/Dialogue/Dialogue.cs" id="12_mnv8w"]
+[ext_resource type="Script" path="res://Scenes/FairyActions/FairyActionDialogue.cs" id="13_wti55"]
+[ext_resource type="Script" path="res://Scenes/FairyActions/FairyActionNoText.cs" id="14_hgvag"]
+[ext_resource type="Script" path="res://Scenes/FairyActions/FairyActionContainer.cs" id="15_s0eul"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rgbfr"]
 size = Vector2(423, 375.25)
@@ -21,8 +26,73 @@ size = Vector2(4.47998, 15.36)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pbwc4"]
 size = Vector2(7.57, 11.52)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6mqho"]
+size = Vector2(24, 146)
+
+[sub_resource type="Resource" id="Resource_r07t4"]
+script = ExtResource("12_mnv8w")
+tag = ""
+text = "Nooo... It's stuck now ! Completely stuck ! How did you even manage ..."
+isBold = false
+linkedToFairy = true
+position = Vector2(0, 0)
+
+[sub_resource type="Resource" id="Resource_lv4kh"]
+script = ExtResource("13_wti55")
+Dialogue = SubResource("Resource_r07t4")
+ActionType = 3
+ActionTime = 5.0
+
+[sub_resource type="Resource" id="Resource_wipdy"]
+script = ExtResource("14_hgvag")
+HideFairysBubble = true
+HideInWorldBubbles = true
+ActionType = 5
+ActionTime = 0.0
+
+[sub_resource type="Resource" id="Resource_bvqv2"]
+script = ExtResource("15_s0eul")
+Actions = Array[Object]([SubResource("Resource_lv4kh"), SubResource("Resource_wipdy")])
+Priority = 1
+ActionType = 5
+ActionTime = 1.0
+
+[sub_resource type="Resource" id="Resource_ye8kn"]
+script = ExtResource("12_mnv8w")
+tag = ""
+text = "You're not even trying, are you ? Box. Go. Hole."
+isBold = false
+linkedToFairy = true
+position = Vector2(0, 0)
+
+[sub_resource type="Resource" id="Resource_jo33a"]
+script = ExtResource("13_wti55")
+Dialogue = SubResource("Resource_ye8kn")
+ActionType = 3
+ActionTime = 1.5
+
+[sub_resource type="Resource" id="Resource_1fget"]
+script = ExtResource("12_mnv8w")
+tag = ""
+text = "You just have to push forward a bit"
+isBold = true
+linkedToFairy = true
+position = Vector2(0, 0)
+
+[sub_resource type="Resource" id="Resource_e63df"]
+script = ExtResource("13_wti55")
+Dialogue = SubResource("Resource_1fget")
+ActionType = 3
+ActionTime = 5.0
+
+[sub_resource type="Resource" id="Resource_71dhf"]
+script = ExtResource("15_s0eul")
+Actions = Array[Object]([SubResource("Resource_jo33a"), SubResource("Resource_e63df"), SubResource("Resource_wipdy")])
+Priority = 1
+ActionType = 5
+ActionTime = 1.0
+
 [node name="tableau7" type="Node2D"]
-metadata/_edit_group_ = true
 
 [node name="Box" parent="." instance=ExtResource("1_mpkm1")]
 position = Vector2(10177, -25)
@@ -40,10 +110,9 @@ collision_layer = 0
 position = Vector2(184.5, -99)
 shape = SubResource("RectangleShape2D_rgbfr")
 
-[node name="Interactor" parent="T7_TutorialStart" node_paths=PackedStringArray("Targets", "ReactorsToActivate") instance=ExtResource("3_ayagj")]
+[node name="Interactor" parent="T7_TutorialStart" node_paths=PackedStringArray("Targets") instance=ExtResource("3_ayagj")]
 Container = ExtResource("4_lxb4g")
 Targets = [null]
-ReactorsToActivate = []
 flush = true
 singleUse = true
 
@@ -62,9 +131,8 @@ collision_mask = 39
 position = Vector2(2.23999, -0.319992)
 shape = SubResource("RectangleShape2D_djs5h")
 
-[node name="GoodInteractor" parent="TopButton" node_paths=PackedStringArray("ReactorsToActivate") instance=ExtResource("3_ayagj")]
+[node name="GoodInteractor" parent="TopButton" instance=ExtResource("3_ayagj")]
 Container = ExtResource("6_b2cgj")
-ReactorsToActivate = []
 flush = true
 singleUse = true
 ready = false
@@ -88,10 +156,9 @@ ReactorsToActivate = [NodePath("../../../TopButton/GoodInteractor")]
 flush = true
 singleUse = true
 
-[node name="SoftlockInteractor" parent="BottomButton/Area2D" index="2" node_paths=PackedStringArray("Targets", "ReactorsToActivate") instance=ExtResource("3_ayagj")]
+[node name="SoftlockInteractor" parent="BottomButton/Area2D" index="2" node_paths=PackedStringArray("Targets") instance=ExtResource("3_ayagj")]
 Container = ExtResource("9_3wn2t")
 Targets = [NodePath("../../../SoftLockSave")]
-ReactorsToActivate = []
 flush = true
 singleUse = true
 ready = false
@@ -103,9 +170,8 @@ collision_layer = 0
 position = Vector2(-1.92, -3.04361e-05)
 shape = SubResource("RectangleShape2D_pbwc4")
 
-[node name="BadInputInteractor" parent="BottomButton/Area2D2" node_paths=PackedStringArray("ReactorsToActivate") instance=ExtResource("3_ayagj")]
+[node name="BadInputInteractor" parent="BottomButton/Area2D2" instance=ExtResource("3_ayagj")]
 Container = ExtResource("10_hoedf")
-ReactorsToActivate = []
 flush = true
 singleUse = true
 
@@ -117,6 +183,26 @@ position = Vector2(11496, -332)
 
 [node name="SoftLockSave" type="Marker2D" parent="."]
 position = Vector2(11219, -343)
+
+[node name="AreaDestroyBox3" parent="." instance=ExtResource("11_s3t0t")]
+position = Vector2(10576, -17)
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AreaDestroyBox3"]
+shape = SubResource("RectangleShape2D_6mqho")
+
+[node name="Interactor" parent="AreaDestroyBox3" instance=ExtResource("3_ayagj")]
+Container = SubResource("Resource_bvqv2")
+
+[node name="AreaDestroyBox4" parent="." instance=ExtResource("11_s3t0t")]
+position = Vector2(9236, -23)
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AreaDestroyBox4"]
+shape = SubResource("RectangleShape2D_6mqho")
+
+[node name="Interactor" parent="AreaDestroyBox4" instance=ExtResource("3_ayagj")]
+Container = SubResource("Resource_71dhf")
 
 [connection signal="body_entered" from="T7_TutorialStart" to="T7_TutorialStart/Interactor" method="SendActions"]
 [connection signal="ButtonPressed" from="TopButton" to="Door" method="OpenDoor"]
@@ -132,6 +218,8 @@ position = Vector2(11219, -343)
 [connection signal="body_entered" from="BottomButton/Area2D" to="BottomButton/Area2D/GoodInputInteractor" method="SendActions"]
 [connection signal="body_entered" from="BottomButton/Area2D" to="BottomButton/Area2D/SoftlockInteractor" method="SendActions"]
 [connection signal="body_entered" from="BottomButton/Area2D2" to="BottomButton/Area2D2/BadInputInteractor" method="SendActions"]
+[connection signal="CrateDestroyed" from="AreaDestroyBox3" to="AreaDestroyBox3/Interactor" method="SendActions"]
+[connection signal="CrateDestroyed" from="AreaDestroyBox4" to="AreaDestroyBox4/Interactor" method="SendActions"]
 
 [editable path="TopButton"]
 [editable path="BottomButton"]
