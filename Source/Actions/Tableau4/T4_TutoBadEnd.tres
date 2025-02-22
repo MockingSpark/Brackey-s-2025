@@ -19,6 +19,7 @@ text = "No! That's not the right button!"
 isBold = true
 linkedToFairy = true
 position = Vector2(0, 0)
+arguments = null
 
 [sub_resource type="Resource" id="Resource_3wfb6"]
 script = ExtResource("2_j5rrt")
@@ -33,6 +34,7 @@ text = "You're doing it wrong!"
 isBold = false
 linkedToFairy = true
 position = Vector2(0, 0)
+arguments = null
 
 [sub_resource type="Resource" id="Resource_4pdl7"]
 script = ExtResource("2_j5rrt")

@@ -19,6 +19,7 @@ text = "I TOLD YOU TO KILL IT!"
 isBold = true
 linkedToFairy = true
 position = Vector2(0, 0)
+arguments = null
 
 [sub_resource type="Resource" id="Resource_slxw1"]
 script = ExtResource("2_7bu64")
@@ -33,6 +34,7 @@ text = "You need to listen or you won't survive!"
 isBold = false
 linkedToFairy = true
 position = Vector2(0, 0)
+arguments = null
 
 [sub_resource type="Resource" id="Resource_gqbqw"]
 script = ExtResource("2_7bu64")

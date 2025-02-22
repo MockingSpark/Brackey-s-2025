@@ -11,6 +11,7 @@ text = "Nope"
 isBold = false
 linkedToFairy = true
 position = Vector2(0, 0)
+arguments = null
 
 [sub_resource type="Resource" id="Resource_ss8rp"]
 script = ExtResource("2_pywsa")
@@ -25,6 +26,7 @@ text = "B O X on B U T T O N"
 isBold = false
 linkedToFairy = true
 position = Vector2(0, 0)
+arguments = null
 
 [sub_resource type="Resource" id="Resource_5qbad"]
 script = ExtResource("2_pywsa")

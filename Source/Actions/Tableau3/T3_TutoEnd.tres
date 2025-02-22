@@ -12,6 +12,7 @@ text = "Splortch! Love it!"
 isBold = false
 linkedToFairy = true
 position = Vector2(0, 0)
+arguments = null
 
 [sub_resource type="Resource" id="Resource_fptsr"]
 script = ExtResource("2_ylqse")
@@ -26,6 +27,7 @@ text = "By the way, if you need more spears, press TAB and I'll get you one!"
 isBold = false
 linkedToFairy = true
 position = Vector2(0, 0)
+arguments = null
 
 [sub_resource type="Resource" id="Resource_0qelt"]
 script = ExtResource("2_ylqse")

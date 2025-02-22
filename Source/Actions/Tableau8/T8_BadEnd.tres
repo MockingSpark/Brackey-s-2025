@@ -20,6 +20,7 @@ text = "I see you've chosen to defy me here...."
 isBold = false
 linkedToFairy = true
 position = Vector2(0, 0)
+arguments = null
 
 [sub_resource type="Resource" id="Resource_ss8rp"]
 script = ExtResource("2_ydkt4")
@@ -34,6 +35,7 @@ text = "Let's go next door and review...."
 isBold = false
 linkedToFairy = true
 position = Vector2(0, 0)
+arguments = null
 
 [sub_resource type="Resource" id="Resource_5qbad"]
 script = ExtResource("2_ydkt4")
