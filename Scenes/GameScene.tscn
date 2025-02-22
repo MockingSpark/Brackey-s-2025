@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://25k5f531xsh2"]
+[gd_scene load_steps=43 format=3 uid="uid://25k5f531xsh2"]
 
 [ext_resource type="PackedScene" uid="uid://cw000q3yg2bj8" path="res://Scenes/Fairy/Fairy.tscn" id="1_j437h"]
 [ext_resource type="PackedScene" uid="uid://cp3ga5u36lr85" path="res://Scenes/terrain/terrain.tscn" id="1_qxp7j"]
@@ -15,10 +15,13 @@
 [ext_resource type="Resource" uid="uid://dif37nfeoe7dd" path="res://Source/Actions/Ending/TestPlayerReset.tres" id="9_0mdcg"]
 [ext_resource type="Script" path="res://Scenes/SceneLoader.cs" id="9_qals1"]
 [ext_resource type="PackedScene" uid="uid://cs4go5ve5h3cg" path="res://Scenes/Background/parallax_background.tscn" id="9_u1uqc"]
+[ext_resource type="Script" path="res://Scenes/Dialogue/Dialogue.cs" id="10_b08l1"]
 [ext_resource type="PackedScene" uid="uid://bf3mmer8sadm8" path="res://Scenes/Tableau/tableau_6.tscn" id="10_iuc0p"]
+[ext_resource type="Script" path="res://Scenes/FairyActions/FairyActionDialogue.cs" id="11_15ljp"]
 [ext_resource type="Texture2D" uid="uid://utbh7m0awxrl" path="res://Assets/Background/mansion.png" id="11_ai78j"]
 [ext_resource type="PackedScene" uid="uid://dum2ptc6dd2v0" path="res://Scenes/Tableau/tableau_7.tscn" id="11_krvvm"]
 [ext_resource type="PackedScene" uid="uid://br03pqig8mmjm" path="res://Scenes/Tableau/tableau_8.tscn" id="12_2vvgp"]
+[ext_resource type="Script" path="res://Scenes/FairyActions/FairyActionContainer.cs" id="12_mpyc5"]
 [ext_resource type="Texture2D" uid="uid://b1mjpk75ajb1x" path="res://Assets/Sprites/Props/FinalDoor.png" id="13_2srwu"]
 [ext_resource type="Texture2D" uid="uid://dseqowtu3cnn8" path="res://Assets/Background/cave_bg.png" id="15_ttfx0"]
 [ext_resource type="Texture2D" uid="uid://bvh7iiyc1ta23" path="res://Assets/Background/cave_back.png" id="16_2ewgd"]
@@ -33,6 +36,77 @@ size = Vector2(125.046, 173.44)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8a8m2"]
 size = Vector2(463, 323)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wxxb1"]
+size = Vector2(26, 301)
+
+[sub_resource type="Resource" id="Resource_p7fe2"]
+script = ExtResource("10_b08l1")
+tag = ""
+text = "...
+"
+isBold = false
+linkedToFairy = true
+position = Vector2(0, 0)
+arguments = []
+
+[sub_resource type="Resource" id="Resource_tk8fp"]
+script = ExtResource("11_15ljp")
+Dialogue = SubResource("Resource_p7fe2")
+ActionType = 3
+ActionTime = 3.0
+
+[sub_resource type="Resource" id="Resource_d2b4s"]
+script = ExtResource("10_b08l1")
+tag = ""
+text = "Thank you for everything"
+isBold = false
+linkedToFairy = true
+position = Vector2(0, 0)
+arguments = []
+
+[sub_resource type="Resource" id="Resource_108su"]
+script = ExtResource("11_15ljp")
+Dialogue = SubResource("Resource_d2b4s")
+ActionType = 3
+ActionTime = 3.0
+
+[sub_resource type="Resource" id="Resource_ip834"]
+script = ExtResource("10_b08l1")
+tag = ""
+text = "Please come and visit once in a while."
+isBold = true
+linkedToFairy = true
+position = Vector2(0, 0)
+arguments = []
+
+[sub_resource type="Resource" id="Resource_0e7t0"]
+script = ExtResource("11_15ljp")
+Dialogue = SubResource("Resource_ip834")
+ActionType = 3
+ActionTime = 3.0
+
+[sub_resource type="Resource" id="Resource_bar3n"]
+script = ExtResource("10_b08l1")
+tag = ""
+text = "I'll miss you, and I hope you'll miss me too"
+isBold = false
+linkedToFairy = true
+position = Vector2(0, 0)
+arguments = []
+
+[sub_resource type="Resource" id="Resource_cirv2"]
+script = ExtResource("11_15ljp")
+Dialogue = SubResource("Resource_bar3n")
+ActionType = 3
+ActionTime = 5.0
+
+[sub_resource type="Resource" id="Resource_lhwtf"]
+script = ExtResource("12_mpyc5")
+Actions = Array[Object]([SubResource("Resource_tk8fp"), SubResource("Resource_108su"), SubResource("Resource_0e7t0"), SubResource("Resource_cirv2")])
+Priority = 0
+ActionType = 10
+ActionTime = 0.0
 
 [node name="GameScene" type="Node2D"]
 
@@ -49,7 +123,7 @@ layer_0/tile_data = PackedInt32Array(-262112, 0, 3, -262111, 65536, 3, -262110, 
 metadata/_edit_lock_ = true
 
 [node name="Player" parent="." instance=ExtResource("2_l2hhf")]
-position = Vector2(11632, -104)
+position = Vector2(13088, 29)
 
 [node name="PersistentT0" type="Node2D" parent="."]
 
@@ -96,6 +170,18 @@ shape = SubResource("RectangleShape2D_8a8m2")
 [node name="Interactor" parent="Ending/Area2D" instance=ExtResource("4_e3lrc")]
 Container = ExtResource("9_0mdcg")
 flush = true
+
+[node name="Area2D" type="Area2D" parent="Ending/Area2D"]
+position = Vector2(14413, 35)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ending/Area2D/Area2D"]
+position = Vector2(-3, -27.5)
+shape = SubResource("RectangleShape2D_wxxb1")
+
+[node name="Interactor" parent="Ending/Area2D/Area2D/CollisionShape2D" instance=ExtResource("4_e3lrc")]
+Container = SubResource("Resource_lhwtf")
+flush = true
+singleUse = true
 
 [node name="ScenesParent" type="Node2D" parent="."]
 script = ExtResource("9_qals1")
@@ -181,5 +267,6 @@ autoplay = true
 [connection signal="ButtonPressed" from="PersistentT0/Home Door Button" to="PersistentT0/Home Door" method="OpenDoor"]
 [connection signal="area_entered" from="PersistentT0/Home Door Button/Area2D" to="PersistentT0/Home Door Button" method="OnButtonPressed"]
 [connection signal="body_entered" from="Ending/Area2D" to="Ending/Area2D/Interactor" method="SendActions"]
+[connection signal="body_entered" from="Ending/Area2D/Area2D" to="Ending/Area2D/Area2D/CollisionShape2D/Interactor" method="SendActions"]
 
 [editable path="PersistentT0/Home Door Button"]
