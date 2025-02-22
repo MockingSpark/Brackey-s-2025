@@ -20,7 +20,7 @@ public partial class Dialogue : Resource
         
         foreach(EBlackboardKey key in arguments)
         {
-            strings.Add(Blackboard.Instance.GetValueAnyBoard(key).ToString());
+            strings.Add(Blackboard.Instance.GetValueAnyBoard(key,0).ToString());
         }
 
         object[] test = strings.ToArray<string>();
