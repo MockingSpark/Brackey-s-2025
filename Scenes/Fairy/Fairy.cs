@@ -110,7 +110,7 @@ public partial class Fairy : Node2D
         }
 
         NarrativeManager.Instance.CallDeferred("add_child", newBubble);
-		newBubble.SetDeferred("Text", dialogue.text);
+		newBubble.SetDeferred("Text", dialogue.GetText());
 		newBubble.GlobalPosition = dialogue.position;
 
 		newBubble.ShowBubble();
@@ -124,12 +124,12 @@ public partial class Fairy : Node2D
         if (dialogue.isBold)
         {
             boldBubble.ShowBubble();
-            boldBubble.Text = dialogue.text;
+            boldBubble.Text = dialogue.GetText();
         }
         else
         {
             roundBubble.ShowBubble();
-            roundBubble.Text = dialogue.text;
+            roundBubble.Text = dialogue.GetText();
         }
     }
 

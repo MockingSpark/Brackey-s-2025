@@ -32,6 +32,18 @@ public partial class Blackboard : Node
             Blackboards.Add(type, new Dictionary<EBlackboardKey, int>());
         }
     }
+    public int GetValueAnyBoard(EBlackboardKey key, int defaultValue = int.MinValue)
+    {
+        foreach(Dictionary<EBlackboardKey, int> blackboard in Blackboards.Values)
+        {
+            if(blackboard.ContainsKey(key))
+            {
+                return blackboard[key];
+            }
+        }
+
+        return defaultValue;
+    }
 
     public int GetValue(EBlackboardType blackboard, EBlackboardKey key, int defaultValue = int.MinValue)
     {
