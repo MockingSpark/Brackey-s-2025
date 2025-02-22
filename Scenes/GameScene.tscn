@@ -171,7 +171,7 @@ repeat_size = Vector2(3014, 0)
 repeat_times = 4
 
 [node name="CaveFrontFront" type="Sprite2D" parent="ParallaxBackground/endCave/CaveBg"]
-position = Vector2(3.19214, 146.404)
+position = Vector2(3.19214, 29.2813)
 texture = ExtResource("26_hv11x")
 
 [node name="BGM" type="AudioStreamPlayer" parent="."]
