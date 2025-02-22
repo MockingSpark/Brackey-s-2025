@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 NarrativeManager="*res://Scenes/NarrativeManager/NarrativeManager.cs"
 GameCamera="*res://Scenes/Camera/GameCamera.tscn"
+Blackboard="*res://Scenes/Blackboard/Blackboard.cs"
 
 [display]
 
