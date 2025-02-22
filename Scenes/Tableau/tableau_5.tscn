@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://c72ttyet07u6h"]
+[gd_scene load_steps=28 format=3 uid="uid://c72ttyet07u6h"]
 
 [ext_resource type="PackedScene" uid="uid://dg3wxmmau0er0" path="res://Scenes/Enemy/enemy_surveil_point.tscn" id="1_ylmay"]
 [ext_resource type="PackedScene" uid="uid://bq6wiakr1leji" path="res://Scenes/Enemy/enemy.tscn" id="2_4cu8x"]
@@ -11,6 +11,11 @@
 [ext_resource type="Resource" uid="uid://b614jvie6aiut" path="res://Source/Actions/Tableau5/T5_Tuto.tres" id="9_mt6h2"]
 [ext_resource type="Resource" uid="uid://xxud64uv8030" path="res://Source/Actions/Tableau5/T5_TutoBadEnd.tres" id="10_aannp"]
 [ext_resource type="Resource" uid="uid://4vr7yrdll38a" path="res://Source/Actions/Tableau5/T5_TutoEnd.tres" id="10_cpulr"]
+[ext_resource type="PackedScene" uid="uid://dh4ey1nlfq7h1" path="res://Scenes/Box/AreaDestroyBox.tscn" id="12_ew5ay"]
+[ext_resource type="Script" path="res://Scenes/Dialogue/Dialogue.cs" id="13_4fbfm"]
+[ext_resource type="Script" path="res://Scenes/FairyActions/FairyActionDialogue.cs" id="14_rwwj2"]
+[ext_resource type="Script" path="res://Scenes/FairyActions/FairyActionNoText.cs" id="15_0euym"]
+[ext_resource type="Script" path="res://Scenes/FairyActions/FairyActionContainer.cs" id="15_nk7io"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_djs5h"]
 size = Vector2(4.47998, 15.36)
@@ -19,10 +24,57 @@ size = Vector2(4.47998, 15.36)
 size = Vector2(30, 211)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_l54av"]
-size = Vector2(19, 146)
+size = Vector2(24, 146)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_la8w3"]
 size = Vector2(171, 30)
+
+[sub_resource type="Resource" id="Resource_32l6j"]
+script = ExtResource("13_4fbfm")
+tag = ""
+text = "Oh no, don't block the boxes !"
+isBold = false
+linkedToFairy = true
+position = Vector2(0, 0)
+
+[sub_resource type="Resource" id="Resource_2lexf"]
+script = ExtResource("14_rwwj2")
+Dialogue = SubResource("Resource_32l6j")
+ActionType = 3
+ActionTime = 1.0
+
+[sub_resource type="Resource" id="Resource_wipdy"]
+script = ExtResource("15_0euym")
+ActionType = 5
+ActionTime = 0.0
+
+[sub_resource type="Resource" id="Resource_bfx1n"]
+script = ExtResource("15_nk7io")
+Actions = Array[Object]([SubResource("Resource_2lexf"), SubResource("Resource_wipdy")])
+Priority = 1
+ActionType = 5
+ActionTime = 1.0
+
+[sub_resource type="Resource" id="Resource_ykcms"]
+script = ExtResource("13_4fbfm")
+tag = ""
+text = "Not this way"
+isBold = false
+linkedToFairy = true
+position = Vector2(0, 0)
+
+[sub_resource type="Resource" id="Resource_0xsiy"]
+script = ExtResource("14_rwwj2")
+Dialogue = SubResource("Resource_ykcms")
+ActionType = 3
+ActionTime = 1.0
+
+[sub_resource type="Resource" id="Resource_yjh3b"]
+script = ExtResource("15_nk7io")
+Actions = Array[Object]([SubResource("Resource_0xsiy"), SubResource("Resource_wipdy")])
+Priority = 1
+ActionType = 5
+ActionTime = 1.0
 
 [node name="tableau5" type="Node2D"]
 
@@ -104,6 +156,26 @@ shape = SubResource("RectangleShape2D_la8w3")
 [node name="BadEndInteractor" parent="ConfirmBadEnd" instance=ExtResource("8_f1o3a")]
 Container = ExtResource("10_aannp")
 
+[node name="AreaDestroyBox2" parent="." instance=ExtResource("12_ew5ay")]
+position = Vector2(6715, 913)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AreaDestroyBox2"]
+position = Vector2(0, -2)
+shape = SubResource("RectangleShape2D_l54av")
+
+[node name="Interactor" parent="AreaDestroyBox2" instance=ExtResource("8_f1o3a")]
+Container = SubResource("Resource_bfx1n")
+
+[node name="AreaDestroyBox3" parent="." instance=ExtResource("12_ew5ay")]
+position = Vector2(6587, 629)
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AreaDestroyBox3"]
+shape = SubResource("RectangleShape2D_l54av")
+
+[node name="Interactor" parent="AreaDestroyBox3" instance=ExtResource("8_f1o3a")]
+Container = SubResource("Resource_yjh3b")
+
 [connection signal="ButtonPressed" from="Button2" to="Door" method="OpenDoor"]
 [connection signal="ButtonReleased" from="Button2" to="Door" method="CloseDoor"]
 [connection signal="area_entered" from="Button2/Area2D" to="Button2" method="OnButtonPressed"]
@@ -112,5 +184,7 @@ Container = ExtResource("10_aannp")
 [connection signal="body_entered" from="T5_Start" to="T5_Start/Interactor" method="SendActions"]
 [connection signal="body_entered" from="T5_End" to="T5_End/Interactor" method="SendActions"]
 [connection signal="body_entered" from="ConfirmBadEnd" to="T5_End/Interactor" method="Deactivate"]
+[connection signal="CrateDestroyed" from="AreaDestroyBox2" to="AreaDestroyBox2/Interactor" method="SendActions"]
+[connection signal="CrateDestroyed" from="AreaDestroyBox3" to="AreaDestroyBox3/Interactor" method="SendActions"]
 
 [editable path="Button2"]
