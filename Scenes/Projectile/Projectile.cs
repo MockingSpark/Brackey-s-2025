@@ -56,19 +56,8 @@ public partial class Projectile : Node2D
 		newProjectile.Transform = Transform;
 		newProjectile.Position -= newProjectile.Transform.X * 20;
 		GetTree().Root.CallDeferred("add_child", newProjectile);
-		if (isLeft)
-		{
-			var rdmX = GD.RandRange(100, 350.0);
-			var rdmY = GD.RandRange(-400, -600);
-			newProjectile.ApplyCentralImpulse(new Vector2((float)rdmX, (float)rdmY));
-		}
-		else
-		{
-			var rdmX = GD.RandRange(-100, -350.0);
-			var rdmY = GD.RandRange(-400, -600);
-			newProjectile.ApplyCentralImpulse(new Vector2((float)rdmX, (float)rdmY));
-		}
-		Destroy();
+        newProjectile.CallDeferred("InitialBounce", isLeft);
+        Destroy();
 	}
 
 	public void OnStick(Node2D node)

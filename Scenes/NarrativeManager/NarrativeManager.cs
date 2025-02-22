@@ -20,6 +20,10 @@ public partial class NarrativeManager : Node
 
     private int awaitedSignals = 0;
 
+	#region Narrative bools
+
+    #endregion
+
     public void RegisterFairy(Fairy fairy)
 	{
 		this.fairy = fairy;
@@ -140,7 +144,11 @@ public partial class NarrativeManager : Node
                     }
                 }
 				break;
-			case E_FairyAction.Container:
+			case E_FairyAction.SpearProduction:
+                var spearProdAction = action as FairyActionSpearProduction;
+				fairy.AllowSpearProdution(spearProdAction.ShouldAllowSpearProduction);
+				break;
+            case E_FairyAction.Container:
 				Debug.Fail("Should not process container");
 				break;
 			default:

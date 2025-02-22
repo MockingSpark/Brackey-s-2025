@@ -40,15 +40,21 @@ public partial class CharacterController : CharacterBody2D
 
     private Buffer buffer;
 
-
     private int projectileCount = 0;
 	private List<Base_Interactable> interactables = new List<Base_Interactable>();
 
-    
+    public bool allowSpearProd = false;
+        
 	public int ProjectileCount { get => projectileCount; set => projectileCount = value; }
 
 
-	public override void _Ready()
+    [Signal]
+    public delegate void OnRequestSpearEventHandler();
+    [Signal]
+    public delegate void OnNoSpearEventHandler();
+
+
+    public override void _Ready()
 	{
 		animationPLayer = GetNode<AnimationPlayer>("AnimationPlayer");
 		rightThrowPoint = GetNode<Node2D>("RightThrowPoint");
@@ -62,17 +68,21 @@ public partial class CharacterController : CharacterBody2D
 	{
 
         HandleAnimation();
-		if (Input.IsActionJustPressed("Attack"))
-		{
-			ThrowProjectile();
-		}
-		else if (Input.IsActionJustPressed("Action"))
-		{
-			if (interactables.Count > 0)
-			{
-				interactables[0].Interact(this);
-			}
-		}
+        if (Input.IsActionJustPressed("Attack"))
+        {
+            ThrowProjectile();
+        }
+        else if (Input.IsActionJustPressed("Action"))
+        {
+            if (interactables.Count > 0)
+            {
+                interactables[0].Interact(this);
+            }
+        }
+        else if (Input.IsActionJustPressed("FairyInput"))
+        {
+            EmitSignal(SignalName.OnRequestSpear);
+        }
 	}
 
 	public override void _PhysicsProcess(double delta)
@@ -246,7 +256,11 @@ public partial class CharacterController : CharacterBody2D
 
 	private void ThrowProjectile()
 	{
-		if (projectileCount == 0) return;
+        if (projectileCount == 0)
+        {
+            EmitSignal(SignalName.OnNoSpear);
+            return;
+        }
 
 		projectileCount--;
 

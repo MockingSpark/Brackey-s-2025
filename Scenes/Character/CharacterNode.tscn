@@ -1,10 +1,12 @@
-[gd_scene load_steps=24 format=3 uid="uid://c1d0x30dt6bad"]
+[gd_scene load_steps=26 format=3 uid="uid://c1d0x30dt6bad"]
 
 [ext_resource type="Script" path="res://Scenes/Character/CharacterController.cs" id="1_7gc5i"]
 [ext_resource type="PackedScene" uid="uid://c2btbqr7srinh" path="res://Scenes/Projectile/Projectile.tscn" id="2_77sic"]
 [ext_resource type="Shape2D" uid="uid://ceste5w5ced75" path="res://Source/CharacterCollision.tres" id="2_heess"]
 [ext_resource type="Script" path="res://Scenes/Buffer/Buffer.cs" id="5_ms3wm"]
 [ext_resource type="Texture2D" uid="uid://pjg15sftybdy" path="res://Assets/Sprites/Character/character_spreadsheet.png" id="5_wype6"]
+[ext_resource type="PackedScene" uid="uid://yc7ocknrfysc" path="res://Scenes/NarrativeManager/interactor.tscn" id="6_0kju3"]
+[ext_resource type="Resource" uid="uid://cwvjjslwrbtt2" path="res://Source/Actions/SpearProductionInfo.tres" id="7_nhq04"]
 
 [sub_resource type="Animation" id="Animation_7pd5j"]
 resource_name = "L_IdleEmpty"
@@ -346,3 +348,8 @@ libraries = {
 [node name="Buffer" type="Node2D" parent="."]
 script = ExtResource("5_ms3wm")
 bufferTime = 0.4
+
+[node name="NoSpearInteractor" parent="." instance=ExtResource("6_0kju3")]
+Container = ExtResource("7_nhq04")
+
+[connection signal="OnNoSpear" from="." to="NoSpearInteractor" method="SendActions"]

@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="FairyActionContainer" load_steps=8 format=3 uid="uid://nbj3t82mamgr"]
+[gd_resource type="Resource" script_class="FairyActionContainer" load_steps=10 format=3 uid="uid://nbj3t82mamgr"]
 
 [ext_resource type="Script" path="res://Scenes/Dialogue/Dialogue.cs" id="1_208xs"]
 [ext_resource type="Script" path="res://Scenes/FairyActions/FairyActionContainer.cs" id="1_ly73l"]
@@ -19,6 +19,20 @@ Dialogue = SubResource("Resource_hpbkh")
 ActionType = 3
 ActionTime = 2.0
 
+[sub_resource type="Resource" id="Resource_rypuq"]
+script = ExtResource("1_208xs")
+tag = ""
+text = "By the way, if you need more spears, press TAB and I'll get you one!"
+isBold = false
+linkedToFairy = true
+position = Vector2(0, 0)
+
+[sub_resource type="Resource" id="Resource_0qelt"]
+script = ExtResource("2_ylqse")
+Dialogue = SubResource("Resource_rypuq")
+ActionType = 3
+ActionTime = 3.0
+
 [sub_resource type="Resource" id="Resource_yemne"]
 script = ExtResource("3_5og6j")
 ActionType = 5
@@ -26,7 +40,7 @@ ActionTime = 0.0
 
 [resource]
 script = ExtResource("1_ly73l")
-Actions = Array[Object]([SubResource("Resource_fptsr"), SubResource("Resource_yemne")])
+Actions = Array[Object]([SubResource("Resource_fptsr"), SubResource("Resource_0qelt"), SubResource("Resource_yemne")])
 Priority = 0
 ActionType = 10
 ActionTime = 0.0

@@ -1,8 +1,15 @@
-[gd_resource type="Resource" script_class="FairyActionContainer" load_steps=8 format=3 uid="uid://dgq5uc6q4wghv"]
+[gd_resource type="Resource" script_class="FairyActionContainer" load_steps=10 format=3 uid="uid://dgq5uc6q4wghv"]
 
 [ext_resource type="Script" path="res://Scenes/FairyActions/FairyActionContainer.cs" id="1_6opxc"]
+[ext_resource type="Script" path="res://Scenes/FairyActions/FairyActionSpearProduction.cs" id="1_fxve0"]
 [ext_resource type="Script" path="res://Scenes/Dialogue/Dialogue.cs" id="1_nbrka"]
 [ext_resource type="Script" path="res://Scenes/FairyActions/FairyActionDialogue.cs" id="2_12cst"]
+
+[sub_resource type="Resource" id="Resource_h27qt"]
+script = ExtResource("1_fxve0")
+ShouldAllowSpearProduction = true
+ActionType = 13
+ActionTime = 0.0
 
 [sub_resource type="Resource" id="Resource_0pj8v"]
 script = ExtResource("1_nbrka")
@@ -36,7 +43,7 @@ ActionTime = -1.0
 
 [resource]
 script = ExtResource("1_6opxc")
-Actions = Array[Object]([SubResource("Resource_slxw1"), SubResource("Resource_gqbqw")])
+Actions = Array[Object]([SubResource("Resource_h27qt"), SubResource("Resource_slxw1"), SubResource("Resource_gqbqw")])
 Priority = 0
 ActionType = 10
 ActionTime = 0.0

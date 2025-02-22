@@ -1,4 +1,5 @@
 using Godot;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 
@@ -44,6 +45,10 @@ public partial class Fairy : Node2D
 	private Vector2 focusOffset;
 	private bool emergency = false;
 
+	private bool allowSpearProduction = false;
+	[Export]
+	private PackedScene spearScene;
+
 	[Signal]
 	public delegate void FairyActionErrorEventHandler();
 
@@ -52,15 +57,18 @@ public partial class Fairy : Node2D
 		get 
 		{
 			if(player == null)
-				player = GetParent().GetNode<CharacterController>("Player");
+            {
+                player = GetParent().GetNode<CharacterController>("Player");
+				player.OnRequestSpear += GiveSpear;
+            }
 
 			return player; 
 		} 
 		set => player = value; 
 	}
 
-	// Called when the node enters the scene tree for the first time.
-	public override void _Ready()
+    // Called when the node enters the scene tree for the first time.
+    public override void _Ready()
 	{
 		GetNewFollowPoint();
 		GetNode<AnimatedSprite2D>("AnimatedSprite2D").Play("default");
@@ -172,9 +180,26 @@ public partial class Fairy : Node2D
 		playerFollowPoint = new Vector2(x, y);
 	}
 
+	public void AllowSpearProdution(bool allow)
+	{
+		Player.allowSpearProd = allow;
+		allowSpearProduction = allow;
+	}
 
-	#region Fairy Actions
-	public void NoAction()
+    private void GiveSpear()
+    {
+        if (allowSpearProduction && focusPoint == null)
+        {
+            var newProjectile = spearScene.Instantiate<BounceSpear>();
+            newProjectile.Transform = Transform;
+            GetTree().Root.CallDeferred("add_child", newProjectile);
+            newProjectile.CallDeferred("InitialBounce", !ShouldLookLeft());
+        }
+    }
+
+
+    #region Fairy Actions
+    public void NoAction()
 	{
 		emergency = false;
 		focusPoint = null;
