@@ -26,6 +26,8 @@ public partial class NarrativeManager : Node
 	FairyActionContainer catchContainer;
     FairyActionContainer protectContainer;
     FairyActionContainer softlockContainer;
+
+	int angerLevel = 0;
     #endregion
 
     private void GetRessources()
@@ -161,6 +163,11 @@ public partial class NarrativeManager : Node
                 var spearProdAction = action as FairyActionSpearProduction;
 				fairy.AllowSpearProdution(spearProdAction.ShouldAllowSpearProduction);
 				break;
+			case E_FairyAction.AngerChange:
+                var angerAction = action as FairyActionAngerChange;
+				angerLevel += angerAction.ChangeAmount;
+				fairy.UpdateAnger(angerLevel, angerAction.ChangeAmount);
+                break;
             case E_FairyAction.Container:
 				Debug.Fail("Should not process container");
 				break;

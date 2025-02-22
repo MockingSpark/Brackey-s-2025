@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://cw000q3yg2bj8"]
+[gd_scene load_steps=14 format=3 uid="uid://cw000q3yg2bj8"]
 
 [ext_resource type="SpriteFrames" uid="uid://b4kugdvmrjvkt" path="res://Assets/Sprites/Fairy/fairySpriteFrame.tres" id="1_438el"]
 [ext_resource type="Script" path="res://Scenes/Fairy/Fairy.cs" id="1_juba5"]
@@ -8,6 +8,11 @@
 [ext_resource type="Texture2D" uid="uid://c1v2uldarfd8s" path="res://Assets/Sprites/VFX/star_01.png" id="4_4e7a0"]
 [ext_resource type="PackedScene" uid="uid://bc4jphpp7ndgj" path="res://Scenes/DialogueBubble/BoldBubble.tscn" id="4_u6plu"]
 [ext_resource type="PackedScene" uid="uid://djhjkivn4mbkn" path="res://Scenes/DialogueBubble/RoundBubble.tscn" id="5_6qkn2"]
+
+[sub_resource type="Gradient" id="Gradient_c3olo"]
+resource_name = "AngerGardient"
+offsets = PackedFloat32Array(0, 0.275779, 0.688249, 1)
+colors = PackedColorArray(0.215686, 0.709804, 0.960784, 1, 1, 1, 0, 1, 1, 0.660931, 0.272591, 1, 0.835068, 0.00550984, 0, 1)
 
 [sub_resource type="Curve" id="Curve_rdndu"]
 _data = [Vector2(0.00309598, 1), 0.0, 0.0, 0, 0, Vector2(0.79257, 0.872393), 0.0, 0.0, 0, 0, Vector2(0.916409, 0), 0.0, 0.0, 0, 0, Vector2(0.996904, 0.00306749), 0.0, 0.0, 0, 0]
@@ -38,6 +43,7 @@ radius = 33.3333
 z_index = 70
 scale = Vector2(0.3, 0.3)
 script = ExtResource("1_juba5")
+angerGradient = SubResource("Gradient_c3olo")
 FairyColor = Color(0.215686, 0.709804, 0.960784, 1)
 roundBubble = NodePath("Round_bubble")
 boldBubble = NodePath("Bold_bubble")
