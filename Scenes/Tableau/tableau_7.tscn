@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://dum2ptc6dd2v0"]
+[gd_scene load_steps=32 format=3 uid="uid://dum2ptc6dd2v0"]
 
 [ext_resource type="PackedScene" uid="uid://0s6hs2pwdk2f" path="res://Scenes/Box/box.tscn" id="1_mpkm1"]
 [ext_resource type="PackedScene" uid="uid://cvnf375ogiyfw" path="res://Scenes/Door/door.tscn" id="2_6julv"]
@@ -16,6 +16,7 @@
 [ext_resource type="Script" path="res://Scenes/FairyActions/FairyActionDialogue.cs" id="13_wti55"]
 [ext_resource type="Script" path="res://Scenes/FairyActions/FairyActionNoText.cs" id="14_hgvag"]
 [ext_resource type="Script" path="res://Scenes/FairyActions/FairyActionContainer.cs" id="15_s0eul"]
+[ext_resource type="Resource" uid="uid://btqjhn04rlca5" path="res://Source/Actions/Tableau7/T7_EarlyLeave.tres" id="17_wtxpn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rgbfr"]
 size = Vector2(423, 375.25)
@@ -91,6 +92,9 @@ Actions = Array[Object]([SubResource("Resource_jo33a"), SubResource("Resource_e6
 Priority = 1
 ActionType = 5
 ActionTime = 1.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fdm18"]
+size = Vector2(20, 196)
 
 [node name="tableau7" type="Node2D"]
 
@@ -204,6 +208,16 @@ shape = SubResource("RectangleShape2D_6mqho")
 [node name="Interactor" parent="AreaDestroyBox4" instance=ExtResource("3_ayagj")]
 Container = SubResource("Resource_71dhf")
 
+[node name="EarlyLeaveArea" type="Area2D" parent="."]
+position = Vector2(11496, -393)
+collision_layer = 0
+
+[node name="EarlyLeaveInteractor" parent="EarlyLeaveArea" instance=ExtResource("3_ayagj")]
+Container = ExtResource("17_wtxpn")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EarlyLeaveArea"]
+shape = SubResource("RectangleShape2D_fdm18")
+
 [connection signal="body_entered" from="T7_TutorialStart" to="T7_TutorialStart/Interactor" method="SendActions"]
 [connection signal="ButtonPressed" from="TopButton" to="Door" method="OpenDoor"]
 [connection signal="ButtonPressed" from="TopButton" to="TopButton/GoodInteractor" method="SendActions"]
@@ -217,9 +231,12 @@ Container = SubResource("Resource_71dhf")
 [connection signal="body_entered" from="BottomButton/Area2D" to="TopButton/EarlyInteractor" method="Deactivate"]
 [connection signal="body_entered" from="BottomButton/Area2D" to="BottomButton/Area2D/GoodInputInteractor" method="SendActions"]
 [connection signal="body_entered" from="BottomButton/Area2D" to="BottomButton/Area2D/SoftlockInteractor" method="SendActions"]
+[connection signal="body_entered" from="BottomButton/Area2D" to="EarlyLeaveArea/EarlyLeaveInteractor" method="Deactivate"]
 [connection signal="body_entered" from="BottomButton/Area2D2" to="BottomButton/Area2D2/BadInputInteractor" method="SendActions"]
 [connection signal="CrateDestroyed" from="AreaDestroyBox3" to="AreaDestroyBox3/Interactor" method="SendActions"]
 [connection signal="CrateDestroyed" from="AreaDestroyBox4" to="AreaDestroyBox4/Interactor" method="SendActions"]
+[connection signal="body_entered" from="EarlyLeaveArea" to="EarlyLeaveArea/EarlyLeaveInteractor" method="SendActions"]
+[connection signal="body_entered" from="EarlyLeaveArea" to="EarlyLeaveArea/EarlyLeaveInteractor" method="Deactivate"]
 
 [editable path="TopButton"]
 [editable path="BottomButton"]
