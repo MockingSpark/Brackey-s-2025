@@ -1,0 +1,183 @@
+[gd_resource type="Resource" script_class="FairyActionContainer" load_steps=27 format=3 uid="uid://egkrx6djdt3t"]
+
+[ext_resource type="Script" path="res://Scenes/FairyActions/FairyActionContainer.cs" id="1_bweiu"]
+[ext_resource type="Script" path="res://Scenes/Dialogue/Dialogue.cs" id="1_qe3kh"]
+[ext_resource type="Script" path="res://Scenes/FairyActions/FairyActionDialogue.cs" id="2_h3ehr"]
+
+[sub_resource type="Resource" id="Resource_fasse"]
+script = ExtResource("1_qe3kh")
+tag = ""
+text = "Haha I see. You're already at this age."
+isBold = false
+linkedToFairy = true
+position = Vector2(0, 0)
+arguments = []
+
+[sub_resource type="Resource" id="Resource_5olgw"]
+script = ExtResource("2_h3ehr")
+Dialogue = SubResource("Resource_fasse")
+ActionType = 3
+ActionTime = 3.0
+
+[sub_resource type="Resource" id="Resource_uui4l"]
+script = ExtResource("1_qe3kh")
+tag = ""
+text = "You refuse to listen, only to get tripped up."
+isBold = false
+linkedToFairy = true
+position = Vector2(0, 0)
+arguments = []
+
+[sub_resource type="Resource" id="Resource_6c4xa"]
+script = ExtResource("2_h3ehr")
+Dialogue = SubResource("Resource_uui4l")
+ActionType = 3
+ActionTime = 3.0
+
+[sub_resource type="Resource" id="Resource_tmouw"]
+script = ExtResource("1_qe3kh")
+tag = ""
+text = "*chuckle*"
+isBold = false
+linkedToFairy = true
+position = Vector2(0, 0)
+arguments = []
+
+[sub_resource type="Resource" id="Resource_3ciua"]
+script = ExtResource("2_h3ehr")
+Dialogue = SubResource("Resource_tmouw")
+ActionType = 3
+ActionTime = 3.0
+
+[sub_resource type="Resource" id="Resource_82uko"]
+script = ExtResource("1_qe3kh")
+tag = ""
+text = "No way I'll let you out like this !"
+isBold = true
+linkedToFairy = true
+position = Vector2(0, 0)
+arguments = []
+
+[sub_resource type="Resource" id="Resource_rk7sn"]
+script = ExtResource("2_h3ehr")
+Dialogue = SubResource("Resource_82uko")
+ActionType = 3
+ActionTime = 3.0
+
+[sub_resource type="Resource" id="Resource_ecul8"]
+script = ExtResource("1_bweiu")
+Actions = Array[Object]([SubResource("Resource_5olgw"), SubResource("Resource_6c4xa"), SubResource("Resource_3ciua"), SubResource("Resource_rk7sn")])
+Priority = 0
+ActionType = 10
+ActionTime = 0.0
+
+[sub_resource type="Resource" id="Resource_2x6pw"]
+script = ExtResource("1_qe3kh")
+tag = ""
+text = "You know I'm doing it to protect you right ?"
+isBold = false
+linkedToFairy = true
+position = Vector2(0, 0)
+arguments = []
+
+[sub_resource type="Resource" id="Resource_56fah"]
+script = ExtResource("2_h3ehr")
+Dialogue = SubResource("Resource_2x6pw")
+ActionType = 3
+ActionTime = 3.0
+
+[sub_resource type="Resource" id="Resource_ie00v"]
+script = ExtResource("1_qe3kh")
+tag = ""
+text = "Outside is OBVIOUSLY too dangerous for you right now."
+isBold = false
+linkedToFairy = true
+position = Vector2(0, 0)
+arguments = []
+
+[sub_resource type="Resource" id="Resource_l21qx"]
+script = ExtResource("2_h3ehr")
+Dialogue = SubResource("Resource_ie00v")
+ActionType = 3
+ActionTime = 3.0
+
+[sub_resource type="Resource" id="Resource_lm6bl"]
+script = ExtResource("1_qe3kh")
+tag = ""
+text = "Get back in the house !"
+isBold = true
+linkedToFairy = true
+position = Vector2(0, 0)
+arguments = []
+
+[sub_resource type="Resource" id="Resource_nw50t"]
+script = ExtResource("2_h3ehr")
+Dialogue = SubResource("Resource_lm6bl")
+ActionType = 0
+ActionTime = 3.0
+
+[sub_resource type="Resource" id="Resource_33ffo"]
+script = ExtResource("1_bweiu")
+Actions = Array[Object]([SubResource("Resource_56fah"), SubResource("Resource_l21qx"), SubResource("Resource_nw50t")])
+Priority = 0
+ActionType = 10
+ActionTime = 0.0
+
+[sub_resource type="Resource" id="Resource_1paj8"]
+script = ExtResource("1_qe3kh")
+tag = ""
+text = "You used to be such an obedient and lovely child I can barely recognize you anymore !"
+isBold = false
+linkedToFairy = true
+position = Vector2(0, 0)
+arguments = []
+
+[sub_resource type="Resource" id="Resource_hosgf"]
+script = ExtResource("2_h3ehr")
+Dialogue = SubResource("Resource_1paj8")
+ActionType = 3
+ActionTime = 3.0
+
+[sub_resource type="Resource" id="Resource_nbysw"]
+script = ExtResource("1_qe3kh")
+tag = ""
+text = "Are you trying to make me cry ?"
+isBold = false
+linkedToFairy = true
+position = Vector2(0, 0)
+arguments = []
+
+[sub_resource type="Resource" id="Resource_60vcd"]
+script = ExtResource("2_h3ehr")
+Dialogue = SubResource("Resource_nbysw")
+ActionType = 3
+ActionTime = 0.0
+
+[sub_resource type="Resource" id="Resource_ysjpi"]
+script = ExtResource("1_qe3kh")
+tag = ""
+text = "You're acting SO dangerously and it's always ME who has to clean up!"
+isBold = true
+linkedToFairy = true
+position = Vector2(0, 0)
+arguments = []
+
+[sub_resource type="Resource" id="Resource_jifsi"]
+script = ExtResource("2_h3ehr")
+Dialogue = SubResource("Resource_ysjpi")
+ActionType = 3
+ActionTime = 4.0
+
+[sub_resource type="Resource" id="Resource_307iw"]
+script = ExtResource("1_bweiu")
+Actions = Array[Object]([SubResource("Resource_hosgf"), SubResource("Resource_60vcd"), SubResource("Resource_jifsi")])
+Priority = 0
+ActionType = 10
+ActionTime = 0.0
+
+[resource]
+script = ExtResource("1_bweiu")
+Actions = Array[Object]([SubResource("Resource_ecul8"), SubResource("Resource_33ffo"), SubResource("Resource_307iw")])
+Priority = 0
+ActionType = 0
+ActionTime = 0.0

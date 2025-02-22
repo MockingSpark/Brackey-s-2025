@@ -12,6 +12,7 @@ text = "What about the nice little puzzle I crafted for you !
 isBold = false
 linkedToFairy = true
 position = Vector2(0, 0)
+arguments = []
 
 [sub_resource type="Resource" id="Resource_70abu"]
 script = ExtResource("2_djk2c")

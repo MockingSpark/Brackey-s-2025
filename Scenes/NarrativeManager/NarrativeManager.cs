@@ -43,6 +43,7 @@ public partial class NarrativeManager : Node
         softlockContainer = GD.Load<FairyActionContainer>("res://Source/RandomDialogues/SoftlockDialogues.tres");
         notAngryBadEndContainer = GD.Load<FairyActionContainer>("res://Source/Actions/Ending/EndRandomNotAngryBad.tres");
         notAngryGoodEndContainer = GD.Load<FairyActionContainer>("res://Source/Actions/Ending/EndRandomNotAngryGood.tres");
+        angryBadEndContainer = GD.Load<FairyActionContainer>("res://Source/Actions/Ending/NotGoodEnoughAngry.tres");
     }
 
     public void RegisterFairy(Fairy fairy)
@@ -195,7 +196,7 @@ public partial class NarrativeManager : Node
 				break;
 			case E_FairyAction.SpearProduction:
                 var spearProdAction = action as FairyActionSpearProduction;
-				fairy.AllowSpearProdution(spearProdAction.ShouldAllowSpearProduction);
+				 fairy.AllowSpearProdution(spearProdAction.ShouldAllowSpearProduction);
 				break;
 			case E_FairyAction.AngerChange:
                 var angerAction = action as FairyActionAngerChange;

@@ -19,6 +19,7 @@ text = "You found my spear reserves...."
 isBold = false
 linkedToFairy = true
 position = Vector2(0, 0)
+arguments = []
 
 [sub_resource type="Resource" id="Resource_3n8is"]
 script = ExtResource("3_xfo47")
@@ -33,6 +34,7 @@ text = "You weren't supposed to!"
 isBold = false
 linkedToFairy = true
 position = Vector2(0, 0)
+arguments = []
 
 [sub_resource type="Resource" id="Resource_ovyur"]
 script = ExtResource("3_xfo47")

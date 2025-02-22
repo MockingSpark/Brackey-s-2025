@@ -19,6 +19,8 @@ ActionTime = 2.0
 
 [sub_resource type="Resource" id="Resource_k8bb8"]
 script = ExtResource("4_shjua")
+HideFairysBubble = true
+HideInWorldBubbles = true
 ActionType = 5
 ActionTime = 0.0
 
