@@ -55,7 +55,7 @@ public partial class Projectile : Node2D
 		var newProjectile = bounceSpear.Instantiate<BounceSpear>();
 		newProjectile.Transform = Transform;
 		newProjectile.Position -= newProjectile.Transform.X * 20;
-		GetTree().Root.CallDeferred("add_child", newProjectile);
+        GetTree().Root.GetNode<Node>("SpearParent").CallDeferred("add_child", newProjectile);
         newProjectile.CallDeferred("InitialBounce", isLeft);
         Destroy();
 	}

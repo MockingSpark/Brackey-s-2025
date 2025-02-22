@@ -234,7 +234,7 @@ public partial class Fairy : Node2D
         {
             var newProjectile = spearScene.Instantiate<BounceSpear>();
             newProjectile.Transform = Transform;
-            GetTree().Root.CallDeferred("add_child", newProjectile);
+            GetTree().Root.GetNode<Node>("SpearParent").CallDeferred("add_child", newProjectile);
             newProjectile.CallDeferred("InitialBounce", !ShouldLookLeft());
         }
     }

@@ -9,7 +9,7 @@ radius = 6.0
 height = 64.0
 
 [node name="BounceSpear" type="RigidBody2D"]
-collision_layer = 4
+collision_layer = 0
 collision_mask = 2
 script = ExtResource("1_134b1")
 
