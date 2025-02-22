@@ -1,21 +1,66 @@
-[gd_scene load_steps=2 format=3 uid="uid://dlceklgx28ski"]
+[gd_scene load_steps=5 format=3 uid="uid://dlceklgx28ski"]
 
 [ext_resource type="Script" path="res://Scenes/Menu.cs" id="1_iaajv"]
+[ext_resource type="Texture2D" uid="uid://2l6x0xfci00g" path="res://Assets/Background/mainMenu.png" id="2_626rn"]
+[ext_resource type="Texture2D" uid="uid://dibda7vlco70o" path="res://Assets/Background/button.png" id="3_h7cc3"]
+[ext_resource type="Texture2D" uid="uid://bxsggkgvfq77k" path="res://Assets/Background/button_hover.png" id="4_0pq7d"]
 
 [node name="Menu" type="Node2D"]
-position = Vector2(-44, -24)
 script = ExtResource("1_iaajv")
 
-[node name="StartButton" type="Button" parent="."]
-offset_right = 8.0
-offset_bottom = 8.0
-text = "Start Game"
-metadata/_edit_use_anchors_ = true
+[node name="MainMenu" type="Sprite2D" parent="."]
+scale = Vector2(0.805048, 0.805048)
+texture = ExtResource("2_626rn")
 
-[node name="CreditsButton" type="Button" parent="."]
-offset_left = 17.0
-offset_top = 37.0
-offset_right = 80.0
-offset_bottom = 68.0
+[node name="StartButton" type="TextureButton" parent="."]
+offset_left = -133.0
+offset_top = 1.0
+offset_right = 187.0
+offset_bottom = 118.0
+scale = Vector2(0.802209, 0.802209)
+texture_normal = ExtResource("3_h7cc3")
+texture_pressed = ExtResource("4_0pq7d")
+texture_hover = ExtResource("4_0pq7d")
+texture_focused = ExtResource("4_0pq7d")
+
+[node name="CenterContainer" type="CenterContainer" parent="StartButton"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="StartButton/CenterContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.74902, 0.376471, 0.0117647, 1)
+theme_override_font_sizes/font_size = 32
+text = "Start Game"
+
+[node name="CreditsButton" type="TextureButton" parent="."]
+offset_left = -133.0
+offset_top = 108.0
+offset_right = 187.0
+offset_bottom = 225.0
+scale = Vector2(0.802209, 0.802209)
+texture_normal = ExtResource("3_h7cc3")
+texture_pressed = ExtResource("4_0pq7d")
+texture_hover = ExtResource("4_0pq7d")
+texture_focused = ExtResource("4_0pq7d")
+
+[node name="CenterContainer" type="CenterContainer" parent="CreditsButton"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="CreditsButton/CenterContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.74902, 0.376471, 0.0117647, 1)
+theme_override_font_sizes/font_size = 32
 text = "Credits"
-metadata/_edit_use_anchors_ = true
+
+[connection signal="pressed" from="StartButton" to="." method="StartButtonButtonPressed"]
+[connection signal="pressed" from="CreditsButton" to="." method="CreditsButtonButtonPressed"]
