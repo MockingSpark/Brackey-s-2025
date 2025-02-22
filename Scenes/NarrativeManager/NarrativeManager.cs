@@ -215,6 +215,7 @@ public partial class NarrativeManager : Node
 				foreach (var sceneIndex in resetAction.ScenesToReload)
                 {
 					sceneLoader.ReloadScene(sceneIndex);
+					Blackboard.Instance.ClearBlackBoard(EBlackboardType.Level);
                 }
                 break;
 			default:
