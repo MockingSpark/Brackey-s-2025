@@ -18,7 +18,7 @@ public partial class CreditsScrolling : Node2D
     public override void _Process(double delta)
     {
         creditsContainer.Position -= creditsContainer.Transform.Y * scrollingSpeed * (float)delta;
-        if (creditsContainer.Position.Y < -590 )
+        if (creditsContainer.Position.Y < -750 )
         {
             ExitCredits(); 
         }
