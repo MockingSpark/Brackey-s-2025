@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="FairyActionContainer" load_steps=31 format=3 uid="uid://dif37nfeoe7dd"]
+[gd_resource type="Resource" script_class="FairyActionContainer" load_steps=33 format=3 uid="uid://dif37nfeoe7dd"]
 
 [ext_resource type="Script" path="res://Scenes/FairyActions/FairyActionContainer.cs" id="1_g0dt4"]
 [ext_resource type="Script" path="res://Scenes/Dialogue/Dialogue.cs" id="1_irkvn"]
@@ -70,7 +70,7 @@ Value = 1
 [sub_resource type="Resource" id="Resource_gbxcs"]
 script = ExtResource("4_2v4wd")
 ConditionType = 2
-BlackboardKey = 0
+BlackboardKey = 3
 BlackboardType = 1
 Value = 0
 
@@ -85,6 +85,20 @@ TalkType = 4
 ActionType = 4
 ActionTime = 0.0
 Condition = SubResource("Resource_b3b6n")
+
+[sub_resource type="Resource" id="Resource_wew67"]
+script = ExtResource("4_2v4wd")
+ConditionType = 1
+BlackboardKey = 2
+BlackboardType = 1
+Value = 0
+
+[sub_resource type="Resource" id="Resource_ulali"]
+script = ExtResource("5_elswy")
+TalkType = 5
+ActionType = 4
+ActionTime = 0.0
+Condition = SubResource("Resource_wew67")
 
 [sub_resource type="Resource" id="Resource_ddsk8"]
 script = ExtResource("4_paogh")
@@ -136,7 +150,7 @@ ActionTime = 0.0
 
 [resource]
 script = ExtResource("1_g0dt4")
-Actions = Array[Object]([SubResource("Resource_j7ahb"), SubResource("Resource_o1cpv"), SubResource("Resource_ra86n"), SubResource("Resource_baqm0"), SubResource("Resource_ddsk8"), SubResource("Resource_8trw0"), SubResource("Resource_7nrtb"), SubResource("Resource_obg5w"), SubResource("Resource_46n3f"), SubResource("Resource_7khdp"), SubResource("Resource_kem5p")])
+Actions = Array[Object]([SubResource("Resource_j7ahb"), SubResource("Resource_o1cpv"), SubResource("Resource_ra86n"), SubResource("Resource_baqm0"), SubResource("Resource_ulali"), SubResource("Resource_ddsk8"), SubResource("Resource_8trw0"), SubResource("Resource_7nrtb"), SubResource("Resource_obg5w"), SubResource("Resource_46n3f"), SubResource("Resource_7khdp"), SubResource("Resource_kem5p")])
 Priority = 0
 ActionType = 0
 ActionTime = 0.0

@@ -83,7 +83,7 @@ public partial class Fairy : Node2D
 		NarrativeManager.Instance.RegisterFairy(this);
 		angerVfx = GetNode<AngryFairy>("angryFairyVFX");
 		GetNode<AnimatedSprite2D>("AnimatedSprite2D").SetModulate(fairyColor);
-	}
+    }
 
 	protected void ReadDialogue(Dialogue dialogue)
 	{
@@ -223,7 +223,6 @@ public partial class Fairy : Node2D
 
 	public void AllowSpearProdution(bool allow)
 	{
-		Player.allowSpearProd = allow;
 		allowSpearProduction = allow;
 	}
 
@@ -233,8 +232,9 @@ public partial class Fairy : Node2D
         {
             var newProjectile = spearScene.Instantiate<BounceSpear>();
             newProjectile.Transform = Transform;
-            GetTree().Root.GetNode<Node>("SpearParent").CallDeferred("add_child", newProjectile);
+				GetTree().Root.GetNode<Node>("SpearParent").CallDeferred("add_child", newProjectile);
             newProjectile.CallDeferred("InitialBounce", !ShouldLookLeft());
+            Blackboard.Instance.OffsetValue(EBlackboardType.Level, EBlackboardKey.InteractionCount, 1);
         }
     }
 
@@ -249,7 +249,7 @@ public partial class Fairy : Node2D
 
 	public void UpdateAnger(int modification)
 	{
-		int newAnger = Blackboard.Instance.OffsetValue(EBlackboardType.Permanent, EBlackboardKey.AngerValue, modification);
+		int newAnger = Blackboard.Instance.OffsetValue(EBlackboardType.Level, EBlackboardKey.AngerValue, modification);
 		if (modification > 0)
 		{
 			angerVfx.run();
