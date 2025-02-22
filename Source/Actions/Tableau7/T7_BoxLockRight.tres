@@ -1,0 +1,34 @@
+[gd_resource type="Resource" script_class="FairyActionContainer" load_steps=8 format=3 uid="uid://r1tbf80su0u0"]
+
+[ext_resource type="Script" path="res://Scenes/Dialogue/Dialogue.cs" id="1_o3pd4"]
+[ext_resource type="Script" path="res://Scenes/FairyActions/FairyActionDialogue.cs" id="2_7yhk0"]
+[ext_resource type="Script" path="res://Scenes/FairyActions/FairyActionNoText.cs" id="3_hlob5"]
+[ext_resource type="Script" path="res://Scenes/FairyActions/FairyActionContainer.cs" id="4_2ntym"]
+
+[sub_resource type="Resource" id="Resource_r07t4"]
+script = ExtResource("1_o3pd4")
+tag = ""
+text = "Nooo... It's stuck now ! Completely stuck ! How did you even manage ..."
+isBold = false
+linkedToFairy = true
+position = Vector2(0, 0)
+
+[sub_resource type="Resource" id="Resource_lv4kh"]
+script = ExtResource("2_7yhk0")
+Dialogue = SubResource("Resource_r07t4")
+ActionType = 3
+ActionTime = 5.0
+
+[sub_resource type="Resource" id="Resource_wipdy"]
+script = ExtResource("3_hlob5")
+HideFairysBubble = true
+HideInWorldBubbles = true
+ActionType = 5
+ActionTime = 0.0
+
+[resource]
+script = ExtResource("4_2ntym")
+Actions = Array[Object]([SubResource("Resource_lv4kh"), SubResource("Resource_wipdy")])
+Priority = 1
+ActionType = 5
+ActionTime = 1.0

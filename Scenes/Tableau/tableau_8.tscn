@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://br03pqig8mmjm"]
+[gd_scene load_steps=33 format=3 uid="uid://br03pqig8mmjm"]
 
 [ext_resource type="PackedScene" uid="uid://cvnf375ogiyfw" path="res://Scenes/Door/door.tscn" id="1_5qcbk"]
 [ext_resource type="PackedScene" uid="uid://bq6wiakr1leji" path="res://Scenes/Enemy/enemy.tscn" id="2_cp8tk"]
@@ -87,6 +87,41 @@ Actions = Array[Object]([SubResource("Resource_jyigi"), SubResource("Resource_v5
 Priority = 1
 ActionType = 10
 ActionTime = 1.0
+
+[sub_resource type="Resource" id="Resource_wyhcj"]
+script = ExtResource("12_rcm0b")
+tag = ""
+text = "AAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+isBold = true
+linkedToFairy = true
+position = Vector2(0, 0)
+
+[sub_resource type="Resource" id="Resource_cchbk"]
+script = ExtResource("13_64ib0")
+Dialogue = SubResource("Resource_wyhcj")
+ActionType = 3
+ActionTime = 3.0
+
+[sub_resource type="Resource" id="Resource_5pay4"]
+script = ExtResource("12_rcm0b")
+tag = ""
+text = "WHAT IN THE GOD DAMN WORLD ????"
+isBold = true
+linkedToFairy = true
+position = Vector2(0, 0)
+
+[sub_resource type="Resource" id="Resource_4s6ee"]
+script = ExtResource("13_64ib0")
+Dialogue = SubResource("Resource_5pay4")
+ActionType = 3
+ActionTime = 3.0
+
+[sub_resource type="Resource" id="Resource_epaks"]
+script = ExtResource("14_s6gly")
+Actions = Array[Object]([SubResource("Resource_cchbk"), SubResource("Resource_4s6ee")])
+Priority = 0
+ActionType = 10
+ActionTime = 0.0
 
 [node name="tableau8" type="Node2D"]
 metadata/_edit_group_ = true
@@ -183,6 +218,20 @@ shape = SubResource("RectangleShape2D_d6q51")
 [node name="Interactor" parent="AreaDestroyBox4" instance=ExtResource("5_6yu5h")]
 Container = SubResource("Resource_innw2")
 
+[node name="EnemyOutOfBond" parent="." instance=ExtResource("3_6qbkh")]
+position = Vector2(11685, 102)
+
+[node name="Interactor" parent="EnemyOutOfBond" instance=ExtResource("5_6yu5h")]
+Container = SubResource("Resource_epaks")
+
+[node name="EnemyOutOfBond2" parent="." instance=ExtResource("3_6qbkh")]
+position = Vector2(11930, 116)
+rotation = 1.5708
+scale = Vector2(1, 4)
+
+[node name="Interactor" parent="EnemyOutOfBond2" instance=ExtResource("5_6yu5h")]
+Container = SubResource("Resource_epaks")
+
 [connection signal="ButtonPressed" from="Button" to="Door" method="OpenDoor"]
 [connection signal="ButtonReleased" from="Button" to="Door" method="CloseDoor"]
 [connection signal="body_entered" from="Button/Area2D" to="Button/Area2D/BoxInput" method="SendActions"]
@@ -192,5 +241,7 @@ Container = SubResource("Resource_innw2")
 [connection signal="body_entered" from="T8_TutorialStart" to="T8_TutorialStart/Interactor" method="SendActions"]
 [connection signal="CrateDestroyed" from="AreaDestroyBox3" to="AreaDestroyBox3/Interactor" method="SendActions"]
 [connection signal="CrateDestroyed" from="AreaDestroyBox4" to="AreaDestroyBox4/Interactor" method="SendActions"]
+[connection signal="EnemyDetected" from="EnemyOutOfBond" to="EnemyOutOfBond/Interactor" method="SendActions"]
+[connection signal="EnemyDetected" from="EnemyOutOfBond2" to="EnemyOutOfBond2/Interactor" method="SendActions"]
 
 [editable path="Button"]

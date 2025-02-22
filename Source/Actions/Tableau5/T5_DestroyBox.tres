@@ -1,0 +1,34 @@
+[gd_resource type="Resource" script_class="FairyActionContainer" load_steps=8 format=3 uid="uid://dw11tas50b7xw"]
+
+[ext_resource type="Script" path="res://Scenes/Dialogue/Dialogue.cs" id="1_remra"]
+[ext_resource type="Script" path="res://Scenes/FairyActions/FairyActionDialogue.cs" id="2_uj5fv"]
+[ext_resource type="Script" path="res://Scenes/FairyActions/FairyActionNoText.cs" id="3_ra2th"]
+[ext_resource type="Script" path="res://Scenes/FairyActions/FairyActionContainer.cs" id="4_eakxs"]
+
+[sub_resource type="Resource" id="Resource_32l6j"]
+script = ExtResource("1_remra")
+tag = ""
+text = "Oh no, don't block the boxes !"
+isBold = false
+linkedToFairy = true
+position = Vector2(0, 0)
+
+[sub_resource type="Resource" id="Resource_2lexf"]
+script = ExtResource("2_uj5fv")
+Dialogue = SubResource("Resource_32l6j")
+ActionType = 3
+ActionTime = 1.0
+
+[sub_resource type="Resource" id="Resource_wipdy"]
+script = ExtResource("3_ra2th")
+HideFairysBubble = true
+HideInWorldBubbles = true
+ActionType = 5
+ActionTime = 0.0
+
+[resource]
+script = ExtResource("4_eakxs")
+Actions = Array[Object]([SubResource("Resource_2lexf"), SubResource("Resource_wipdy")])
+Priority = 1
+ActionType = 5
+ActionTime = 1.0

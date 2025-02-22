@@ -1,0 +1,48 @@
+[gd_resource type="Resource" script_class="FairyActionContainer" load_steps=10 format=3 uid="uid://bnpmn7h1jkv1n"]
+
+[ext_resource type="Script" path="res://Scenes/Dialogue/Dialogue.cs" id="1_klto8"]
+[ext_resource type="Script" path="res://Scenes/FairyActions/FairyActionDialogue.cs" id="2_cwhdd"]
+[ext_resource type="Script" path="res://Scenes/FairyActions/FairyActionNoText.cs" id="3_2n6mo"]
+[ext_resource type="Script" path="res://Scenes/FairyActions/FairyActionContainer.cs" id="4_ph3s6"]
+
+[sub_resource type="Resource" id="Resource_ye8kn"]
+script = ExtResource("1_klto8")
+tag = ""
+text = "You're not even trying, are you ? Box. Go. Hole."
+isBold = false
+linkedToFairy = true
+position = Vector2(0, 0)
+
+[sub_resource type="Resource" id="Resource_jo33a"]
+script = ExtResource("2_cwhdd")
+Dialogue = SubResource("Resource_ye8kn")
+ActionType = 3
+ActionTime = 1.5
+
+[sub_resource type="Resource" id="Resource_1fget"]
+script = ExtResource("1_klto8")
+tag = ""
+text = "You just have to push forward a bit"
+isBold = true
+linkedToFairy = true
+position = Vector2(0, 0)
+
+[sub_resource type="Resource" id="Resource_e63df"]
+script = ExtResource("2_cwhdd")
+Dialogue = SubResource("Resource_1fget")
+ActionType = 3
+ActionTime = 5.0
+
+[sub_resource type="Resource" id="Resource_wipdy"]
+script = ExtResource("3_2n6mo")
+HideFairysBubble = true
+HideInWorldBubbles = true
+ActionType = 5
+ActionTime = 0.0
+
+[resource]
+script = ExtResource("4_ph3s6")
+Actions = Array[Object]([SubResource("Resource_jo33a"), SubResource("Resource_e63df"), SubResource("Resource_wipdy")])
+Priority = 1
+ActionType = 5
+ActionTime = 1.0

@@ -5,6 +5,8 @@ public partial class EnemySurveilPoint : Area2D
 {
     [Export]
     public Vector2 directionToGo;
+    [Signal]
+    public delegate void EnemyDetectedEventHandler();
 
     public void OnEnemyEntered(Node2D body)
     {
@@ -12,6 +14,7 @@ public partial class EnemySurveilPoint : Area2D
         if (enemy != null)
         {
             enemy.TurnAround(directionToGo);
+            EmitSignal(SignalName.EnemyDetected);
         }
     }
 }
