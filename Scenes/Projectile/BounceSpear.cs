@@ -6,6 +6,7 @@ public partial class BounceSpear : RigidBody2D
 	public async void InitialBounce(bool isLeft)
     {
         await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
+        GetTree().Root.GetNode<Node>("SpearParent").AddChild(this);
         ApplyTorqueImpulse(10000);
         if (isLeft)
         {

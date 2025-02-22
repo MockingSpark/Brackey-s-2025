@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://25k5f531xsh2"]
+[gd_scene load_steps=30 format=3 uid="uid://25k5f531xsh2"]
 
 [ext_resource type="PackedScene" uid="uid://cw000q3yg2bj8" path="res://Scenes/Fairy/Fairy.tscn" id="1_j437h"]
 [ext_resource type="PackedScene" uid="uid://cp3ga5u36lr85" path="res://Scenes/terrain/terrain.tscn" id="1_qxp7j"]
@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://dx7b0v1ktan0b" path="res://Scenes/Tableau/tableau_3.tscn" id="7_3u1j5"]
 [ext_resource type="PackedScene" uid="uid://cvnf375ogiyfw" path="res://Scenes/Door/door.tscn" id="7_dvguf"]
 [ext_resource type="PackedScene" uid="uid://bavwdj247vrk4" path="res://Scenes/Tableau/tableau_4.tscn" id="8_4flgn"]
+[ext_resource type="Resource" uid="uid://dif37nfeoe7dd" path="res://Source/Actions/Ending/TestPlayerReset.tres" id="9_0mdcg"]
 [ext_resource type="Script" path="res://Scenes/SceneLoader.cs" id="9_qals1"]
 [ext_resource type="PackedScene" uid="uid://cs4go5ve5h3cg" path="res://Scenes/Background/parallax_background.tscn" id="9_u1uqc"]
 [ext_resource type="PackedScene" uid="uid://bf3mmer8sadm8" path="res://Scenes/Tableau/tableau_6.tscn" id="10_iuc0p"]
@@ -27,6 +28,9 @@
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jqsll"]
 size = Vector2(125.046, 173.44)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8a8m2"]
+size = Vector2(463, 323)
 
 [sub_resource type="Gradient" id="Gradient_hufjd"]
 colors = PackedColorArray(0.465872, 0.232816, 0.138271, 1, 0.268938, 0.193029, 0.155757, 1)
@@ -52,7 +56,7 @@ layer_0/tile_data = PackedInt32Array(-262112, 0, 3, -262111, 65536, 3, -262110, 
 metadata/_edit_lock_ = true
 
 [node name="Player" parent="." instance=ExtResource("2_l2hhf")]
-position = Vector2(8509, 814)
+position = Vector2(328, -110)
 
 [node name="PersistentT0" type="Node2D" parent="."]
 
@@ -89,6 +93,17 @@ position = Vector2(210, -106)
 position = Vector2(14268.1, 5.11278)
 scale = Vector2(3.18056, 3.18056)
 texture = ExtResource("13_2srwu")
+
+[node name="Area2D" type="Area2D" parent="Ending"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ending/Area2D"]
+position = Vector2(13981.5, -1.5)
+shape = SubResource("RectangleShape2D_8a8m2")
+
+[node name="Interactor" parent="Ending/Area2D" instance=ExtResource("4_e3lrc")]
+Container = ExtResource("9_0mdcg")
+flush = true
+singleUse = true
 
 [node name="ScenesParent" type="Node2D" parent="."]
 script = ExtResource("9_qals1")
@@ -155,5 +170,6 @@ bus = &"BGM"
 [connection signal="body_entered" from="PersistentT0/Start Dialogue" to="PersistentT0/Start Dialogue/Interactor" method="SendActions"]
 [connection signal="ButtonPressed" from="PersistentT0/Home Door Button" to="PersistentT0/Home Door" method="OpenDoor"]
 [connection signal="area_entered" from="PersistentT0/Home Door Button/Area2D" to="PersistentT0/Home Door Button" method="OnButtonPressed"]
+[connection signal="body_entered" from="Ending/Area2D" to="Ending/Area2D/Interactor" method="SendActions"]
 
 [editable path="PersistentT0/Home Door Button"]

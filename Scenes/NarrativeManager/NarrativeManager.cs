@@ -22,6 +22,8 @@ public partial class NarrativeManager : Node
 
     private int awaitedSignals = 0;
 
+	SceneLoader sceneLoader;
+
 	#region Narrative bools
 	FairyActionContainer catchContainer;
     FairyActionContainer protectContainer;
@@ -38,12 +40,16 @@ public partial class NarrativeManager : Node
     }
 
     public void RegisterFairy(Fairy fairy)
-	{
-		this.fairy = fairy;
-		fairy.FairyActionError += SendNewAction;
-	}
+    {
+        this.fairy = fairy;
+        fairy.FairyActionError += SendNewAction;
+    }
 
-	public void ReceiveActions(FairyActionContainer actionContainer, bool flush = false)
+    public void RegisterLoader(SceneLoader loader)
+    {
+        this.sceneLoader = loader;
+    }
+    public void ReceiveActions(FairyActionContainer actionContainer, bool flush = false)
 	{
 		var actionsToAdd = actionContainer.Actions;
 		var priority = actionContainer.Priority;
@@ -172,6 +178,16 @@ public partial class NarrativeManager : Node
             case E_FairyAction.Container:
 				Debug.Fail("Should not process container");
 				break;
+			case E_FairyAction.ResetPlayer:
+				fairy.Player.ReturnToStart();
+                break;
+			case E_FairyAction.ResetScene:
+                var resetAction = action as ResetSceneAction;
+				foreach (var sceneIndex in resetAction.ScenesToReload)
+                {
+					sceneLoader.ReloadScene(sceneIndex);
+                }
+                break;
 			default:
 				break;
         }

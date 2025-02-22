@@ -1,0 +1,84 @@
+[gd_resource type="Resource" script_class="FairyActionContainer" load_steps=20 format=3 uid="uid://dif37nfeoe7dd"]
+
+[ext_resource type="Script" path="res://Scenes/FairyActions/FairyActionContainer.cs" id="1_g0dt4"]
+[ext_resource type="Script" path="res://Scenes/Dialogue/Dialogue.cs" id="1_irkvn"]
+[ext_resource type="Script" path="res://Scenes/FairyActions/FairyActionLock.cs" id="1_thaq6"]
+[ext_resource type="Script" path="res://Scenes/FairyActions/FairyActionDialogue.cs" id="2_ak45p"]
+[ext_resource type="Script" path="res://Scenes/FairyActions/FairyActionSave.cs" id="4_paogh"]
+[ext_resource type="Script" path="res://Scenes/FairyActions/ResetSceneAction.cs" id="5_kse6o"]
+[ext_resource type="Script" path="res://Scenes/FairyActions/ResetPlayerAction.cs" id="6_pbrjw"]
+[ext_resource type="Script" path="res://Scenes/FairyActions/FairyActionPlayerFocus.cs" id="7_74rk6"]
+
+[sub_resource type="Resource" id="Resource_j7ahb"]
+script = ExtResource("1_thaq6")
+ShouldLock = true
+ActionType = 9
+ActionTime = 0.0
+
+[sub_resource type="Resource" id="Resource_bj8lr"]
+script = ExtResource("1_irkvn")
+tag = ""
+text = "We're done here. Let's go back..."
+isBold = false
+linkedToFairy = true
+position = Vector2(0, 0)
+
+[sub_resource type="Resource" id="Resource_o1cpv"]
+script = ExtResource("2_ak45p")
+Dialogue = SubResource("Resource_bj8lr")
+ActionType = 3
+ActionTime = 5.0
+
+[sub_resource type="Resource" id="Resource_ddsk8"]
+script = ExtResource("4_paogh")
+ActionType = 6
+ActionTime = 1.0
+
+[sub_resource type="Resource" id="Resource_8trw0"]
+script = ExtResource("5_kse6o")
+ScenesToReload = PackedInt32Array(0)
+ActionType = 16
+ActionTime = 0.5
+
+[sub_resource type="Resource" id="Resource_7nrtb"]
+script = ExtResource("6_pbrjw")
+ActionType = 15
+ActionTime = 3.0
+
+[sub_resource type="Resource" id="Resource_obg5w"]
+script = ExtResource("5_kse6o")
+ScenesToReload = PackedInt32Array(1, 2, 3, 4, 5, 6, 7, 8)
+ActionType = 16
+ActionTime = 0.0
+
+[sub_resource type="Resource" id="Resource_46n3f"]
+script = ExtResource("7_74rk6")
+ActionType = 1
+ActionTime = 0.5
+
+[sub_resource type="Resource" id="Resource_o0fl7"]
+script = ExtResource("1_irkvn")
+tag = ""
+text = "You be a good girl and stay here while I fix the rest!"
+isBold = false
+linkedToFairy = true
+position = Vector2(0, 0)
+
+[sub_resource type="Resource" id="Resource_7khdp"]
+script = ExtResource("2_ak45p")
+Dialogue = SubResource("Resource_o0fl7")
+ActionType = 3
+ActionTime = 3.0
+
+[sub_resource type="Resource" id="Resource_kem5p"]
+script = ExtResource("1_thaq6")
+ShouldLock = false
+ActionType = 9
+ActionTime = 0.0
+
+[resource]
+script = ExtResource("1_g0dt4")
+Actions = Array[Object]([SubResource("Resource_j7ahb"), SubResource("Resource_o1cpv"), SubResource("Resource_ddsk8"), SubResource("Resource_8trw0"), SubResource("Resource_7nrtb"), SubResource("Resource_obg5w"), SubResource("Resource_46n3f"), SubResource("Resource_7khdp"), SubResource("Resource_kem5p")])
+Priority = 0
+ActionType = 0
+ActionTime = 0.0

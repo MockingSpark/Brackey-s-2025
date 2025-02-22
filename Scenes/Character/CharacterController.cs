@@ -3,7 +3,6 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 
-
 public partial class CharacterController : CharacterBody2D
 {
 	[Export]
@@ -22,6 +21,7 @@ public partial class CharacterController : CharacterBody2D
     private float respawnSpeed = 0.05f;
     private float respawnTolerance = 10;
 	private Vector2 respawnPoint;
+	private Vector2 startPosition;
 	private CollisionShape2D collisionShape;
 
 	private bool jumping = false;
@@ -40,13 +40,14 @@ public partial class CharacterController : CharacterBody2D
 
     private Buffer buffer;
 
+
+    Node spearParentNode;
     private int projectileCount = 0;
 	private List<Base_Interactable> interactables = new List<Base_Interactable>();
 
     public bool allowSpearProd = false;
         
 	public int ProjectileCount { get => projectileCount; set => projectileCount = value; }
-
 
     [Signal]
     public delegate void OnRequestSpearEventHandler();
@@ -62,6 +63,8 @@ public partial class CharacterController : CharacterBody2D
         collisionShape = GetNode<CollisionShape2D>("CharacterCollision");
         buffer = GetNode<Buffer>("Buffer");
         Camera.Instance.TeleportToTarget(this);
+        startPosition = GlobalPosition;
+        CreateSpearParent();
 	}
 
 	public override void _Process(double delta)
@@ -94,18 +97,18 @@ public partial class CharacterController : CharacterBody2D
             buffer.TimeAdvance(delta);
         }
 
-        if(locked)
+        if(respawning)
+        {
+            HandleRespawn();
+        }
+        else if(locked)
         {
             HandleLocked((float)delta);
         }
-        else if (!respawning)
-		{
-            HandleGeneralMovement((float)delta);
-		}
         else
         {
-            HandleRespawn();
-        }		
+            HandleGeneralMovement((float)delta);
+        }	
 	}
 
     void HandleLocked(float delta)
@@ -267,7 +270,7 @@ public partial class CharacterController : CharacterBody2D
 		projectileCount--;
 
 		var newProjectile = projectile.Instantiate<Projectile>();
-		GetTree().Root.AddChild(newProjectile);
+		spearParentNode.AddChild(newProjectile);
 		if (playerDir < 0)
 		{
 			((Node2D)newProjectile).Transform = leftThrowPoint.GlobalTransform;
@@ -298,4 +301,18 @@ public partial class CharacterController : CharacterBody2D
 		collisionShape.SetDeferred("disabled", true);
 		this.respawnPoint = respawnPoint;
 	}
+
+    public void ReturnToStart()
+    {
+        Respawn(startPosition);
+        spearParentNode.QueueFree();
+        CreateSpearParent();
+    }
+
+    public void CreateSpearParent()
+    {
+        spearParentNode = new Node();
+        spearParentNode.Name = "SpearParent";
+        GetTree().Root.CallDeferred("add_child", spearParentNode);
+    }
 }

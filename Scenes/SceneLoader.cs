@@ -12,6 +12,7 @@ public partial class SceneLoader : Node2D
     public override void _Ready()
     {
         LoadScenes();
+        NarrativeManager.Instance.RegisterLoader(this);
     }
 
     async void LoadScenes()
