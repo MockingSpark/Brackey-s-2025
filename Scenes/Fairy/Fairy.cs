@@ -86,18 +86,50 @@ public partial class Fairy : Node2D
 
 	protected void ReadDialogue(Dialogue dialogue)
 	{
-		HideBubbles();
-		if(dialogue.isBold)
+		if (dialogue.linkedToFairy)
 		{
-			boldBubble.ShowBubble();
-			boldBubble.Text = dialogue.text;
-		}
-		else
+			ReadBubbleAttached(dialogue);
+        }
+		else 
 		{
-			roundBubble.ShowBubble();
-			roundBubble.Text = dialogue.text;
+			CreateBubble(dialogue);
 		}
 	}
+
+    private void CreateBubble(Dialogue dialogue)
+    {
+        DialogueBubble newBubble;
+		if(dialogue.isBold)
+		{
+			newBubble = boldBubble.Duplicate(15) as DialogueBubble;
+		}
+		else
+        {
+            newBubble = roundBubble.Duplicate(15) as DialogueBubble;
+        }
+
+        NarrativeManager.Instance.CallDeferred("add_child", newBubble);
+		newBubble.SetDeferred("Text", dialogue.text);
+		newBubble.GlobalPosition = dialogue.position;
+
+		newBubble.ShowBubble();
+    }
+
+    protected void ReadBubbleAttached(Dialogue dialogue)
+    {
+        HideBubbles();
+        if (dialogue.isBold)
+        {
+            boldBubble.ShowBubble();
+            boldBubble.Text = dialogue.text;
+        }
+        else
+        {
+            roundBubble.ShowBubble();
+            roundBubble.Text = dialogue.text;
+        }
+    }
+
 
 	private void GiveScore(float score)
 	{

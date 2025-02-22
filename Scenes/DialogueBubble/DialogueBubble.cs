@@ -22,11 +22,6 @@ public partial class DialogueBubble : Control
 		}
 	}
 
-	public override void _Ready()
-	{
-		HideBubble();
-	}
-
 	public void Resize()
 	{
 		if (isBold)
@@ -38,6 +33,7 @@ public partial class DialogueBubble : Control
 	public void ShowBubble()
 	{
 		Visible = true;
+
 		if(isBold)
 		{
 			GetNode<CollisionShape2D>("StaticBody2D/BubbleShape").SetDeferred("disabled", false);
