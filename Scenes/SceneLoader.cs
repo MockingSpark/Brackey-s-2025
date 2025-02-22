@@ -7,18 +7,19 @@ public partial class SceneLoader : Node2D
     [Export]
     public PackedScene[] scenesToLoad;
 
-    List<LoadedScene> LoadedScenes;
+    List<LoadedScene> LoadedScenes = new List<LoadedScene>();
 
     public override void _Ready()
     {
         LoadScenes();
     }
 
-    void LoadScenes()
+    async void LoadScenes()
     {
         for (int i = 0; i < scenesToLoad.Length; i++)
         {
             LoadScene(i);
+            await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
         }
     }
     void LoadScene(int sceneToLoad)
