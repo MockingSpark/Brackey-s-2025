@@ -306,7 +306,12 @@ public partial class CharacterController : CharacterBody2D
         Respawn(startPosition);
         projectileCount = 0;
         spearParentNode.QueueFree();
-        CreateSpearParent();
+
+        GetTree().CreateTimer(0.01f).Timeout += () =>
+        {
+            CreateSpearParent();
+        };
+
     }
 
     public void CreateSpearParent()
