@@ -42,6 +42,7 @@ public partial class NarrativeManager : Node
 		protectContainer = GD.Load<FairyActionContainer>("res://Source/RandomDialogues/ProtectDialogues.tres");
         softlockContainer = GD.Load<FairyActionContainer>("res://Source/RandomDialogues/SoftlockDialogues.tres");
         notAngryBadEndContainer = GD.Load<FairyActionContainer>("res://Source/Actions/Ending/EndRandomNotAngryBad.tres");
+        notAngryGoodEndContainer = GD.Load<FairyActionContainer>("res://Source/Actions/Ending/EndRandomNotAngryGood.tres");
     }
 
     public void RegisterFairy(Fairy fairy)
