@@ -72,4 +72,21 @@ public partial class Blackboard : Node
             blackboard.Clear();
         }
     }
+
+    public string FullDebugString()
+    {
+        string result = "Blackboard count: " + Blackboards.Count + "\n";
+
+        foreach(EBlackboardType type in Blackboards.Keys)
+        {
+            result += "  " + type + ": " + Blackboards[type].Count + " elements\n";
+
+            foreach(EBlackboardKey key in Blackboards[type].Keys)
+            {
+                result += "    * " + key + ": " + Blackboards[type][key] + "\n";
+            }
+        }
+
+        return result;
+    }
 }
