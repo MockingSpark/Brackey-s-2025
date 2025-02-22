@@ -1,14 +1,18 @@
-[gd_scene load_steps=23 format=3 uid="uid://25k5f531xsh2"]
+[gd_scene load_steps=28 format=3 uid="uid://25k5f531xsh2"]
 
 [ext_resource type="PackedScene" uid="uid://cw000q3yg2bj8" path="res://Scenes/Fairy/Fairy.tscn" id="1_j437h"]
 [ext_resource type="PackedScene" uid="uid://cp3ga5u36lr85" path="res://Scenes/terrain/terrain.tscn" id="1_qxp7j"]
 [ext_resource type="PackedScene" uid="uid://c1d0x30dt6bad" path="res://Scenes/Character/CharacterNode.tscn" id="2_l2hhf"]
 [ext_resource type="PackedScene" uid="uid://b1g2efm4j8owa" path="res://Scenes/Tableau/tableau_0.tscn" id="4_ccrff"]
-[ext_resource type="PackedScene" uid="uid://dbdtky7u65k03" path="res://Scenes/Projectile/pickable_spear.tscn" id="5_5i7ym"]
+[ext_resource type="PackedScene" uid="uid://yc7ocknrfysc" path="res://Scenes/NarrativeManager/interactor.tscn" id="4_e3lrc"]
 [ext_resource type="PackedScene" uid="uid://bgmdgho5vpcww" path="res://Scenes/Tableau/tableau_1.tscn" id="5_tvuca"]
+[ext_resource type="Resource" uid="uid://brak264gjbkg3" path="res://Source/Actions/Tableau0/Tableau0Discution.tres" id="5_xmif8"]
+[ext_resource type="PackedScene" uid="uid://dcftouctjkf3e" path="res://Scenes/Button/button.tscn" id="6_2pkr4"]
 [ext_resource type="PackedScene" uid="uid://cris2l20o1yog" path="res://Scenes/Tableau/tableau_2.tscn" id="6_xgppp"]
 [ext_resource type="PackedScene" uid="uid://dx7b0v1ktan0b" path="res://Scenes/Tableau/tableau_3.tscn" id="7_3u1j5"]
+[ext_resource type="PackedScene" uid="uid://cvnf375ogiyfw" path="res://Scenes/Door/door.tscn" id="7_dvguf"]
 [ext_resource type="PackedScene" uid="uid://bavwdj247vrk4" path="res://Scenes/Tableau/tableau_4.tscn" id="8_4flgn"]
+[ext_resource type="Script" path="res://Scenes/SceneLoader.cs" id="9_qals1"]
 [ext_resource type="PackedScene" uid="uid://cs4go5ve5h3cg" path="res://Scenes/Background/parallax_background.tscn" id="9_u1uqc"]
 [ext_resource type="PackedScene" uid="uid://bf3mmer8sadm8" path="res://Scenes/Tableau/tableau_6.tscn" id="10_iuc0p"]
 [ext_resource type="Texture2D" uid="uid://utbh7m0awxrl" path="res://Assets/Background/mansion.png" id="11_ai78j"]
@@ -19,7 +23,10 @@
 [ext_resource type="Texture2D" uid="uid://bvh7iiyc1ta23" path="res://Assets/Background/cave_back.png" id="16_2ewgd"]
 [ext_resource type="PackedScene" uid="uid://c72ttyet07u6h" path="res://Scenes/Tableau/tableau_5.tscn" id="17_acdbx"]
 [ext_resource type="Texture2D" uid="uid://d2karsyhdjs7r" path="res://Assets/Background/cave_front.png" id="17_k3w03"]
-[ext_resource type="AudioStream" uid="uid://bnvsvw2inrjni" path="res://Assets/Audio/MusicV1.wav" id="20_6c6ix"]
+[ext_resource type="AudioStream" uid="uid://dgkot4pq8pph7" path="res://Assets/Audio/MusicV1.mp3" id="20_u0hbu"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jqsll"]
+size = Vector2(125.046, 173.44)
 
 [sub_resource type="Gradient" id="Gradient_hufjd"]
 colors = PackedColorArray(0.465872, 0.232816, 0.138271, 1, 0.268938, 0.193029, 0.155757, 1)
@@ -45,41 +52,36 @@ layer_0/tile_data = PackedInt32Array(-262112, 0, 3, -262111, 65536, 3, -262110, 
 metadata/_edit_lock_ = true
 
 [node name="Player" parent="." instance=ExtResource("2_l2hhf")]
-position = Vector2(3008, -213)
+position = Vector2(8509, 814)
 
-[node name="tableau0" parent="." instance=ExtResource("4_ccrff")]
+[node name="PersistentT0" type="Node2D" parent="."]
 
-[node name="tableau1" parent="." instance=ExtResource("5_tvuca")]
-metadata/_edit_lock_ = true
+[node name="Start Dialogue" type="Area2D" parent="PersistentT0"]
+position = Vector2(34, -135)
+rotation = -1.57081
+scale = Vector2(3.125, 3.125)
+collision_layer = 0
 metadata/_edit_group_ = true
 
-[node name="tableau2" parent="." instance=ExtResource("6_xgppp")]
-metadata/_edit_lock_ = true
-metadata/_edit_group_ = true
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PersistentT0/Start Dialogue"]
+position = Vector2(-10.0423, -36.48)
+shape = SubResource("RectangleShape2D_jqsll")
 
-[node name="tableau3" parent="." instance=ExtResource("7_3u1j5")]
-metadata/_edit_group_ = true
-metadata/_edit_lock_ = true
+[node name="Interactor" parent="PersistentT0/Start Dialogue" node_paths=PackedStringArray("Targets") instance=ExtResource("4_e3lrc")]
+Container = ExtResource("5_xmif8")
+Targets = [NodePath("../../Home Door Button")]
+singleUse = true
 
-[node name="tableau4" parent="." instance=ExtResource("8_4flgn")]
-metadata/_edit_group_ = true
-metadata/_edit_lock_ = true
+[node name="Home Door Button" parent="PersistentT0" instance=ExtResource("6_2pkr4")]
+position = Vector2(170, -279)
+rotation = -1.57081
 
-[node name="tableau5" parent="." instance=ExtResource("17_acdbx")]
-position = Vector2(0, 1)
-metadata/_edit_group_ = true
-metadata/_edit_lock_ = true
+[node name="Area2D" parent="PersistentT0/Home Door Button" index="0"]
+position = Vector2(-0.32, -3.8147e-06)
+collision_mask = 128
 
-[node name="tableau6" parent="." instance=ExtResource("10_iuc0p")]
-position = Vector2(0, 0)
-metadata/_edit_group_ = true
-metadata/_edit_lock_ = true
-
-[node name="tableau7" parent="." instance=ExtResource("11_krvvm")]
-metadata/_edit_lock_ = true
-
-[node name="tableau8" parent="." instance=ExtResource("12_2vvgp")]
-metadata/_edit_lock_ = true
+[node name="Home Door" parent="PersistentT0" instance=ExtResource("7_dvguf")]
+position = Vector2(210, -106)
 
 [node name="Ending" type="Node2D" parent="."]
 
@@ -87,6 +89,10 @@ metadata/_edit_lock_ = true
 position = Vector2(14268.1, 5.11278)
 scale = Vector2(3.18056, 3.18056)
 texture = ExtResource("13_2srwu")
+
+[node name="ScenesParent" type="Node2D" parent="."]
+script = ExtResource("9_qals1")
+scenesToLoad = Array[PackedScene]([ExtResource("4_ccrff"), ExtResource("5_tvuca"), ExtResource("6_xgppp"), ExtResource("7_3u1j5"), ExtResource("8_4flgn"), ExtResource("17_acdbx"), ExtResource("10_iuc0p"), ExtResource("11_krvvm"), ExtResource("12_2vvgp")])
 
 [node name="ParallaxBackground" parent="." instance=ExtResource("9_u1uqc")]
 position = Vector2(6756, -317)
@@ -141,12 +147,13 @@ position = Vector2(-6405.48, -16.4384)
 scale = Vector2(0.530702, 0.530702)
 texture = ExtResource("17_k3w03")
 
-[node name="PickableSpear" parent="." instance=ExtResource("5_5i7ym")]
-position = Vector2(8474, 697)
-
 [node name="BGM" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("20_6c6ix")
+stream = ExtResource("20_u0hbu")
 autoplay = true
+bus = &"BGM"
 
-[editable path="tableau8"]
-[editable path="tableau8/Button"]
+[connection signal="body_entered" from="PersistentT0/Start Dialogue" to="PersistentT0/Start Dialogue/Interactor" method="SendActions"]
+[connection signal="ButtonPressed" from="PersistentT0/Home Door Button" to="PersistentT0/Home Door" method="OpenDoor"]
+[connection signal="area_entered" from="PersistentT0/Home Door Button/Area2D" to="PersistentT0/Home Door Button" method="OnButtonPressed"]
+
+[editable path="PersistentT0/Home Door Button"]
