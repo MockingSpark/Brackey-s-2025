@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://b1g2efm4j8owa"]
+[gd_scene load_steps=9 format=3 uid="uid://b3gnuvfroveac"]
 
 [ext_resource type="PackedScene" uid="uid://yc7ocknrfysc" path="res://Scenes/NarrativeManager/interactor.tscn" id="1_osgr4"]
 [ext_resource type="Resource" uid="uid://brak264gjbkg3" path="res://Source/Actions/Tableau0/Tableau0Discution.tres" id="2_y0gyn"]
@@ -9,7 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://dbdtky7u65k03" path="res://Scenes/Projectile/pickable_spear.tscn" id="7_x88xs"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_e0myi"]
-size = Vector2(175.699, 364)
+size = Vector2(125.046, 173.44)
 
 [node name="tableau0" type="Node2D"]
 metadata/_edit_group_ = true
@@ -23,6 +23,7 @@ collision_layer = 0
 metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Start Dialogue"]
+position = Vector2(-10.0423, -36.48)
 shape = SubResource("RectangleShape2D_e0myi")
 
 [node name="Interactor" parent="Start Dialogue" node_paths=PackedStringArray("Targets") instance=ExtResource("1_osgr4")]
@@ -31,14 +32,14 @@ Targets = [NodePath("../../Home Door Button")]
 singleUse = true
 
 [node name="Home Door Button" parent="." instance=ExtResource("3_f7y5l")]
-position = Vector2(291, -377)
+position = Vector2(170, -279)
 rotation = -1.57081
 
 [node name="Area2D" parent="Home Door Button" index="0"]
 collision_mask = 128
 
 [node name="Home Door" parent="." instance=ExtResource("4_oxyxh")]
-position = Vector2(597, -106)
+position = Vector2(209, -110)
 
 [node name="HiddenArea" parent="." instance=ExtResource("5_870ci")]
 offset_left = -672.0

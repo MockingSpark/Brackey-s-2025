@@ -1,9 +1,9 @@
-[gd_scene load_steps=20 format=3 uid="uid://ca75kri2ltu71"]
+[gd_scene load_steps=21 format=3 uid="uid://ca75kri2ltu71"]
 
 [ext_resource type="PackedScene" uid="uid://cw000q3yg2bj8" path="res://Scenes/Fairy/Fairy.tscn" id="1_vxnsc"]
 [ext_resource type="PackedScene" uid="uid://cp3ga5u36lr85" path="res://Scenes/terrain/terrain.tscn" id="2_m8qoq"]
 [ext_resource type="PackedScene" uid="uid://c1d0x30dt6bad" path="res://Scenes/Character/CharacterNode.tscn" id="3_cleux"]
-[ext_resource type="PackedScene" uid="uid://b1g2efm4j8owa" path="res://Scenes/Tableau/tableau_0.tscn" id="4_0xddg"]
+[ext_resource type="PackedScene" uid="uid://b3gnuvfroveac" path="res://Scenes/Tableau/tableau_0.tscn" id="4_0xddg"]
 [ext_resource type="PackedScene" uid="uid://bgmdgho5vpcww" path="res://Scenes/Tableau/tableau_1.tscn" id="5_xrmvw"]
 [ext_resource type="PackedScene" uid="uid://cris2l20o1yog" path="res://Scenes/Tableau/tableau_2.tscn" id="6_ivjmy"]
 [ext_resource type="PackedScene" uid="uid://dbdtky7u65k03" path="res://Scenes/Projectile/pickable_spear.tscn" id="7_n71gn"]
@@ -15,6 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://c4d4nqowjppgv" path="res://Scenes/GlassDoor/GlassDoor.tscn" id="13_65gwr"]
 [ext_resource type="PackedScene" uid="uid://cs4go5ve5h3cg" path="res://Scenes/Background/parallax_background.tscn" id="14_hlkaa"]
 [ext_resource type="Texture2D" uid="uid://utbh7m0awxrl" path="res://Assets/Background/mansion.png" id="15_tbrwi"]
+[ext_resource type="Texture2D" uid="uid://dseqowtu3cnn8" path="res://Assets/Background/cave_bg.png" id="16_g84nv"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_3hflb"]
 font_size = 25
@@ -99,9 +100,6 @@ position = Vector2(506, -128)
 
 [node name="CollisionShape2D" parent="tableau0/Start Dialogue" index="0"]
 position = Vector2(-3.8147e-06, -63.32)
-
-[node name="Interactor" parent="tableau0/Start Dialogue" index="1" node_paths=PackedStringArray("Targets")]
-Targets = [NodePath("../../Home Door Button")]
 
 [node name="Home Door Button" parent="tableau0" index="1"]
 position = Vector2(155, -281)
@@ -355,6 +353,15 @@ texture = ExtResource("15_tbrwi")
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground"]
 position = Vector2(-2076.71, 3769.86)
 texture = SubResource("GradientTexture2D_4scww")
+
+[node name="endCave" type="Node2D" parent="ParallaxBackground"]
+
+[node name="CaveBg" type="Sprite2D" parent="ParallaxBackground/endCave"]
+position = Vector2(20119.4, 468.493)
+scale = Vector2(0.488794, 0.561405)
+texture = ExtResource("16_g84nv")
+
+[node name="Parallax2D" type="Parallax2D" parent="ParallaxBackground/endCave"]
 
 [connection signal="pressed" from="Camera2D/Menu/VBoxContainer/Start Game" to="Camera2D/Menu" method="hide"]
 [connection signal="ButtonPressed" from="tableau4/Button2" to="tableau4/Door2" method="OpenDoor"]
