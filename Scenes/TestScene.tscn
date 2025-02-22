@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://x42y1dfyasrr"]
+[gd_scene load_steps=24 format=3 uid="uid://x42y1dfyasrr"]
 
 [ext_resource type="Texture2D" uid="uid://chn7u3jyidw7o" path="res://Assets/Sprites/WIP_Background.png" id="1_u7e8s"]
 [ext_resource type="PackedScene" uid="uid://c1d0x30dt6bad" path="res://Scenes/Character/CharacterNode.tscn" id="2_0j0pk"]
@@ -8,10 +8,52 @@
 [ext_resource type="PackedScene" uid="uid://0s6hs2pwdk2f" path="res://Scenes/Box/box.tscn" id="7_5v8d3"]
 [ext_resource type="PackedScene" uid="uid://cvnf375ogiyfw" path="res://Scenes/Door/door.tscn" id="8_nboij"]
 [ext_resource type="PackedScene" uid="uid://dcftouctjkf3e" path="res://Scenes/Button/button.tscn" id="9_73rj4"]
-[ext_resource type="PackedScene" uid="uid://d0bke5oyhuury" path="res://Scenes/Respawn/respawn_area.tscn" id="10_yw575"]
 [ext_resource type="PackedScene" uid="uid://cw000q3yg2bj8" path="res://Scenes/Fairy/Fairy.tscn" id="11_lu5el"]
 [ext_resource type="PackedScene" uid="uid://bq6wiakr1leji" path="res://Scenes/Enemy/enemy.tscn" id="12_c6huv"]
+[ext_resource type="PackedScene" uid="uid://yc7ocknrfysc" path="res://Scenes/NarrativeManager/interactor.tscn" id="12_mntko"]
+[ext_resource type="Script" path="res://Scenes/FairyActions/FairyActionAngerChange.cs" id="13_1oobu"]
+[ext_resource type="Script" path="res://Scenes/Dialogue/Dialogue.cs" id="14_qqn42"]
 [ext_resource type="PackedScene" uid="uid://c4d4nqowjppgv" path="res://Scenes/GlassDoor/GlassDoor.tscn" id="15_xaggh"]
+[ext_resource type="Script" path="res://Scenes/FairyActions/FairyActionDialogue.cs" id="15_xhxsc"]
+[ext_resource type="Script" path="res://Scenes/FairyActions/FairyActionContainer.cs" id="16_8pxl8"]
+[ext_resource type="Script" path="res://Scenes/FairyActions/FairyActionNoText.cs" id="16_ucpwi"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mogxb"]
+size = Vector2(118, 132)
+
+[sub_resource type="Resource" id="Resource_pjoev"]
+script = ExtResource("13_1oobu")
+ChangeAmount = 1
+ActionType = 14
+ActionTime = 0.0
+
+[sub_resource type="Resource" id="Resource_jhfcf"]
+script = ExtResource("14_qqn42")
+tag = ""
+text = "Grr"
+isBold = false
+linkedToFairy = true
+position = Vector2(0, 0)
+
+[sub_resource type="Resource" id="Resource_q1p7g"]
+script = ExtResource("15_xhxsc")
+Dialogue = SubResource("Resource_jhfcf")
+ActionType = 3
+ActionTime = 0.5
+
+[sub_resource type="Resource" id="Resource_fkf0h"]
+script = ExtResource("16_ucpwi")
+HideFairysBubble = true
+HideInWorldBubbles = true
+ActionType = 5
+ActionTime = 0.0
+
+[sub_resource type="Resource" id="Resource_4ew1d"]
+script = ExtResource("16_8pxl8")
+Actions = Array[Object]([SubResource("Resource_pjoev"), SubResource("Resource_q1p7g"), SubResource("Resource_fkf0h")])
+Priority = 1
+ActionType = 0
+ActionTime = 0.0
 
 [node name="TestScene" type="Node2D"]
 
@@ -58,8 +100,6 @@ position = Vector2(1121, -249)
 
 [node name="Button" parent="." instance=ExtResource("9_73rj4")]
 
-[node name="RespawnArea" parent="." instance=ExtResource("10_yw575")]
-
 [node name="Fairy" parent="." instance=ExtResource("11_lu5el")]
 position = Vector2(287, -147)
 scale = Vector2(0.5, 0.5)
@@ -75,5 +115,15 @@ position = Vector2(-220, -377)
 position = Vector2(465, -361)
 deathAnimation = null
 
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(354, -58)
+shape = SubResource("RectangleShape2D_mogxb")
+
+[node name="Interactor" parent="Area2D" instance=ExtResource("12_mntko")]
+Container = SubResource("Resource_4ew1d")
+
 [connection signal="ButtonPressed" from="Button" to="Door" method="OpenDoor"]
 [connection signal="ButtonReleased" from="Button" to="Door" method="CloseDoor"]
+[connection signal="body_entered" from="Area2D" to="Area2D/Interactor" method="SendActions"]

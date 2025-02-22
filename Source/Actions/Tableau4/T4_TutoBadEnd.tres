@@ -1,9 +1,16 @@
-[gd_resource type="Resource" script_class="FairyActionContainer" load_steps=10 format=3 uid="uid://bmr0ls4isnekm"]
+[gd_resource type="Resource" script_class="FairyActionContainer" load_steps=12 format=3 uid="uid://bmr0ls4isnekm"]
 
 [ext_resource type="Script" path="res://Scenes/Dialogue/Dialogue.cs" id="1_psgyt"]
+[ext_resource type="Script" path="res://Scenes/FairyActions/FairyActionAngerChange.cs" id="1_y7ack"]
 [ext_resource type="Script" path="res://Scenes/FairyActions/FairyActionContainer.cs" id="1_yn63a"]
 [ext_resource type="Script" path="res://Scenes/FairyActions/FairyActionDialogue.cs" id="2_j5rrt"]
 [ext_resource type="Script" path="res://Scenes/FairyActions/FairyActionNoText.cs" id="3_10ofn"]
+
+[sub_resource type="Resource" id="Resource_0vrwp"]
+script = ExtResource("1_y7ack")
+ChangeAmount = 1
+ActionType = 14
+ActionTime = 0.0
 
 [sub_resource type="Resource" id="Resource_e4wo7"]
 script = ExtResource("1_psgyt")
@@ -35,12 +42,14 @@ ActionTime = 0.0
 
 [sub_resource type="Resource" id="Resource_2gny1"]
 script = ExtResource("3_10ofn")
+HideFairysBubble = true
+HideInWorldBubbles = false
 ActionType = 5
 ActionTime = 0.0
 
 [resource]
 script = ExtResource("1_yn63a")
-Actions = Array[Object]([SubResource("Resource_3wfb6"), SubResource("Resource_4pdl7"), SubResource("Resource_2gny1")])
+Actions = Array[Object]([SubResource("Resource_0vrwp"), SubResource("Resource_3wfb6"), SubResource("Resource_4pdl7"), SubResource("Resource_2gny1")])
 Priority = 0
 ActionType = 10
 ActionTime = 0.0

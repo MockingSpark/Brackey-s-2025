@@ -34,7 +34,7 @@ ActionTime = -1.0
 
 [resource]
 script = ExtResource("1_t2vrb")
-Actions = Array[Object]([SubResource("Resource_hef6c"), SubResource("Resource_ei1id"), null])
+Actions = Array[Object]([SubResource("Resource_hef6c"), SubResource("Resource_ei1id")])
 Priority = 0
 ActionType = 10
 ActionTime = 0.0

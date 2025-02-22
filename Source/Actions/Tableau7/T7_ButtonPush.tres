@@ -9,6 +9,8 @@
 
 [sub_resource type="Resource" id="Resource_8dah2"]
 script = ExtResource("1_ddop3")
+HideFairysBubble = true
+HideInWorldBubbles = true
 ActionType = 5
 ActionTime = 0.0
 
@@ -56,6 +58,8 @@ ActionTime = 3.0
 
 [sub_resource type="Resource" id="Resource_aut3y"]
 script = ExtResource("1_ddop3")
+HideFairysBubble = true
+HideInWorldBubbles = false
 ActionType = 5
 ActionTime = 0.0
 
