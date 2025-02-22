@@ -1,0 +1,116 @@
+[gd_resource type="Resource" script_class="FairyActionContainer" load_steps=18 format=3 uid="uid://bsu3dckh7dgse"]
+
+[ext_resource type="Script" path="res://Scenes/Dialogue/Dialogue.cs" id="1_77esu"]
+[ext_resource type="Script" path="res://Scenes/FairyActions/FairyActionContainer.cs" id="1_igto3"]
+[ext_resource type="Script" path="res://Scenes/FairyActions/FairyActionDialogue.cs" id="2_fxdjk"]
+
+[sub_resource type="Resource" id="Resource_kwrjh"]
+script = ExtResource("1_77esu")
+tag = ""
+text = "What a run we had !"
+isBold = false
+linkedToFairy = true
+position = Vector2(0, 0)
+arguments = []
+
+[sub_resource type="Resource" id="Resource_lr168"]
+script = ExtResource("2_fxdjk")
+Dialogue = SubResource("Resource_kwrjh")
+ActionType = 3
+ActionTime = 1.0
+
+[sub_resource type="Resource" id="Resource_w22gw"]
+script = ExtResource("1_77esu")
+tag = ""
+text = "But you'll have to do better with less help to be allowed out of here."
+isBold = false
+linkedToFairy = true
+position = Vector2(0, 0)
+arguments = []
+
+[sub_resource type="Resource" id="Resource_3le85"]
+script = ExtResource("2_fxdjk")
+Dialogue = SubResource("Resource_w22gw")
+ActionType = 3
+ActionTime = 1.0
+
+[sub_resource type="Resource" id="Resource_8jseo"]
+script = ExtResource("1_igto3")
+Actions = Array[Object]([SubResource("Resource_lr168"), SubResource("Resource_3le85")])
+Priority = 0
+ActionType = 0
+ActionTime = 0.0
+
+[sub_resource type="Resource" id="Resource_n0lt0"]
+script = ExtResource("1_77esu")
+tag = ""
+text = "You know what they say..."
+isBold = false
+linkedToFairy = true
+position = Vector2(0, 0)
+arguments = []
+
+[sub_resource type="Resource" id="Resource_j2si0"]
+script = ExtResource("2_fxdjk")
+Dialogue = SubResource("Resource_n0lt0")
+ActionType = 3
+ActionTime = 1.0
+
+[sub_resource type="Resource" id="Resource_qip2s"]
+script = ExtResource("1_77esu")
+tag = ""
+text = "IT'S DANGEROUS TO GO ALONE !"
+isBold = true
+linkedToFairy = true
+position = Vector2(0, 0)
+arguments = []
+
+[sub_resource type="Resource" id="Resource_a7nxq"]
+script = ExtResource("2_fxdjk")
+Dialogue = SubResource("Resource_qip2s")
+ActionType = 3
+ActionTime = 1.0
+
+[sub_resource type="Resource" id="Resource_ejqkc"]
+script = ExtResource("1_77esu")
+tag = ""
+text = "You took that to the letter !"
+isBold = false
+linkedToFairy = true
+position = Vector2(0, 0)
+arguments = []
+
+[sub_resource type="Resource" id="Resource_5bjf7"]
+script = ExtResource("2_fxdjk")
+Dialogue = SubResource("Resource_ejqkc")
+ActionType = 3
+ActionTime = 1.0
+
+[sub_resource type="Resource" id="Resource_vj8e2"]
+script = ExtResource("1_77esu")
+tag = ""
+text = "So as long as you need me, you'll stay here. With me."
+isBold = true
+linkedToFairy = true
+position = Vector2(0, 0)
+arguments = []
+
+[sub_resource type="Resource" id="Resource_tkeex"]
+script = ExtResource("2_fxdjk")
+Dialogue = SubResource("Resource_vj8e2")
+ActionType = 3
+ActionTime = 1.0
+
+[sub_resource type="Resource" id="Resource_wtwrv"]
+script = ExtResource("1_igto3")
+Actions = Array[Object]([SubResource("Resource_j2si0"), SubResource("Resource_a7nxq"), SubResource("Resource_5bjf7"), SubResource("Resource_tkeex")])
+Priority = 0
+ActionType = 0
+ActionTime = 0.0
+
+[resource]
+script = ExtResource("1_igto3")
+Actions = Array[Object]([SubResource("Resource_8jseo"), SubResource("Resource_wtwrv")])
+Priority = 0
+ActionType = 0
+ActionTime = 0.0

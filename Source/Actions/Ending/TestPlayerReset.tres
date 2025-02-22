@@ -1,10 +1,13 @@
-[gd_resource type="Resource" script_class="FairyActionContainer" load_steps=20 format=3 uid="uid://dif37nfeoe7dd"]
+[gd_resource type="Resource" script_class="FairyActionContainer" load_steps=26 format=3 uid="uid://dif37nfeoe7dd"]
 
 [ext_resource type="Script" path="res://Scenes/FairyActions/FairyActionContainer.cs" id="1_g0dt4"]
 [ext_resource type="Script" path="res://Scenes/Dialogue/Dialogue.cs" id="1_irkvn"]
 [ext_resource type="Script" path="res://Scenes/FairyActions/FairyActionLock.cs" id="1_thaq6"]
 [ext_resource type="Script" path="res://Scenes/FairyActions/FairyActionDialogue.cs" id="2_ak45p"]
+[ext_resource type="Script" path="res://Scenes/FairyActions/Conditions/FairyActionCondition_Blackboard.cs" id="4_2v4wd"]
 [ext_resource type="Script" path="res://Scenes/FairyActions/FairyActionSave.cs" id="4_paogh"]
+[ext_resource type="Script" path="res://Scenes/FairyActions/FairyActionGenericDialogue.cs" id="5_elswy"]
+[ext_resource type="Script" path="res://Scenes/FairyActions/Conditions/FairyActionCondition_Composite.cs" id="5_kreaq"]
 [ext_resource type="Script" path="res://Scenes/FairyActions/ResetSceneAction.cs" id="5_kse6o"]
 [ext_resource type="Script" path="res://Scenes/FairyActions/ResetPlayerAction.cs" id="6_pbrjw"]
 [ext_resource type="Script" path="res://Scenes/FairyActions/FairyActionPlayerFocus.cs" id="7_74rk6"]
@@ -18,16 +21,37 @@ ActionTime = 0.0
 [sub_resource type="Resource" id="Resource_bj8lr"]
 script = ExtResource("1_irkvn")
 tag = ""
-text = "We're done here. Let's go back..."
+text = "Congratulations reaching here !
+I gave you {0} spears and I helped you {1} times"
 isBold = false
 linkedToFairy = true
 position = Vector2(0, 0)
+arguments = [1, 0]
 
 [sub_resource type="Resource" id="Resource_o1cpv"]
 script = ExtResource("2_ak45p")
 Dialogue = SubResource("Resource_bj8lr")
 ActionType = 3
 ActionTime = 5.0
+
+[sub_resource type="Resource" id="Resource_ylpju"]
+script = ExtResource("4_2v4wd")
+ConditionType = 0
+BlackboardKey = 2
+BlackboardType = 0
+Value = 1
+
+[sub_resource type="Resource" id="Resource_qim1d"]
+script = ExtResource("5_kreaq")
+combinaisonType = 0
+Conditions = Array[Object]([SubResource("Resource_ylpju")])
+
+[sub_resource type="Resource" id="Resource_ra86n"]
+script = ExtResource("5_elswy")
+TalkType = 3
+ActionType = 4
+ActionTime = 2.0
+Condition = SubResource("Resource_qim1d")
 
 [sub_resource type="Resource" id="Resource_ddsk8"]
 script = ExtResource("4_paogh")
@@ -63,6 +87,7 @@ text = "You be a good girl and stay here while I fix the rest!"
 isBold = false
 linkedToFairy = true
 position = Vector2(0, 0)
+arguments = []
 
 [sub_resource type="Resource" id="Resource_7khdp"]
 script = ExtResource("2_ak45p")
@@ -78,7 +103,7 @@ ActionTime = 0.0
 
 [resource]
 script = ExtResource("1_g0dt4")
-Actions = Array[Object]([SubResource("Resource_j7ahb"), SubResource("Resource_o1cpv"), SubResource("Resource_ddsk8"), SubResource("Resource_8trw0"), SubResource("Resource_7nrtb"), SubResource("Resource_obg5w"), SubResource("Resource_46n3f"), SubResource("Resource_7khdp"), SubResource("Resource_kem5p")])
+Actions = Array[Object]([SubResource("Resource_j7ahb"), SubResource("Resource_o1cpv"), SubResource("Resource_ra86n"), SubResource("Resource_ddsk8"), SubResource("Resource_8trw0"), SubResource("Resource_7nrtb"), SubResource("Resource_obg5w"), SubResource("Resource_46n3f"), SubResource("Resource_7khdp"), SubResource("Resource_kem5p")])
 Priority = 0
 ActionType = 0
 ActionTime = 0.0

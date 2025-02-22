@@ -22,7 +22,7 @@ public enum E_FairyAction
     ResetPlayer, 
     ResetScene
 }
-public enum E_FairyTalkType { Save, Protect, Softlock }
+public enum E_FairyTalkType { Save, Protect, Softlock, EndGameNotAngryBad, EndGameNotAngryGood, EndGameAngryBad }
 
 [GlobalClass]
 public partial class FairyAction : Resource

@@ -1,7 +1,9 @@
 using Godot;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Diagnostics;
+using static Godot.RenderingDevice;
 
 
 public partial class NarrativeManager : Node
@@ -29,6 +31,9 @@ public partial class NarrativeManager : Node
 	FairyActionContainer catchContainer;
     FairyActionContainer protectContainer;
     FairyActionContainer softlockContainer;
+    FairyActionContainer notAngryBadEndContainer;
+    FairyActionContainer notAngryGoodEndContainer;
+    FairyActionContainer angryBadEndContainer;
     #endregion
 
     private void GetRessources()
@@ -36,6 +41,7 @@ public partial class NarrativeManager : Node
 		catchContainer = GD.Load<FairyActionContainer>("res://Source/RandomDialogues/CatchDialogues.tres");
 		protectContainer = GD.Load<FairyActionContainer>("res://Source/RandomDialogues/ProtectDialogues.tres");
         softlockContainer = GD.Load<FairyActionContainer>("res://Source/RandomDialogues/SoftlockDialogues.tres");
+        notAngryBadEndContainer = GD.Load<FairyActionContainer>("res://Source/Actions/Ending/EndRandomNotAngryBad.tres");
     }
 
     public void RegisterFairy(Fairy fairy)
@@ -128,10 +134,18 @@ public partial class NarrativeManager : Node
 				break;
 			case E_FairyAction.SayRandom:
 				var genericAction = action as FairyActionGenericDialogue;
-				Dialogue dialogueToPLay = GetRandomDialogue(genericAction.TalkType);
-				fairy.ReadDialogueAction(dialogueToPLay, genericAction.ActionTime);
+				var dialogueToPlay = GetRandomDialogue(genericAction.TalkType);
+				var dialAction = dialogueToPlay as FairyActionDialogue;
+				var dialContainer = dialogueToPlay as FairyActionContainer;
+                if (dialAction != null)
+					fairy.ReadDialogueAction(dialAction.Dialogue, genericAction.ActionTime);
+				if(dialContainer != null)
+				{
+                    actionQueue.InsertRange(0, dialContainer.Actions);
+                    SendNewAction();
+                }
 				break;
-			case E_FairyAction.HideText:
+            case E_FairyAction.HideText:
                 FairyActionNoText noTextAction = action as FairyActionNoText;
                 fairy.HideText(noTextAction.HideFairysBubble, noTextAction.HideInWorldBubbles);
 				break;
@@ -187,8 +201,10 @@ public partial class NarrativeManager : Node
 				fairy.UpdateAnger(angerAction.ChangeAmount);
                 break;
             case E_FairyAction.Container:
-				Debug.Fail("Should not process container");
-				break;
+				//we try to unpack it and we pray
+
+                Debug.Fail("Should not process container");
+                break;
 			case E_FairyAction.ResetPlayer:
 				fairy.Player.ReturnToStart();
                 break;
@@ -224,20 +240,29 @@ public partial class NarrativeManager : Node
         awaitedSignals--;
     }
 
-	public Dialogue GetRandomDialogue(E_FairyTalkType dialogueType)
+	public FairyAction GetRandomDialogue(E_FairyTalkType dialogueType)
 	{
 		int randomIndex = 0;
 		switch (dialogueType)
 		{
 			case E_FairyTalkType.Save:
 				randomIndex = GD.RandRange(0, catchContainer.Actions.Length-1);
-				return ((FairyActionDialogue)catchContainer.Actions[randomIndex]).Dialogue;
+				return catchContainer.Actions[randomIndex];
 			case E_FairyTalkType.Protect:
                 randomIndex = GD.RandRange(0, protectContainer.Actions.Length-1);
-                return ((FairyActionDialogue)protectContainer.Actions[randomIndex]).Dialogue;
+                return protectContainer.Actions[randomIndex];
             case E_FairyTalkType.Softlock:
                 randomIndex = GD.RandRange(0, softlockContainer.Actions.Length-1);
-                return ((FairyActionDialogue)softlockContainer.Actions[randomIndex]).Dialogue;
+                return softlockContainer.Actions[randomIndex];
+            case E_FairyTalkType.EndGameNotAngryBad:
+                randomIndex = GD.RandRange(0, notAngryBadEndContainer.Actions.Length - 1);
+                return notAngryBadEndContainer.Actions[randomIndex];
+            case E_FairyTalkType.EndGameNotAngryGood:
+                randomIndex = GD.RandRange(0, notAngryGoodEndContainer.Actions.Length - 1);
+                return notAngryGoodEndContainer.Actions[randomIndex];
+			case E_FairyTalkType.EndGameAngryBad:
+                randomIndex = GD.RandRange(0, angryBadEndContainer.Actions.Length - 1);
+                return angryBadEndContainer.Actions[randomIndex];
             default:
 				return null;
 		}
