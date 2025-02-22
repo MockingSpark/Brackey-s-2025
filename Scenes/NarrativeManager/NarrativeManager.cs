@@ -17,6 +17,7 @@ public partial class NarrativeManager : Node
 
     private Fairy fairy;
 	private List<FairyAction> actionQueue = new List<FairyAction>();
+	FairyAction lastAction;
 	private List<FairyAction> savedQueue = new List<FairyAction>();
 	private int currentPriority = 0;
 
@@ -57,21 +58,26 @@ public partial class NarrativeManager : Node
 		{
 			actionQueue.Clear();
 			savedQueue.Clear();
-			currentPriority = priority;
 		}
 		if (priority > 0)
 		{
+			if (currentPriority == 0)
+			{
+				savedQueue.Clear();
+				if (lastAction != null)
+				{
+					savedQueue.Add(lastAction);
+				}
+				savedQueue.AddRange(actionQueue);
+			}
 			actionQueue.Clear();
 			actionQueue.AddRange(actionsToAdd);
-			currentPriority = priority;
 		}
 		else
 		{
-			savedQueue.Clear();
-			savedQueue.AddRange(actionsToAdd);
 			actionQueue.AddRange(actionsToAdd);
-			currentPriority = 0;
 		}
+		currentPriority = priority;
 		SendNewAction();
 	}
 
@@ -80,6 +86,7 @@ public partial class NarrativeManager : Node
 		if (actionQueue.Count > 0)
 		{
 			var nextAction = actionQueue[0];
+            lastAction = nextAction;
 			actionQueue.RemoveAt(0);
 			ProcessAction(nextAction);
 		}
@@ -95,6 +102,7 @@ public partial class NarrativeManager : Node
 			{
 				fairy.NoAction();
 				savedQueue.Clear();
+				lastAction = null;
 			}
 		}
 	}

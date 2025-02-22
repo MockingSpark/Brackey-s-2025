@@ -10,7 +10,7 @@
 [ext_resource type="Resource" uid="uid://unft8ln4pd8d" path="res://Source/Actions/Tableau8/T8_PlayerInput.tres" id="8_eshd6"]
 [ext_resource type="PackedScene" uid="uid://0s6hs2pwdk2f" path="res://Scenes/Box/box.tscn" id="9_toudp"]
 [ext_resource type="Resource" uid="uid://c8b8ftf1yxepp" path="res://Source/Actions/Tableau8/T8_Tuto.tres" id="10_j1eia"]
-[ext_resource type="PackedScene" path="res://Scenes/Box/AreaDestroyBox.tscn" id="11_xas32"]
+[ext_resource type="PackedScene" uid="uid://dh4ey1nlfq7h1" path="res://Scenes/Box/AreaDestroyBox.tscn" id="11_xas32"]
 [ext_resource type="Script" path="res://Scenes/Dialogue/Dialogue.cs" id="12_rcm0b"]
 [ext_resource type="Script" path="res://Scenes/FairyActions/FairyActionDialogue.cs" id="13_64ib0"]
 [ext_resource type="Script" path="res://Scenes/FairyActions/FairyActionContainer.cs" id="14_s6gly"]
@@ -189,9 +189,8 @@ collision_layer = 0
 position = Vector2(-232, -174.094)
 shape = SubResource("RectangleShape2D_qubcl")
 
-[node name="Interactor" parent="T8_TutorialStart" node_paths=PackedStringArray("Targets") instance=ExtResource("5_6yu5h")]
+[node name="Interactor" parent="T8_TutorialStart" instance=ExtResource("5_6yu5h")]
 Container = ExtResource("10_j1eia")
-Targets = [null]
 flush = true
 singleUse = true
 

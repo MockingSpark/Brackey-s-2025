@@ -157,6 +157,8 @@ shape = SubResource("RectangleShape2D_la8w3")
 
 [node name="BadEndInteractor" parent="ConfirmBadEnd" instance=ExtResource("8_f1o3a")]
 Container = ExtResource("10_aannp")
+flush = true
+singleUse = true
 
 [node name="AreaDestroyBox2" parent="." instance=ExtResource("12_ew5ay")]
 position = Vector2(6715, 913)
