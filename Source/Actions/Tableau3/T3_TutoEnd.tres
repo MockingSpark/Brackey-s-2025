@@ -40,7 +40,7 @@ ActionTime = 0.0
 
 [resource]
 script = ExtResource("1_ly73l")
-Actions = Array[Object]([SubResource("Resource_fptsr"), SubResource("Resource_0qelt"), SubResource("Resource_yemne")])
+Actions = Array[Object]([null, SubResource("Resource_fptsr"), SubResource("Resource_0qelt"), SubResource("Resource_yemne")])
 Priority = 0
 ActionType = 10
 ActionTime = 0.0

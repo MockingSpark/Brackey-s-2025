@@ -7,7 +7,7 @@ public partial class FairyActionGenericDialogue : FairyAction
     [Export]
     public E_FairyTalkType TalkType { get; set; }
 
-    public FairyActionGenericDialogue() : this(E_FairyAction.SayRandom, 0, E_FairyTalkType.Rdm) { }
+    public FairyActionGenericDialogue() : this(E_FairyAction.SayRandom, 0, E_FairyTalkType.Save) { }
 
     public FairyActionGenericDialogue(E_FairyAction actionType, float actionTime, E_FairyTalkType talkType)
     {

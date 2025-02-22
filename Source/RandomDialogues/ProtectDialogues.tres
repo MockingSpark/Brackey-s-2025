@@ -1,0 +1,40 @@
+[gd_resource type="Resource" script_class="FairyActionContainer" load_steps=8 format=3 uid="uid://mlg1k7qqi8wv"]
+
+[ext_resource type="Script" path="res://Scenes/FairyActions/FairyActionContainer.cs" id="1_5w5q6"]
+[ext_resource type="Script" path="res://Scenes/Dialogue/Dialogue.cs" id="1_cc3io"]
+[ext_resource type="Script" path="res://Scenes/FairyActions/FairyActionDialogue.cs" id="2_eqdp8"]
+
+[sub_resource type="Resource" id="Resource_ta7ar"]
+script = ExtResource("1_cc3io")
+tag = ""
+text = "WOW there! Stay away from my girl! "
+isBold = false
+linkedToFairy = true
+position = Vector2(0, 0)
+
+[sub_resource type="Resource" id="Resource_gtxlr"]
+script = ExtResource("2_eqdp8")
+Dialogue = SubResource("Resource_ta7ar")
+ActionType = 0
+ActionTime = 0.0
+
+[sub_resource type="Resource" id="Resource_k2ui8"]
+script = ExtResource("1_cc3io")
+tag = ""
+text = "No touchy!"
+isBold = true
+linkedToFairy = true
+position = Vector2(0, 0)
+
+[sub_resource type="Resource" id="Resource_7kexh"]
+script = ExtResource("2_eqdp8")
+Dialogue = SubResource("Resource_k2ui8")
+ActionType = 0
+ActionTime = 0.0
+
+[resource]
+script = ExtResource("1_5w5q6")
+Actions = Array[Object]([SubResource("Resource_gtxlr"), SubResource("Resource_7kexh")])
+Priority = 0
+ActionType = 10
+ActionTime = 0.0

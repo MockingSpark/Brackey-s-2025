@@ -11,9 +11,11 @@ public partial class NarrativeManager : Node
 	public override void _Ready()
 	{
 		Instance = this;
+
+		GetRessources();
 	}
 
-	private Fairy fairy;
+    private Fairy fairy;
 	private List<FairyAction> actionQueue = new List<FairyAction>();
 	private List<FairyAction> savedQueue = new List<FairyAction>();
 	private int currentPriority = 0;
@@ -21,8 +23,17 @@ public partial class NarrativeManager : Node
     private int awaitedSignals = 0;
 
 	#region Narrative bools
-
+	FairyActionContainer catchContainer;
+    FairyActionContainer protectContainer;
+    FairyActionContainer softlockContainer;
     #endregion
+
+    private void GetRessources()
+    {
+		catchContainer = GD.Load<FairyActionContainer>("res://Source/RandomDialogues/CatchDialogues.tres");
+		protectContainer = GD.Load<FairyActionContainer>("res://Source/RandomDialogues/ProtectDialogues.tres");
+        softlockContainer = GD.Load<FairyActionContainer>("res://Source/RandomDialogues/SoftlockDialogues.tres");
+    }
 
     public void RegisterFairy(Fairy fairy)
 	{
@@ -97,6 +108,8 @@ public partial class NarrativeManager : Node
 				break;
 			case E_FairyAction.SayRandom:
 				var genericAction = action as FairyActionGenericDialogue;
+				Dialogue dialogueToPLay = GetRandomDialogue(genericAction.TalkType);
+				fairy.ReadDialogueAction(dialogueToPLay, genericAction.ActionTime);
 				break;
 			case E_FairyAction.HideText:
 				fairy.HideText();
@@ -176,11 +189,22 @@ public partial class NarrativeManager : Node
         awaitedSignals--;
     }
 
-	//Aller qq part
-	//Dire qqch
-	//Dire plusieurs choses
-	//Suivre le joueur
-	//Sauver le joueur (lakitu)
-	//Sauver le joueur (enemy)
-	//Donner un score
+	public Dialogue GetRandomDialogue(E_FairyTalkType dialogueType)
+	{
+		int randomIndex = 0;
+		switch (dialogueType)
+		{
+			case E_FairyTalkType.Save:
+				randomIndex = GD.RandRange(0, catchContainer.Actions.Length-1);
+				return ((FairyActionDialogue)catchContainer.Actions[randomIndex]).Dialogue;
+			case E_FairyTalkType.Protect:
+                randomIndex = GD.RandRange(0, protectContainer.Actions.Length-1);
+                return ((FairyActionDialogue)protectContainer.Actions[randomIndex]).Dialogue;
+            case E_FairyTalkType.Softlock:
+                randomIndex = GD.RandRange(0, softlockContainer.Actions.Length-1);
+                return ((FairyActionDialogue)softlockContainer.Actions[randomIndex]).Dialogue;
+            default:
+				return null;
+		}
+	}
 }
