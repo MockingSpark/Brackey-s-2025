@@ -3,8 +3,8 @@
 [ext_resource type="Script" path="res://Scenes/Enemy/Enemy.cs" id="1_xjpia"]
 [ext_resource type="PackedScene" uid="uid://km33f3y54wt3" path="res://Scenes/VFX/enemy_die.tscn" id="2_4ygq7"]
 [ext_resource type="SpriteFrames" uid="uid://csak62mxf63sj" path="res://Assets/Sprites/Enemy/Enemy_Animator.tres" id="2_lhsom"]
-[ext_resource type="AudioStream" uid="uid://c00xxdaik5rb1" path="res://Assets/Audio/Enemy_click.mp3" id="3_hcuq2"]
 [ext_resource type="Shape2D" uid="uid://cjljnixdv10a3" path="res://Scenes/Enemy/enemySolidBox.tres" id="3_lpabf"]
+[ext_resource type="AudioStream" uid="uid://cgp4gjtc7v336" path="res://Assets/Audio/Enemy_blob_move.mp3" id="4_alnqc"]
 [ext_resource type="PackedScene" uid="uid://yc7ocknrfysc" path="res://Scenes/NarrativeManager/interactor.tscn" id="5_tcpmy"]
 [ext_resource type="Resource" uid="uid://dd0wlndknp0jf" path="res://Source/Actions/EnemyHitContainer.tres" id="6_csun8"]
 [ext_resource type="PackedScene" uid="uid://in0ry8412lvu" path="res://Scenes/VFX/fairy_puff.tscn" id="8_f3tvt"]
@@ -40,7 +40,7 @@ rotation = 1.57079
 shape = SubResource("CapsuleShape2D_4e4co")
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("3_hcuq2")
+stream = ExtResource("4_alnqc")
 autoplay = true
 parameters/looping = true
 
