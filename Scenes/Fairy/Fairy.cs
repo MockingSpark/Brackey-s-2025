@@ -249,7 +249,7 @@ public partial class Fairy : Node2D
 
 	public void UpdateAnger(int modification)
 	{
-		int newAnger = Blackboard.Instance.OffeSetValue(EBlackboardType.Permanent, EBlackboardKey.AngerValue, modification);
+		int newAnger = Blackboard.Instance.OffsetValue(EBlackboardType.Permanent, EBlackboardKey.AngerValue, modification);
 		if (modification > 0)
 		{
 			angerVfx.run();

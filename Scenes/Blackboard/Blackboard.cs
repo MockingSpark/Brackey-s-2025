@@ -47,7 +47,7 @@ public partial class Blackboard : Node
         Blackboards[blackboard][key] = value;
     }
 
-    public int OffeSetValue(EBlackboardType blackboard, EBlackboardKey key, int value)
+    public int OffsetValue(EBlackboardType blackboard, EBlackboardKey key, int value)
     {
         if (Blackboards[blackboard].ContainsKey(key))
         {
