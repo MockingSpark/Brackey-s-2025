@@ -109,6 +109,12 @@ public partial class NarrativeManager : Node
 
 	private void ProcessAction(FairyAction action)
 	{
+		if (!action.IsConditionMet())
+		{
+			SendNewAction();
+			return;
+		}
+
 		switch (action.ActionType)
 		{
 			case E_FairyAction.FocusOnPlayer:

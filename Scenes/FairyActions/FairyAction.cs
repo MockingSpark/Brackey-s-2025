@@ -31,4 +31,17 @@ public partial class FairyAction : Resource
     public E_FairyAction ActionType { get; set; }
     [Export]
     public float ActionTime { get; set; }
+
+    [Export]
+    FairyActionCondition Condition { get; set; }
+
+    public bool IsConditionMet()
+    {
+        if (Condition == null)
+        {
+            return true;
+        }
+
+        return Condition.TestCondition();
+    }
 }
