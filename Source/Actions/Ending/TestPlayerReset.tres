@@ -26,7 +26,7 @@ I gave you {0} spears and I helped you {1} times"
 isBold = false
 linkedToFairy = true
 position = Vector2(0, 0)
-arguments = [1, 0]
+arguments = [3, 0]
 
 [sub_resource type="Resource" id="Resource_o1cpv"]
 script = ExtResource("2_ak45p")
@@ -38,14 +38,14 @@ ActionTime = 5.0
 script = ExtResource("4_2v4wd")
 ConditionType = 0
 BlackboardKey = 2
-BlackboardType = 0
+BlackboardType = 1
 Value = 1
 
 [sub_resource type="Resource" id="Resource_555ow"]
 script = ExtResource("4_2v4wd")
 ConditionType = 1
-BlackboardKey = 0
-BlackboardType = 0
+BlackboardKey = 3
+BlackboardType = 1
 Value = 0
 
 [sub_resource type="Resource" id="Resource_qim1d"]
@@ -64,14 +64,14 @@ Condition = SubResource("Resource_qim1d")
 script = ExtResource("4_2v4wd")
 ConditionType = 0
 BlackboardKey = 2
-BlackboardType = 0
+BlackboardType = 1
 Value = 1
 
 [sub_resource type="Resource" id="Resource_gbxcs"]
 script = ExtResource("4_2v4wd")
 ConditionType = 2
 BlackboardKey = 0
-BlackboardType = 0
+BlackboardType = 1
 Value = 0
 
 [sub_resource type="Resource" id="Resource_b3b6n"]

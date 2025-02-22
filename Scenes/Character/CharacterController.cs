@@ -45,7 +45,6 @@ public partial class CharacterController : CharacterBody2D
     private int projectileCount = 0;
 	private List<Base_Interactable> interactables = new List<Base_Interactable>();
 
-    public bool allowSpearProd = false;
         
 	public int ProjectileCount { get => projectileCount; set => projectileCount = value; }
 

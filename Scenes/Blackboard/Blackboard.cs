@@ -12,7 +12,8 @@ public enum EBlackboardKey
 {
     InteractionCount,
     ProjectileThrowCount,
-    AngerValue
+    AngerValue,
+    ProjectileCreated
 }
 
 public partial class Blackboard : Node
