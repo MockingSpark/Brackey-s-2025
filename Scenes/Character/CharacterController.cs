@@ -305,6 +305,7 @@ public partial class CharacterController : CharacterBody2D
     public void ReturnToStart()
     {
         Respawn(startPosition);
+        projectileCount = 0;
         spearParentNode.QueueFree();
         CreateSpearParent();
     }
