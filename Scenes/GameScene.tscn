@@ -96,7 +96,6 @@ shape = SubResource("RectangleShape2D_8a8m2")
 [node name="Interactor" parent="Ending/Area2D" instance=ExtResource("4_e3lrc")]
 Container = ExtResource("9_0mdcg")
 flush = true
-singleUse = true
 
 [node name="ScenesParent" type="Node2D" parent="."]
 script = ExtResource("9_qals1")
