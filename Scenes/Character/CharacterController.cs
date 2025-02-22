@@ -81,7 +81,7 @@ public partial class CharacterController : CharacterBody2D
             {
                 interactables[0].Interact(this);
 
-                Blackboard.Instance.OffeSetValue(EBlackboardType.Level, EBlackboardKey.InteractionCount, 1);
+                Blackboard.Instance.OffsetValue(EBlackboardType.Level, EBlackboardKey.InteractionCount, 1);
             }
         }
         else if (Input.IsActionJustPressed("FairyInput"))
@@ -281,7 +281,7 @@ public partial class CharacterController : CharacterBody2D
 		}
 		newProjectile.SetUpProjectile(playerDir < 0);
 
-        Blackboard.Instance.OffeSetValue(EBlackboardType.Level, EBlackboardKey.ProjectileThrowCount, 1);
+        Blackboard.Instance.OffsetValue(EBlackboardType.Level, EBlackboardKey.ProjectileThrowCount, 1);
     }
 
 	public void AddInteractable(Base_Interactable interactable)

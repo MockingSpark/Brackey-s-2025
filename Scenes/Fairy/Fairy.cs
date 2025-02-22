@@ -21,7 +21,6 @@ public partial class Fairy : Node2D
 	private bool isInWall = false;
 
 	private AngryFairy angerVfx;
-	private int angerValue = 0;
 	private float maxAnger = 5;
 	[Export]
 	Gradient angerGradient;
@@ -248,14 +247,14 @@ public partial class Fairy : Node2D
 		GetNewFollowPoint();
 	}
 
-	public void UpdateAnger(int newValue, int modification)
+	public void UpdateAnger(int modification)
 	{
-		angerValue = newValue;
+		int newAnger = Blackboard.Instance.OffsetValue(EBlackboardType.Permanent, EBlackboardKey.AngerValue, modification);
 		if (modification > 0)
 		{
 			angerVfx.run();
 		}
-		FairyColor = angerGradient.Sample(angerValue/maxAnger);
+		FairyColor = angerGradient.Sample(newAnger / maxAnger);
 	}
 
 	public void FocusOnPlayer(float actionTimer)
