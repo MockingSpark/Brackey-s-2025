@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="FairyActionContainer" load_steps=8 format=3 uid="uid://cdxfmxbfgxoj1"]
+[gd_resource type="Resource" script_class="FairyActionContainer" load_steps=8 format=3 uid="uid://3inf4lkmwewg"]
 
 [ext_resource type="Script" path="res://Scenes/Dialogue/Dialogue.cs" id="1_mcw28"]
 [ext_resource type="Script" path="res://Scenes/FairyActions/FairyActionDialogue.cs" id="2_27287"]

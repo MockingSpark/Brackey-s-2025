@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="FairyActionContainer" load_steps=8 format=3 uid="uid://8qt6t1n6i0hh"]
+[gd_resource type="Resource" script_class="FairyActionContainer" load_steps=8 format=3 uid="uid://cjke6dkqv3s8a"]
 
 [ext_resource type="Script" path="res://Scenes/Dialogue/Dialogue.cs" id="1_4ueuk"]
 [ext_resource type="Script" path="res://Scenes/FairyActions/FairyActionDialogue.cs" id="2_px22d"]
@@ -22,7 +22,7 @@ ActionTime = 4.0
 [sub_resource type="Resource" id="Resource_v5x7o"]
 script = ExtResource("3_83fnp")
 HideFairysBubble = true
-HideInWorldBubbles = true
+HideInWorldBubbles = false
 ActionType = 0
 ActionTime = 0.0
 

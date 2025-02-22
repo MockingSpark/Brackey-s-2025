@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="FairyActionContainer" load_steps=8 format=3 uid="uid://c5302r73ryyq7"]
+[gd_resource type="Resource" script_class="FairyActionContainer" load_steps=8 format=3 uid="uid://dy2wrdnq4d8w0"]
 
 [ext_resource type="Script" path="res://Scenes/Dialogue/Dialogue.cs" id="1_et22o"]
 [ext_resource type="Script" path="res://Scenes/FairyActions/FairyActionDialogue.cs" id="2_8jiey"]
@@ -35,6 +35,6 @@ ActionTime = 3.0
 [resource]
 script = ExtResource("3_ska35")
 Actions = Array[Object]([SubResource("Resource_cchbk"), SubResource("Resource_4s6ee")])
-Priority = 0
+Priority = 1
 ActionType = 10
 ActionTime = 0.0
