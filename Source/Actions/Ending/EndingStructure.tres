@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="FairyActionContainer" load_steps=35 format=3 uid="uid://dif37nfeoe7dd"]
+[gd_resource type="Resource" script_class="FairyActionContainer" load_steps=37 format=3 uid="uid://dif37nfeoe7dd"]
 
 [ext_resource type="Script" path="res://Scenes/FairyActions/FairyActionLock.cs" id="1_qe53a"]
 [ext_resource type="Script" path="res://Scenes/FairyActions/FairyActionFocus.cs" id="1_t84hy"]
@@ -10,6 +10,7 @@
 [ext_resource type="Script" path="res://Scenes/FairyActions/FairyActionSave.cs" id="7_5h6hb"]
 [ext_resource type="Script" path="res://Scenes/FairyActions/ResetSceneAction.cs" id="8_py0j7"]
 [ext_resource type="Script" path="res://Scenes/FairyActions/ResetPlayerAction.cs" id="9_7yf7n"]
+[ext_resource type="Script" path="res://Scenes/FairyActions/MoveCameraPlayerAction.cs" id="10_cd5kk"]
 [ext_resource type="Script" path="res://Scenes/FairyActions/FairyActionPlayerFocus.cs" id="10_oovsu"]
 [ext_resource type="Script" path="res://Scenes/FairyActions/FairyActionContainer.cs" id="11_3cffg"]
 
@@ -119,6 +120,13 @@ ScenesToReload = PackedInt32Array(0)
 ActionType = 16
 ActionTime = 0.0
 
+[sub_resource type="Resource" id="Resource_ivko7"]
+script = ExtResource("10_cd5kk")
+ZoomValue = 1.0
+ZoomInRatio = true
+ActionType = 12
+ActionTime = 0.0
+
 [sub_resource type="Resource" id="Resource_7nrtb"]
 script = ExtResource("9_7yf7n")
 ActionType = 15
@@ -126,7 +134,7 @@ ActionTime = 15.0
 
 [sub_resource type="Resource" id="Resource_obg5w"]
 script = ExtResource("8_py0j7")
-ScenesToReload = PackedInt32Array(1, 2, 3, 4, 5, 6, 7, 8)
+ScenesToReload = PackedInt32Array(1, 2, 3, 4, 5, 6, 7, 8, 9)
 ActionType = 16
 ActionTime = 0.0
 
@@ -159,7 +167,7 @@ ActionTime = 0.0
 
 [resource]
 script = ExtResource("11_3cffg")
-Actions = Array[Object]([SubResource("Resource_u2vio"), SubResource("Resource_j7ahb"), SubResource("Resource_o1cpv"), SubResource("Resource_ra86n"), SubResource("Resource_baqm0"), SubResource("Resource_ulali"), SubResource("Resource_ddsk8"), SubResource("Resource_8trw0"), SubResource("Resource_7nrtb"), SubResource("Resource_obg5w"), SubResource("Resource_46n3f"), SubResource("Resource_7khdp"), SubResource("Resource_kem5p")])
+Actions = Array[Object]([SubResource("Resource_u2vio"), SubResource("Resource_j7ahb"), SubResource("Resource_o1cpv"), SubResource("Resource_ra86n"), SubResource("Resource_baqm0"), SubResource("Resource_ulali"), SubResource("Resource_ddsk8"), SubResource("Resource_8trw0"), SubResource("Resource_ivko7"), SubResource("Resource_7nrtb"), SubResource("Resource_obg5w"), SubResource("Resource_46n3f"), SubResource("Resource_7khdp"), SubResource("Resource_kem5p")])
 Priority = 0
 ActionType = 10
 ActionTime = 0.0

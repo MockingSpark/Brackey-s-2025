@@ -1,4 +1,4 @@
-[gd_scene load_steps=60 format=3 uid="uid://25k5f531xsh2"]
+[gd_scene load_steps=28 format=3 uid="uid://25k5f531xsh2"]
 
 [ext_resource type="PackedScene" uid="uid://cw000q3yg2bj8" path="res://Scenes/Fairy/Fairy.tscn" id="1_j437h"]
 [ext_resource type="PackedScene" uid="uid://cp3ga5u36lr85" path="res://Scenes/terrain/terrain.tscn" id="1_qxp7j"]
@@ -12,154 +12,23 @@
 [ext_resource type="PackedScene" uid="uid://dx7b0v1ktan0b" path="res://Scenes/Tableau/tableau_3.tscn" id="7_3u1j5"]
 [ext_resource type="PackedScene" uid="uid://cvnf375ogiyfw" path="res://Scenes/Door/door.tscn" id="7_dvguf"]
 [ext_resource type="PackedScene" uid="uid://bavwdj247vrk4" path="res://Scenes/Tableau/tableau_4.tscn" id="8_4flgn"]
-[ext_resource type="Resource" uid="uid://dif37nfeoe7dd" path="res://Source/Actions/Ending/EndingStructure.tres" id="9_0mdcg"]
-[ext_resource type="Resource" uid="uid://bskrmeeh2i5wv" path="res://Source/Actions/Ending/ClearDialogueEnding.tres" id="9_244dy"]
 [ext_resource type="Script" path="res://Scenes/SceneLoader.cs" id="9_qals1"]
 [ext_resource type="PackedScene" uid="uid://cs4go5ve5h3cg" path="res://Scenes/Background/parallax_background.tscn" id="9_u1uqc"]
-[ext_resource type="Resource" uid="uid://dpp8dc5ycr53g" path="res://Source/Actions/Ending/FinalEntrance.tres" id="10_2ldsw"]
-[ext_resource type="Script" path="res://Scenes/Dialogue/Dialogue.cs" id="10_b08l1"]
 [ext_resource type="PackedScene" uid="uid://bf3mmer8sadm8" path="res://Scenes/Tableau/tableau_6.tscn" id="10_iuc0p"]
-[ext_resource type="Script" path="res://Scenes/FairyActions/FairyActionDialogue.cs" id="11_15ljp"]
 [ext_resource type="Texture2D" uid="uid://utbh7m0awxrl" path="res://Assets/Background/mansion.png" id="11_ai78j"]
 [ext_resource type="PackedScene" uid="uid://dum2ptc6dd2v0" path="res://Scenes/Tableau/tableau_7.tscn" id="11_krvvm"]
-[ext_resource type="Script" path="res://Scenes/EndingChooser.cs" id="11_pt4mt"]
 [ext_resource type="PackedScene" uid="uid://br03pqig8mmjm" path="res://Scenes/Tableau/tableau_8.tscn" id="12_2vvgp"]
-[ext_resource type="Script" path="res://Scenes/FairyActions/FairyActionContainer.cs" id="12_mpyc5"]
-[ext_resource type="Script" path="res://Scenes/FairyActions/Conditions/FairyActionCondition_Blackboard.cs" id="12_plyjc"]
-[ext_resource type="Texture2D" uid="uid://b1mjpk75ajb1x" path="res://Assets/Sprites/Props/FinalDoor.png" id="13_2srwu"]
-[ext_resource type="Texture2D" uid="uid://cp03joumq2880" path="res://Assets/Sprites/Props/pedestal.png" id="13_rhuhn"]
-[ext_resource type="Script" path="res://Scenes/FairyActions/Conditions/FairyActionCondition_Composite.cs" id="13_wdonb"]
-[ext_resource type="Resource" uid="uid://db28i8k27vb4a" path="res://Source/Actions/Ending/LeaveDialogue.tres" id="15_36gch"]
 [ext_resource type="Texture2D" uid="uid://dseqowtu3cnn8" path="res://Assets/Background/cave_bg.png" id="15_ttfx0"]
 [ext_resource type="Texture2D" uid="uid://bvh7iiyc1ta23" path="res://Assets/Background/cave_back.png" id="16_2ewgd"]
-[ext_resource type="Script" path="res://Scenes/FairyActions/MoveCameraTargetAction.cs" id="17_0ods2"]
 [ext_resource type="PackedScene" uid="uid://c72ttyet07u6h" path="res://Scenes/Tableau/tableau_5.tscn" id="17_acdbx"]
 [ext_resource type="Texture2D" uid="uid://d2karsyhdjs7r" path="res://Assets/Background/cave_front.png" id="17_k3w03"]
-[ext_resource type="Script" path="res://Scenes/FairyActions/FairyAction_GoCredits.cs" id="20_l3i7x"]
+[ext_resource type="PackedScene" uid="uid://c82i3ovfujkd5" path="res://Scenes/Tableau/ending.tscn" id="18_3qxte"]
 [ext_resource type="Texture2D" uid="uid://bfitjbm42ocsn" path="res://Assets/Background/underground.png" id="21_n2hto"]
 [ext_resource type="AudioStream" uid="uid://c5msrh8ws1566" path="res://Assets/Audio/Test1.mp3" id="25_jvroy"]
 [ext_resource type="Texture2D" uid="uid://cc8i1cybgbclj" path="res://Assets/Background/cave_front_front.png" id="26_hv11x"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jqsll"]
 size = Vector2(125.046, 173.44)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_fb0y0"]
-size = Vector2(28.6321, 48.8421)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_m0rad"]
-size = Vector2(49.5, 280)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_jmb0m"]
-size = Vector2(14, 246)
-
-[sub_resource type="Resource" id="Resource_wc1lv"]
-script = ExtResource("12_plyjc")
-ConditionType = 2
-BlackboardKey = 5
-BlackboardType = 1
-Value = 0
-
-[sub_resource type="Resource" id="Resource_sapf1"]
-script = ExtResource("12_plyjc")
-ConditionType = 1
-BlackboardKey = 2
-BlackboardType = 1
-Value = 4
-
-[sub_resource type="Resource" id="Resource_eho86"]
-script = ExtResource("13_wdonb")
-combinaisonType = 0
-Conditions = Array[Object]([SubResource("Resource_wc1lv"), SubResource("Resource_sapf1")])
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_8a8m2"]
-size = Vector2(463, 323)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_wxxb1"]
-size = Vector2(26, 301)
-
-[sub_resource type="Resource" id="Resource_jlbm0"]
-script = ExtResource("17_0ods2")
-ZoomValue = 2.0
-ZoomInRatio = true
-ActionType = 11
-ActionTime = 0.0
-
-[sub_resource type="Resource" id="Resource_p7fe2"]
-script = ExtResource("10_b08l1")
-tag = ""
-text = "...
-"
-isBold = false
-linkedToFairy = true
-position = Vector2(0, 0)
-bubbleScaleForInWorld = 1.0
-arguments = []
-
-[sub_resource type="Resource" id="Resource_tk8fp"]
-script = ExtResource("11_15ljp")
-Dialogue = SubResource("Resource_p7fe2")
-ActionType = 3
-ActionTime = 3.0
-
-[sub_resource type="Resource" id="Resource_d2b4s"]
-script = ExtResource("10_b08l1")
-tag = ""
-text = "Thank you for everything"
-isBold = false
-linkedToFairy = true
-position = Vector2(0, 0)
-bubbleScaleForInWorld = 1.0
-arguments = []
-
-[sub_resource type="Resource" id="Resource_108su"]
-script = ExtResource("11_15ljp")
-Dialogue = SubResource("Resource_d2b4s")
-ActionType = 3
-ActionTime = 3.0
-
-[sub_resource type="Resource" id="Resource_ip834"]
-script = ExtResource("10_b08l1")
-tag = ""
-text = "Please come and visit once in a while."
-isBold = true
-linkedToFairy = true
-position = Vector2(0, 0)
-bubbleScaleForInWorld = 1.0
-arguments = []
-
-[sub_resource type="Resource" id="Resource_0e7t0"]
-script = ExtResource("11_15ljp")
-Dialogue = SubResource("Resource_ip834")
-ActionType = 3
-ActionTime = 3.0
-
-[sub_resource type="Resource" id="Resource_bar3n"]
-script = ExtResource("10_b08l1")
-tag = ""
-text = "I'll miss you, and I hope you'll miss me too"
-isBold = false
-linkedToFairy = true
-position = Vector2(0, 0)
-bubbleScaleForInWorld = 1.0
-arguments = []
-
-[sub_resource type="Resource" id="Resource_cirv2"]
-script = ExtResource("11_15ljp")
-Dialogue = SubResource("Resource_bar3n")
-ActionType = 3
-ActionTime = 5.0
-
-[sub_resource type="Resource" id="Resource_mqrt0"]
-script = ExtResource("20_l3i7x")
-ActionType = 17
-ActionTime = 0.0
-
-[sub_resource type="Resource" id="Resource_lhwtf"]
-script = ExtResource("12_mpyc5")
-Actions = Array[Object]([SubResource("Resource_jlbm0"), SubResource("Resource_tk8fp"), SubResource("Resource_108su"), SubResource("Resource_0e7t0"), SubResource("Resource_cirv2"), SubResource("Resource_mqrt0")])
-Priority = 0
-ActionType = 10
-ActionTime = 0.0
 
 [node name="GameScene" type="Node2D"]
 
@@ -209,114 +78,9 @@ collision_mask = 128
 [node name="Home Door" parent="PersistentT0" instance=ExtResource("7_dvguf")]
 position = Vector2(210, -106)
 
-[node name="Ending" type="Node2D" parent="."]
-
-[node name="Pedestal" type="Sprite2D" parent="Ending"]
-position = Vector2(14408, -223)
-scale = Vector2(1.1875, 1.1875)
-texture = ExtResource("13_rhuhn")
-
-[node name="Button" parent="Ending/Pedestal" instance=ExtResource("6_2pkr4")]
-self_modulate = Color(1, 0, 0.14902, 1)
-position = Vector2(-0.842105, -30.3158)
-scale = Vector2(1.93138, 1.8652)
-
-[node name="CollisionShape2D" parent="Ending/Pedestal/Button/Area2D" index="0"]
-position = Vector2(0.296776, 0)
-
-[node name="StaticBody2D" type="StaticBody2D" parent="Ending/Pedestal"]
-collision_layer = 2
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Ending/Pedestal/StaticBody2D"]
-position = Vector2(0, 3.36841)
-shape = SubResource("RectangleShape2D_fb0y0")
-
-[node name="ClearBubbles" parent="Ending/Pedestal" instance=ExtResource("4_e3lrc")]
-Container = ExtResource("9_244dy")
-flush = true
-singleUse = true
-
-[node name="FinalDoor" parent="Ending" instance=ExtResource("7_dvguf")]
-position = Vector2(14284, 0)
-movementAmount = 300.0
-
-[node name="Sprite2D" parent="Ending/FinalDoor" index="0"]
-scale = Vector2(3.12559, 3.12559)
-texture = ExtResource("13_2srwu")
-
-[node name="CollisionShape2D" parent="Ending/FinalDoor/StaticBody2D" index="0"]
-position = Vector2(-12.25, 0)
-shape = SubResource("RectangleShape2D_m0rad")
-
-[node name="Entrance" type="Area2D" parent="Ending"]
-position = Vector2(13964, -3)
-metadata/_edit_group_ = true
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Ending/Entrance"]
-position = Vector2(-244, 27)
-shape = SubResource("RectangleShape2D_jmb0m")
-
-[node name="CameraPlacing interactor" parent="Ending/Entrance" node_paths=PackedStringArray("Targets") instance=ExtResource("4_e3lrc")]
-Container = ExtResource("10_2ldsw")
-Targets = [NodePath("../../PositionCamera")]
-flush = true
-singleUse = true
-
-[node name="EndingChooser" type="Node" parent="Ending/Entrance" node_paths=PackedStringArray("ConditionValidReactor", "ConditionNotValidReactor")]
-script = ExtResource("11_pt4mt")
-Condition = SubResource("Resource_eho86")
-ConditionValidReactor = NodePath("../../FinalDialogue/LeaveEnd")
-ConditionNotValidReactor = NodePath("../../FinalDialogue/StayEnd")
-
-[node name="FinalDialogue" type="Area2D" parent="Ending"]
-position = Vector2(13966, -3)
-metadata/_edit_group_ = true
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Ending/FinalDialogue"]
-shape = SubResource("RectangleShape2D_8a8m2")
-
-[node name="StayEnd" parent="Ending/FinalDialogue" node_paths=PackedStringArray("Targets") instance=ExtResource("4_e3lrc")]
-Container = ExtResource("9_0mdcg")
-Targets = [NodePath("../../EndingPosition")]
-flush = true
-singleUse = true
-ready = false
-
-[node name="LeaveEnd" parent="Ending/FinalDialogue" node_paths=PackedStringArray("Targets") instance=ExtResource("4_e3lrc")]
-Container = ExtResource("15_36gch")
-Targets = [NodePath("../../EndingPosition")]
-flush = true
-singleUse = true
-ready = false
-
-[node name="Ending" type="Area2D" parent="Ending"]
-position = Vector2(14413, 35)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Ending/Ending"]
-position = Vector2(-3, -27.5)
-shape = SubResource("RectangleShape2D_wxxb1")
-
-[node name="Interactor" parent="Ending/Ending/CollisionShape2D" node_paths=PackedStringArray("Targets") instance=ExtResource("4_e3lrc")]
-Container = SubResource("Resource_lhwtf")
-Targets = [NodePath("../../../EndingPosition")]
-flush = true
-singleUse = true
-
-[node name="Door2" parent="Ending" instance=ExtResource("7_dvguf")]
-position = Vector2(13561, 243)
-scale = Vector2(1.345, 1.345)
-invert = true
-movementAmount = 183.0
-
-[node name="PositionCamera" type="Marker2D" parent="Ending"]
-position = Vector2(14094, -81)
-
-[node name="EndingPosition" type="Marker2D" parent="Ending"]
-position = Vector2(13917, -99)
-
 [node name="ScenesParent" type="Node2D" parent="."]
 script = ExtResource("9_qals1")
-scenesToLoad = Array[PackedScene]([ExtResource("4_ccrff"), ExtResource("5_tvuca"), ExtResource("6_xgppp"), ExtResource("7_3u1j5"), ExtResource("8_4flgn"), ExtResource("17_acdbx"), ExtResource("10_iuc0p"), ExtResource("11_krvvm"), ExtResource("12_2vvgp")])
+scenesToLoad = Array[PackedScene]([ExtResource("4_ccrff"), ExtResource("5_tvuca"), ExtResource("6_xgppp"), ExtResource("7_3u1j5"), ExtResource("8_4flgn"), ExtResource("17_acdbx"), ExtResource("10_iuc0p"), ExtResource("11_krvvm"), ExtResource("12_2vvgp"), ExtResource("18_3qxte")])
 
 [node name="ParallaxBackground" parent="." instance=ExtResource("9_u1uqc")]
 position = Vector2(6756, -317)
@@ -397,15 +161,5 @@ autoplay = true
 [connection signal="body_entered" from="PersistentT0/Start Dialogue" to="PersistentT0/Start Dialogue/Interactor" method="SendActions"]
 [connection signal="ButtonPressed" from="PersistentT0/Home Door Button" to="PersistentT0/Home Door" method="OpenDoor"]
 [connection signal="area_entered" from="PersistentT0/Home Door Button/Area2D" to="PersistentT0/Home Door Button" method="OnButtonPressed"]
-[connection signal="ButtonPressed" from="Ending/Pedestal/Button" to="Ending/Pedestal/ClearBubbles" method="SendActions"]
-[connection signal="ButtonPressed" from="Ending/Pedestal/Button" to="Ending/FinalDoor" method="OpenDoor"]
-[connection signal="body_entered" from="Ending/Entrance" to="Ending/Entrance/CameraPlacing interactor" method="SendActions"]
-[connection signal="body_entered" from="Ending/Entrance" to="Ending/Entrance/EndingChooser" method="CheckCondition"]
-[connection signal="body_entered" from="Ending/Entrance" to="Ending/Door2" method="CloseDoor"]
-[connection signal="body_entered" from="Ending/FinalDialogue" to="Ending/FinalDialogue/StayEnd" method="SendActions"]
-[connection signal="body_entered" from="Ending/FinalDialogue" to="Ending/FinalDialogue/LeaveEnd" method="SendActions"]
-[connection signal="body_entered" from="Ending/Ending" to="Ending/Ending/CollisionShape2D/Interactor" method="SendActions"]
 
 [editable path="PersistentT0/Home Door Button"]
-[editable path="Ending/Pedestal/Button"]
-[editable path="Ending/FinalDoor"]
