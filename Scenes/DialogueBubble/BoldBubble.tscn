@@ -52,6 +52,7 @@ text = "wiuyqgflibwlhkbfliyb
 wsjhbfljhbqd
 jvzdy<tcsdiytcvkybsc
 jvhjwhv"
+horizontal_alignment = 1
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 collision_layer = 2
