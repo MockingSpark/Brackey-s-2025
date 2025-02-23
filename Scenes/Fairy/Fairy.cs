@@ -24,7 +24,13 @@ public partial class Fairy : Node2D
 	private float maxAnger = 5;
 	[Export]
 	Gradient angerGradient;
-	private Color fairyColor;
+
+    [Export]
+    PackedScene boldBubbleScene;
+    [Export]
+    PackedScene roundBubbleScene;
+
+    private Color fairyColor;
 	[Export]
 	public Color FairyColor
 	{
@@ -102,11 +108,11 @@ public partial class Fairy : Node2D
         DialogueBubble newBubble;
 		if(dialogue.isBold)
 		{
-			newBubble = boldBubble.Duplicate(15) as DialogueBubble;
+			newBubble = boldBubbleScene.Instantiate<DialogueBubble>();
 		}
 		else
         {
-            newBubble = roundBubble.Duplicate(15) as DialogueBubble;
+            newBubble = roundBubbleScene.Instantiate<DialogueBubble>();
         }
 
         NarrativeManager.Instance.CallDeferred("add_child", newBubble);
