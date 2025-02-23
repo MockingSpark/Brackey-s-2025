@@ -227,7 +227,10 @@ public partial class NarrativeManager : Node
                 Camera2D camera = GetTree().Root.GetNode<Camera2D>("GameCamera");
                 camera.PositionSmoothingEnabled = false;
 				Camera.Instance.UseStaticMode(new Vector2(0, 0));
-				camera.Position = Vector2.Zero;
+				Camera.Instance.TransitionToZoom(1);
+				camera.Zoom = Vector2.One;
+
+                camera.Position = Vector2.Zero;
                 break;
             default:
 				break;
