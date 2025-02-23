@@ -36,6 +36,13 @@ arguments = []
 script = ExtResource("3_gkynw")
 Dialogue = SubResource("Resource_bfajv")
 ActionType = 3
+ActionTime = 1.0
+
+[sub_resource type="Resource" id="Resource_nx55a"]
+script = ExtResource("4_wwgx5")
+HideFairysBubble = false
+HideInWorldBubbles = true
+ActionType = 5
 ActionTime = 0.0
 
 [sub_resource type="Resource" id="Resource_d0tuo"]
@@ -59,13 +66,6 @@ script = ExtResource("3_gkynw")
 Dialogue = SubResource("Resource_i8tdo")
 ActionType = 3
 ActionTime = 1.0
-
-[sub_resource type="Resource" id="Resource_nx55a"]
-script = ExtResource("4_wwgx5")
-HideFairysBubble = false
-HideInWorldBubbles = true
-ActionType = 5
-ActionTime = 0.0
 
 [sub_resource type="Resource" id="Resource_t8ka6"]
 script = ExtResource("2_5aguv")
@@ -102,7 +102,7 @@ ActionTime = -1.0
 
 [resource]
 script = ExtResource("4_jx3x0")
-Actions = Array[Object]([SubResource("Resource_5i3gs"), SubResource("Resource_krarh"), SubResource("Resource_ggu01"), SubResource("Resource_d0tuo"), SubResource("Resource_fq2lb"), SubResource("Resource_nx55a"), SubResource("Resource_x8abu"), SubResource("Resource_k12an")])
+Actions = Array[Object]([SubResource("Resource_5i3gs"), SubResource("Resource_krarh"), SubResource("Resource_ggu01"), SubResource("Resource_nx55a"), SubResource("Resource_d0tuo"), SubResource("Resource_fq2lb"), SubResource("Resource_x8abu"), SubResource("Resource_k12an")])
 Priority = 0
 ActionType = 10
 ActionTime = 0.0
