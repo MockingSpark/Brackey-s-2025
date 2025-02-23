@@ -1,0 +1,60 @@
+[gd_resource type="Resource" script_class="FairyActionContainer" load_steps=10 format=3 uid="uid://db28i8k27vb4a"]
+
+[ext_resource type="Script" path="res://Scenes/Dialogue/Dialogue.cs" id="1_jei5v"]
+[ext_resource type="Script" path="res://Scenes/FairyActions/FairyActionContainer.cs" id="1_xrkel"]
+[ext_resource type="Script" path="res://Scenes/FairyActions/FairyActionDialogue.cs" id="2_1lu02"]
+
+[sub_resource type="Resource" id="Resource_j8h24"]
+script = ExtResource("1_jei5v")
+tag = ""
+text = "YOU WILL !"
+isBold = true
+linkedToFairy = false
+position = Vector2(14117, -117)
+bubbleScaleForInWorld = 4.0
+arguments = []
+
+[sub_resource type="Resource" id="Resource_ilfhp"]
+script = ExtResource("2_1lu02")
+Dialogue = SubResource("Resource_j8h24")
+ActionType = 3
+ActionTime = 1.0
+
+[sub_resource type="Resource" id="Resource_x3dhx"]
+script = ExtResource("1_jei5v")
+tag = ""
+text = "STAY WITH ME !"
+isBold = true
+linkedToFairy = false
+position = Vector2(13989, 0)
+bubbleScaleForInWorld = 4.0
+arguments = []
+
+[sub_resource type="Resource" id="Resource_8kjr6"]
+script = ExtResource("2_1lu02")
+Dialogue = SubResource("Resource_x3dhx")
+ActionType = 3
+ActionTime = 1.0
+
+[sub_resource type="Resource" id="Resource_mgqkg"]
+script = ExtResource("1_jei5v")
+tag = ""
+text = "FOREVEEEEEEEEEEEER !"
+isBold = true
+linkedToFairy = false
+position = Vector2(13989, 100)
+bubbleScaleForInWorld = 4.0
+arguments = []
+
+[sub_resource type="Resource" id="Resource_h5n3a"]
+script = ExtResource("2_1lu02")
+Dialogue = SubResource("Resource_mgqkg")
+ActionType = 3
+ActionTime = -1.0
+
+[resource]
+script = ExtResource("1_xrkel")
+Actions = Array[Object]([SubResource("Resource_ilfhp"), SubResource("Resource_8kjr6"), SubResource("Resource_h5n3a")])
+Priority = 0
+ActionType = 10
+ActionTime = 0.0
