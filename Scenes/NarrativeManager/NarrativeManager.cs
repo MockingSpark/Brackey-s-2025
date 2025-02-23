@@ -222,14 +222,22 @@ public partial class NarrativeManager : Node
 					Blackboard.Instance.ClearBlackBoard(EBlackboardType.Level);
                 }
                 break;
-			default:
+            case E_FairyAction.GoCredits:
+                GetTree().ChangeSceneToFile("res://Scenes/Credits.tscn");
+                Camera2D camera = GetTree().Root.GetNode<Camera2D>("GameCamera");
+                camera.PositionSmoothingEnabled = false;
+				Camera.Instance.UseStaticMode(new Vector2(0, 0));
+				camera.Position = Vector2.Zero;
+                break;
+            default:
 				break;
         }
         WaitForNext(action.ActionTime);
     }
 
 
-	async void WaitForNext(float actionTimer)
+
+    async void WaitForNext(float actionTimer)
     {
         if (actionTimer < 0)
             return;

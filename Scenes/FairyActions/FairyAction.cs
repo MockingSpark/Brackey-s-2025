@@ -20,7 +20,8 @@ public enum E_FairyAction
     SpearProduction, 
     AngerChange, 
     ResetPlayer, 
-    ResetScene
+    ResetScene,
+    GoCredits
 }
 public enum E_FairyTalkType { Save, Protect, Softlock, EndGameNotAngryBad, EndGameNotAngryGood, EndGameAngryBad }
 
