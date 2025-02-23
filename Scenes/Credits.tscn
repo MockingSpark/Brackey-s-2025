@@ -31,8 +31,7 @@ script = ExtResource("1_fgtkl")
 scrollingSpeed = 150.0
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(-1, 0)
-scale = Vector2(0.479317, 0.479317)
+scale = Vector2(0.6, 0.6)
 texture = ExtResource("1_hfmdy")
 
 [node name="CreditsContainer" type="Node2D" parent="."]
