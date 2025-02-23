@@ -1,8 +1,15 @@
-[gd_resource type="Resource" script_class="FairyActionContainer" load_steps=10 format=3 uid="uid://db28i8k27vb4a"]
+[gd_resource type="Resource" script_class="FairyActionContainer" load_steps=12 format=3 uid="uid://db28i8k27vb4a"]
 
+[ext_resource type="Script" path="res://Scenes/FairyActions/FairyActionFocus.cs" id="1_4l6mq"]
 [ext_resource type="Script" path="res://Scenes/Dialogue/Dialogue.cs" id="1_jei5v"]
 [ext_resource type="Script" path="res://Scenes/FairyActions/FairyActionContainer.cs" id="1_xrkel"]
 [ext_resource type="Script" path="res://Scenes/FairyActions/FairyActionDialogue.cs" id="2_1lu02"]
+
+[sub_resource type="Resource" id="Resource_sploh"]
+script = ExtResource("1_4l6mq")
+FocusOffset = Vector2(0, 0)
+ActionType = 2
+ActionTime = 0.0
 
 [sub_resource type="Resource" id="Resource_j8h24"]
 script = ExtResource("1_jei5v")
@@ -26,7 +33,7 @@ tag = ""
 text = "STAY WITH ME !"
 isBold = true
 linkedToFairy = false
-position = Vector2(13989, 0)
+position = Vector2(14039, 0)
 bubbleScaleForInWorld = 4.0
 arguments = []
 
@@ -39,7 +46,7 @@ ActionTime = 1.0
 [sub_resource type="Resource" id="Resource_mgqkg"]
 script = ExtResource("1_jei5v")
 tag = ""
-text = "FOREVEEEEEEEEEEEER !"
+text = "FOREVEEEEEEEEEER !"
 isBold = true
 linkedToFairy = false
 position = Vector2(13989, 100)
@@ -54,7 +61,7 @@ ActionTime = -1.0
 
 [resource]
 script = ExtResource("1_xrkel")
-Actions = Array[Object]([SubResource("Resource_ilfhp"), SubResource("Resource_8kjr6"), SubResource("Resource_h5n3a")])
+Actions = Array[Object]([SubResource("Resource_sploh"), SubResource("Resource_ilfhp"), SubResource("Resource_8kjr6"), SubResource("Resource_h5n3a")])
 Priority = 0
 ActionType = 10
 ActionTime = 0.0

@@ -1,6 +1,7 @@
-[gd_resource type="Resource" script_class="FairyActionContainer" load_steps=33 format=3 uid="uid://dif37nfeoe7dd"]
+[gd_resource type="Resource" script_class="FairyActionContainer" load_steps=35 format=3 uid="uid://dif37nfeoe7dd"]
 
 [ext_resource type="Script" path="res://Scenes/FairyActions/FairyActionLock.cs" id="1_qe53a"]
+[ext_resource type="Script" path="res://Scenes/FairyActions/FairyActionFocus.cs" id="1_t84hy"]
 [ext_resource type="Script" path="res://Scenes/Dialogue/Dialogue.cs" id="2_165cw"]
 [ext_resource type="Script" path="res://Scenes/FairyActions/FairyActionDialogue.cs" id="3_2emhe"]
 [ext_resource type="Script" path="res://Scenes/FairyActions/Conditions/FairyActionCondition_Blackboard.cs" id="4_b5vwq"]
@@ -11,6 +12,12 @@
 [ext_resource type="Script" path="res://Scenes/FairyActions/ResetPlayerAction.cs" id="9_7yf7n"]
 [ext_resource type="Script" path="res://Scenes/FairyActions/FairyActionPlayerFocus.cs" id="10_oovsu"]
 [ext_resource type="Script" path="res://Scenes/FairyActions/FairyActionContainer.cs" id="11_3cffg"]
+
+[sub_resource type="Resource" id="Resource_u2vio"]
+script = ExtResource("1_t84hy")
+FocusOffset = Vector2(0, 0)
+ActionType = 2
+ActionTime = 0.0
 
 [sub_resource type="Resource" id="Resource_j7ahb"]
 script = ExtResource("1_qe53a")
@@ -26,6 +33,7 @@ I gave you {0} spears and I saved you from harm {1} times"
 isBold = false
 linkedToFairy = true
 position = Vector2(0, 0)
+bubbleScaleForInWorld = 1.0
 arguments = [3, 4]
 
 [sub_resource type="Resource" id="Resource_o1cpv"]
@@ -134,6 +142,7 @@ text = "You be a good girl and stay here while I fix the rest!"
 isBold = false
 linkedToFairy = true
 position = Vector2(0, 0)
+bubbleScaleForInWorld = 1.0
 arguments = []
 
 [sub_resource type="Resource" id="Resource_7khdp"]
@@ -150,7 +159,7 @@ ActionTime = 0.0
 
 [resource]
 script = ExtResource("11_3cffg")
-Actions = Array[Object]([SubResource("Resource_j7ahb"), SubResource("Resource_o1cpv"), SubResource("Resource_ra86n"), SubResource("Resource_baqm0"), SubResource("Resource_ulali"), SubResource("Resource_ddsk8"), SubResource("Resource_8trw0"), SubResource("Resource_7nrtb"), SubResource("Resource_obg5w"), SubResource("Resource_46n3f"), SubResource("Resource_7khdp"), SubResource("Resource_kem5p")])
+Actions = Array[Object]([SubResource("Resource_u2vio"), SubResource("Resource_j7ahb"), SubResource("Resource_o1cpv"), SubResource("Resource_ra86n"), SubResource("Resource_baqm0"), SubResource("Resource_ulali"), SubResource("Resource_ddsk8"), SubResource("Resource_8trw0"), SubResource("Resource_7nrtb"), SubResource("Resource_obg5w"), SubResource("Resource_46n3f"), SubResource("Resource_7khdp"), SubResource("Resource_kem5p")])
 Priority = 0
-ActionType = 0
+ActionType = 10
 ActionTime = 0.0
