@@ -63,6 +63,11 @@ public partial class Door : Node2D
 		
 	}
 
+	public void OpenDoor(Node2D node2D)
+	{
+		OpenDoor();
+	}
+
 	public void OpenDoor()
 	{
 		DelayOpen();
@@ -78,6 +83,10 @@ public partial class Door : Node2D
         shouldMove = true;
     }
 
+	public void CloseDoor(Node2D node)
+	{
+		CloseDoor();
+	}
 
 	public void CloseDoor()
 	{
