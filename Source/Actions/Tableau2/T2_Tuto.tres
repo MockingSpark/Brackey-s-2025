@@ -1,9 +1,42 @@
-[gd_resource type="Resource" script_class="FairyActionContainer" load_steps=12 format=3 uid="uid://b4vlk3i08n758"]
+[gd_resource type="Resource" script_class="FairyActionContainer" load_steps=18 format=3 uid="uid://b4vlk3i08n758"]
 
 [ext_resource type="Script" path="res://Scenes/FairyActions/FairyActionFocus.cs" id="1_fvx1a"]
 [ext_resource type="Script" path="res://Scenes/Dialogue/Dialogue.cs" id="2_5aguv"]
 [ext_resource type="Script" path="res://Scenes/FairyActions/FairyActionDialogue.cs" id="3_gkynw"]
 [ext_resource type="Script" path="res://Scenes/FairyActions/FairyActionContainer.cs" id="4_jx3x0"]
+[ext_resource type="Script" path="res://Scenes/FairyActions/FairyActionNoText.cs" id="4_wwgx5"]
+
+[sub_resource type="Resource" id="Resource_5i3gs"]
+script = ExtResource("4_wwgx5")
+HideFairysBubble = true
+HideInWorldBubbles = true
+ActionType = 5
+ActionTime = 0.0
+
+[sub_resource type="Resource" id="Resource_krarh"]
+script = ExtResource("1_fvx1a")
+FocusOffset = Vector2(0, 0)
+ActionType = 2
+ActionTime = 0.0
+
+[sub_resource type="Resource" id="Resource_bfajv"]
+script = ExtResource("2_5aguv")
+tag = ""
+text = " S 
+ T 
+ O 
+ P "
+isBold = true
+linkedToFairy = false
+position = Vector2(2050, -350)
+bubbleScaleForInWorld = 7.0
+arguments = []
+
+[sub_resource type="Resource" id="Resource_ggu01"]
+script = ExtResource("3_gkynw")
+Dialogue = SubResource("Resource_bfajv")
+ActionType = 3
+ActionTime = 0.0
 
 [sub_resource type="Resource" id="Resource_d0tuo"]
 script = ExtResource("1_fvx1a")
@@ -18,6 +51,7 @@ text = "This is a monster! "
 isBold = false
 linkedToFairy = true
 position = Vector2(0, 0)
+bubbleScaleForInWorld = 1.0
 arguments = []
 
 [sub_resource type="Resource" id="Resource_fq2lb"]
@@ -25,6 +59,13 @@ script = ExtResource("3_gkynw")
 Dialogue = SubResource("Resource_i8tdo")
 ActionType = 3
 ActionTime = 1.0
+
+[sub_resource type="Resource" id="Resource_nx55a"]
+script = ExtResource("4_wwgx5")
+HideFairysBubble = false
+HideInWorldBubbles = true
+ActionType = 5
+ActionTime = 0.0
 
 [sub_resource type="Resource" id="Resource_t8ka6"]
 script = ExtResource("2_5aguv")
@@ -34,6 +75,7 @@ Their movements are hard to read."
 isBold = false
 linkedToFairy = true
 position = Vector2(0, 0)
+bubbleScaleForInWorld = 1.0
 arguments = []
 
 [sub_resource type="Resource" id="Resource_x8abu"]
@@ -49,6 +91,7 @@ text = "Try to jump over him. But be careful!"
 isBold = false
 linkedToFairy = true
 position = Vector2(0, 0)
+bubbleScaleForInWorld = 1.0
 arguments = []
 
 [sub_resource type="Resource" id="Resource_k12an"]
@@ -59,7 +102,7 @@ ActionTime = -1.0
 
 [resource]
 script = ExtResource("4_jx3x0")
-Actions = Array[Object]([SubResource("Resource_d0tuo"), SubResource("Resource_fq2lb"), SubResource("Resource_x8abu"), SubResource("Resource_k12an")])
+Actions = Array[Object]([SubResource("Resource_5i3gs"), SubResource("Resource_krarh"), SubResource("Resource_ggu01"), SubResource("Resource_d0tuo"), SubResource("Resource_fq2lb"), SubResource("Resource_nx55a"), SubResource("Resource_x8abu"), SubResource("Resource_k12an")])
 Priority = 0
 ActionType = 10
 ActionTime = 0.0

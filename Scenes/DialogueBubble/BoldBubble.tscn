@@ -59,6 +59,5 @@ collision_mask = 0
 [node name="BubbleShape" type="CollisionShape2D" parent="StaticBody2D"]
 shape = SubResource("RectangleShape2D_byrrw")
 disabled = true
-one_way_collision = true
 
 [connection signal="resized" from="PanelContainer" to="." method="Resize"]
