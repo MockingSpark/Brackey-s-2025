@@ -14,6 +14,8 @@ public partial class Door : Node2D
 	public bool invert = false;
 	[Export]
 	public float moveDelay = 0;
+	[Export]
+	public float movementAmount = 124f;
 
 	Vector2 destination = new Vector2();
 	bool shouldMove = false;
@@ -25,17 +27,17 @@ public partial class Door : Node2D
 			openPosition = GlobalPosition;
 			if (isVertical)
 			{
-				closePosition = GlobalPosition + new Vector2(0, -124);
+				closePosition = GlobalPosition + new Vector2(0, -movementAmount);
 			}
 			else
 			{
 				if (movesLeft)
 				{
-					closePosition = GlobalPosition + new Vector2(124, 0);
+					closePosition = GlobalPosition + new Vector2(movementAmount, 0);
 				}
 				else
 				{
-					closePosition = GlobalPosition + new Vector2(-124, 0);
+					closePosition = GlobalPosition + new Vector2(-movementAmount, 0);
 				}
 			}
 		}
@@ -44,17 +46,17 @@ public partial class Door : Node2D
 			closePosition = GlobalPosition;
 			if (isVertical)
 			{
-				openPosition = GlobalPosition + new Vector2(0, 124);
+				openPosition = GlobalPosition + new Vector2(0, movementAmount);
 			}
 			else
 			{
 				if (movesLeft)
 				{
-					openPosition = GlobalPosition + new Vector2(-124, 0);
+					openPosition = GlobalPosition + new Vector2(-movementAmount, 0);
 				}
 				else
 				{
-					openPosition = GlobalPosition + new Vector2(124, 0);
+					openPosition = GlobalPosition + new Vector2(movementAmount, 0);
 				}
 			}
 		}

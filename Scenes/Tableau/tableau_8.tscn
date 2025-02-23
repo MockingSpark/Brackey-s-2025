@@ -199,7 +199,7 @@ Container = ExtResource("10_j1eia")
 singleUse = true
 
 [node name="EndingPosition" type="Marker2D" parent="."]
-position = Vector2(14133, 2)
+position = Vector2(13981, 0)
 
 [node name="AreaDestroyBox3" parent="." instance=ExtResource("11_xas32")]
 position = Vector2(12576, 76)
