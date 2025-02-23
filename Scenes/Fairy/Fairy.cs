@@ -112,6 +112,8 @@ public partial class Fairy : Node2D
         NarrativeManager.Instance.CallDeferred("add_child", newBubble);
 		newBubble.SetDeferred("Text", dialogue.GetText());
 		newBubble.GlobalPosition = dialogue.position;
+		newBubble.SetSize(newBubble.Size * dialogue.bubbleScaleForInWorld);
+		newBubble.Resize();
 
 		newBubble.ShowBubble();
 
