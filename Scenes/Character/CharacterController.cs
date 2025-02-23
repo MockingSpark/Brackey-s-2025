@@ -295,6 +295,8 @@ public partial class CharacterController : CharacterBody2D
 
 	public void Respawn(Vector2 respawnPoint)
 	{
+        Blackboard.Instance.OffsetValue(EBlackboardType.Level, EBlackboardKey.Saves, 1);
+        Blackboard.Instance.OffsetValue(EBlackboardType.Level, EBlackboardKey.HelpReceived, 1);
 		respawning = true;
         Velocity = new Vector2();
 		collisionShape.SetDeferred("disabled", true);

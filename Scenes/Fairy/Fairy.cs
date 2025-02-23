@@ -235,6 +235,7 @@ public partial class Fairy : Node2D
 				GetTree().Root.GetNode<Node>("SpearParent").CallDeferred("add_child", newProjectile);
             newProjectile.CallDeferred("InitialBounce", !ShouldLookLeft());
             Blackboard.Instance.OffsetValue(EBlackboardType.Level, EBlackboardKey.ProjectileCreated, 1);
+            Blackboard.Instance.OffsetValue(EBlackboardType.Level, EBlackboardKey.HelpReceived, 1);
         }
     }
 

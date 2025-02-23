@@ -1,134 +1,134 @@
 [gd_resource type="Resource" script_class="FairyActionContainer" load_steps=33 format=3 uid="uid://dif37nfeoe7dd"]
 
-[ext_resource type="Script" path="res://Scenes/FairyActions/FairyActionContainer.cs" id="1_g0dt4"]
-[ext_resource type="Script" path="res://Scenes/Dialogue/Dialogue.cs" id="1_irkvn"]
-[ext_resource type="Script" path="res://Scenes/FairyActions/FairyActionLock.cs" id="1_thaq6"]
-[ext_resource type="Script" path="res://Scenes/FairyActions/FairyActionDialogue.cs" id="2_ak45p"]
-[ext_resource type="Script" path="res://Scenes/FairyActions/Conditions/FairyActionCondition_Blackboard.cs" id="4_2v4wd"]
-[ext_resource type="Script" path="res://Scenes/FairyActions/FairyActionSave.cs" id="4_paogh"]
-[ext_resource type="Script" path="res://Scenes/FairyActions/FairyActionGenericDialogue.cs" id="5_elswy"]
-[ext_resource type="Script" path="res://Scenes/FairyActions/Conditions/FairyActionCondition_Composite.cs" id="5_kreaq"]
-[ext_resource type="Script" path="res://Scenes/FairyActions/ResetSceneAction.cs" id="5_kse6o"]
-[ext_resource type="Script" path="res://Scenes/FairyActions/ResetPlayerAction.cs" id="6_pbrjw"]
-[ext_resource type="Script" path="res://Scenes/FairyActions/FairyActionPlayerFocus.cs" id="7_74rk6"]
+[ext_resource type="Script" path="res://Scenes/FairyActions/FairyActionLock.cs" id="1_qe53a"]
+[ext_resource type="Script" path="res://Scenes/Dialogue/Dialogue.cs" id="2_165cw"]
+[ext_resource type="Script" path="res://Scenes/FairyActions/FairyActionDialogue.cs" id="3_2emhe"]
+[ext_resource type="Script" path="res://Scenes/FairyActions/Conditions/FairyActionCondition_Blackboard.cs" id="4_b5vwq"]
+[ext_resource type="Script" path="res://Scenes/FairyActions/Conditions/FairyActionCondition_Composite.cs" id="5_3udx7"]
+[ext_resource type="Script" path="res://Scenes/FairyActions/FairyActionGenericDialogue.cs" id="6_qknre"]
+[ext_resource type="Script" path="res://Scenes/FairyActions/FairyActionSave.cs" id="7_5h6hb"]
+[ext_resource type="Script" path="res://Scenes/FairyActions/ResetSceneAction.cs" id="8_py0j7"]
+[ext_resource type="Script" path="res://Scenes/FairyActions/ResetPlayerAction.cs" id="9_7yf7n"]
+[ext_resource type="Script" path="res://Scenes/FairyActions/FairyActionPlayerFocus.cs" id="10_oovsu"]
+[ext_resource type="Script" path="res://Scenes/FairyActions/FairyActionContainer.cs" id="11_3cffg"]
 
 [sub_resource type="Resource" id="Resource_j7ahb"]
-script = ExtResource("1_thaq6")
+script = ExtResource("1_qe53a")
 ShouldLock = true
 ActionType = 9
 ActionTime = 0.0
 
 [sub_resource type="Resource" id="Resource_bj8lr"]
-script = ExtResource("1_irkvn")
+script = ExtResource("2_165cw")
 tag = ""
 text = "Congratulations reaching here !
-I gave you {0} spears and I helped you {1} times"
+I gave you {0} spears and I saved you from harm {1} times"
 isBold = false
 linkedToFairy = true
 position = Vector2(0, 0)
-arguments = [3, 0]
+arguments = [3, 4]
 
 [sub_resource type="Resource" id="Resource_o1cpv"]
-script = ExtResource("2_ak45p")
+script = ExtResource("3_2emhe")
 Dialogue = SubResource("Resource_bj8lr")
 ActionType = 3
 ActionTime = 5.0
 
 [sub_resource type="Resource" id="Resource_ylpju"]
-script = ExtResource("4_2v4wd")
+script = ExtResource("4_b5vwq")
 ConditionType = 0
 BlackboardKey = 2
 BlackboardType = 1
-Value = 1
+Value = 5
 
 [sub_resource type="Resource" id="Resource_555ow"]
-script = ExtResource("4_2v4wd")
+script = ExtResource("4_b5vwq")
 ConditionType = 1
-BlackboardKey = 3
+BlackboardKey = 5
 BlackboardType = 1
 Value = 0
 
 [sub_resource type="Resource" id="Resource_qim1d"]
-script = ExtResource("5_kreaq")
+script = ExtResource("5_3udx7")
 combinaisonType = 0
 Conditions = Array[Object]([SubResource("Resource_ylpju"), SubResource("Resource_555ow")])
 
 [sub_resource type="Resource" id="Resource_ra86n"]
-script = ExtResource("5_elswy")
+script = ExtResource("6_qknre")
 TalkType = 3
 ActionType = 4
 ActionTime = 2.0
 Condition = SubResource("Resource_qim1d")
 
 [sub_resource type="Resource" id="Resource_svnk3"]
-script = ExtResource("4_2v4wd")
+script = ExtResource("4_b5vwq")
 ConditionType = 0
 BlackboardKey = 2
 BlackboardType = 1
-Value = 1
+Value = 5
 
 [sub_resource type="Resource" id="Resource_gbxcs"]
-script = ExtResource("4_2v4wd")
+script = ExtResource("4_b5vwq")
 ConditionType = 2
-BlackboardKey = 3
+BlackboardKey = 5
 BlackboardType = 1
 Value = 0
 
 [sub_resource type="Resource" id="Resource_b3b6n"]
-script = ExtResource("5_kreaq")
+script = ExtResource("5_3udx7")
 combinaisonType = 0
 Conditions = Array[Object]([SubResource("Resource_svnk3"), SubResource("Resource_gbxcs")])
 
 [sub_resource type="Resource" id="Resource_baqm0"]
-script = ExtResource("5_elswy")
+script = ExtResource("6_qknre")
 TalkType = 4
 ActionType = 4
 ActionTime = 0.0
 Condition = SubResource("Resource_b3b6n")
 
 [sub_resource type="Resource" id="Resource_wew67"]
-script = ExtResource("4_2v4wd")
+script = ExtResource("4_b5vwq")
 ConditionType = 1
 BlackboardKey = 2
 BlackboardType = 1
-Value = 0
+Value = 4
 
 [sub_resource type="Resource" id="Resource_ulali"]
-script = ExtResource("5_elswy")
+script = ExtResource("6_qknre")
 TalkType = 5
 ActionType = 4
 ActionTime = 0.0
 Condition = SubResource("Resource_wew67")
 
 [sub_resource type="Resource" id="Resource_ddsk8"]
-script = ExtResource("4_paogh")
+script = ExtResource("7_5h6hb")
 ActionType = 6
 ActionTime = 1.0
 
 [sub_resource type="Resource" id="Resource_8trw0"]
-script = ExtResource("5_kse6o")
+script = ExtResource("8_py0j7")
 ScenesToReload = PackedInt32Array(0)
 ActionType = 16
 ActionTime = 0.5
 
 [sub_resource type="Resource" id="Resource_7nrtb"]
-script = ExtResource("6_pbrjw")
+script = ExtResource("9_7yf7n")
 ActionType = 15
-ActionTime = 3.0
+ActionTime = 5.0
 
 [sub_resource type="Resource" id="Resource_obg5w"]
-script = ExtResource("5_kse6o")
+script = ExtResource("8_py0j7")
 ScenesToReload = PackedInt32Array(1, 2, 3, 4, 5, 6, 7, 8)
 ActionType = 16
 ActionTime = 0.0
 
 [sub_resource type="Resource" id="Resource_46n3f"]
-script = ExtResource("7_74rk6")
+script = ExtResource("10_oovsu")
 ActionType = 1
 ActionTime = 0.5
 
 [sub_resource type="Resource" id="Resource_o0fl7"]
-script = ExtResource("1_irkvn")
+script = ExtResource("2_165cw")
 tag = ""
 text = "You be a good girl and stay here while I fix the rest!"
 isBold = false
@@ -137,19 +137,19 @@ position = Vector2(0, 0)
 arguments = []
 
 [sub_resource type="Resource" id="Resource_7khdp"]
-script = ExtResource("2_ak45p")
+script = ExtResource("3_2emhe")
 Dialogue = SubResource("Resource_o0fl7")
 ActionType = 3
 ActionTime = 3.0
 
 [sub_resource type="Resource" id="Resource_kem5p"]
-script = ExtResource("1_thaq6")
+script = ExtResource("1_qe53a")
 ShouldLock = false
 ActionType = 9
 ActionTime = 0.0
 
 [resource]
-script = ExtResource("1_g0dt4")
+script = ExtResource("11_3cffg")
 Actions = Array[Object]([SubResource("Resource_j7ahb"), SubResource("Resource_o1cpv"), SubResource("Resource_ra86n"), SubResource("Resource_baqm0"), SubResource("Resource_ulali"), SubResource("Resource_ddsk8"), SubResource("Resource_8trw0"), SubResource("Resource_7nrtb"), SubResource("Resource_obg5w"), SubResource("Resource_46n3f"), SubResource("Resource_7khdp"), SubResource("Resource_kem5p")])
 Priority = 0
 ActionType = 0
