@@ -58,7 +58,7 @@ Value = 0
 
 [sub_resource type="Resource" id="Resource_sapf1"]
 script = ExtResource("12_plyjc")
-ConditionType = 1
+ConditionType = 0
 BlackboardKey = 2
 BlackboardType = 1
 Value = 4
@@ -287,6 +287,9 @@ movementAmount = 183.0
 [node name="PositionCamera" type="Marker2D" parent="Ending"]
 position = Vector2(13947, -68)
 
+[node name="TestPosition" type="Marker2D" parent="Ending"]
+position = Vector2(14117, -117)
+
 [node name="ScenesParent" type="Node2D" parent="."]
 script = ExtResource("9_qals1")
 scenesToLoad = Array[PackedScene]([ExtResource("4_ccrff"), ExtResource("5_tvuca"), ExtResource("6_xgppp"), ExtResource("7_3u1j5"), ExtResource("8_4flgn"), ExtResource("17_acdbx"), ExtResource("10_iuc0p"), ExtResource("11_krvvm"), ExtResource("12_2vvgp")])
@@ -372,8 +375,8 @@ autoplay = true
 [connection signal="area_entered" from="PersistentT0/Home Door Button/Area2D" to="PersistentT0/Home Door Button" method="OnButtonPressed"]
 [connection signal="ButtonPressed" from="Ending/Pedestal/Button" to="Ending/FinalDoor" method="OpenDoor"]
 [connection signal="body_entered" from="Ending/Entrance" to="Ending/Entrance/CameraPlacing interactor" method="SendActions"]
-[connection signal="body_entered" from="Ending/Entrance" to="Ending/Door2" method="CloseDoor"]
 [connection signal="body_entered" from="Ending/Entrance" to="Ending/Entrance/EndingChooser" method="CheckCondition"]
+[connection signal="body_entered" from="Ending/Entrance" to="Ending/Door2" method="CloseDoor"]
 [connection signal="body_entered" from="Ending/FinalDialogue" to="Ending/FinalDialogue/StayEnd" method="SendActions"]
 [connection signal="body_entered" from="Ending/FinalDialogue" to="Ending/FinalDialogue/LeaveEnd" method="SendActions"]
 [connection signal="body_entered" from="Ending/Ending" to="Ending/Ending/CollisionShape2D/Interactor" method="SendActions"]
