@@ -109,12 +109,12 @@ ActionTime = 1.0
 script = ExtResource("8_py0j7")
 ScenesToReload = PackedInt32Array(0)
 ActionType = 16
-ActionTime = 0.5
+ActionTime = 0.0
 
 [sub_resource type="Resource" id="Resource_7nrtb"]
 script = ExtResource("9_7yf7n")
 ActionType = 15
-ActionTime = 5.0
+ActionTime = 15.0
 
 [sub_resource type="Resource" id="Resource_obg5w"]
 script = ExtResource("8_py0j7")

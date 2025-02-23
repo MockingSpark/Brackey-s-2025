@@ -58,12 +58,14 @@ public partial class NarrativeManager : Node
     }
     public void ReceiveActions(FairyActionContainer actionContainer, bool flush = false)
 	{
+		bool sendNew = false;
 		var actionsToAdd = actionContainer.Actions;
 		var priority = actionContainer.Priority;
 		if(flush)
 		{
 			actionQueue.Clear();
 			savedQueue.Clear();
+			sendNew = true;
 		}
 		if (priority > 0)
 		{
@@ -78,13 +80,15 @@ public partial class NarrativeManager : Node
 			}
 			actionQueue.Clear();
 			actionQueue.AddRange(actionsToAdd);
+			sendNew = true;
 		}
 		else
 		{
 			actionQueue.AddRange(actionsToAdd);
 		}
 		currentPriority = priority;
-		SendNewAction();
+		if (sendNew)
+			SendNewAction();
 	}
 
 	void SendNewAction()

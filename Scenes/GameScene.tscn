@@ -123,9 +123,10 @@ layer_0/tile_data = PackedInt32Array(-262112, 0, 3, -262111, 65536, 3, -262110, 
 metadata/_edit_lock_ = true
 
 [node name="Player" parent="." instance=ExtResource("2_l2hhf")]
-position = Vector2(-103, -94)
+position = Vector2(9387, -135)
 
 [node name="PersistentT0" type="Node2D" parent="."]
+metadata/_edit_group_ = true
 
 [node name="Start Dialogue" type="Area2D" parent="PersistentT0"]
 position = Vector2(34, -135)
@@ -171,14 +172,14 @@ shape = SubResource("RectangleShape2D_8a8m2")
 Container = ExtResource("9_0mdcg")
 flush = true
 
-[node name="Area2D" type="Area2D" parent="Ending/Area2D"]
+[node name="Area2D2" type="Area2D" parent="Ending"]
 position = Vector2(14413, 35)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Ending/Area2D/Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ending/Area2D2"]
 position = Vector2(-3, -27.5)
 shape = SubResource("RectangleShape2D_wxxb1")
 
-[node name="Interactor" parent="Ending/Area2D/Area2D/CollisionShape2D" instance=ExtResource("4_e3lrc")]
+[node name="Interactor" parent="Ending/Area2D2/CollisionShape2D" instance=ExtResource("4_e3lrc")]
 Container = SubResource("Resource_lhwtf")
 flush = true
 singleUse = true
@@ -267,6 +268,6 @@ autoplay = true
 [connection signal="ButtonPressed" from="PersistentT0/Home Door Button" to="PersistentT0/Home Door" method="OpenDoor"]
 [connection signal="area_entered" from="PersistentT0/Home Door Button/Area2D" to="PersistentT0/Home Door Button" method="OnButtonPressed"]
 [connection signal="body_entered" from="Ending/Area2D" to="Ending/Area2D/Interactor" method="SendActions"]
-[connection signal="body_entered" from="Ending/Area2D/Area2D" to="Ending/Area2D/Area2D/CollisionShape2D/Interactor" method="SendActions"]
+[connection signal="body_entered" from="Ending/Area2D2" to="Ending/Area2D2/CollisionShape2D/Interactor" method="SendActions"]
 
 [editable path="PersistentT0/Home Door Button"]

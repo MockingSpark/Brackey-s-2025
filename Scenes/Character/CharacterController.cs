@@ -256,6 +256,7 @@ public partial class CharacterController : CharacterBody2D
     public void LockPlayer(bool shouldLock)
     {
         locked = shouldLock;
+        inputDir = new Vector2(0,0);
     }
 
 	private void ThrowProjectile()

@@ -17,7 +17,7 @@ text = "Last one! You know what to do!"
 isBold = false
 linkedToFairy = true
 position = Vector2(0, 0)
-arguments = null
+arguments = []
 
 [sub_resource type="Resource" id="Resource_mxbcw"]
 script = ExtResource("2_m2okq")
@@ -33,7 +33,7 @@ You know the drill."
 isBold = false
 linkedToFairy = true
 position = Vector2(0, 0)
-arguments = null
+arguments = []
 
 [sub_resource type="Resource" id="Resource_ru6rn"]
 script = ExtResource("2_m2okq")
