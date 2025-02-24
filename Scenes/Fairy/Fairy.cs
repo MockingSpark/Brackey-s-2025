@@ -323,7 +323,10 @@ public partial class Fairy : Node2D
 
 		emergency = true;
 		focusPoint = player;
-	}
+
+        Blackboard.Instance.OffsetValue(EBlackboardType.Level, EBlackboardKey.Saves, 1);
+        Blackboard.Instance.OffsetValue(EBlackboardType.Level, EBlackboardKey.HelpReceived, 1);
+    }
 	public void SavePlayer(float actionTimer)
 	{
 		if (Player == null)
