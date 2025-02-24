@@ -219,8 +219,9 @@ public partial class NarrativeManager : Node
 				foreach (var sceneIndex in resetAction.ScenesToReload)
                 {
 					sceneLoader.ReloadScene(sceneIndex);
-					Blackboard.Instance.ClearBlackBoard(EBlackboardType.Level);
                 }
+				Blackboard.Instance.ClearBlackBoard(EBlackboardType.Level);
+				fairy.UpdateAnger(0);
                 break;
             case E_FairyAction.GoCredits:
                 GetTree().ChangeSceneToFile("res://Scenes/Credits.tscn");
