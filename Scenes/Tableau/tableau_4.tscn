@@ -23,7 +23,7 @@ size = Vector2(63, 223)
 [node name="tableau4" type="Node2D"]
 
 [node name="PickableSpear2" parent="." instance=ExtResource("1_0nsfx")]
-position = Vector2(5397, 361)
+position = Vector2(5397, 407)
 
 [node name="GoodButton" parent="." instance=ExtResource("2_d6n8k")]
 position = Vector2(5894.25, 317)
@@ -40,9 +40,8 @@ collision_mask = 39
 position = Vector2(2.23999, -0.319992)
 shape = SubResource("RectangleShape2D_djs5h")
 
-[node name="Interactor" parent="GoodButton" node_paths=PackedStringArray("ReactorsToActivate") instance=ExtResource("3_13cbi")]
+[node name="Interactor" parent="GoodButton" instance=ExtResource("3_13cbi")]
 Container = ExtResource("4_jt43o")
-ReactorsToActivate = []
 flush = true
 singleUse = true
 
@@ -58,9 +57,8 @@ collision_mask = 39
 position = Vector2(2.23999, -0.319992)
 shape = SubResource("RectangleShape2D_djs5h")
 
-[node name="Interactor" parent="BadButton" node_paths=PackedStringArray("ReactorsToActivate") instance=ExtResource("3_13cbi")]
+[node name="Interactor" parent="BadButton" instance=ExtResource("3_13cbi")]
 Container = ExtResource("5_dlbrw")
-ReactorsToActivate = []
 flush = true
 singleUse = true
 
@@ -86,9 +84,8 @@ dropPoint = Vector2(5612, 456)
 position = Vector2(4, 48.5)
 shape = SubResource("RectangleShape2D_3ftor")
 
-[node name="Interactor" parent="RespawnArea" node_paths=PackedStringArray("ReactorsToActivate") instance=ExtResource("3_13cbi")]
+[node name="Interactor" parent="RespawnArea" instance=ExtResource("3_13cbi")]
 Container = ExtResource("9_k31al")
-ReactorsToActivate = []
 
 [node name="T4_TutorialStart" type="Area2D" parent="."]
 position = Vector2(5009, 605)
@@ -98,9 +95,8 @@ collision_layer = 0
 position = Vector2(241, -43)
 shape = SubResource("RectangleShape2D_kmqn6")
 
-[node name="Interactor" parent="T4_TutorialStart" node_paths=PackedStringArray("ReactorsToActivate") instance=ExtResource("3_13cbi")]
+[node name="Interactor" parent="T4_TutorialStart" instance=ExtResource("3_13cbi")]
 Container = ExtResource("10_mwdb2")
-ReactorsToActivate = []
 flush = true
 singleUse = true
 
