@@ -25,7 +25,6 @@ public partial class Dialogue : Resource
 
         object[] test = strings.ToArray<string>();
 
-        text = String.Format(text, test);
-        return text; 
+        return String.Format(text, test); 
     }
 }
