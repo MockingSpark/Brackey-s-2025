@@ -19,6 +19,7 @@ text = "Wait..."
 isBold = false
 linkedToFairy = true
 position = Vector2(0, 0)
+bubbleScaleForInWorld = 1.0
 arguments = null
 
 [sub_resource type="Resource" id="Resource_5lep5"]
@@ -34,6 +35,7 @@ text = "You broke it ?!"
 isBold = false
 linkedToFairy = true
 position = Vector2(0, 0)
+bubbleScaleForInWorld = 1.0
 arguments = null
 
 [sub_resource type="Resource" id="Resource_0tc6r"]
@@ -49,6 +51,7 @@ text = "I don't even..."
 isBold = false
 linkedToFairy = true
 position = Vector2(0, 0)
+bubbleScaleForInWorld = 1.0
 arguments = null
 
 [sub_resource type="Resource" id="Resource_kkvtc"]
@@ -64,6 +67,7 @@ text = "FINE !"
 isBold = true
 linkedToFairy = true
 position = Vector2(0, 0)
+bubbleScaleForInWorld = 1.0
 arguments = null
 
 [sub_resource type="Resource" id="Resource_t6uu2"]
@@ -79,6 +83,7 @@ text = "Come here, i'll get you through...."
 isBold = false
 linkedToFairy = true
 position = Vector2(0, 0)
+bubbleScaleForInWorld = 1.0
 arguments = null
 
 [sub_resource type="Resource" id="Resource_8lbx3"]
@@ -100,6 +105,7 @@ text = "Come through you tutorial breaking twat!"
 isBold = true
 linkedToFairy = true
 position = Vector2(0, 0)
+bubbleScaleForInWorld = 1.0
 arguments = null
 
 [sub_resource type="Resource" id="Resource_q3xnr"]

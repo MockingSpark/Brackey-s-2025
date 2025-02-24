@@ -20,6 +20,7 @@ text = "Good morning little one!"
 isBold = false
 linkedToFairy = true
 position = Vector2(0, 0)
+bubbleScaleForInWorld = 1.0
 arguments = null
 
 [sub_resource type="Resource" id="Resource_ys7uv"]
@@ -35,6 +36,7 @@ text = "Today you start your big adventure!"
 isBold = true
 linkedToFairy = true
 position = Vector2(0, 0)
+bubbleScaleForInWorld = 1.0
 arguments = null
 
 [sub_resource type="Resource" id="Resource_urll5"]
@@ -51,6 +53,7 @@ Before I let you go, I need to make sure you won't die out there!"
 isBold = false
 linkedToFairy = true
 position = Vector2(0, 0)
+bubbleScaleForInWorld = 1.0
 arguments = null
 
 [sub_resource type="Resource" id="Resource_qs1mx"]
@@ -66,6 +69,7 @@ text = "So let's train a little."
 isBold = true
 linkedToFairy = true
 position = Vector2(0, 0)
+bubbleScaleForInWorld = 1.0
 arguments = null
 
 [sub_resource type="Resource" id="Resource_uumm5"]
@@ -81,6 +85,7 @@ text = "You can move around with Q/D or the arrows"
 isBold = false
 linkedToFairy = true
 position = Vector2(0, 0)
+bubbleScaleForInWorld = 1.0
 arguments = null
 
 [sub_resource type="Resource" id="Resource_hdh14"]
