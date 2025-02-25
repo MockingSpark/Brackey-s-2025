@@ -20,7 +20,7 @@
 size = Vector2(7.57, 11.52)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qubcl"]
-size = Vector2(73, 503.813)
+size = Vector2(465, 332)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_d6q51"]
 size = Vector2(24, 146)
@@ -196,7 +196,7 @@ position = Vector2(11807, -360)
 collision_layer = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="T8_TutorialStart"]
-position = Vector2(-232, -174.094)
+position = Vector2(-4, 7)
 shape = SubResource("RectangleShape2D_qubcl")
 
 [node name="Interactor" parent="T8_TutorialStart" instance=ExtResource("5_6yu5h")]

@@ -27,7 +27,7 @@ ShouldLock = true
 ActionType = 9
 ActionTime = 0.0
 
-[sub_resource type="Resource" id="Resource_bj8lr"]
+[sub_resource type="Resource" id="Resource_h66gu"]
 script = ExtResource("2_165cw")
 tag = ""
 text = "Congratulations reaching here !
@@ -38,11 +38,11 @@ position = Vector2(0, 0)
 bubbleScaleForInWorld = 1.0
 arguments = [3, 4]
 
-[sub_resource type="Resource" id="Resource_o1cpv"]
+[sub_resource type="Resource" id="Resource_fy8y0"]
 script = ExtResource("3_2emhe")
-Dialogue = SubResource("Resource_bj8lr")
+Dialogue = SubResource("Resource_h66gu")
 ActionType = 3
-ActionTime = 5.0
+ActionTime = 3.5
 
 [sub_resource type="Resource" id="Resource_ylpju"]
 script = ExtResource("4_b5vwq")
@@ -175,7 +175,7 @@ ActionTime = 0.0
 
 [resource]
 script = ExtResource("11_3cffg")
-Actions = Array[Object]([SubResource("Resource_u2vio"), SubResource("Resource_j7ahb"), SubResource("Resource_o1cpv"), SubResource("Resource_ra86n"), SubResource("Resource_baqm0"), SubResource("Resource_ulali"), SubResource("Resource_ddsk8"), SubResource("Resource_8trw0"), SubResource("Resource_ivko7"), SubResource("Resource_7nrtb"), SubResource("Resource_obg5w"), SubResource("Resource_46n3f"), SubResource("Resource_7khdp"), SubResource("Resource_kem5p"), SubResource("Resource_y74nh")])
+Actions = Array[Object]([SubResource("Resource_u2vio"), SubResource("Resource_j7ahb"), SubResource("Resource_fy8y0"), SubResource("Resource_ra86n"), SubResource("Resource_baqm0"), SubResource("Resource_ulali"), SubResource("Resource_ddsk8"), SubResource("Resource_8trw0"), SubResource("Resource_ivko7"), SubResource("Resource_7nrtb"), SubResource("Resource_obg5w"), SubResource("Resource_46n3f"), SubResource("Resource_7khdp"), SubResource("Resource_kem5p"), SubResource("Resource_y74nh")])
 Priority = 0
 ActionType = 10
 ActionTime = 0.0
